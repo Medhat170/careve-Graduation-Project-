@@ -1,5 +1,8 @@
+import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
@@ -26,17 +29,17 @@ class MyApp extends StatelessWidget {
         child: GetMaterialApp(
           title: 'Careve',
           debugShowCheckedModeBanner: false,
-          // theme: AppUtil.appTheme,
+          theme: AppUtil.appTheme,
           getPages: AppPages.routes,
           initialRoute: Routes.WELCOME_SCREEN,
           // initialBinding: MainBinding(),
-          // localizationsDelegates: [
-          //   S.delegate,
-          //   GlobalMaterialLocalizations.delegate,
-          //   GlobalWidgetsLocalizations.delegate,
-          //   GlobalCupertinoLocalizations.delegate,
-          // ],
-          // supportedLocales: S.delegate.supportedLocales,
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
         ),
       ),
     );

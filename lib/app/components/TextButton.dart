@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String text;
@@ -7,17 +8,18 @@ class CustomTextButton extends StatelessWidget {
   final Function function;
   final Color textColor;
 
-  CustomTextButton(
-      {@required this.text,
-      @required this.backgroundColor,
-      @required this.function,
-      @required this.textColor});
+  CustomTextButton({
+    @required this.text,
+    @required this.backgroundColor,
+    @required this.function,
+    @required this.textColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 320,
-      height: 45,
+      width: Get.width,
+      height: 50,
       child: TextButton(
         style: TextButton.styleFrom(
           side: BorderSide(

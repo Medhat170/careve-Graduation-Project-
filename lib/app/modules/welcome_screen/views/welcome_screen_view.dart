@@ -1,84 +1,100 @@
-import 'package:careve/custom_widgets/TextButton.dart';
+import 'package:careve/app/components/TextButton.dart';
+import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/welcome_screen_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WelcomeScreenView extends GetView<WelcomeScreenController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image:
-                    AssetImage('images_icons/app_images/hands_background.png'),
-                fit: BoxFit.cover,
+    return AppDirectionality(
+      child: SafeArea(
+        child: Scaffold(
+          body: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      PathUtil.welcomeImage,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Container(
-            color: Color.fromRGBO(21, 7, 13, 0.43),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 42, vertical: 64),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 23),
-                  child: Image(
-                    image: AssetImage('images_icons/app_icons/icon.png'),
+              Container(
+                color: ColorUtil.transparentPink,
+              ),
+              SizedBox(
+                width: Get.width,
+                height: Get.height,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 50.0,
+                    horizontal: 30.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        PathUtil.favIcon,
+                        width: 100.w,
+                        height: 100.w,
+                      ),
+                      Text(
+                        'careve',
+                        style: TextStyle(
+                          fontSize: 74.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        'Welcome...',
+                        style: TextStyle(
+                          fontSize: 100.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        width: Get.width * 0.6,
+                        child: Text(
+                          'to careve for breast cancer awareness and women health care.',
+                          style: TextStyle(
+                            fontSize: 46.sp,
+                            fontWeight: FontWeight.w600
+                          ),
+                          softWrap: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 300.h,
+                      ),
+                      CustomTextButton(
+                        textColor: ColorUtil.whiteColor,
+                        text: 'Sign Up',
+                        backgroundColor: ColorUtil.primaryColor,
+                        function: () {},
+                      ),
+                      SizedBox(
+                        height: 50.h,
+                      ),
+                      CustomTextButton(
+                        text: 'Sign In',
+                        backgroundColor: null,
+                        function: () {},
+                        textColor: ColorUtil.primaryColor,
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  'careEve',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'fonts/Segoe UI Bold.ttf',
-                  ),
-                ),
-                SizedBox(
-                  height: 150,
-                ),
-                Text(
-                  'Welcome...',
-                  style: TextStyle(
-                      fontSize: 39,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'fonts/Segoe UI Bold.ttf'),
-                ),
-                Text(
-                  'to careEve for breast cancer\nawareness and women\nhealth care.',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'fonts/Segoe UI Bold.ttf',
-                  ),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                CustomTextButton(
-                  textColor: Color(0xFFFFFFFf),
-                  text: 'Sign Up',
-                  backgroundColor: Color(0xFFFF4493),
-                  function: () {},
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                CustomTextButton(
-                  text: 'Sign In',
-                  backgroundColor: null,
-                  function: () {},
-                  textColor: Color(0xFFFF4493),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
