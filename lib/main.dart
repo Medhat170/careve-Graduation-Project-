@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           // theme: AppUtil.appTheme,
           getPages: AppPages.routes,
-          initialRoute: Routes.HOME,
+          initialRoute: Routes.WELCOME_SCREEN,
           // initialBinding: MainBinding(),
           // localizationsDelegates: [
           //   S.delegate,

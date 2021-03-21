@@ -1,9 +1,9 @@
+import 'package:careve/custom_widgets/TextButton.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controllers/welcome_screen_controller.dart';
 
-import '../custom_widgets/TextButton.dart';
-
-class WelcomeScreen extends StatelessWidget {
-  static String id = 'WelcomeScreen';
+class WelcomeScreenView extends GetView<WelcomeScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
