@@ -1,21 +1,46 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-
-import './screens/welcome_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'app/routes/app_pages.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+  runApp(
+    MyApp(), // Wrap your app
+  );
 }
+
+
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'CareEve_App',
-      theme: ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.white),
+    return ScreenUtilInit(
+      designSize: Size(1080, 1920),
+      builder: () => GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
+        child: GetMaterialApp(
+          title: 'Careve',
+          debugShowCheckedModeBanner: false,
+          // theme: AppUtil.appTheme,
+          getPages: AppPages.routes,
+          initialRoute: Routes.HOME,
+          // initialBinding: MainBinding(),
+          // localizationsDelegates: [
+          //   S.delegate,
+          //   GlobalMaterialLocalizations.delegate,
+          //   GlobalWidgetsLocalizations.delegate,
+          //   GlobalCupertinoLocalizations.delegate,
+          // ],
+          // supportedLocales: S.delegate.supportedLocales,
+        ),
       ),
-      home: new WelcomeScreen(),
     );
   }
 }
