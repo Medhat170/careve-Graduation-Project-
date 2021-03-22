@@ -4,6 +4,8 @@ import 'package:careve/app/modules/home/bindings/home_binding.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/sign_in/bindings/sign_in_binding.dart';
 import 'package:careve/app/modules/sign_in/views/sign_in_view.dart';
+import 'package:careve/app/modules/splash/bindings/splash_binding.dart';
+import 'package:careve/app/modules/splash/views/splash_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
 import 'package:careve/app/modules/welcome_screen/views/welcome_screen_view.dart';
 
@@ -27,6 +29,11 @@ class AppPages {
       name: _Paths.SIGN_IN,
       page: () => SignInView(),
       binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

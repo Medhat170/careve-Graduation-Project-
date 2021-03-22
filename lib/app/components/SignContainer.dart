@@ -9,7 +9,7 @@ class CustomSignInContainer extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         width: 140,
         height: 50,
         decoration: BoxDecoration(

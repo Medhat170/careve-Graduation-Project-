@@ -1,6 +1,7 @@
 import 'package:careve/app/components/SignContainer.dart';
 import 'package:careve/app/components/TextButton.dart';
 import 'package:careve/app/components/TextField.dart';
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class SignInView extends GetView<SignInController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           child: Padding(
@@ -62,7 +64,7 @@ class SignInView extends GetView<SignInController> {
                     ),
                     CustomTextButton(
                       text: 'Sign In',
-                      function: () {},
+                      function: () => Get.toNamed(Routes.SPLASH),
                       backgroundColor: ColorUtil.primaryColor,
                       textColor: Colors.white,
                     ),
