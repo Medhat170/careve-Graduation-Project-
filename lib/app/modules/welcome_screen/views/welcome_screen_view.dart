@@ -1,5 +1,6 @@
 import 'package:careve/app/components/TextButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:flutter/material.dart';
@@ -64,9 +65,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         child: Text(
                           'to careve for breast cancer awareness and women health care.',
                           style: TextStyle(
-                            fontSize: 46.sp,
-                            fontWeight: FontWeight.w600
-                          ),
+                              fontSize: 46.sp, fontWeight: FontWeight.w600),
                           softWrap: true,
                         ),
                       ),
@@ -85,7 +84,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       CustomTextButton(
                         text: 'Sign In',
                         backgroundColor: null,
-                        function: () {},
+                        function: () => Get.toNamed(Routes.SIGN_IN),
                         textColor: ColorUtil.primaryColor,
                       ),
                     ],

@@ -4,4 +4,6 @@ const iconsPath = 'assets/icons/';
 class PathUtil {
   static const String welcomeImage = imagesPath + 'hands_background.png';
   static const String favIcon = iconsPath + 'fav.png';
+  static const String facebookIcon = iconsPath + 'facebookIcon.png';
+  static const String googleIcon = iconsPath + 'googleIcon.png';
 }
