@@ -15,44 +15,43 @@ class VerificationCodeView extends GetView<AuthService> {
     return AppDirectionality(
       child: SafeArea(
         child: Scaffold(
-          body: Form(
-            key: controller.verifyFormKey,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 30.0,
-              ),
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 50,
-                        ),
-                        child: Text(
-                          'LOGO here', //TODO replace with logo
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 65.sp,
+          body: Obx(
+            () => SingleChildScrollView(
+              child: Container(
+                height: Get.height -
+                    Get.mediaQuery.padding.top -
+                    Get.mediaQuery.padding.bottom,
+                width: Get.width,
+                padding: const EdgeInsets.all(30.0),
+                child: Stack(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 50.0),
+                          child: Text(
+                            'LOGO here', //TODO replace with logo
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 65.sp,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                      ),
-                      Text(
-                        S.of(context).verifyText,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 46.sp,
-                          color: ColorUtil.mediumGrey,
+                        Text(
+                          S.of(context).verifyText,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 46.sp,
+                            color: ColorUtil.mediumGrey,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
-                      ),
-                      const SizedBox(
-                        height: 15.0,
-                      ),
-                      Obx(
-                        () => PinCodeTextField(
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        PinCodeTextField(
                           autofocus: true,
                           controller: controller.code,
                           hideCharacter: true,
@@ -93,33 +92,32 @@ class VerificationCodeView extends GetView<AuthService> {
                           highlightAnimationEndColor: ColorUtil.primaryColor,
                           keyboardType: TextInputType.number,
                         ),
-                      ),
-                      Obx(
-                        () => Visibility(
-                          child: Text(
-                            controller.pinCodeError.value,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 38.sp,
-                              color: ColorUtil.errorColor,
+                        if (controller.pinCodeError.value != null)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Text(
+                              controller.pinCodeError.value,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 38.sp,
+                                color: ColorUtil.errorColor,
+                              ),
+                              textAlign: TextAlign.start,
                             ),
-                            textAlign: TextAlign.start,
                           ),
-                          visible: controller.pinCodeError.value != null,
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      AppButton(
-                        S.of(context).done,
-                        onTap: () async => await controller.verifyCode(),
-                        backgroundColor: ColorUtil.primaryColor,
-                      ),
-                    ],
-                  ),
-                  CircularBackButton(),
-                ],
+                        AppButton(
+                          S.of(context).done,
+                          onTap: () async => await controller.verifyCode(),
+                          backgroundColor: ColorUtil.primaryColor,
+                        ),
+                      ],
+                    ),
+                    CircularBackButton(),
+                  ],
+                ),
               ),
             ),
           ),

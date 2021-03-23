@@ -12,7 +12,6 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   AuthService(this.signUP) : assert(signUP != null);
   GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
-  GlobalKey<FormState> verifyFormKey = GlobalKey<FormState>();
   TextEditingController phone = TextEditingController();
   TextEditingController code = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -49,7 +48,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         startBusy();
         //TODO Send api
         endBusySuccess();
-        Get.to(Routes.VERIFICATION_CODE);
+        Get.toNamed(Routes.VERIFICATION_CODE);
       } catch (error) {
         await AppUtil.showAlertDialog(body: error.toString());
       }
@@ -57,9 +56,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<void> verifyCode() async {
-    final formData = verifyFormKey.currentState;
-    if (formData.validate() && code.text.length == 6) {
-      formData.save();
+    if (code.text.length == 6) {
       try {
         startBusy();
         //TODO Send api
