@@ -86,7 +86,10 @@ class AuthView extends GetView<AuthService> {
                               ),
                               AppButton(
                                 S.of(context).signIn,
-                                onTap: () async => await controller.auth(),
+                                onTap: () async {
+                                  await controller.auth();
+                                  Get.toNamed(Routes.SPLASH);
+                                },
                                 backgroundColor: ColorUtil.primaryColor,
                               ),
                               const SizedBox(
