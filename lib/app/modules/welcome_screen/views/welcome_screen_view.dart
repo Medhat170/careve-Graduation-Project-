@@ -1,7 +1,7 @@
 import 'package:careve/app/components/AppButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
-import 'file:///P:/my_projects/careve/lib/app/services/auth_service.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:flutter/material.dart';
@@ -80,10 +80,9 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         textColor: ColorUtil.whiteColor,
                         backgroundColor: ColorUtil.primaryColor,
                         onTap: () {
-                          AuthService.to.signUP(false);
+                          AuthService.to.signUP(true);
                           Get.toNamed(
                             Routes.AUTH,
-                            arguments: true,
                           );
                         },
                       ),

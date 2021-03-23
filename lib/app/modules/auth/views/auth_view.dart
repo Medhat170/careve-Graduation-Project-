@@ -23,138 +23,150 @@ class AuthView extends GetView<AuthService> {
                 Get.mediaQuery.padding.top -
                 Get.mediaQuery.padding.bottom,
             width: Get.width,
-            child: Form(
-              key: controller.authFormKey,
-              child: Stack(
-                children: [
-                  Obx(
-                    () => ListView(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 20,
+            child: Stack(
+              children: [
+                Center(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: controller.authFormKey,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        child: Obx(
+                          () => Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 30,
+                                ),
+                                child: Text(
+                                  'Logo here', //TODO replace with logo
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 65.sp,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              if (controller.signUP.value)
+                                AuthInputField(
+                                  S.of(context).name,
+                                  controller.name,
+                                  loading: controller.isBusy.value,
+                                  keyBoardType: TextInputType.text,
+                                  validator: QuickTextValidator(),
+                                ),
+                              AuthInputField(
+                                S.of(context).email,
+                                controller.email,
+                                loading: controller.isBusy.value,
+                                keyBoardType: TextInputType.emailAddress,
+                                validator: QuickTextValidator(
+                                  isEmail: true,
+                                ),
+                              ),
+                              AuthInputField(
+                                S.of(context).password,
+                                controller.password,
+                                loading: controller.isBusy.value,
+                                isPassword: true,
+                                hidePassword: controller.hidePassword.value,
+                                changeObscuring: () => controller.hidePassword
+                                    .value = !controller.hidePassword.value,
+                                keyBoardType: TextInputType.text,
+                                validator: QuickTextValidator(
+                                  hasMinLength: 8,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              AppButton(
+                                S.of(context).signIn,
+                                onTap: () async => await controller.auth(),
+                                backgroundColor: ColorUtil.primaryColor,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              if (!controller.signUP.value)
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    InkWell(
+                                      onTap: () =>
+                                          Get.toNamed(Routes.PHONE_ENTRY),
+                                      child: Text(
+                                        S.of(context).forgetPassword,
+                                        style: TextStyle(
+                                          fontSize: 46.sp,
+                                          color: ColorUtil.primaryColor,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 20.0,
+                                    ),
+                                    child: Text(
+                                      '- OR -',
+                                      style: TextStyle(
+                                        fontSize: 40.sp,
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: AppButton(
+                                          'facebook',
+                                          onTap: () {},
+                                          elevation: 2.0,
+                                          backgroundColor: ColorUtil.lightGrey,
+                                          textColor: ColorUtil.blackColor,
+                                          imagePath: PathUtil.facebookIcon,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 20.0,
+                                      ),
+                                      Expanded(
+                                        child: AppButton(
+                                          'Google',
+                                          onTap: () {},
+                                          elevation: 2.0,
+                                          backgroundColor: ColorUtil.lightGrey,
+                                          textColor: ColorUtil.blackColor,
+                                          imagePath: PathUtil.googleIcon,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 30,
-                          ),
-                          child: Text(
-                            'Logo here', //TODO replace with logo
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 65.sp,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        if (controller.signUP.value)
-                          AuthInputField(
-                            S.of(context).name,
-                            controller.name,
-                            loading: controller.isBusy.value,
-                            keyBoardType: TextInputType.text,
-                            validator: QuickTextValidator(),
-                          ),
-                        AuthInputField(
-                          S.of(context).email,
-                          controller.email,
-                          loading: controller.isBusy.value,
-                          keyBoardType: TextInputType.emailAddress,
-                          validator: QuickTextValidator(
-                            isEmail: true,
-                          ),
-                        ),
-                        AuthInputField(
-                          S.of(context).password,
-                          controller.password,
-                          loading: controller.isBusy.value,
-                          isPassword: true,
-                          hidePassword: controller.hidePassword.value,
-                          changeObscuring: () => controller.hidePassword.value =
-                              !controller.hidePassword.value,
-                          keyBoardType: TextInputType.text,
-                          validator: QuickTextValidator(
-                            hasMinLength: 8,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        AppButton(
-                          S.of(context).signIn,
-                          onTap: () async => await controller.auth(),
-                          backgroundColor: ColorUtil.primaryColor,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            InkWell(
-                              onTap: () => Get.toNamed(Routes.PHONE_ENTRY),
-                              child: Text(
-                                S.of(context).forgetPassword,
-                                style: TextStyle(
-                                  fontSize: 46.sp,
-                                  color: ColorUtil.primaryColor,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 20.0,
-                              ),
-                              child: Text(
-                                '- OR -',
-                                style: TextStyle(
-                                  fontSize: 40.sp,
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: AppButton(
-                                    'facebook',
-                                    onTap: () {},
-                                    elevation: 2.0,
-                                    backgroundColor: ColorUtil.lightGrey,
-                                    textColor: ColorUtil.blackColor,
-                                    imagePath: PathUtil.facebookIcon,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 20.0,
-                                ),
-                                Expanded(
-                                  child: AppButton(
-                                    'Google',
-                                    onTap: () {},
-                                    elevation: 2.0,
-                                    backgroundColor: ColorUtil.lightGrey,
-                                    textColor: ColorUtil.blackColor,
-                                    imagePath: PathUtil.googleIcon,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: CircularBackButton(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 20,
                   ),
-                ],
-              ),
+                  child: CircularBackButton(),
+                ),
+              ],
             ),
           ),
         ),
