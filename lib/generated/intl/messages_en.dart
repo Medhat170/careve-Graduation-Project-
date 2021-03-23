@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "favourite" : MessageLookupByLibrary.simpleMessage("Favourite"),
     "filesUploaded" : m0,
     "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
+    "forgetPassword" : MessageLookupByLibrary.simpleMessage("forget password?"),
     "formatException" : MessageLookupByLibrary.simpleMessage("An unexpected error has occurred"),
     "gender" : MessageLookupByLibrary.simpleMessage("Gender"),
     "go" : MessageLookupByLibrary.simpleMessage("Go"),

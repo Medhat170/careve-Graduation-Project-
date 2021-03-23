@@ -45,6 +45,16 @@ class S {
     );
   }
 
+  /// `نسيت كلمه المرور؟`
+  String get forgetPassword {
+    return Intl.message(
+      'نسيت كلمه المرور؟',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `من فضلك ادخل بريدك الإلكترونى`
   String get emailNull {
     return Intl.message(

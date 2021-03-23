@@ -1,16 +1,26 @@
+import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
 
-
 class AppUtil {
   static final RegExp emailValidatorRegExp =
-  RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+      RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
   static final RegExp phoneValidatorRegExp = RegExp(r'^\+?[0-9]{10,}$');
   static BorderRadius borderRadius = BorderRadius.circular(10.0);
   static BorderRadius borderRadius50 = BorderRadius.circular(50);
   static UnderlineInputBorder transparentUnderLineInputBorder =
-  UnderlineInputBorder(
+      UnderlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.transparent,
+      width: 0.5,
+    ),
+  );
+
+  static OutlineInputBorder transparentUOutLineInputBorder = OutlineInputBorder(
+    borderRadius: borderRadius,
     borderSide: BorderSide(
       color: Colors.transparent,
       width: 0.5,
@@ -18,6 +28,7 @@ class AppUtil {
   );
   static ThemeData appTheme = ThemeData(
     fontFamily: 'Segoe UI',
+    scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
 
@@ -25,13 +36,13 @@ class AppUtil {
 
   static BorderRadius customBorderRadius = isLtr
       ? BorderRadius.only(
-    topRight: Radius.circular(10.0),
-    bottomRight: Radius.circular(10.0),
-  )
+          topRight: Radius.circular(10.0),
+          bottomRight: Radius.circular(10.0),
+        )
       : BorderRadius.only(
-    bottomLeft: Radius.circular(10.0),
-    topLeft: Radius.circular(10.0),
-  );
+          bottomLeft: Radius.circular(10.0),
+          topLeft: Radius.circular(10.0),
+        );
 
   static Future<DateTime> pickDate([DateTime initialDate]) async {
     initialDate ??= DateTime.now();
@@ -84,65 +95,65 @@ class AppUtil {
       ),
     );
   }
-  //
-  // static Future<bool> showAlertDialog({
-  //   String title,
-  //   String body,
-  //   Function onConfirm,
-  //   String confirmText,
-  //   bool enableCancel = false,
-  //   String cancelText,
-  //   RxBool loading,
-  // }) async {
-  //   return await Get.defaultDialog<bool>(
-  //     title: S.current.alert ?? title,
-  //     content: AppDirectionality(
-  //       child: Text(
-  //         body ?? '',
-  //         style: TextStyle(
-  //           color: Colors.black,
-  //           fontWeight: FontWeight.w500,
-  //           fontSize: 16.0,
-  //         ),
-  //         maxLines: 10,
-  //         softWrap: true,
-  //         overflow: TextOverflow.ellipsis,
-  //       ),
-  //     ),
-  //     titleStyle: TextStyle(
-  //       color: ColorUtil.errorColor,
-  //       fontWeight: FontWeight.w700,
-  //       fontSize: 24.0,
-  //     ),
-  //     actions: [
-  //       if (enableCancel) ...[
-  //         InkWell(
-  //           onTap: () => Get.back(result: false),
-  //           child: Text(
-  //             cancelText ?? S.current.cancel,
-  //             style: TextStyle(
-  //               color: ColorUtil.errorColor,
-  //               fontWeight: FontWeight.w500,
-  //               fontSize: 18.0,
-  //             ),
-  //           ),
-  //         ),
-  //         const SizedBox(
-  //           width: 75.0,
-  //         ),
-  //       ],
-  //       InkWell(
-  //         onTap: onConfirm ?? () => Get.back(result: true),
-  //         child: Text(
-  //           confirmText ?? S.current.done,
-  //           style: TextStyle(
-  //             color: ColorUtil.primaryColor,
-  //             fontWeight: FontWeight.w500,
-  //             fontSize: 18.0,
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
+
+  static Future<bool> showAlertDialog({
+    String title,
+    String body,
+    Function onConfirm,
+    String confirmText,
+    bool enableCancel = false,
+    String cancelText,
+    RxBool loading,
+  }) async {
+    return await Get.defaultDialog<bool>(
+      title: S.current.alert ?? title,
+      content: AppDirectionality(
+        child: Text(
+          body ?? '',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w500,
+            fontSize: 16.0,
+          ),
+          maxLines: 10,
+          softWrap: true,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      titleStyle: TextStyle(
+        color: ColorUtil.errorColor,
+        fontWeight: FontWeight.w700,
+        fontSize: 24.0,
+      ),
+      actions: [
+        if (enableCancel) ...[
+          InkWell(
+            onTap: () => Get.back(result: false),
+            child: Text(
+              cancelText ?? S.current.cancel,
+              style: TextStyle(
+                color: ColorUtil.errorColor,
+                fontWeight: FontWeight.w500,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 75.0,
+          ),
+        ],
+        InkWell(
+          onTap: onConfirm ?? () => Get.back(result: true),
+          child: Text(
+            confirmText ?? S.current.done,
+            style: TextStyle(
+              color: ColorUtil.primaryColor,
+              fontWeight: FontWeight.w500,
+              fontSize: 18.0,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

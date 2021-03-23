@@ -15,7 +15,7 @@ void main() {
     ],
   );
   runApp(
-    MyApp(), // Wrap your app
+    MyApp(),
   );
 }
 

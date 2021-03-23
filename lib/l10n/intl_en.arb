@@ -1,5 +1,6 @@
 {
   "hasMinLength": "Please insert {length} digit as least",
+  "forgetPassword": "forget password?",
   "emailNull": "Please Enter your Email",
   "invalidPassword": "Please Enter valid password",
   "invalidNationalId": "Please Enter valid national id",

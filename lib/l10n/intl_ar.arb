@@ -1,5 +1,6 @@
 {
   "hasMinLength": "برجاء إدخال {length} حروف على الأقل",
+  "forgetPassword": "نسيت كلمه المرور؟",
   "emailNull": "من فضلك ادخل بريدك الإلكترونى",
   "invalidNationalId": "من فضلك أدخل رقم قومى صحيح",
   "invalidPassword": "من فضلك ادخل كلمة مرور صحيحه",

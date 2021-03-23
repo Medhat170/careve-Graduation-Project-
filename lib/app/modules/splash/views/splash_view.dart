@@ -1,4 +1,4 @@
-import 'package:careve/app/components/TextButton.dart';
+import 'package:careve/app/components/AppButton.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -54,19 +54,19 @@ class SplashView extends GetView<SplashController> {
             SizedBox(
               height: 50,
             ),
-            CustomTextButton(
-              text: 'Next',
+            AppButton(
+               'Next',
               backgroundColor: ColorUtil.primaryColor,
-              function: () {},
+              onTap: () {},
               textColor: Colors.white,
             ),
             SizedBox(
               height: 15,
             ),
-            CustomTextButton(
-              text: 'Skip',
+            AppButton(
+               'Skip',
               backgroundColor: Colors.white,
-              function: () {},
+              onTap: () {},
               textColor: ColorUtil.primaryColor,
             ),
           ],

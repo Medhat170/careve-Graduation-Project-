@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
     "filesUploaded" : m0,
     "filter" : MessageLookupByLibrary.simpleMessage("تحديد البيانات المعروضه"),
+    "forgetPassword" : MessageLookupByLibrary.simpleMessage("نسيت كلمه المرور؟"),
     "formatException" : MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
     "gender" : MessageLookupByLibrary.simpleMessage("النوع"),
     "go" : MessageLookupByLibrary.simpleMessage("انطلق"),

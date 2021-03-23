@@ -1,4 +1,4 @@
-import 'package:careve/app/components/TextButton.dart';
+import 'package:careve/app/components/AppButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
@@ -65,26 +65,35 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         child: Text(
                           'to careve for breast cancer awareness and women health care.',
                           style: TextStyle(
-                              fontSize: 46.sp, fontWeight: FontWeight.w600),
+                            fontSize: 46.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                           softWrap: true,
                         ),
                       ),
                       SizedBox(
                         height: 300.h,
                       ),
-                      CustomTextButton(
+                      AppButton(
+                        'Sign Up',
                         textColor: ColorUtil.whiteColor,
-                        text: 'Sign Up',
                         backgroundColor: ColorUtil.primaryColor,
-                        function: () {},
+                        onTap: () => Get.toNamed(
+                          Routes.AUTH,
+                          arguments: true,
+                        ),
                       ),
                       SizedBox(
                         height: 50.h,
                       ),
-                      CustomTextButton(
-                        text: 'Sign In',
-                        backgroundColor: null,
-                        function: () => Get.toNamed(Routes.SIGN_IN),
+                      AppButton(
+                        'Sign In',
+                        backgroundColor: Colors.transparent,
+                        borderColor: ColorUtil.primaryColor,
+                        onTap: () => Get.toNamed(
+                          Routes.AUTH,
+                          arguments: false,
+                        ),
                         textColor: ColorUtil.primaryColor,
                       ),
                     ],
