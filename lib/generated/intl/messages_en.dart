@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications" : MessageLookupByLibrary.simpleMessage("Notifications"),
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "passwordNull" : MessageLookupByLibrary.simpleMessage("Please Enter your password"),
+    "phoneNeededDesc" : MessageLookupByLibrary.simpleMessage("Please enter your phone number to send a verification code"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Phone number"),
     "phoneNumberNull" : MessageLookupByLibrary.simpleMessage("Please Enter your phone number"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "telPhone" : MessageLookupByLibrary.simpleMessage("Tel-phone"),
     "thisEmpty" : MessageLookupByLibrary.simpleMessage("There is no data"),
     "typeMessage" : MessageLookupByLibrary.simpleMessage("Type a message"),
-    "unAuthorized" : MessageLookupByLibrary.simpleMessage("Unauthorized action !")
+    "unAuthorized" : MessageLookupByLibrary.simpleMessage("Unauthorized action !"),
+    "verifyText" : MessageLookupByLibrary.simpleMessage("A 6 - Digit PIN has been sent to your email address, enter it below to continue")
   };
 }

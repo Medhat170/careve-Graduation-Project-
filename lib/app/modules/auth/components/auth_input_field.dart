@@ -10,6 +10,7 @@ class AuthInputField extends StatelessWidget {
   final bool loading;
   final bool hidePassword;
   final bool isPassword;
+  final bool isPhone;
   final TextInputType keyBoardType;
   final FormFieldValidator<String> validator;
   final Function changeObscuring;
@@ -19,6 +20,7 @@ class AuthInputField extends StatelessWidget {
     this.controller, {
     @required this.validator,
     this.keyBoardType,
+    this.isPhone = false,
     this.isPassword = false,
     this.hintText = '',
     this.hidePassword = false,
@@ -50,6 +52,16 @@ class AuthInputField extends StatelessWidget {
           isPassword: isPassword,
           keyBoardType: keyBoardType,
           readOnly: loading,
+          prefixWidget: !isPhone
+              ? null
+              : Text(
+                  '+20',
+                  style: TextStyle(
+                    color: ColorUtil.blackColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.0,
+                  ),
+                ),
         ),
         const SizedBox(
           height: 20.0,

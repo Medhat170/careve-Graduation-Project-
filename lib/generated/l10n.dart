@@ -45,6 +45,26 @@ class S {
     );
   }
 
+  /// `من فضلك أدخل رقم هاتفك لإرسال كود التفعيل`
+  String get phoneNeededDesc {
+    return Intl.message(
+      'من فضلك أدخل رقم هاتفك لإرسال كود التفعيل',
+      name: 'phoneNeededDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار`
+  String get verifyText {
+    return Intl.message(
+      'تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار',
+      name: 'verifyText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `نسيت كلمه المرور؟`
   String get forgetPassword {
     return Intl.message(

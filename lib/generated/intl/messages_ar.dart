@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications" : MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "password" : MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordNull" : MessageLookupByLibrary.simpleMessage("من فضلك ادخل كلمة المرور"),
+    "phoneNeededDesc" : MessageLookupByLibrary.simpleMessage("من فضلك أدخل رقم هاتفك لإرسال كود التفعيل"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "phoneNumberNull" : MessageLookupByLibrary.simpleMessage("من فضلك ادخل رقم الهاتف"),
     "profile" : MessageLookupByLibrary.simpleMessage("الملف الشخصى"),
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "telPhone" : MessageLookupByLibrary.simpleMessage("الهاتف"),
     "thisEmpty" : MessageLookupByLibrary.simpleMessage("لا توجد بيانات"),
     "typeMessage" : MessageLookupByLibrary.simpleMessage("أكتب رساله"),
-    "unAuthorized" : MessageLookupByLibrary.simpleMessage("غير مصرح لك !")
+    "unAuthorized" : MessageLookupByLibrary.simpleMessage("غير مصرح لك !"),
+    "verifyText" : MessageLookupByLibrary.simpleMessage("تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار")
   };
 }

@@ -4,9 +4,9 @@ import '../controllers/auth_controller.dart';
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<AuthController>(
-      AuthController(
-        Get.arguments?? false,
+    Get.put<AuthService>(
+      AuthService(
+        Get.arguments ?? false,
       ),
     );
   }

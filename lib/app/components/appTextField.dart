@@ -8,7 +8,7 @@ class AppTextField extends StatelessWidget {
   final bool readOnly;
   final bool hidePassword;
   final bool isPassword;
-  final Widget suffixWidget;
+  final Widget prefixWidget;
   final FormFieldValidator<String> validator;
   final ValueChanged<String> onSaved;
   final ValueChanged<String> onChanged;
@@ -23,7 +23,7 @@ class AppTextField extends StatelessWidget {
     this.controller, {
     this.hidePassword = true,
     this.isPassword = false,
-    this.suffixWidget,
+    this.prefixWidget,
     this.validator,
     this.onSaved,
     this.onChanged,
@@ -59,8 +59,20 @@ class AppTextField extends StatelessWidget {
         filled: true,
         fillColor: ColorUtil.lightGrey,
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 10.0,
+          horizontal: 15.0,
         ),
+        prefixIcon: prefixWidget == null
+            ? null
+            : Container(
+                width: 50.0,
+                decoration: BoxDecoration(
+                  color: ColorUtil.mediumGrey,
+                  borderRadius: AppUtil.borderRadius,
+                ),
+                child: Center(
+                  child: prefixWidget,
+                ),
+              ),
         suffix: isPassword
             ? Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),

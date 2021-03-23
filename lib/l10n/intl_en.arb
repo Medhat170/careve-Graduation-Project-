@@ -1,5 +1,7 @@
 {
   "hasMinLength": "Please insert {length} digit as least",
+  "phoneNeededDesc": "Please enter your phone number to send a verification code",
+  "verifyText": "A 6 - Digit PIN has been sent to your email address, enter it below to continue",
   "forgetPassword": "forget password?",
   "emailNull": "Please Enter your Email",
   "invalidPassword": "Please Enter valid password",

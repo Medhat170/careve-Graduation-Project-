@@ -1,3 +1,5 @@
+import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
+import 'package:careve/app/modules/auth/views/verification_code_view.dart';
 import 'package:get/get.dart';
 import 'package:careve/app/modules/home/bindings/home_binding.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
@@ -33,6 +35,14 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.PHONE_ENTRY,
+      page: () => PhoneEntryView(),
+    ),
+    GetPage(
+      name: _Paths.VERIFICATION_CODE,
+      page: () => VerificationCodeView(),
     ),
   ];
 }

@@ -36,6 +36,7 @@ dependencies:
   dots_indicator: ^2.0.0
   font_awesome_flutter: ^9.0.0
   dio: ^3.0.10
+  pin_code_text_field: ^1.8.0
 
 dev_dependencies:
   flutter_test:
