@@ -1,3 +1,4 @@
+import 'package:careve/app/services/initialBinding.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
           theme: AppUtil.appTheme,
           getPages: AppPages.routes,
           initialRoute: Routes.WELCOME_SCREEN,
-          // initialBinding: MainBinding(),
+          initialBinding: InitialBinding(),
           localizationsDelegates: [
             S.delegate,
             GlobalMaterialLocalizations.delegate,

@@ -8,7 +8,7 @@ import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/auth_controller.dart';
+import '../../../services/auth_service.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,7 +47,7 @@ class AuthView extends GetView<AuthService> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        if (controller.signUP)
+                        if (controller.signUP.value)
                           AuthInputField(
                             S.of(context).name,
                             controller.name,

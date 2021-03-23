@@ -1,5 +1,6 @@
 import 'package:careve/app/components/AppButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
+import 'file:///P:/my_projects/careve/lib/app/services/auth_service.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
@@ -78,10 +79,13 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         'Sign Up',
                         textColor: ColorUtil.whiteColor,
                         backgroundColor: ColorUtil.primaryColor,
-                        onTap: () => Get.toNamed(
-                          Routes.AUTH,
-                          arguments: true,
-                        ),
+                        onTap: () {
+                          AuthService.to.signUP(false);
+                          Get.toNamed(
+                            Routes.AUTH,
+                            arguments: true,
+                          );
+                        },
                       ),
                       SizedBox(
                         height: 50.h,
@@ -90,10 +94,12 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         'Sign In',
                         backgroundColor: Colors.transparent,
                         borderColor: ColorUtil.primaryColor,
-                        onTap: () => Get.toNamed(
-                          Routes.AUTH,
-                          arguments: false,
-                        ),
+                        onTap: () {
+                          AuthService.to.signUP(false);
+                          Get.toNamed(
+                            Routes.AUTH,
+                          );
+                        },
                         textColor: ColorUtil.primaryColor,
                       ),
                     ],

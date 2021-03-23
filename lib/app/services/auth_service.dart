@@ -2,14 +2,11 @@ import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthService extends GetxService with ApiMixin, BusyMixin {
-  final bool signUP;
-
-  AuthService(this.signUP) : assert(signUP != null);
+  final signUP = false.obs;
   GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
   TextEditingController phone = TextEditingController();
@@ -19,6 +16,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   TextEditingController name = TextEditingController();
   final hidePassword = true.obs;
   final pinCodeError = RxString();
+
+  static AuthService get to => Get.find();
 
   Future<void> auth() async {
     final formData = authFormKey.currentState;

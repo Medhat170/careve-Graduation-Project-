@@ -7,7 +7,6 @@ import 'package:careve/app/modules/splash/bindings/splash_binding.dart';
 import 'package:careve/app/modules/splash/views/splash_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
 import 'package:careve/app/modules/welcome_screen/views/welcome_screen_view.dart';
-import 'package:careve/app/modules/auth/bindings/auth_binding.dart';
 import 'package:careve/app/modules/auth/views/auth_view.dart';
 
 part 'app_routes.dart';
@@ -29,7 +28,6 @@ class AppPages {
     GetPage(
       name: _Paths.AUTH,
       page: () => AuthView(),
-      binding: AuthBinding(),
     ),
     GetPage(
       name: _Paths.SPLASH,

@@ -1,7 +1,7 @@
 import 'package:careve/app/components/AppButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/backButton.dart';
-import 'package:careve/app/modules/auth/controllers/auth_controller.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
