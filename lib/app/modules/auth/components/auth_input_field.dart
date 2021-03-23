@@ -21,7 +21,7 @@ class AuthInputField extends StatelessWidget {
     this.keyBoardType,
     this.isPassword = false,
     this.hintText = '',
-    this.hidePassword = true,
+    this.hidePassword = false,
     this.changeObscuring,
     this.loading = false,
   });

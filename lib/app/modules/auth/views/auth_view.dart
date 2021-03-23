@@ -16,91 +16,91 @@ class AuthView extends GetView<AuthController> {
     return AppDirectionality(
       child: SafeArea(
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: SizedBox(
-              height: Get.height -
-                  Get.mediaQuery.padding.top -
-                  Get.mediaQuery.padding.bottom,
-              width: Get.width,
-              child: Form(
-                key: controller.authFormKey,
-                child: Padding(
+          body: SizedBox(
+            height: Get.height -
+                Get.mediaQuery.padding.top -
+                Get.mediaQuery.padding.bottom,
+            width: Get.width,
+            child: Form(
+              key: controller.authFormKey,
+              child: Obx(
+                () => ListView(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
                     vertical: 20,
                   ),
-                  child: Obx(
-                    () => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 30,
+                      ),
+                      child: Text(
+                        'Welcome! to Careve', //TODO replace with logo
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 65.sp,
+                        ),
+                      ),
+                    ),
+                    if (controller.signUP)
+                      AuthInputField(
+                        S.of(context).name,
+                        controller.name,
+                        loading: controller.isBusy.value,
+                        keyBoardType: TextInputType.text,
+                        validator: QuickTextValidator(),
+                      ),
+                    AuthInputField(
+                      S.of(context).email,
+                      controller.email,
+                      loading: controller.isBusy.value,
+                      keyBoardType: TextInputType.emailAddress,
+                      validator: QuickTextValidator(
+                        isEmail: true,
+                      ),
+                    ),
+                    AuthInputField(
+                      S.of(context).password,
+                      controller.password,
+                      loading: controller.isBusy.value,
+                      isPassword: true,
+                      hidePassword: controller.hidePassword.value,
+                      changeObscuring: () => controller.hidePassword.value =
+                          !controller.hidePassword.value,
+                      keyBoardType: TextInputType.text,
+                      validator: QuickTextValidator(
+                        hasMinLength: 8,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    AppButton(
+                      S.of(context).signIn,
+                      onTap: () async => await controller.auth(),
+                      backgroundColor: ColorUtil.primaryColor,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 30,
-                          ),
+                        InkWell(
+                          onTap: () {},
                           child: Text(
-                            'Welcome! to Careve', //TODO replace with logo
+                            S.of(context).forgetPassword,
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 65.sp,
+                              fontSize: 46.sp,
+                              color: ColorUtil.primaryColor,
                             ),
                           ),
-                        ),
-                        if (controller.signUP)
-                          AuthInputField(
-                            S.of(context).name,
-                            controller.name,
-                            loading: controller.isBusy.value,
-                            keyBoardType: TextInputType.text,
-                            validator: QuickTextValidator(),
-                          ),
-                        AuthInputField(
-                          S.of(context).email,
-                          controller.email,
-                          loading: controller.isBusy.value,
-                          keyBoardType: TextInputType.emailAddress,
-                          validator: QuickTextValidator(
-                            isEmail: true,
-                          ),
-                        ),
-                        AuthInputField(
-                          S.of(context).password,
-                          controller.password,
-                          loading: controller.isBusy.value,
-                          isPassword: true,
-                          hidePassword: controller.hidePassword.value,
-                          changeObscuring: () => controller.hidePassword.value =
-                              !controller.hidePassword.value,
-                          keyBoardType: TextInputType.text,
-                          validator: QuickTextValidator(
-                            hasMinLength: 8,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        AppButton(
-                          S.of(context).signIn,
-                          onTap: () {},
-                          backgroundColor: ColorUtil.primaryColor,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Text(
-                                S.of(context).forgetPassword,
-                                style: TextStyle(
-                                  fontSize: 46.sp,
-                                  color: ColorUtil.primaryColor,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 20.0,
@@ -138,10 +138,10 @@ class AuthView extends GetView<AuthController> {
                               ),
                             ),
                           ],
-                        )
+                        ),
                       ],
-                    ),
-                  ),
+                    )
+                  ],
                 ),
               ),
             ),
