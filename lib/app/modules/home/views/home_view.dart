@@ -1,16 +1,13 @@
 import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/components/appTextField.dart';
 import 'package:careve/app/mixins/search_mixin.dart';
 import 'package:careve/app/modules/home/components/sectionItem.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeView extends GetView<HomeController> with Search<HomeController> {
+class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return AppDirectionality(
@@ -29,7 +26,7 @@ class HomeView extends GetView<HomeController> with Search<HomeController> {
                 bottom: 5.0,
               ),
               children: [
-                search(),
+                controller.search(),
                 const SizedBox(
                   height: 10.0,
                 ),

@@ -3,9 +3,8 @@ import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 
-mixin Search<T> on GetView<T> {
+mixin Search {
   final TextEditingController searchText = TextEditingController();
 
   Widget search() {
@@ -16,7 +15,7 @@ mixin Search<T> on GetView<T> {
         disablePrefixColor: true,
         hintText: S.current.search,
         onFieldSubmitted: (String value) {
-          //TODO search
+          print(searchText.text);
         },
         prefixWidget: Icon(
           FontAwesomeIcons.search,
