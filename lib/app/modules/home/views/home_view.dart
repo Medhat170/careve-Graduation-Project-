@@ -1,5 +1,6 @@
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/appTextField.dart';
+import 'package:careve/app/mixins/search_mixin.dart';
 import 'package:careve/app/modules/home/components/sectionItem.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
@@ -9,7 +10,7 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends GetView<HomeController> with Search<HomeController> {
   @override
   Widget build(BuildContext context) {
     return AppDirectionality(
@@ -28,22 +29,7 @@ class HomeView extends GetView<HomeController> {
                 bottom: 5.0,
               ),
               children: [
-                SizedBox(
-                  height: 30.0,
-                  child: AppTextField(
-                    controller.searchText,
-                    disablePrefixColor: true,
-                    hintText: S.of(context).search,
-                    onSaved: (String value) {
-                      //TODO search
-                    },
-                    prefixWidget: Icon(
-                      FontAwesomeIcons.search,
-                      color: ColorUtil.mediumGrey,
-                      size: 16.0,
-                    ),
-                  ),
-                ),
+                search(),
                 const SizedBox(
                   height: 10.0,
                 ),

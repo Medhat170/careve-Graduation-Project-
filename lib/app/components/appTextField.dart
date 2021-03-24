@@ -10,7 +10,7 @@ class AppTextField extends StatelessWidget {
   final bool isPassword;
   final Widget prefixWidget;
   final FormFieldValidator<String> validator;
-  final ValueChanged<String> onSaved;
+  final ValueChanged<String> onFieldSubmitted;
   final ValueChanged<String> onChanged;
   final String hintText;
   final int maxLines;
@@ -22,12 +22,12 @@ class AppTextField extends StatelessWidget {
 
   AppTextField(
     this.controller, {
-    this.hidePassword = true,
+    this.hidePassword = false,
     this.isPassword = false,
     this.disablePrefixColor = false,
     this.prefixWidget,
     this.validator,
-    this.onSaved,
+    this.onFieldSubmitted,
     this.onChanged,
     this.hintText = '',
     this.textAlignment = TextAlign.start,
@@ -45,7 +45,7 @@ class AppTextField extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       readOnly: readOnly,
-      onSaved: onSaved,
+      onFieldSubmitted: onFieldSubmitted,
       style: TextStyle(
         color: ColorUtil.primaryColor,
         fontSize: fontSize,

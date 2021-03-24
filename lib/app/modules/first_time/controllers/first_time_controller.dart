@@ -1,3 +1,4 @@
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,6 +27,10 @@ class FirstTimeController extends GetxController {
         currentIndex.value + 1,
         duration: Duration(milliseconds: 300),
         curve: SawTooth(1),
+      );
+    } else {
+      Get.offNamed(
+        Routes.HOME,
       );
     }
   }
