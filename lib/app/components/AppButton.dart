@@ -30,7 +30,7 @@ class AppButton extends StatelessWidget {
       title ?? '',
       style: TextStyle(
         color: textColor ?? ColorUtil.whiteColor,
-        fontWeight:imagePath != null?FontWeight.w500: FontWeight.bold,
+        fontWeight: imagePath != null ? FontWeight.w500 : FontWeight.bold,
         fontSize: 18,
       ),
     );
@@ -46,13 +46,18 @@ class AppButton extends StatelessWidget {
       ),
       backgroundColor: backgroundColor,
     );
+    void onPressed() {
+      FocusScope.of(context).requestFocus(new FocusNode());
+      onTap();
+    }
+
     return Container(
       margin: margin,
       width: Get.width,
       height: 50,
       child: imagePath != null
           ? TextButton.icon(
-              onPressed: onTap,
+              onPressed: onPressed,
               icon: Image.asset(
                 imagePath,
                 width: 40,
@@ -63,7 +68,7 @@ class AppButton extends StatelessWidget {
             )
           : TextButton(
               style: buttonStyle,
-              onPressed: onTap,
+              onPressed: onPressed,
               child: textWidget,
             ),
     );

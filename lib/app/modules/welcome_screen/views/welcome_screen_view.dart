@@ -4,6 +4,7 @@ import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/welcome_screen_controller.dart';
@@ -76,7 +77,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         height: 300.h,
                       ),
                       AppButton(
-                        'Sign Up',
+                        S.of(context).signUp,
                         textColor: ColorUtil.whiteColor,
                         backgroundColor: ColorUtil.primaryColor,
                         onTap: () {

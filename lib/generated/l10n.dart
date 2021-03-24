@@ -45,6 +45,36 @@ class S {
     );
   }
 
+  /// `من فضلك أدخل كلمة المرور الجديده لإعادة ضبتها`
+  String get resetPasswordDesc {
+    return Intl.message(
+      'من فضلك أدخل كلمة المرور الجديده لإعادة ضبتها',
+      name: 'resetPasswordDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `كلمتي المرور غير متطابقتان !`
+  String get passwordsDoNotMatch {
+    return Intl.message(
+      'كلمتي المرور غير متطابقتان !',
+      name: 'passwordsDoNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `كود التفعيل مكون من 6 أرقام !`
+  String get sixDigitsIsAMust {
+    return Intl.message(
+      'كود التفعيل مكون من 6 أرقام !',
+      name: 'sixDigitsIsAMust',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `من فضلك أدخل رقم هاتفك لإرسال كود التفعيل`
   String get phoneNeededDesc {
     return Intl.message(
@@ -250,6 +280,46 @@ class S {
     return Intl.message(
       'تسجيل الدخول',
       name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تسجيل جديد`
+  String get signUp {
+    return Intl.message(
+      'تسجيل جديد',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التالي`
+  String get next {
+    return Intl.message(
+      'التالي',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تخطى`
+  String get skip {
+    return Intl.message(
+      'تخطى',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إستمرار`
+  String get continueNext {
+    return Intl.message(
+      'إستمرار',
+      name: 'continueNext',
       desc: '',
       args: [],
     );

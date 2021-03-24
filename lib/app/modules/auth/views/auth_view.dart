@@ -3,12 +3,12 @@ import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/backButton.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../services/auth_service.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -81,19 +81,34 @@ class AuthView extends GetView<AuthService> {
                                   hasMinLength: 8,
                                 ),
                               ),
+                              if (controller.signUP.value)
+                                AuthInputField(
+                                  S.of(context).confirmPassword,
+                                  controller.confirmedPassword,
+                                  loading: controller.isBusy.value,
+                                  isPassword: true,
+                                  hidePassword: controller.hidePassword.value,
+                                  changeObscuring: () => controller.hidePassword
+                                      .value = !controller.hidePassword.value,
+                                  keyBoardType: TextInputType.text,
+                                  validator: QuickTextValidator(
+                                    hasMinLength: 8,
+                                  ),
+                                ),
                               const SizedBox(
                                 height: 10,
                               ),
                               AppButton(
-                                S.of(context).signIn,
+                                controller.signUP.value
+                                    ? S.of(context).signUp
+                                    : S.of(context).signIn,
                                 onTap: () async {
                                   await controller.auth();
-                                  Get.toNamed(Routes.SPLASH);
                                 },
                                 backgroundColor: ColorUtil.primaryColor,
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 15.0,
                               ),
                               if (!controller.signUP.value)
                                 Row(
