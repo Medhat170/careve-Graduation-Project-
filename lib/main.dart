@@ -1,5 +1,6 @@
 import 'package:careve/app/services/initialBinding.dart';
 import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +24,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    precacheImage(
+      AssetImage(
+        PathUtil.welcomeImage,
+      ),
+      context,
+    );
     return ScreenUtilInit(
       designSize: Size(1080, 1920),
       builder: () => GestureDetector(

@@ -1,8 +1,10 @@
 import 'package:careve/app/models/section.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  TextEditingController searchText = TextEditingController();
   List<Section> sections = [
     Section(
       name: 'Forum',

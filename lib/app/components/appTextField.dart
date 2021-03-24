@@ -18,11 +18,13 @@ class AppTextField extends StatelessWidget {
   final TextInputType keyBoardType;
   final double fontSize;
   final Function changeObscuring;
+  final bool disablePrefixColor;
 
   AppTextField(
     this.controller, {
     this.hidePassword = true,
     this.isPassword = false,
+    this.disablePrefixColor = false,
     this.prefixWidget,
     this.validator,
     this.onSaved,
@@ -66,7 +68,9 @@ class AppTextField extends StatelessWidget {
             : Container(
                 width: 50.0,
                 decoration: BoxDecoration(
-                  color: ColorUtil.mediumGrey,
+                  color: disablePrefixColor
+                      ? Colors.transparent
+                      : ColorUtil.mediumGrey,
                   borderRadius: AppUtil.borderRadius,
                 ),
                 child: Center(

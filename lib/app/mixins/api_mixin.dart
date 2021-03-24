@@ -1,8 +1,7 @@
-
 import 'package:careve/generated/l10n.dart';
 import 'package:dio/dio.dart' as dio;
-mixin ApiMixin {
 
+mixin ApiMixin {
   Future<T> request<T>(
     Future<dio.Response<T>> future,
   ) async {
