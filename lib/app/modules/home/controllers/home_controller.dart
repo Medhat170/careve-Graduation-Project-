@@ -31,7 +31,7 @@ class HomeController extends GetxController {
     ),
     Section(
       name: 'Self Care',
-      id: 'sc1',
+      id: 'SC2',
       image: PathUtil.selfCareImage,
     ),
   ];
