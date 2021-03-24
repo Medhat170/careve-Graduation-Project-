@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AppSections {
+class Section {
   final String name;
   final String id;
   final String image;
 
-  const AppSections({
+  Section({
     @required this.name,
     @required this.id,
     @required this.image,
