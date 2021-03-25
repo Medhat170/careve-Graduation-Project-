@@ -64,7 +64,7 @@ class FirstTimeView extends GetView<FirstTimeController> {
                 AppButton(
                   S.of(context).skip,
                   onTap: () => Get.offNamed(
-                    Routes.HOME,
+                    Routes.MAIN,
                   ),
                   textColor: ColorUtil.primaryColor,
                   backgroundColor: Colors.white,

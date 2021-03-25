@@ -12,20 +12,11 @@ class HomeView extends GetView<HomeController> {
     return AppDirectionality(
       child: SafeArea(
         child: Scaffold(
-          body: NotificationListener<OverscrollIndicatorNotification>(
-            onNotification: (OverscrollIndicatorNotification overScroll) {
-              overScroll.disallowGlow();
-              return true;
-            },
-            child: ListView(
-              padding: EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                top: 10.0,
-                bottom: 5.0,
-              ),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                controller.search(),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -48,26 +39,41 @@ class HomeView extends GetView<HomeController> {
                     color: ColorUtil.mediumGrey,
                   ),
                 ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                GridView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  children: controller.sections
-                      .map(
-                        (section) => SectionItem(
-                          title: section.name,
-                          image: section.image,
+                Expanded(
+                  child: NotificationListener<OverscrollIndicatorNotification>(
+                    onNotification:
+                        (OverscrollIndicatorNotification overScroll) {
+                      overScroll.disallowGlow();
+                      return true;
+                    },
+                    child: ListView(
+                      padding: EdgeInsets.only(
+                        top: 10.0,
+                        bottom: 5.0,
+                      ),
+                      children: [
+                        GridView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          children: controller.sections
+                              .map(
+                                (section) => SectionItem(
+                                  title: section.name,
+                                  image: section.image,
+                                ),
+                              )
+                              .toList(),
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: Get.width * 0.4,
+                            childAspectRatio: 1 / 1,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20,
+                          ),
                         ),
-                      )
-                      .toList(),
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: Get.width * 0.4,
-                    childAspectRatio: 1 / 1,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                      ],
+                    ),
                   ),
                 ),
               ],

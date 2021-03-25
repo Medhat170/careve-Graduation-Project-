@@ -1,3 +1,4 @@
+import 'package:careve/app/modules/main_bottom_navigation.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -8,7 +9,6 @@ import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
 import 'package:careve/app/modules/first_time/views/first_time_view.dart';
-import 'package:careve/app/modules/home/bindings/home_binding.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
 import 'package:careve/app/modules/welcome_screen/views/welcome_screen_view.dart';
@@ -22,7 +22,6 @@ class AppPages {
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
-      binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.WELCOME_SCREEN,
@@ -54,6 +53,10 @@ class AppPages {
       name: _Paths.DOCTORS,
       page: () => DoctorsView(),
       binding: DoctorsBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAIN,
+      page: () => MainView(),
     ),
   ];
 }

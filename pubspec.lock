@@ -56,7 +56,7 @@ packages:
       name: dio
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.10"
+    version: "4.0.0-prev3"
   dots_indicator:
     dependency: "direct main"
     description:
@@ -87,7 +87,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.3+3"
+    version: "5.0.0-nullsafety.11"
   flutter_simple_rating_bar:
     dependency: "direct main"
     description:
@@ -120,7 +120,7 @@ packages:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.4"
+    version: "4.0.0"
   intl:
     dependency: "direct main"
     description:
@@ -203,6 +203,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.19"
+  titled_navigation_bar:
+    dependency: "direct main"
+    description:
+      name: titled_navigation_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.0-nullsafety.0"
   typed_data:
     dependency: transitive
     description:

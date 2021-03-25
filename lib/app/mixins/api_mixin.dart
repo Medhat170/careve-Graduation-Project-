@@ -9,13 +9,13 @@ mixin ApiMixin {
       return (await future).data;
     } on dio.DioError catch (dioError) {
       String errorMessage;
-      if (dioError.type == dio.DioErrorType.CONNECT_TIMEOUT ||
-          dioError.type == dio.DioErrorType.RECEIVE_TIMEOUT ||
-          dioError.type == dio.DioErrorType.SEND_TIMEOUT) {
+      if (dioError.type == dio.DioErrorType.connectTimeout ||
+          dioError.type == dio.DioErrorType.receiveTimeout ||
+          dioError.type == dio.DioErrorType.sendTimeout) {
         errorMessage = S.current.socketException;
-      } else if (dioError.type == dio.DioErrorType.CANCEL) {
+      } else if (dioError.type == dio.DioErrorType.cancel) {
         errorMessage = S.current.httpException;
-      } else if (dioError.type == dio.DioErrorType.RESPONSE) {
+      } else if (dioError.type == dio.DioErrorType.response) {
         switch (dioError.response.statusCode) {
           case 401:
           case 400:

@@ -1,3 +1,4 @@
+import 'package:careve/app/modules/home/controllers/home_controller.dart';
 import 'package:careve/app/services/app_service.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,10 @@ class InitialBinding extends Bindings {
     );
     Get.put<AuthService>(
       AuthService(),
+    );
+    Get.put<HomeController>(
+      HomeController(),
+      permanent: true,
     );
   }
 }

@@ -30,7 +30,7 @@ class FirstTimeController extends GetxController {
       );
     } else {
       Get.offNamed(
-        Routes.HOME,
+        Routes.MAIN,
       );
     }
   }
