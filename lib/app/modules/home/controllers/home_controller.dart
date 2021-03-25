@@ -4,8 +4,6 @@ import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController with Search {
-  // TextEditingController searchText = TextEditingController();
-
   List<Section> sections = [
     Section(
       name: 'Forum',
@@ -38,10 +36,4 @@ class HomeController extends GetxController with Search {
       image: PathUtil.selfCareImage,
     ),
   ];
-
-  @override
-  void onClose() {
-    print('::::::::::::::::' + searchText.text);
-    super.onClose();
-  }
 }

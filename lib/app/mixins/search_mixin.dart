@@ -12,6 +12,7 @@ mixin Search {
       height: 30.0,
       child: AppTextField(
         searchText,
+        autoFocus: false,
         disablePrefixColor: true,
         hintText: S.current.search,
         onFieldSubmitted: (String value) {

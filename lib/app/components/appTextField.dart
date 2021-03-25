@@ -19,9 +19,11 @@ class AppTextField extends StatelessWidget {
   final double fontSize;
   final Function changeObscuring;
   final bool disablePrefixColor;
+  final bool autoFocus;
 
   AppTextField(
     this.controller, {
+    this.autoFocus = true,
     this.hidePassword = false,
     this.isPassword = false,
     this.disablePrefixColor = false,
@@ -41,6 +43,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: autoFocus,
       controller: controller,
       onChanged: onChanged,
       validator: validator,

@@ -12,10 +12,12 @@ class AppButton extends StatelessWidget {
   final String imagePath;
   final double elevation;
   final EdgeInsets margin;
+  final double fontSize;
 
   AppButton(
     this.title, {
     @required this.onTap,
+    this.fontSize = 18,
     this.elevation = 6.5,
     this.backgroundColor = ColorUtil.primaryColor,
     this.margin,
@@ -31,12 +33,12 @@ class AppButton extends StatelessWidget {
       style: TextStyle(
         color: textColor ?? ColorUtil.whiteColor,
         fontWeight: imagePath != null ? FontWeight.w500 : FontWeight.bold,
-        fontSize: 18,
+        fontSize: fontSize,
       ),
     );
 
     final buttonStyle = TextButton.styleFrom(
-      elevation: elevation,
+      elevation: backgroundColor == Colors.transparent ? 0.0 : elevation,
       shadowColor: backgroundColor.withOpacity(0.5),
       side: BorderSide(
         color: borderColor ?? Colors.transparent,

@@ -1,5 +1,4 @@
 import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/mixins/search_mixin.dart';
 import 'package:careve/app/modules/home/components/sectionItem.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';

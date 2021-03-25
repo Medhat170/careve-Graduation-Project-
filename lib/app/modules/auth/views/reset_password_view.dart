@@ -4,6 +4,7 @@ import 'package:careve/app/components/backButton.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -34,12 +35,9 @@ class ResetPasswordView extends GetView<AuthService> {
                             padding: const EdgeInsets.symmetric(
                               vertical: 50,
                             ),
-                            child: Text(
-                              'LOGO here', //TODO replace with logo
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 65.sp,
-                              ),
+                            child: Image.asset(
+                              PathUtil.logoIcon,
+                              height: 250.sp,
                             ),
                           ),
                           Text(

@@ -40,15 +40,11 @@ class AuthView extends GetView<AuthService> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                  vertical: 30,
+                                  vertical: 10,
                                 ),
-                                child: Text(
-                                  'Logo here', //TODO replace with logo
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 65.sp,
-                                  ),
-                                  textAlign: TextAlign.center,
+                                child: Image.asset(
+                                  PathUtil.logoIcon,
+                                  height: 250.sp,
                                 ),
                               ),
                               if (controller.signUP.value)

@@ -3,6 +3,7 @@ import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/backButton.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,14 +30,12 @@ class VerificationCodeView extends GetView<AuthService> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 50.0),
-                          child: Text(
-                            'LOGO here', //TODO replace with logo
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 65.sp,
-                            ),
-                            textAlign: TextAlign.center,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 20,
+                          ),
+                          child: Image.asset(
+                            PathUtil.logoIcon,
+                            height: 250.sp,
                           ),
                         ),
                         Text(

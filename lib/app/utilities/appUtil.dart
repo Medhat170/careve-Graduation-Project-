@@ -10,7 +10,7 @@ class AppUtil {
       RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
   static final RegExp phoneValidatorRegExp = RegExp(r'^\+?[0-9]{10,}$');
   static BorderRadius borderRadius = BorderRadius.circular(10.0);
-  static BorderRadius borderRadius50 = BorderRadius.circular(50);
+  static BorderRadius borderRadius25 = BorderRadius.circular(25.0);
   static UnderlineInputBorder transparentUnderLineInputBorder =
       UnderlineInputBorder(
     borderSide: BorderSide(

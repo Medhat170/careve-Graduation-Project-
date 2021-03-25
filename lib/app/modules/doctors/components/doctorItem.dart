@@ -1,4 +1,5 @@
-import 'package:careve/app/modules/doctors/components/CustomTextButton.dart';
+import 'package:careve/app/components/AppButton.dart';
+import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,7 @@ class DoctorItem extends StatelessWidget {
   final String image;
   final double rate;
   final String id;
+
   DoctorItem({
     this.name,
     this.specialty,
@@ -17,88 +19,98 @@ class DoctorItem extends StatelessWidget {
     this.rate,
     this.id,
   });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: ColorUtil.mediumGrey,
-            blurRadius: 2.0,
-            spreadRadius: 0.0,
-            offset: Offset(2.0, 2.0), // shadow direction: bottom right
-          )
-        ],
-        color: ColorUtil.whiteColor,
-        borderRadius: BorderRadius.circular(20),
+    return Card(
+      color: Colors.white,
+      margin: const EdgeInsets.all(10.0),
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: AppUtil.borderRadius25,
       ),
-      padding: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage(image),
-          ),
-          SizedBox(
-            height: 3,
-          ),
-          Text(
-            name,
-            style: TextStyle(
-              fontSize: 30.sp,
-              color: ColorUtil.blackColor,
-              fontWeight: FontWeight.w600,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10.0,
+          horizontal: 20.0,
+        ),
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 32.0,
+              backgroundImage: AssetImage(image),
             ),
-          ),
-          SizedBox(
-            height: 3,
-          ),
-          Text(
-            specialty,
-            style: TextStyle(
-              fontSize: 25.sp,
-              color: ColorUtil.mediumGrey,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          RatingBar(
-            rating: 4,
-            icon: Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.grey,
-            ),
-            starCount: 5,
-            spacing: 2.0,
-            size: 3,
-            isIndicator: false,
-            allowHalfRating: true,
-            onRatingCallback: (double value, ValueNotifier<bool> isIndicator) {
-              print('Number of stars-->  $value');
-              isIndicator.value = true;
-            },
-            color: Colors.amber,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomTextButton(
-                title: 'Book',
-                function: () {},
+            Text(
+              name,
+              style: TextStyle(
+                fontSize: 34.sp,
+                color: ColorUtil.blackColor,
+                fontWeight: FontWeight.w600,
               ),
-              CustomTextButton(
-                title: 'Chat',
-                function: () {},
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              specialty,
+              style: TextStyle(
+                fontSize: 28.sp,
+                color: ColorUtil.mediumGrey,
+                fontWeight: FontWeight.w600,
               ),
-            ],
-          ),
-        ],
+            ),
+            RatingBar(
+              rating: 4,
+              icon: Icon(
+                Icons.star,
+                size: 12,
+                color: Colors.grey,
+              ),
+              starCount: 5,
+              spacing: 2.0,
+              size: 3,
+              isIndicator: false,
+              allowHalfRating: true,
+              onRatingCallback:
+                  (double value, ValueNotifier<bool> isIndicator) {
+                print('Number of stars-->  $value');
+                isIndicator.value = true;
+              },
+              color: Colors.amber,
+            ),
+            Spacer(),
+            SizedBox(
+              height: 30.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: AppButton(
+                      'Book',
+                      textColor: ColorUtil.primaryColor,
+                      borderColor: ColorUtil.primaryColor,
+                      backgroundColor: Colors.transparent,
+                      fontSize: 12.0,
+                      onTap: () {},
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  Expanded(
+                    child: AppButton(
+                      'Chat',
+                      textColor: ColorUtil.primaryColor,
+                      borderColor: ColorUtil.primaryColor,
+                      backgroundColor: Colors.transparent,
+                      fontSize: 12.0,
+                      onTap: () {},
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

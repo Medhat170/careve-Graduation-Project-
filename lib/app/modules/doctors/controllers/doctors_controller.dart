@@ -1,9 +1,10 @@
+import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/mixins/search_mixin.dart';
 import 'package:careve/app/models/doctor.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:get/get.dart';
 
-class DoctorsController extends GetxController with Search {
+class DoctorsController extends GetxController with CustomAppBar {
   List<Doctor> doctors = [
     Doctor(
       name: 'Dr. Mayme Gomez',
@@ -42,9 +43,4 @@ class DoctorsController extends GetxController with Search {
       image: PathUtil.doctorImage,
     ),
   ];
-  @override
-  void onClose() {
-    print('::::::::::::::::' + searchText.text);
-    super.onClose();
-  }
 }

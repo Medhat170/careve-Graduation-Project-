@@ -17,4 +17,5 @@ class PathUtil {
   static const String favIcon = iconsPath + 'fav.png';
   static const String facebookIcon = iconsPath + 'facebookIcon.png';
   static const String googleIcon = iconsPath + 'googleIcon.png';
+  static const String logoIcon = iconsPath + 'logo.png';
 }
