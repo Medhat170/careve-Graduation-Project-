@@ -23,6 +23,7 @@
   "noNetwork": "Connection failed ,connect and try again",
   "dataIsNotCompleted": "Data is not completed",
   "selectLanguageTitle": "Choose your preferred language",
+  "explore": "Explore",
   "signIn": "Sign In",
   "signUp": "Sign Up",
   "next": "Next",

@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email" : MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكترونى"),
     "emailNull" : MessageLookupByLibrary.simpleMessage("من فضلك ادخل بريدك الإلكترونى"),
     "endDate" : MessageLookupByLibrary.simpleMessage("تاريخ الإنتهاء"),
+    "explore" : MessageLookupByLibrary.simpleMessage("إكتشف"),
     "favorite" : MessageLookupByLibrary.simpleMessage("المفضله"),
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
     "filesUploaded" : m0,

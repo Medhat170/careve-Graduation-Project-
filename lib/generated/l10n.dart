@@ -275,6 +275,16 @@ class S {
     );
   }
 
+  /// `إكتشف`
+  String get explore {
+    return Intl.message(
+      'إكتشف',
+      name: 'explore',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `تسجيل الدخول`
   String get signIn {
     return Intl.message(

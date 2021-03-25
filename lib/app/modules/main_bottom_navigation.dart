@@ -24,9 +24,10 @@ class MainView extends GetView<AppService> {
             indicatorHeight: 2,
             onTap: (int index) {
               print(index);
-              return controller.currentIndex(index);
+              controller.currentIndex(index);
             },
-            reverse: false,
+            reverse: true,
+            currentIndex: controller.currentIndex.value,
             curve: Curves.easeInBack,
             items: [
               TitledNavigationBarItem(
@@ -41,8 +42,37 @@ class MainView extends GetView<AppService> {
                 ),
               ),
               TitledNavigationBarItem(
-                title: Text('Search'),
-                icon: Icon(Icons.search),
+                title: Text(
+                  S.of(context).explore,
+                  style: TextStyle(
+                    color: ColorUtil.primaryColor,
+                  ),
+                ),
+                icon: Icon(
+                  FontAwesomeIcons.pen,
+                ),
+              ),
+              TitledNavigationBarItem(
+                title: Text(
+                  S.of(context).notifications,
+                  style: TextStyle(
+                    color: ColorUtil.primaryColor,
+                  ),
+                ),
+                icon: Icon(
+                  FontAwesomeIcons.solidBell,
+                ),
+              ),
+              TitledNavigationBarItem(
+                title: Text(
+                  S.of(context).profile,
+                  style: TextStyle(
+                    color: ColorUtil.primaryColor,
+                  ),
+                ),
+                icon: Icon(
+                  FontAwesomeIcons.solidUser,
+                ),
               ),
             ],
             activeColor: ColorUtil.primaryColor,
