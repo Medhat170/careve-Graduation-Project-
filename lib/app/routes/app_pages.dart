@@ -1,9 +1,11 @@
-import 'package:careve/app/modules/auth/views/reset_password_view.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
+import 'package:careve/app/modules/auth/views/reset_password_view.dart';
 import 'package:careve/app/modules/auth/views/verification_code_view.dart';
+import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
+import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
 import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/bindings/home_binding.dart';
@@ -47,6 +49,11 @@ class AppPages {
       name: _Paths.FIRST_TIME,
       page: () => FirstTimeView(),
       binding: FirstTimeBinding(),
+    ),
+    GetPage(
+      name: _Paths.DOCTORS,
+      page: () => DoctorsView(),
+      binding: DoctorsBinding(),
     ),
   ];
 }

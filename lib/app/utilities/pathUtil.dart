@@ -13,6 +13,7 @@ class PathUtil {
   static const String doctorsImage = imagesPath + 'doctors.png';
   static const String notesImage = imagesPath + 'notes.png';
   static const String selfCareImage = imagesPath + 'self_care.png';
+  static const String doctorImage = imagesPath + 'doctor_image.png';
   static const String favIcon = iconsPath + 'fav.png';
   static const String facebookIcon = iconsPath + 'facebookIcon.png';
   static const String googleIcon = iconsPath + 'googleIcon.png';

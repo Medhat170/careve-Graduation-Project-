@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WelcomeDataComponent extends StatelessWidget {

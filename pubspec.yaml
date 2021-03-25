@@ -37,6 +37,7 @@ dependencies:
   font_awesome_flutter: ^9.0.0
   dio: ^3.0.10
   pin_code_text_field: ^1.8.0
+  flutter_simple_rating_bar: ^0.0.3
 
 dev_dependencies:
   flutter_test:

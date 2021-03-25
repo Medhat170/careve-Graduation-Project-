@@ -9,6 +9,7 @@ abstract class Routes {
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const VERIFICATION_CODE = _Paths.VERIFICATION_CODE;
   static const FIRST_TIME = _Paths.FIRST_TIME;
+  static const DOCTORS = _Paths.DOCTORS;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const RESET_PASSWORD = '/reset-password';
   static const VERIFICATION_CODE = '/verification-code';
   static const FIRST_TIME = '/first-time';
+  static const DOCTORS = '/doctors';
 }
