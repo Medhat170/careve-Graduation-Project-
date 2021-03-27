@@ -1,4 +1,4 @@
-import 'package:careve/app/modules/doctor_appoinment/components/AppointmentItem.dart';
+import 'package:careve/app/modules/doctor_appointment/components/AppointmentItem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/doctor_appoinment_controller.dart';
