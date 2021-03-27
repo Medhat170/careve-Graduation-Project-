@@ -94,7 +94,7 @@ class DoctorItem extends StatelessWidget {
                         borderColor: ColorUtil.primaryColor,
                         backgroundColor: Colors.transparent,
                         fontSize: 12.0,
-                        onTap: () {},
+                        onTap: () => Get.toNamed(Routes.DOCTOR_APPOINMENT),
                       ),
                     ),
                     const SizedBox(

@@ -66,7 +66,7 @@ class HomeView extends GetView<HomeController> {
                               .toList(),
                           gridDelegate:
                               SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: Get.width * 0.4,
+                            maxCrossAxisExtent: Get.width * 0.45,
                             childAspectRatio: 1 / 1,
                             crossAxisSpacing: 20,
                             mainAxisSpacing: 20,
