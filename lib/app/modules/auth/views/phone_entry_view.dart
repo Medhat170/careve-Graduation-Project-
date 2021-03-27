@@ -65,8 +65,8 @@ class PhoneEntryView extends GetView<AuthService> {
                           const SizedBox(
                             height: 10,
                           ),
-                          AppButton(
-                            S.of(context).done,
+                          CareveButton(
+                            title: S.of(context).done,
                             onTap: () async =>
                                 await controller.sendPhoneNumber(),
                             backgroundColor: ColorUtil.primaryColor,

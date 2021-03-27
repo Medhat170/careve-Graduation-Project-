@@ -81,8 +81,8 @@ class ResetPasswordView extends GetView<AuthService> {
                           const SizedBox(
                             height: 10,
                           ),
-                          AppButton(
-                            S.of(context).done,
+                          CareveButton(
+                            title: S.of(context).done,
                             onTap: () async => await controller.restPassword(),
                             backgroundColor: ColorUtil.primaryColor,
                           ),

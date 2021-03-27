@@ -1,109 +1,157 @@
-import 'dart:ffi';
-
-import 'package:careve/app/components/AppButton.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CareveButton extends AppButton {
-  CareveButton(String title) : super(title);
+class CareveButton extends ButtonAppButton {
+  CareveButton({
+    Widget child,
+    String title,
+    double fontSize = 18.0,
+    Color textColor = ColorUtil.whiteColor,
+    Function onTap,
+    double height,
+    double width,
+    EdgeInsets margin,
+    Color borderColor,
+    Color backgroundColor,
+    double elevation,
+  }) : super(
+          child ??
+              FittedBox(
+                child: Text(
+                  title ?? '',
+                  style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: fontSize,
+                  ),
+                ),
+              ),
+          onTap: onTap,
+          borderRadius: AppUtil.borderRadius,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          elevation: elevation,
+          height: height,
+          width: width,
+          margin: margin,
+        );
+
+  factory CareveButton.icon({
+    @required Widget icon,
+    String title,
+    Color textColor,
+    Function onTap,
+    double height,
+    double width,
+    EdgeInsets margin,
+    Color borderColor,
+    Color backgroundColor,
+    double elevation,
+  }) = _CareveButtonWithIcon;
 }
 
-class AppButton extends StatelessWidget {
-  final String title;
+class _CareveButtonWithIcon extends CareveButton {
+  _CareveButtonWithIcon({
+    @required Widget icon,
+    @required String title,
+    double fontSize = 18.0,
+    Color textColor,
+    Function onTap,
+    double height,
+    double width,
+    EdgeInsets margin,
+    Color borderColor,
+    Color backgroundColor,
+    double elevation,
+  })  : assert(icon != null),
+        super(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              icon,
+              if (title != null)
+                const SizedBox(
+                  width: 7.5,
+                ),
+              if (title != null)
+                FittedBox(
+                  child: Text(
+                    title ?? '',
+                    style: TextStyle(
+                      color: textColor ?? ColorUtil.whiteColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: fontSize,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          onTap: onTap,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          elevation: elevation,
+          height: height,
+          width: width,
+          margin: margin,
+        );
+}
+
+class ButtonAppButton extends StatelessWidget {
+  final Widget child;
+  final Function onTap;
   final Color backgroundColor;
   final Color borderColor;
-  final Function onTap;
-  final Color textColor;
-  final Color iconColor;
-  final String imagePath;
   final double elevation;
   final EdgeInsets margin;
-  final double fontSize;
-  final IconData iconData;
-  final double size;
+  final BorderRadius borderRadius;
+  final double height;
+  final double width;
 
-  AppButton(
-    this.title, {
+  const ButtonAppButton(
+    this.child, {
     @required this.onTap,
-    this.iconData,
-    this.fontSize = 18,
-    this.size = 40.0,
-    this.elevation = 6.5,
-    this.backgroundColor = ColorUtil.primaryColor,
-    this.iconColor = ColorUtil.primaryColor,
+    this.borderRadius,
+    this.height,
+    this.width,
     this.margin,
     this.borderColor,
-    this.textColor,
-    this.imagePath,
+    this.elevation,
+    this.backgroundColor = ColorUtil.primaryColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-    final textWidget = Text(
-      title ?? '',
-      style: TextStyle(
-        color: textColor ?? ColorUtil.whiteColor,
-        fontWeight: imagePath != null || iconData != null
-            ? FontWeight.w500
-            : FontWeight.bold,
-        fontSize: fontSize,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        onTap();
+      },
+      child: Card(
+        color: backgroundColor,
+        elevation:
+            backgroundColor == Colors.transparent ? 0.0 : (elevation ?? 6.5),
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        shadowColor: backgroundColor == Colors.white
+            ? Colors.black54
+            : backgroundColor.withOpacity(0.5),
+        margin: margin,
+        child: Container(
+          width: width ?? Get.width,
+          height: height ?? 50.0,
+          decoration: BoxDecoration(
+            borderRadius: borderRadius,
+            color: backgroundColor,
+            border: Border.all(
+              color: borderColor ?? Colors.transparent,
+            ),
+          ),
+          child: Center(
+            child: child,
+          ),
+        ),
       ),
-    );
-
-    final buttonStyle = TextButton.styleFrom(
-      elevation: backgroundColor == Colors.transparent ? 0.0 : elevation,
-      shadowColor: backgroundColor.withOpacity(0.5),
-      side: BorderSide(
-        color: borderColor ?? Colors.transparent,
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: AppUtil.borderRadius,
-      ),
-      backgroundColor: backgroundColor,
-    );
-    void onPressed() {
-      FocusScope.of(context).requestFocus(new FocusNode());
-      onTap();
-    }
-
-    final image = imagePath == null
-        ? null
-        : Image.asset(
-            imagePath,
-            width: size,
-            height: size,
-          );
-    final icon = iconData == null
-        ? null
-        : Icon(
-            iconData,
-            size: size,
-            color: iconColor,
-          );
-    if ((imagePath != null || iconData != null) && title == null) {
-      child = Card();
-    } else if ((imagePath != null || iconData != null) && title != null) {
-      child = TextButton.icon(
-        onPressed: onPressed,
-        icon: image ?? icon,
-        label: textWidget,
-        style: buttonStyle,
-      );
-    } else {
-      child = TextButton(
-        style: buttonStyle,
-        onPressed: onPressed,
-        child: textWidget,
-      );
-    }
-    return Container(
-      margin: margin,
-      width: Get.width,
-      height: 50,
-      child: child,
     );
   }
 }

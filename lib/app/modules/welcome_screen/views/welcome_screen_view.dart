@@ -76,8 +76,8 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       SizedBox(
                         height: 300.h,
                       ),
-                      AppButton(
-                        S.of(context).signUp,
+                      CareveButton(
+                        title: S.of(context).signUp,
                         textColor: ColorUtil.whiteColor,
                         backgroundColor: ColorUtil.primaryColor,
                         onTap: () {
@@ -90,8 +90,8 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       SizedBox(
                         height: 50.h,
                       ),
-                      AppButton(
-                        'Sign In',
+                      CareveButton(
+                        title: S.of(context).signIn,
                         backgroundColor: Colors.transparent,
                         borderColor: ColorUtil.primaryColor,
                         onTap: () {

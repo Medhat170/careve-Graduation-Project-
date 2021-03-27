@@ -107,8 +107,8 @@ class VerificationCodeView extends GetView<AuthService> {
                         const SizedBox(
                           height: 10,
                         ),
-                        AppButton(
-                          S.of(context).done,
+                        CareveButton(
+                          title: S.of(context).done,
                           onTap: () async => await controller.verifyCode(),
                           backgroundColor: ColorUtil.primaryColor,
                         ),

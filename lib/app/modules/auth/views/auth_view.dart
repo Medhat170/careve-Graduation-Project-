@@ -94,8 +94,8 @@ class AuthView extends GetView<AuthService> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              AppButton(
-                                controller.signUP.value
+                              CareveButton(
+                                title: controller.signUP.value
                                     ? S.of(context).signUp
                                     : S.of(context).signIn,
                                 onTap: () async {
@@ -140,26 +140,34 @@ class AuthView extends GetView<AuthService> {
                                   Row(
                                     children: [
                                       Expanded(
-                                        child: AppButton(
-                                          'facebook',
+                                        child: CareveButton.icon(
+                                          title: 'facebook',
                                           onTap: () {},
                                           elevation: 2.0,
                                           backgroundColor: ColorUtil.lightGrey,
                                           textColor: ColorUtil.blackColor,
-                                          imagePath: PathUtil.facebookIcon,
+                                          icon: Image.asset(
+                                            PathUtil.facebookIcon,
+                                            width: 40.0,
+                                            height: 40.0,
+                                          ),
                                         ),
                                       ),
                                       const SizedBox(
                                         width: 20.0,
                                       ),
                                       Expanded(
-                                        child: AppButton(
-                                          'Google',
+                                        child: CareveButton.icon(
+                                          title: 'Google',
                                           onTap: () {},
                                           elevation: 2.0,
                                           backgroundColor: ColorUtil.lightGrey,
                                           textColor: ColorUtil.blackColor,
-                                          imagePath: PathUtil.googleIcon,
+                                          icon: Image.asset(
+                                            PathUtil.googleIcon,
+                                            width: 40.0,
+                                            height: 40.0,
+                                          ),
                                         ),
                                       ),
                                     ],

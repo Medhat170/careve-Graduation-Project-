@@ -104,11 +104,13 @@ class DoctorInfo extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: AppButton(
-                            '',
-                            backgroundColor: ColorUtil.whiteColor,
-                            iconData: FontAwesomeIcons.facebookMessenger,
-                            size: 20.0,
+                          child: CareveButton.icon(
+                            backgroundColor: Colors.white,
+                            icon: Icon(
+                              FontAwesomeIcons.comment,
+                              size: 22.0,
+                              color: ColorUtil.primaryColor,
+                            ),
                             onTap: () {},
                           ),
                         ),
@@ -116,21 +118,13 @@ class DoctorInfo extends StatelessWidget {
                           width: 7.5,
                         ),
                         Expanded(
-                          child: AppButton(
-                            '',
-                            backgroundColor: ColorUtil.whiteColor,
-                            imagePath: PathUtil.googleIcon,
-                            onTap: () {},
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 7.5,
-                        ),
-                        Expanded(
-                          child: AppButton(
-                            '',
-                            backgroundColor: ColorUtil.whiteColor,
-                            imagePath: PathUtil.googleIcon,
+                          child: CareveButton.icon(
+                            backgroundColor: Colors.white,
+                            icon: Icon(
+                              FontAwesomeIcons.phone,
+                              size: 22.0,
+                              color: ColorUtil.primaryColor,
+                            ),
                             onTap: () {},
                           ),
                         ),
