@@ -82,37 +82,39 @@ class DoctorItem extends StatelessWidget {
                 color: Colors.amber,
               ),
               Spacer(),
-              SizedBox(
-                height: 30.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: AppButton(
-                        'Book',
-                        textColor: ColorUtil.primaryColor,
-                        borderColor: ColorUtil.primaryColor,
-                        backgroundColor: Colors.transparent,
-                        fontSize: 12.0,
-                        onTap: () => Get.toNamed(Routes.DOCTOR_APPOINMENT),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    Expanded(
-                      child: AppButton(
-                        'Chat',
-                        textColor: ColorUtil.primaryColor,
-                        borderColor: ColorUtil.primaryColor,
-                        backgroundColor: Colors.transparent,
-                        fontSize: 12.0,
-                        onTap: () {},
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // SizedBox(
+              //   height: 30.0,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Expanded(
+              //         child: CareveButton(
+              //           title: 'Book',
+              //           textColor: ColorUtil.primaryColor,
+              //           borderColor: ColorUtil.primaryColor,
+              //           backgroundColor: Colors.transparent,
+              //           fontSize: 12.0,
+              //           onTap: () {
+              //
+              //           },
+              //         ),
+              //       ),
+              //       const SizedBox(
+              //         width: 10.0,
+              //       ),
+              //       Expanded(
+              //         child: CareveButton(
+              //           title: 'Chat',
+              //           textColor: ColorUtil.primaryColor,
+              //           borderColor: ColorUtil.primaryColor,
+              //           backgroundColor: Colors.transparent,
+              //           fontSize: 12.0,
+              //           onTap: () {},
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

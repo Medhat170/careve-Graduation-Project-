@@ -4,8 +4,6 @@ import 'package:careve/app/modules/auth/views/auth_view.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
 import 'package:careve/app/modules/auth/views/reset_password_view.dart';
 import 'package:careve/app/modules/auth/views/verification_code_view.dart';
-import 'package:careve/app/modules/doctor_appointment/bindings/doctor_appoinment_binding.dart';
-import 'package:careve/app/modules/doctor_appointment/views/doctor_appoinment_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
@@ -14,6 +12,8 @@ import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/main_bottom_navigation.dart';
 import 'package:careve/app/modules/single_doctor/bindings/single_doctor_binding.dart';
 import 'package:careve/app/modules/single_doctor/views/single_doctor_view.dart';
+import 'package:careve/app/modules/user_appointments/bindings/user_appointments_binding.dart';
+import 'package:careve/app/modules/user_appointments/views/user_appointments_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
 import 'package:careve/app/modules/welcome_screen/views/welcome_screen_view.dart';
 
@@ -68,9 +68,9 @@ class AppPages {
       binding: SingleDoctorBinding(),
     ),
     GetPage(
-      name: _Paths.DOCTOR_APPOINMENT,
-      page: () => DoctorAppointmentView(),
-      binding: DoctorAppointmentBinding(),
+      name: _Paths.USER_APPOINTMENTS,
+      page: () => UserAppointmentsView(),
+      binding: UserAppointmentsBinding(),
     ),
   ];
 }
