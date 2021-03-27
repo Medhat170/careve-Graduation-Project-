@@ -1,4 +1,4 @@
-import 'package:careve/app/components/AppButton.dart';
+import 'package:careve/app/components/appButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/modules/first_time/components/welcome_data_component.dart';
 import 'package:careve/app/routes/app_pages.dart';

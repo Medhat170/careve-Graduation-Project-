@@ -11,6 +11,7 @@ abstract class Routes {
   static const FIRST_TIME = _Paths.FIRST_TIME;
   static const DOCTORS = _Paths.DOCTORS;
   static const MAIN = _Paths.MAIN;
+  static const SINGLE_DOCTOR = _Paths.SINGLE_DOCTOR;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const FIRST_TIME = '/first-time';
   static const DOCTORS = '/doctors';
   static const MAIN = '/main';
+  static const SINGLE_DOCTOR = '/single-doctor';
 }

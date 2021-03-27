@@ -1,4 +1,4 @@
-import 'package:careve/app/components/AppButton.dart';
+import 'package:careve/app/components/appButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/backButton.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
