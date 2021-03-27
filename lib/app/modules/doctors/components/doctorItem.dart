@@ -38,83 +38,95 @@ class DoctorItem extends StatelessWidget {
             vertical: 10.0,
             horizontal: 20.0,
           ),
-          child: Column(
+          child: Row(
             children: [
               CircleAvatar(
                 radius: 32.0,
-                backgroundImage: AssetImage(image),
-              ),
-              Text(
-                name,
-                style: TextStyle(
-                  fontSize: 34.sp,
-                  color: ColorUtil.blackColor,
-                  fontWeight: FontWeight.w600,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Text(
-                specialty,
-                style: TextStyle(
-                  fontSize: 28.sp,
-                  color: ColorUtil.mediumGrey,
-                  fontWeight: FontWeight.w600,
+                backgroundImage: AssetImage(
+                  image,
                 ),
               ),
-              RatingBar(
-                rating: 4,
-                icon: Icon(
-                  Icons.star,
-                  size: 12,
-                  color: Colors.grey,
-                ),
-                starCount: 5,
-                spacing: 2.0,
-                size: 3,
-                isIndicator: false,
-                allowHalfRating: true,
-                onRatingCallback:
-                    (double value, ValueNotifier<bool> isIndicator) {
-                  print('Number of stars-->  $value');
-                  isIndicator.value = true;
-                },
-                color: Colors.amber,
+              const SizedBox(
+                width: 10.0,
               ),
-              Spacer(),
-              // SizedBox(
-              //   height: 30.0,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       Expanded(
-              //         child: CareveButton(
-              //           title: 'Book',
-              //           textColor: ColorUtil.primaryColor,
-              //           borderColor: ColorUtil.primaryColor,
-              //           backgroundColor: Colors.transparent,
-              //           fontSize: 12.0,
-              //           onTap: () {
-              //
-              //           },
-              //         ),
-              //       ),
-              //       const SizedBox(
-              //         width: 10.0,
-              //       ),
-              //       Expanded(
-              //         child: CareveButton(
-              //           title: 'Chat',
-              //           textColor: ColorUtil.primaryColor,
-              //           borderColor: ColorUtil.primaryColor,
-              //           backgroundColor: Colors.transparent,
-              //           fontSize: 12.0,
-              //           onTap: () {},
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name ?? '',
+                      style: TextStyle(
+                        fontSize: 34.sp,
+                        color: ColorUtil.blackColor,
+                        fontWeight: FontWeight.w800,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      specialty ?? '',
+                      style: TextStyle(
+                        fontSize: 28.sp,
+                        color: ColorUtil.mediumGrey,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (rate != null)
+                      RatingBar(
+                        rating: rate,
+                        icon: Icon(
+                          Icons.star,
+                          size: 12,
+                          color: Colors.grey,
+                        ),
+                        starCount: 5,
+                        spacing: 2.0,
+                        size: 3,
+                        isIndicator: false,
+                        allowHalfRating: true,
+                        onRatingCallback:
+                            (double value, ValueNotifier<bool> isIndicator) {
+                          print('Number of stars-->  $value');
+                          isIndicator.value = true;
+                        },
+                        color: Colors.amber,
+                      ),
+                    // SizedBox(
+                    //   height: 30.0,
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Expanded(
+                    //         child: CareveButton(
+                    //           title: 'Book',
+                    //           textColor: ColorUtil.primaryColor,
+                    //           borderColor: ColorUtil.primaryColor,
+                    //           backgroundColor: Colors.transparent,
+                    //           fontSize: 12.0,
+                    //           onTap: () {
+                    //
+                    //           },
+                    //         ),
+                    //       ),
+                    //       const SizedBox(
+                    //         width: 10.0,
+                    //       ),
+                    //       Expanded(
+                    //         child: CareveButton(
+                    //           title: 'Chat',
+                    //           textColor: ColorUtil.primaryColor,
+                    //           borderColor: ColorUtil.primaryColor,
+                    //           backgroundColor: Colors.transparent,
+                    //           fontSize: 12.0,
+                    //           onTap: () {},
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
