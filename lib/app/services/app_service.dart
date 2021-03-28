@@ -17,7 +17,6 @@ class AppService extends GetxService {
 
   Future<bool> tryAutoLogin() async {
     var cachedUserId = cacheService?.settingsRepo?.cachedUserId;
-    print('cachedUserId : $cachedUserId');
     if (cachedUserId == null) {
       print('User is not auth!');
       return false;
