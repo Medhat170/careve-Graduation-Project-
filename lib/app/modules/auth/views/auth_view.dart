@@ -53,7 +53,7 @@ class AuthView extends GetView<AuthService> {
                                   controller.name,
                                   loading: controller.isBusy.value,
                                   keyBoardType: TextInputType.text,
-                                  validator: QuickTextValidator(),
+                                  validator: QuickTextValidator().call,
                                 ),
                               AuthInputField(
                                 S.of(context).email,
@@ -62,7 +62,7 @@ class AuthView extends GetView<AuthService> {
                                 keyBoardType: TextInputType.emailAddress,
                                 validator: QuickTextValidator(
                                   isEmail: true,
-                                ),
+                                ).call,
                               ),
                               AuthInputField(
                                 S.of(context).password,
@@ -75,7 +75,7 @@ class AuthView extends GetView<AuthService> {
                                 keyBoardType: TextInputType.text,
                                 validator: QuickTextValidator(
                                   hasMinLength: 8,
-                                ),
+                                ).call,
                               ),
                               if (controller.signUP.value)
                                 AuthInputField(
@@ -88,8 +88,15 @@ class AuthView extends GetView<AuthService> {
                                       .value = !controller.hidePassword.value,
                                   keyBoardType: TextInputType.text,
                                   validator: QuickTextValidator(
+                                    extraValidation: (String value) {
+                                      if (controller.password.text !=
+                                          controller.confirmedPassword.text) {
+                                        return S.current.passwordsDoNotMatch;
+                                      }
+                                      return null;
+                                    },
                                     hasMinLength: 8,
-                                  ),
+                                  ).call,
                                 ),
                               const SizedBox(
                                 height: 10,
@@ -117,63 +124,96 @@ class AuthView extends GetView<AuthService> {
                                         S.of(context).forgetPassword,
                                         style: TextStyle(
                                           fontSize: 46.sp,
-                                          color: ColorUtil.primaryColor,
+                                          color: ColorUtil.mediumGrey,
                                         ),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                              // Column(
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     Padding(
+                              //       padding: const EdgeInsets.symmetric(
+                              //         vertical: 20.0,
+                              //       ),
+                              //       child: Text(
+                              //         '- OR -',
+                              //         style: TextStyle(
+                              //           fontSize: 40.sp,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //     Row(
+                              //       children: [
+                              //         Expanded(
+                              //           child: CareveButton.icon(
+                              //             title: 'facebook',
+                              //             onTap: () {},
+                              //             elevation: 2.0,
+                              //             backgroundColor: ColorUtil.lightGrey,
+                              //             textColor: ColorUtil.blackColor,
+                              //             icon: Image.asset(
+                              //               PathUtil.facebookIcon,
+                              //               width: 40.0,
+                              //               height: 40.0,
+                              //             ),
+                              //           ),
+                              //         ),
+                              //         const SizedBox(
+                              //           width: 20.0,
+                              //         ),
+                              //         Expanded(
+                              //           child: CareveButton.icon(
+                              //             title: 'Google',
+                              //             onTap: () {},
+                              //             elevation: 2.0,
+                              //             backgroundColor: ColorUtil.lightGrey,
+                              //             textColor: ColorUtil.blackColor,
+                              //             icon: Image.asset(
+                              //               PathUtil.googleIcon,
+                              //               width: 40.0,
+                              //               height: 40.0,
+                              //             ),
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //
+                              //
+                              //   ],
+                              // ),
+                              const SizedBox(
+                                height: 20.0,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 20.0,
-                                    ),
-                                    child: Text(
-                                      '- OR -',
-                                      style: TextStyle(
-                                        fontSize: 40.sp,
-                                      ),
+                                  Text(
+                                    controller.signUP.value
+                                        ? S.of(context).alreadyHaveAcc
+                                        : S.of(context).donNotHaveAcc,
+                                    style: TextStyle(
+                                      fontSize: 46.sp,
+                                      color: ColorUtil.mediumGrey,
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: CareveButton.icon(
-                                          title: 'facebook',
-                                          onTap: () {},
-                                          elevation: 2.0,
-                                          backgroundColor: ColorUtil.lightGrey,
-                                          textColor: ColorUtil.blackColor,
-                                          icon: Image.asset(
-                                            PathUtil.facebookIcon,
-                                            width: 40.0,
-                                            height: 40.0,
-                                          ),
-                                        ),
+                                  InkWell(
+                                    onTap: () => controller
+                                        .signUP(!controller.signUP.value),
+                                    child: Text(
+                                      controller.signUP.value
+                                          ? S.of(context).signIn
+                                          : S.of(context).signUp,
+                                      style: TextStyle(
+                                        fontSize: 50.sp,
+                                        color: ColorUtil.primaryColor,
                                       ),
-                                      const SizedBox(
-                                        width: 20.0,
-                                      ),
-                                      Expanded(
-                                        child: CareveButton.icon(
-                                          title: 'Google',
-                                          onTap: () {},
-                                          elevation: 2.0,
-                                          backgroundColor: ColorUtil.lightGrey,
-                                          textColor: ColorUtil.blackColor,
-                                          icon: Image.asset(
-                                            PathUtil.googleIcon,
-                                            width: 40.0,
-                                            height: 40.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),

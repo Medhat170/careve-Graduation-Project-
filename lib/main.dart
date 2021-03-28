@@ -1,3 +1,4 @@
+import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/services/initialBinding.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
@@ -11,6 +12,7 @@ import 'app/routes/app_pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  CacheService.registerTypeAdapters();
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppUtil.appTheme,
           getPages: AppPages.routes,
-          initialRoute: Routes.WELCOME_SCREEN,
+          initialRoute: Routes.SPLASH,
           initialBinding: InitialBinding(),
           localizationsDelegates: [
             S.delegate,

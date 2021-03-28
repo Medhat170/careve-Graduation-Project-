@@ -23,6 +23,8 @@
   "noNetwork": "Connection failed ,connect and try again",
   "dataIsNotCompleted": "Data is not completed",
   "selectLanguageTitle": "Choose your preferred language",
+  "alreadyHaveAcc": "already have account?",
+  "donNotHaveAcc": "Don/'t  have account?",
   "explore": "Explore",
   "signIn": "Sign In",
   "signUp": "Sign Up",
@@ -80,5 +82,7 @@
   "formatException": "An unexpected error has occurred",
   "retry": "Retry",
   "noChangedData": "You did not change any data",
-  "unAuthorized": "Unauthorized action !"
+  "unAuthorized": "Unauthorized action !",
+  "doctor": "Doctor",
+  "normalUser": "Normal user"
 }

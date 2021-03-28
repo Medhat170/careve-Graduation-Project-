@@ -1,25 +1,135 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:careve/generated/l10n.dart';
-import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 mixin ApiMixin {
-  Future<T> request<T>(
-    Future<dio.Response<T>> future,
+  var _dio = Dio();
+  var _formData = FormData();
+
+  Future<Map<String, dynamic>> post({
+    @required String url,
+    @required Map<String, dynamic> body,
+    Map<String, dynamic> header,
+    Map<String, List<File>> files,
+    int sendTimeout,
+    int receiveTimeout,
+    Function(int count, int total) onSendProgress,
+    Function(int count, int total) onReceiveProgress,
+  }) async {
+    _formData.fields.clear();
+    _formData.files.clear();
+    _addBody(body ?? {});
+    _addFiles(files ?? {});
+    return (await request(
+      _dio.post(
+        url,
+        data: _formData,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+        options: Options(
+          headers: header,
+          receiveTimeout: receiveTimeout,
+          sendTimeout: sendTimeout,
+        ),
+      ),
+    ));
+  }
+
+  Future get({
+    @required String url,
+    @required Map<String, dynamic> header,
+    int sendTimeout,
+    int receiveTimeout,
+    Function(int count, int total) onReceiveProgress,
+  }) async {
+    return (await request(
+      _dio.get(
+        url,
+        onReceiveProgress: onReceiveProgress,
+        options: Options(
+          headers: header,
+          receiveTimeout: receiveTimeout,
+          sendTimeout: sendTimeout,
+        ),
+      ),
+    ));
+  }
+
+  void _addBody(Map<String, dynamic> data) {
+    if (data != null) {
+      _formData.fields
+        ..addAll(
+          data.entries.map(
+            (element) => MapEntry(
+              element?.key,
+              element?.value,
+            ),
+          ),
+        );
+    }
+  }
+
+  void _addFiles(Map<String, List<File>> files) {
+    if (files != null ||
+        files?.entries != null ||
+        files?.entries?.length != 0) {
+      for (var entry in files?.entries) {
+        if (entry?.value != null || entry?.value?.length != 0) {
+          _formData.files.addAll(
+            entry.value.map(
+              (e) => MapEntry(
+                entry?.key,
+                MultipartFile.fromFileSync(
+                  e?.path,
+                  filename: e?.path?.split("/")?.last,
+                ),
+              ),
+            ),
+          );
+        }
+      }
+    }
+  }
+
+  String _errorMsg(dynamic error) {
+    final Map<String, dynamic> errors = json.decode(error.toString());
+    var errorMessage = S.current.formatException;
+    if (errors?.entries != null) {
+      for (var error in errors?.entries) {
+        if (error?.value is String) {
+          errorMessage = errorMessage + error?.value + '\n';
+        } else if (error?.value is List) {
+          errorMessage = errorMessage + error?.value[0]?.toString() + '\n';
+        }
+      }
+    }
+    return errorMessage;
+  }
+
+  Future<Map<String, dynamic>> request(
+    Future<Response> future,
   ) async {
     try {
-      return (await future).data;
-    } on dio.DioError catch (dioError) {
+      final data = (await future);
+      final Map<String, dynamic> response = json.decode(data.toString());
+      print('Response : ${data.toString()}');
+      return response;
+    } on DioError catch (dioError) {
       String errorMessage;
-      if (dioError.type == dio.DioErrorType.connectTimeout ||
-          dioError.type == dio.DioErrorType.receiveTimeout ||
-          dioError.type == dio.DioErrorType.sendTimeout) {
+      if (dioError.type == DioErrorType.connectTimeout ||
+          dioError.type == DioErrorType.receiveTimeout ||
+          dioError.type == DioErrorType.sendTimeout) {
         errorMessage = S.current.socketException;
-      } else if (dioError.type == dio.DioErrorType.cancel) {
+      } else if (dioError.type == DioErrorType.cancel) {
         errorMessage = S.current.httpException;
-      } else if (dioError.type == dio.DioErrorType.response) {
+      } else if (dioError.type == DioErrorType.response) {
         switch (dioError.response.statusCode) {
           case 401:
           case 400:
-            errorMessage = dioError.response.data;
+            errorMessage = _errorMsg(dioError.response.data);
             break;
           case 500:
             errorMessage = S.current.formatException;

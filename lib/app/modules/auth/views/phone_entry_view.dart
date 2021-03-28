@@ -60,7 +60,7 @@ class PhoneEntryView extends GetView<AuthService> {
                             keyBoardType: TextInputType.number,
                             validator: QuickTextValidator(
                               isPhone: true,
-                            ),
+                            ).call,
                           ),
                           const SizedBox(
                             height: 10,

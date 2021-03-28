@@ -275,6 +275,26 @@ class S {
     );
   }
 
+  /// `لديك حساب بالفعل؟`
+  String get alreadyHaveAcc {
+    return Intl.message(
+      'لديك حساب بالفعل؟',
+      name: 'alreadyHaveAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ليس لديك حساب؟`
+  String get donNotHaveAcc {
+    return Intl.message(
+      'ليس لديك حساب؟',
+      name: 'donNotHaveAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `إكتشف`
   String get explore {
     return Intl.message(
@@ -850,6 +870,26 @@ class S {
     return Intl.message(
       'غير مصرح لك !',
       name: 'unAuthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `دكتور/ه`
+  String get doctor {
+    return Intl.message(
+      'دكتور/ه',
+      name: 'doctor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `مستخدم عادى`
+  String get normalUser {
+    return Intl.message(
+      'مستخدم عادى',
+      name: 'normalUser',
       desc: '',
       args: [],
     );

@@ -77,11 +77,11 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         height: 300.h,
                       ),
                       CareveButton(
-                        title: S.of(context).signUp,
+                        title: S.of(context).normalUser,
                         textColor: ColorUtil.whiteColor,
                         backgroundColor: ColorUtil.primaryColor,
                         onTap: () {
-                          AuthService.to.signUP(true);
+                          AuthService.to.isDoc(false);
                           Get.toNamed(
                             Routes.AUTH,
                           );
@@ -91,11 +91,11 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         height: 50.h,
                       ),
                       CareveButton(
-                        title: S.of(context).signIn,
+                        title: S.of(context).doctor,
                         backgroundColor: Colors.transparent,
                         borderColor: ColorUtil.primaryColor,
                         onTap: () {
-                          AuthService.to.signUP(false);
+                          AuthService.to.isDoc(true);
                           Get.toNamed(
                             Routes.AUTH,
                           );

@@ -14,6 +14,8 @@ import 'package:careve/app/modules/self_checking/bindings/self_checking_binding.
 import 'package:careve/app/modules/self_checking/views/self_checking_view.dart';
 import 'package:careve/app/modules/single_doctor/bindings/single_doctor_binding.dart';
 import 'package:careve/app/modules/single_doctor/views/single_doctor_view.dart';
+import 'package:careve/app/modules/splash/bindings/splash_binding.dart';
+import 'package:careve/app/modules/splash/views/splash_view.dart';
 import 'package:careve/app/modules/user_appointments/bindings/user_appointments_binding.dart';
 import 'package:careve/app/modules/user_appointments/views/user_appointments_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.SELF_CHECKING,
       page: () => SelfCheckingView(),
       binding: SelfCheckingBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

@@ -23,6 +23,8 @@
   "noNetwork": "فشل الاتصال حاول مره اخرى",
   "dataIsNotCompleted": "البيانات ليست مكتمله!",
   "selectLanguageTitle": "اختر لغه العرض المفضله",
+  "alreadyHaveAcc": "لديك حساب بالفعل؟",
+  "donNotHaveAcc": "ليس لديك حساب؟",
   "explore": "إكتشف",
   "signIn": "تسجيل الدخول",
   "signUp": "تسجيل جديد",
@@ -80,5 +82,7 @@
   "formatException": "حدث خطأ غير متوقع",
   "retry": "إعادة المحاوله",
   "noChangedData": "لم تقم بتغيير أى بيانات",
-  "unAuthorized": "غير مصرح لك !"
+  "unAuthorized": "غير مصرح لك !",
+  "doctor": "دكتور/ه",
+  "normalUser": "مستخدم عادى"
 }

@@ -1,5 +1,6 @@
 const imagesPath = 'assets/images/';
 const iconsPath = 'assets/icons/';
+const url = 'https://laravelbreast.000webhostapp.com/public/api/';
 
 class PathUtil {
   static const String welcomeImage = imagesPath + 'hands_background.png';
@@ -18,4 +19,9 @@ class PathUtil {
   static const String facebookIcon = iconsPath + 'facebookIcon.png';
   static const String googleIcon = iconsPath + 'googleIcon.png';
   static const String logoIcon = iconsPath + 'logo.png';
+}
+
+class ApiPath {
+  static const String patientSignUp = url + 'patientsignup?';
+  static const String login = url + 'login';
 }

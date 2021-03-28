@@ -62,7 +62,7 @@ class FirstTimeView extends GetView<FirstTimeController> {
                 CareveButton(
                   title: S.of(context).skip,
                   onTap: () => Get.offNamed(
-                    Routes.MAIN,
+                    Routes.WELCOME_SCREEN,
                   ),
                   textColor: ColorUtil.primaryColor,
                   backgroundColor: Colors.white,

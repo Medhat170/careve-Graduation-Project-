@@ -14,6 +14,7 @@ abstract class Routes {
   static const SINGLE_DOCTOR = _Paths.SINGLE_DOCTOR;
   static const USER_APPOINTMENTS = _Paths.USER_APPOINTMENTS;
   static const SELF_CHECKING = _Paths.SELF_CHECKING;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const SINGLE_DOCTOR = '/single-doctor';
   static const USER_APPOINTMENTS = '/user-appointments';
   static const SELF_CHECKING = '/self-checking';
+  static const SPLASH = '/splash';
 }

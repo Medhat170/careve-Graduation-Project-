@@ -63,7 +63,7 @@ class ResetPasswordView extends GetView<AuthService> {
                             keyBoardType: TextInputType.text,
                             validator: QuickTextValidator(
                               hasMinLength: 8,
-                            ),
+                            ).call,
                           ),
                           AuthInputField(
                             S.of(context).confirmPassword,
@@ -75,8 +75,15 @@ class ResetPasswordView extends GetView<AuthService> {
                                 .value = !controller.hidePassword.value,
                             keyBoardType: TextInputType.text,
                             validator: QuickTextValidator(
+                              extraValidation: (String value) {
+                                if (controller.password.text !=
+                                    controller.confirmedPassword.text) {
+                                  return S.current.passwordsDoNotMatch;
+                                }
+                                return null;
+                              },
                               hasMinLength: 8,
-                            ),
+                            ).call,
                           ),
                           const SizedBox(
                             height: 10,
