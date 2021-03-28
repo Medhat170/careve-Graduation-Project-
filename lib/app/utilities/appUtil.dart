@@ -28,6 +28,7 @@ class AppUtil {
   );
   static ThemeData appTheme = ThemeData(
     fontFamily: 'Segoe UI',
+    primaryColor: ColorUtil.primaryColor,
     scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );

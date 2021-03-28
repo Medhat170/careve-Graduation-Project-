@@ -6,20 +6,18 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class CacheService extends GetxService {
+  CacheService(this.userRepo, this.settingsRepo);
+
   static CacheService get to => Get.find();
 
-  UserRepo _userRepo;
-  SettingsRepo _settingsRepo;
-
-  UserRepo get userRepo => _userRepo;
-
-  SettingsRepo get settingsRepo => _settingsRepo;
+  final UserRepo userRepo;
+  final SettingsRepo settingsRepo;
 
   Future<String> initRepos() async {
     await Hive.initFlutter('v1');
-    await (_userRepo = UserRepo()).init();
-    await (_settingsRepo = SettingsRepo()).init();
-    return _settingsRepo.cachedLang;
+    await userRepo.init();
+    await settingsRepo.init();
+    return settingsRepo.cachedLang;
   }
 
   static void registerTypeAdapters() {

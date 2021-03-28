@@ -58,7 +58,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             },
           );
         }
-        AppService.to.user(UserRepo.updateUserCache(response));
+        AppService.to
+            .user(await CacheService.to.userRepo.updateUserCache(response));
         CacheService.to.settingsRepo
             .setCachedUserId(AppService.to.user.value.id);
         name.clear();

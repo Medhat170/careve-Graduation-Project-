@@ -1,6 +1,7 @@
 import 'package:careve/app/components/appButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/backButton.dart';
+import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
@@ -101,15 +102,17 @@ class AuthView extends GetView<AuthService> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              CareveButton(
-                                title: controller.signUP.value
-                                    ? S.of(context).signUp
-                                    : S.of(context).signIn,
-                                onTap: () async {
-                                  await controller.auth();
-                                },
-                                backgroundColor: ColorUtil.primaryColor,
-                              ),
+                              controller.isBusy.value
+                                  ? Loading()
+                                  : CareveButton(
+                                      title: controller.signUP.value
+                                          ? S.of(context).signUp
+                                          : S.of(context).signIn,
+                                      onTap: () async {
+                                        await controller.auth();
+                                      },
+                                      backgroundColor: ColorUtil.primaryColor,
+                                    ),
                               const SizedBox(
                                 height: 15.0,
                               ),

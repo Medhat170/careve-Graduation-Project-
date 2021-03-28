@@ -1,13 +1,13 @@
 import 'package:bdaya_repository_pattern/bdaya_repository_pattern.dart';
 import 'package:careve/app/models/user.dart';
-import 'package:get/get.dart';
 
 class UserRepo extends ActiveRepo<String, User> {
   @override
   String get boxName => 'users';
 
-  static User updateUserCache(Map<String, dynamic> data) {
-    return User()
+  Future<User> updateUserCache(Map<String, dynamic> data) async {
+    var local = dataBox.get(data['id'].toString(), defaultValue: User());
+    local = User()
       ..name = data['name']
       ..email = data['email']
       ..accessToken = data['apitoken']
@@ -16,5 +16,7 @@ class UserRepo extends ActiveRepo<String, User> {
       ..address = data['adress']
       ..phone = data['mobile']
       ..id = data['id'].toString();
+    await dataBox.put(data['id'].toString(), local);
+    return local;
   }
 }
