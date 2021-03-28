@@ -10,6 +10,8 @@ import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
 import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/main_bottom_navigation.dart';
+import 'package:careve/app/modules/self_checking/bindings/self_checking_binding.dart';
+import 'package:careve/app/modules/self_checking/views/self_checking_view.dart';
 import 'package:careve/app/modules/single_doctor/bindings/single_doctor_binding.dart';
 import 'package:careve/app/modules/single_doctor/views/single_doctor_view.dart';
 import 'package:careve/app/modules/user_appointments/bindings/user_appointments_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.USER_APPOINTMENTS,
       page: () => UserAppointmentsView(),
       binding: UserAppointmentsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SELF_CHECKING,
+      page: () => SelfCheckingView(),
+      binding: SelfCheckingBinding(),
     ),
   ];
 }
