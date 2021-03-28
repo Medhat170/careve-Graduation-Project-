@@ -9,11 +9,13 @@ import 'package:get/get.dart';
 class SplashController extends GetxController {
   Future<Object> initFunction(BuildContext context) async {
     try {
-      final currentLang = 'en';
+      String currentLang = 'en';
+      currentLang = await CacheService.to.initRepos();
       if (currentLang != null) await S.load(Locale(currentLang));
       final authLogicRes = await AppService.to.tryAutoLogin();
-      String authedRoute = authLogicRes == true ? Routes.HOME : Routes.AUTH;
-      return authedRoute;
+      String authRoute =
+          authLogicRes == true ? Routes.HOME : Routes.WELCOME_SCREEN;
+      return authRoute;
     } catch (e) {
       AppUtil.showAlertDialog(title: S.current.alert, body: e.toString());
       rethrow;

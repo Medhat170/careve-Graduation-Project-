@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthService extends GetxService with ApiMixin, BusyMixin {
-  final signUP = true.obs;
+  final signUP = false.obs;
   final isDoc = false.obs;
   GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
@@ -40,7 +40,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       try {
         startBusy();
         var response;
-        if (!signUP.value) {
+        if (signUP.value == false) {
           response = await post(
             url: ApiPath.login,
             body: {

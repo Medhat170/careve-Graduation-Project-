@@ -15,19 +15,14 @@ class CacheService extends GetxService {
 
   SettingsRepo get settingsRepo => _settingsRepo;
 
-  Future<void> initRepos() async {
+  Future<String> initRepos() async {
     await Hive.initFlutter('v1');
     await (_userRepo = UserRepo()).init();
     await (_settingsRepo = SettingsRepo()).init();
+    return _settingsRepo.cachedLang;
   }
 
   static void registerTypeAdapters() {
     Hive.registerAdapter(UserAdapter());
-  }
-
-  @override
-  void onInit() async {
-    await initRepos();
-    super.onInit();
   }
 }
