@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
+import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +21,7 @@ mixin ApiMixin {
     Function(int count, int total) onSendProgress,
     Function(int count, int total) onReceiveProgress,
   }) async {
-    _formData.fields.clear();
-    _formData.files.clear();
+    _formData = FormData();
     _addBody(body ?? {});
     _addFiles(files ?? {});
     return (await request(
@@ -95,16 +96,19 @@ mixin ApiMixin {
   }
 
   String _errorMsg(dynamic error) {
-    final Map<String, dynamic> errors = json.decode(error.toString());
     var errorMessage = S.current.formatException;
-    if (errors?.entries != null) {
-      for (var error in errors?.entries) {
-        if (error?.value is String) {
-          errorMessage = errorMessage + error?.value + '\n';
-        } else if (error?.value is List) {
-          errorMessage = errorMessage + error?.value[0]?.toString() + '\n';
+    try {
+      if (error?.entries != null) {
+        for (var error in error?.entries) {
+          if (error?.value is String) {
+            errorMessage = ' $errorMessage  ${error?.value} ';
+          } else if (error?.value is List) {
+            errorMessage = ' $errorMessage  -${error?.value[0]} \n ';
+          }
         }
       }
+    } catch (e) {
+      errorMessage = error.toString();
     }
     return errorMessage;
   }
@@ -114,6 +118,7 @@ mixin ApiMixin {
   ) async {
     try {
       final data = (await future);
+
       final Map<String, dynamic> response = json.decode(data.toString());
       print('Response : ${data.toString()}');
       return response;
@@ -128,7 +133,10 @@ mixin ApiMixin {
       } else if (dioError.type == DioErrorType.response) {
         switch (dioError.response.statusCode) {
           case 401:
+            errorMessage = S.current.unAuthorized;
+            break;
           case 400:
+            print(":::::::::::::::");
             errorMessage = _errorMsg(dioError.response.data);
             break;
           case 500:
