@@ -1,8 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
-
-import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -136,7 +133,6 @@ mixin ApiMixin {
             errorMessage = S.current.unAuthorized;
             break;
           case 400:
-            print(":::::::::::::::");
             errorMessage = _errorMsg(dioError.response.data);
             break;
           case 500:
