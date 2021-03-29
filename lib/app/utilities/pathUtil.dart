@@ -15,6 +15,20 @@ class PathUtil {
   static const String notesImage = imagesPath + 'notes.png';
   static const String selfCareImage = imagesPath + 'self_care.png';
   static const String doctorImage = imagesPath + 'doctor_image.png';
+  static const String protrusionOfOrdinatorImage =
+      imagesPath + 'Protrusion_of_ordinator.png';
+  static const String changeInTheShapeOrSizeImage =
+      imagesPath + 'Change_in_the_shape_or_size.png';
+  static const String hollowingImage = imagesPath + 'Hollowing.png';
+  static const String rashImage = imagesPath + 'Rash.png';
+  static const String skinWirnklesImage = imagesPath + 'Skin_wirnkles.png';
+  static const String turningTheSkinToWhatLookLikeOrangePeelImage =
+      imagesPath + 'Turning_the_skin_to_what_look_like_orange_peel.png';
+  static const String rednessImage = imagesPath + 'Redness.png';
+  static const String retreatOrChangeInTheDirectionOfTheNippleImage =
+      imagesPath + 'retreat_or_change_in _the_direction_of_the_nipple.png';
+  static const String soresOfTheSkinOrNippleImage =
+      imagesPath + 'Sores_of_the_skin_or_nipple.png';
   static const String favIcon = iconsPath + 'fav.png';
   static const String facebookIcon = iconsPath + 'facebookIcon.png';
   static const String googleIcon = iconsPath + 'googleIcon.png';

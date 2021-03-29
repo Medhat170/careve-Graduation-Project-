@@ -13,7 +13,7 @@ class StepTextStyle extends StatelessWidget {
       stepContent,
       style: TextStyle(
         color: ColorUtil.blackColor,
-        fontSize: 25.sp,
+        fontSize: 30.sp,
         fontWeight: FontWeight.bold,
       ),
 //      softWrap: true,
