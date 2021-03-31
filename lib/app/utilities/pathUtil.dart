@@ -29,6 +29,12 @@ class PathUtil {
       imagesPath + 'retreat_or_change_in _the_direction_of_the_nipple.png';
   static const String soresOfTheSkinOrNippleImage =
       imagesPath + 'Sores_of_the_skin_or_nipple.png';
+
+  static const String articlesImage1 = imagesPath + 'articlesImage1.png';
+  static const String articlesImage2 = imagesPath + 'articlesImage2.png';
+  static const String articlesImage3 = imagesPath + 'articlesImage3.png';
+  static const String articlesImage4 = imagesPath + 'articlesImage4.png';
+
   static const String favIcon = iconsPath + 'fav.png';
   static const String facebookIcon = iconsPath + 'facebookIcon.png';
   static const String googleIcon = iconsPath + 'googleIcon.png';

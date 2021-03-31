@@ -19,7 +19,7 @@ class SectionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.SELF_CHECKING),
+      onTap: () => Get.toNamed(Routes.ARTICLES),
       child: Stack(
         children: [
           Container(
