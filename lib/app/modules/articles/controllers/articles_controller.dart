@@ -1,8 +1,9 @@
+import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SingleDoctorController extends GetxController
-    with SingleGetTickerProviderMixin {
+class ArticlesController extends GetxController
+    with SingleGetTickerProviderMixin, CustomAppBar {
   TabController tabController;
   int selectedIndex = 0;
   @override
