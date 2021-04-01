@@ -41,6 +41,7 @@ class DoctorItem extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 32.0,
+                backgroundColor: Colors.transparent,
                 backgroundImage: AssetImage(
                   image,
                 ),
@@ -55,7 +56,7 @@ class DoctorItem extends StatelessWidget {
                     Text(
                       name ?? '',
                       style: TextStyle(
-                        fontSize: 34.sp,
+                        fontSize: 40.sp,
                         color: ColorUtil.blackColor,
                         fontWeight: FontWeight.w800,
                       ),
@@ -65,7 +66,7 @@ class DoctorItem extends StatelessWidget {
                     Text(
                       specialty ?? '',
                       style: TextStyle(
-                        fontSize: 28.sp,
+                        fontSize: 34.sp,
                         color: ColorUtil.mediumGrey,
                         fontWeight: FontWeight.w600,
                       ),
@@ -75,11 +76,11 @@ class DoctorItem extends StatelessWidget {
                         rating: rate,
                         icon: Icon(
                           Icons.star,
-                          size: 12,
+                          size: 16,
                           color: Colors.grey,
                         ),
                         starCount: 5,
-                        spacing: 2.0,
+                        spacing: 5.0,
                         size: 3,
                         isIndicator: false,
                         allowHalfRating: true,

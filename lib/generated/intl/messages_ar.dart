@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address" : MessageLookupByLibrary.simpleMessage("العنوان"),
     "alert" : MessageLookupByLibrary.simpleMessage("تنبيه"),
     "alreadyHaveAcc" : MessageLookupByLibrary.simpleMessage("لديك حساب بالفعل؟"),
+    "articles" : MessageLookupByLibrary.simpleMessage("مقالات"),
     "attachFile" : MessageLookupByLibrary.simpleMessage("أضف ملف"),
     "awareness" : MessageLookupByLibrary.simpleMessage("التوعيه"),
     "back" : MessageLookupByLibrary.simpleMessage("رجوع"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel" : MessageLookupByLibrary.simpleMessage("إلغاء"),
     "category" : MessageLookupByLibrary.simpleMessage("الفئه"),
     "chat" : MessageLookupByLibrary.simpleMessage("الدردشه"),
+    "commonQuestions" : MessageLookupByLibrary.simpleMessage("أسئلة شائعة"),
     "company" : MessageLookupByLibrary.simpleMessage("الشركه"),
     "confirmPassword" : MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
     "continueNext" : MessageLookupByLibrary.simpleMessage("إستمرار"),
@@ -115,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "typeMessage" : MessageLookupByLibrary.simpleMessage("أكتب رساله"),
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("غير مصرح لك !"),
     "verifyText" : MessageLookupByLibrary.simpleMessage("تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار"),
+    "videos" : MessageLookupByLibrary.simpleMessage("فيديوهات"),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("أهلاً, ")
   };
 }

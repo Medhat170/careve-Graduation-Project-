@@ -944,6 +944,36 @@ class S {
       args: [],
     );
   }
+
+  /// `مقالات`
+  String get articles {
+    return Intl.message(
+      'مقالات',
+      name: 'articles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أسئلة شائعة`
+  String get commonQuestions {
+    return Intl.message(
+      'أسئلة شائعة',
+      name: 'commonQuestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `فيديوهات`
+  String get videos {
+    return Intl.message(
+      'فيديوهات',
+      name: 'videos',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
-
-import 'package:careve/app/modules/articles/bindings/articles_binding.dart';
-import 'package:careve/app/modules/articles/views/articles_view.dart';
 import 'package:careve/app/modules/auth/views/auth_view.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
 import 'package:careve/app/modules/auth/views/reset_password_view.dart';
 import 'package:careve/app/modules/auth/views/verification_code_view.dart';
+import 'package:careve/app/modules/awareness/bindings/awareness_binding.dart';
+import 'package:careve/app/modules/awareness/views/awareness_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
@@ -89,9 +88,9 @@ class AppPages {
       binding: SplashBinding(),
     ),
     GetPage(
-      name: _Paths.ARTICLES,
-      page: () => ArticlesView(),
-      binding: ArticlesBinding(),
+      name: _Paths.AWARENESS,
+      page: () => AwarenessView(),
+      binding: AwarenessBinding(),
     ),
   ];
 }

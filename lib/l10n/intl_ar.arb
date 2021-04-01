@@ -89,5 +89,8 @@
   "doctors": "أطباء",
   "selfCare": "العناية بالنفس",
   "hospitals": "مستشفيات",
-  "awareness": "التوعيه"
+  "awareness": "التوعيه",
+  "articles": "مقالات",
+  "commonQuestions": "أسئلة شائعة",
+  "videos": "فيديوهات"
 }

@@ -42,11 +42,13 @@ class HomeView extends GetView<HomeController> {
                     Section(
                       name: S.of(context).awareness,
                       image: PathUtil.articlesImage,
+                      onPressed: () => Get.toNamed(Routes.AWARENESS),
                     ),
                     Section(
-                        name: S.of(context).doctors,
-                        image: PathUtil.doctorsImage,
-                        onPressed: () => Get.toNamed(Routes.DOCTORS)),
+                      name: S.of(context).doctors,
+                      image: PathUtil.doctorsImage,
+                      onPressed: () => Get.toNamed(Routes.DOCTORS),
+                    ),
                   ]
                       .map(
                         (section) => SectionItem(

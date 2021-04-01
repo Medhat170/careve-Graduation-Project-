@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address" : MessageLookupByLibrary.simpleMessage("Address"),
     "alert" : MessageLookupByLibrary.simpleMessage("Alert"),
     "alreadyHaveAcc" : MessageLookupByLibrary.simpleMessage("already have account?"),
+    "articles" : MessageLookupByLibrary.simpleMessage("Articles"),
     "attachFile" : MessageLookupByLibrary.simpleMessage("Attach file"),
     "awareness" : MessageLookupByLibrary.simpleMessage("Awareness"),
     "back" : MessageLookupByLibrary.simpleMessage("Back"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),
     "category" : MessageLookupByLibrary.simpleMessage("Category"),
     "chat" : MessageLookupByLibrary.simpleMessage("Chat"),
+    "commonQuestions" : MessageLookupByLibrary.simpleMessage("Common questions"),
     "company" : MessageLookupByLibrary.simpleMessage("Company"),
     "confirmPassword" : MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueNext" : MessageLookupByLibrary.simpleMessage("Continue"),
@@ -115,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "typeMessage" : MessageLookupByLibrary.simpleMessage("Type a message"),
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("Unauthorized action !"),
     "verifyText" : MessageLookupByLibrary.simpleMessage("A 6 - Digit PIN has been sent to your email address, enter it below to continue"),
+    "videos" : MessageLookupByLibrary.simpleMessage("Videos"),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("Welcome back, ")
   };
 }

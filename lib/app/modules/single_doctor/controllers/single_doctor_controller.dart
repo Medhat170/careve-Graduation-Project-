@@ -7,7 +7,7 @@ class SingleDoctorController extends GetxController
   int selectedIndex = 0;
   @override
   void onInit() {
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     super.onInit();
   }
 

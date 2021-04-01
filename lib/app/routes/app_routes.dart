@@ -15,7 +15,7 @@ abstract class Routes {
   static const USER_APPOINTMENTS = _Paths.USER_APPOINTMENTS;
   static const SELF_CHECKING = _Paths.SELF_CHECKING;
   static const SPLASH = _Paths.SPLASH;
-  static const ARTICLES = _Paths.ARTICLES;
+  static const AWARENESS = _Paths.AWARENESS;
 }
 
 abstract class _Paths {
@@ -32,5 +32,5 @@ abstract class _Paths {
   static const USER_APPOINTMENTS = '/user-appointments';
   static const SELF_CHECKING = '/self-checking';
   static const SPLASH = '/splash';
-  static const ARTICLES = '/articles';
+  static const AWARENESS = '/awareness';
 }

@@ -89,5 +89,8 @@
   "doctors": "Doctors",
   "selfCare": "Self care",
   "hospitals": "Hospitals",
-  "awareness": "Awareness"
+  "awareness": "Awareness",
+  "articles": "Articles",
+  "commonQuestions": "Common questions",
+  "videos": "Videos"
 }
