@@ -13,7 +13,7 @@ class FirstTimeController extends GetxController {
     },
     {
       "text": "Connect With Other People Who Are Experiencing The Same Things",
-      "image": PathUtil.splashscreen2Image
+      "image": PathUtil.splashscreen1Image
     },
     {
       "text": "you can get articles and tests to check on your health",

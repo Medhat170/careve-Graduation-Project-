@@ -65,7 +65,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         password.clear();
         confirmedPassword.clear();
         email.clear();
-        Get.offAllNamed(Routes.MAIN);
+        Get.offAllNamed(Routes.HOME);
       } catch (error) {
         await AppUtil.showAlertDialog(body: error.toString());
       }

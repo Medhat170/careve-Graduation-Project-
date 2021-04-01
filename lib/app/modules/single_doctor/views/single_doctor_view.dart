@@ -26,7 +26,7 @@ class SingleDoctorView extends GetView<SingleDoctorController>
                   children: [
                     DoctorInfo(
                       id: '0',
-                      image: PathUtil.nearbyHospitalsImage,
+                      image: PathUtil.hospitalsImage,
                       name: 'Dr. Mayme Gomez',
                       specialty: 'Breast tumors',
                       rate: 4,

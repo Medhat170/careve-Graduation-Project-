@@ -9,19 +9,19 @@ class SelfCheckingController extends GetxController {
   final currentIndex = 0.obs;
   List<Map<String, dynamic>> selfCheckingData = [
     {
-      "image": PathUtil.selfCheckingImage,
+      "image": PathUtil.articlesImage,
       "widget": FirstStepContent(),
     },
     {
-      "image": PathUtil.selfCheckingImage,
+      "image": PathUtil.articlesImage,
       "widget": SecondScreenContent(),
     },
     {
-      "image": PathUtil.selfCheckingImage,
+      "image": PathUtil.articlesImage,
       "widget": ThirdStepContent(),
     },
     {
-      "image": PathUtil.selfCheckingImage,
+      "image": PathUtil.articlesImage,
       "widget": ForthStepContent(),
     },
   ];

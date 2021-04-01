@@ -38,7 +38,7 @@ class DoctorInfo extends StatelessWidget {
             ClipRRect(
               borderRadius: AppUtil.borderRadius25,
               child: Image.asset(
-                PathUtil.nearbyHospitalsImage,
+                PathUtil.hospitalsImage,
                 fit: BoxFit.cover,
                 width: Get.width * 0.35,
                 height: double.infinity,

@@ -13,35 +13,35 @@ class TabBar extends GetView<ArticlesController> {
       noScroll: true,
       shrinkWrap: true,
       children: [
-        TabBar(
-          controller: controller.tabController,
-          isScrollable: true,
-          indicatorColor: ColorUtil.primaryColor,
-          tabs: [
-            ...List.generate(
-              2,
-              (index) => Tab(
-                child: Text(
-                  'Sat',
-                  style: TextStyle(
-                    color: ColorUtil.primaryColor,
-                    fontSize: 44.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        // TabBarView(
+        // TabBar(
         //   controller: controller.tabController,
-        //   children: <Widget>[... ],
-        //   //controller: _tabController,
+        //   isScrollable: true,
+        //   indicatorColor: ColorUtil.primaryColor,
+        //   tabs: [
+        //     ...List.generate(
+        //       2,
+        //       (index) => Tab(
+        //         child: Text(
+        //           'Sat',
+        //           style: TextStyle(
+        //             color: ColorUtil.primaryColor,
+        //             fontSize: 44.sp,
+        //             fontWeight: FontWeight.w700,
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
         // ),
-        ...List.generate(
-          1,
-          (index) => ArticlesView(),
-        ),
+        // // TabBarView(
+        // //   controller: controller.tabController,
+        // //   children: <Widget>[... ],
+        // //   //controller: _tabController,
+        // // ),
+        // ...List.generate(
+        //   1,
+        //   (index) => ArticlesView(),
+        // ),
       ],
     );
   }

@@ -115,7 +115,6 @@ mixin ApiMixin {
   ) async {
     try {
       final data = (await future);
-
       final Map<String, dynamic> response = json.decode(data.toString());
       print('Response : ${data.toString()}');
       return response;
@@ -123,7 +122,8 @@ mixin ApiMixin {
       String errorMessage;
       if (dioError.type == DioErrorType.connectTimeout ||
           dioError.type == DioErrorType.receiveTimeout ||
-          dioError.type == DioErrorType.sendTimeout) {
+          dioError.type == DioErrorType.sendTimeout ||
+          dioError.type == DioErrorType.other) {
         errorMessage = S.current.socketException;
       } else if (dioError.type == DioErrorType.cancel) {
         errorMessage = S.current.httpException;

@@ -84,5 +84,10 @@
   "noChangedData": "لم تقم بتغيير أى بيانات",
   "unAuthorized": "غير مصرح لك !",
   "doctor": "دكتور/ه",
-  "normalUser": "مستخدم عادى"
+  "normalUser": "مستخدم عادى",
+  "welcomeBack": "أهلاً, ",
+  "doctors": "أطباء",
+  "selfCare": "العناية بالنفس",
+  "hospitals": "مستشفيات",
+  "awareness": "التوعيه"
 }

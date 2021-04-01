@@ -84,5 +84,10 @@
   "noChangedData": "You did not change any data",
   "unAuthorized": "Unauthorized action !",
   "doctor": "Doctor",
-  "normalUser": "Normal user"
+  "normalUser": "Normal user",
+  "welcomeBack": "Welcome back, ",
+  "doctors": "Doctors",
+  "selfCare": "Self care",
+  "hospitals": "Hospitals",
+  "awareness": "Awareness"
 }

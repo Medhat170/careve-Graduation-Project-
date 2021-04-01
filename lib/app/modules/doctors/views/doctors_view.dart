@@ -35,7 +35,7 @@ class DoctorsView extends GetView<DoctorsController> {
                         id: 'Dr1',
                         rate: 4.5,
                         specialty: 'Breast tumors',
-                        image: PathUtil.doctorImage,
+                        image: PathUtil.logoIcon,
                       ),
                     ),
                   ),

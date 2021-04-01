@@ -894,6 +894,56 @@ class S {
       args: [],
     );
   }
+
+  /// `أهلاً, `
+  String get welcomeBack {
+    return Intl.message(
+      'أهلاً, ',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أطباء`
+  String get doctors {
+    return Intl.message(
+      'أطباء',
+      name: 'doctors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `العناية بالنفس`
+  String get selfCare {
+    return Intl.message(
+      'العناية بالنفس',
+      name: 'selfCare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `مستشفيات`
+  String get hospitals {
+    return Intl.message(
+      'مستشفيات',
+      name: 'hospitals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `التوعيه`
+  String get awareness {
+    return Intl.message(
+      'التوعيه',
+      name: 'awareness',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

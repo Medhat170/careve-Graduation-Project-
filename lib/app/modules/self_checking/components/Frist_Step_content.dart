@@ -36,17 +36,15 @@ class FirstStepContent extends StatelessWidget {
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
           children: [
-            ImageWidget(image: PathUtil.protrusionOfOrdinatorImage),
-            ImageWidget(image: PathUtil.changeInTheShapeOrSizeImage),
-            ImageWidget(image: PathUtil.hollowingImage),
-            ImageWidget(image: PathUtil.rashImage),
-            ImageWidget(image: PathUtil.skinWirnklesImage),
-            ImageWidget(
-                image: PathUtil.turningTheSkinToWhatLookLikeOrangePeelImage),
-            ImageWidget(image: PathUtil.rednessImage),
-            ImageWidget(
-                image: PathUtil.retreatOrChangeInTheDirectionOfTheNippleImage),
-            ImageWidget(image: PathUtil.soresOfTheSkinOrNippleImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
+            ImageWidget(image: PathUtil.articlesImage),
           ],
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 0.3,

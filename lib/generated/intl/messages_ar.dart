@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alert" : MessageLookupByLibrary.simpleMessage("تنبيه"),
     "alreadyHaveAcc" : MessageLookupByLibrary.simpleMessage("لديك حساب بالفعل؟"),
     "attachFile" : MessageLookupByLibrary.simpleMessage("أضف ملف"),
+    "awareness" : MessageLookupByLibrary.simpleMessage("التوعيه"),
     "back" : MessageLookupByLibrary.simpleMessage("رجوع"),
     "birthDate" : MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
     "cancel" : MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -43,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "didNotFind" : MessageLookupByLibrary.simpleMessage("لم نعثر على اى بيانات"),
     "discountCard" : MessageLookupByLibrary.simpleMessage("بطاقة الخصم"),
     "doctor" : MessageLookupByLibrary.simpleMessage("دكتور/ه"),
+    "doctors" : MessageLookupByLibrary.simpleMessage("أطباء"),
     "donNotHaveAcc" : MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "done" : MessageLookupByLibrary.simpleMessage("تم"),
     "edit" : MessageLookupByLibrary.simpleMessage("تعديل"),
@@ -62,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "guest" : MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
     "hasMinLength" : m1,
     "home" : MessageLookupByLibrary.simpleMessage("الرئيسيه"),
+    "hospitals" : MessageLookupByLibrary.simpleMessage("مستشفيات"),
     "httpException" : MessageLookupByLibrary.simpleMessage("تعذر الاتصال بالخادم"),
     "idOrPasswordIsWrong" : MessageLookupByLibrary.simpleMessage("تأكد من الرقم القومى وكلمه المرور"),
     "inputNull" : MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب!"),
@@ -93,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry" : MessageLookupByLibrary.simpleMessage("إعادة المحاوله"),
     "search" : MessageLookupByLibrary.simpleMessage("بحث"),
     "selectLanguageTitle" : MessageLookupByLibrary.simpleMessage("اختر لغه العرض المفضله"),
+    "selfCare" : MessageLookupByLibrary.simpleMessage("العناية بالنفس"),
     "send" : MessageLookupByLibrary.simpleMessage("إرسال"),
     "settings" : MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "shortPassword" : MessageLookupByLibrary.simpleMessage("كلمة المرور قصيره"),
@@ -110,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisEmpty" : MessageLookupByLibrary.simpleMessage("لا توجد بيانات"),
     "typeMessage" : MessageLookupByLibrary.simpleMessage("أكتب رساله"),
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("غير مصرح لك !"),
-    "verifyText" : MessageLookupByLibrary.simpleMessage("تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار")
+    "verifyText" : MessageLookupByLibrary.simpleMessage("تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار"),
+    "welcomeBack" : MessageLookupByLibrary.simpleMessage("أهلاً, ")
   };
 }

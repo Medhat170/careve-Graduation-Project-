@@ -14,7 +14,7 @@ class SplashController extends GetxController {
       if (currentLang != null) await S.load(Locale(currentLang));
       final authLogicRes = await AppService.to.tryAutoLogin();
       String authRoute =
-          authLogicRes == true ? Routes.MAIN : Routes.WELCOME_SCREEN;
+          authLogicRes == true ? Routes.HOME : Routes.WELCOME_SCREEN;
       return authRoute;
     } catch (e) {
       AppUtil.showAlertDialog(title: S.current.alert, body: e.toString());

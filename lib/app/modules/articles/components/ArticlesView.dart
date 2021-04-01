@@ -5,21 +5,8 @@ import 'ListView_Item.dart';
 class ArticlesView extends StatelessWidget {
   final List<Map<String, String>> articlesData = [
     {
-      "image": PathUtil.articlesImage1,
+      "image": PathUtil.doctorsImage,
       "question": 'What is symptoms and causes of breast cancer?'
-    },
-    {
-      "image": PathUtil.articlesImage2,
-      "question": 'How to protect yourself from breast cancer?'
-    },
-    {
-      "image": PathUtil.articlesImage3,
-      "question": 'Is breast cancer a genetic disease?'
-    },
-    {
-      "image": PathUtil.articlesImage4,
-      "question":
-          'What is breast cancer and what is the incidence of breast cancer?'
     },
   ];
   @override

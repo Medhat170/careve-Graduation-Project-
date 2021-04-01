@@ -9,51 +9,49 @@ class SectionItem extends StatelessWidget {
   final String id;
   final String title;
   final String image;
+  final Function onTap;
 
   SectionItem({
     this.id,
     this.title,
     this.image,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.ARTICLES),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(image),
-                fit: BoxFit.cover,
+      onTap: onTap,
+      child: Card(
+        color: ColorUtil.whiteColor,
+        elevation: 3.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: AppUtil.borderRadius,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.contain,
+                ),
               ),
-              borderRadius: AppUtil.borderRadius,
-              color: ColorUtil.transparentPink,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: AppUtil.borderRadius,
-              color: ColorUtil.transparentPink,
-            ),
-          ),
-          Positioned(
-            bottom: 30.0,
-            left: 10.0,
-            right: 10.0,
-            child: Center(
-              child: Text(
+              const SizedBox(
+                height: 15.0,
+              ),
+              Text(
                 title,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 46.sp,
-                  color: ColorUtil.whiteColor,
+                  color: ColorUtil.primaryColor,
                 ),
               ),
-            ),
-          )
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }

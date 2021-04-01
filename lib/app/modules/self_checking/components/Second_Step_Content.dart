@@ -34,7 +34,7 @@ class SecondScreenContent extends StatelessWidget {
                 height: 10,
               ),
               Image(
-                image: AssetImage(PathUtil.protrusionOfOrdinatorImage),
+                image: AssetImage(PathUtil.articlesImage),
               )
             ],
           ),

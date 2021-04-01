@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alert" : MessageLookupByLibrary.simpleMessage("Alert"),
     "alreadyHaveAcc" : MessageLookupByLibrary.simpleMessage("already have account?"),
     "attachFile" : MessageLookupByLibrary.simpleMessage("Attach file"),
+    "awareness" : MessageLookupByLibrary.simpleMessage("Awareness"),
     "back" : MessageLookupByLibrary.simpleMessage("Back"),
     "birthDate" : MessageLookupByLibrary.simpleMessage("Birth date"),
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),
@@ -43,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "didNotFind" : MessageLookupByLibrary.simpleMessage("We did\'t find any data"),
     "discountCard" : MessageLookupByLibrary.simpleMessage("Discount Card"),
     "doctor" : MessageLookupByLibrary.simpleMessage("Doctor"),
+    "doctors" : MessageLookupByLibrary.simpleMessage("Doctors"),
     "donNotHaveAcc" : MessageLookupByLibrary.simpleMessage("Don/\'t  have account?"),
     "done" : MessageLookupByLibrary.simpleMessage("Done"),
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
@@ -62,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "guest" : MessageLookupByLibrary.simpleMessage("Continue as a guest"),
     "hasMinLength" : m1,
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
+    "hospitals" : MessageLookupByLibrary.simpleMessage("Hospitals"),
     "httpException" : MessageLookupByLibrary.simpleMessage("Unable to contact the server"),
     "idOrPasswordIsWrong" : MessageLookupByLibrary.simpleMessage("National id or password is wrong"),
     "inputNull" : MessageLookupByLibrary.simpleMessage("This field is required!"),
@@ -93,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
     "search" : MessageLookupByLibrary.simpleMessage("Search"),
     "selectLanguageTitle" : MessageLookupByLibrary.simpleMessage("Choose your preferred language"),
+    "selfCare" : MessageLookupByLibrary.simpleMessage("Self care"),
     "send" : MessageLookupByLibrary.simpleMessage("Send"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "shortPassword" : MessageLookupByLibrary.simpleMessage("Password is too short"),
@@ -110,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisEmpty" : MessageLookupByLibrary.simpleMessage("There is no data"),
     "typeMessage" : MessageLookupByLibrary.simpleMessage("Type a message"),
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("Unauthorized action !"),
-    "verifyText" : MessageLookupByLibrary.simpleMessage("A 6 - Digit PIN has been sent to your email address, enter it below to continue")
+    "verifyText" : MessageLookupByLibrary.simpleMessage("A 6 - Digit PIN has been sent to your email address, enter it below to continue"),
+    "welcomeBack" : MessageLookupByLibrary.simpleMessage("Welcome back, ")
   };
 }

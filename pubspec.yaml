@@ -41,6 +41,7 @@ dependencies:
   titled_navigation_bar: ^5.0.0-nullsafety.0
   flutter_staggered_animations: ^1.0.0
   hive_flutter: ^1.0.0-nullsafety.0
+  avatar_glow: ^2.0.1
   bdaya_repository_pattern:
     git:
       url: git@github.com:Bdaya-Dev/Flutter-Repository-Pattern.git
