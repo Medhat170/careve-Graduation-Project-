@@ -1,7 +1,7 @@
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
+import 'package:careve/app/models/user.dart';
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/services/app_service.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
@@ -11,8 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthService extends GetxService with ApiMixin, BusyMixin {
+  final CacheService cacheService;
+
+  AuthService(this.cacheService);
+
   final signUP = false.obs;
   final isDoc = false.obs;
+  final user = Rx<User>();
+
   GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> passwordsFormKey = GlobalKey<FormState>();
@@ -27,6 +33,26 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   final dio = Dio();
 
   static AuthService get to => Get.find();
+
+  bool get isAuth => userId != null;
+
+  String get userId => cacheService?.settingsRepo?.cachedUserId;
+
+  Future<bool> tryAutoLogin() async {
+    var cachedUserId = cacheService?.settingsRepo?.cachedUserId;
+    if (cachedUserId == null) {
+      print('User is not auth!');
+      return false;
+    }
+    final cachedUser = cacheService.userRepo.getValueById(cachedUserId);
+    if (cachedUser == null) {
+      print('User is not auth!');
+      return false;
+    }
+    print('User is auth!');
+    user.value = cachedUser;
+    return true;
+  }
 
   Future<void> auth() async {
     final formData = authFormKey.currentState;
@@ -57,10 +83,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             },
           );
         }
-        AppService.to
-            .user(await CacheService.to.userRepo.updateUserCache(response));
-        CacheService.to.settingsRepo
-            .setCachedUserId(AppService.to.user.value.id);
+        user(await CacheService.to.userRepo.updateUserCache(response));
+        CacheService.to.settingsRepo.setCachedUserId(user.value.id);
         name.clear();
         password.clear();
         confirmedPassword.clear();

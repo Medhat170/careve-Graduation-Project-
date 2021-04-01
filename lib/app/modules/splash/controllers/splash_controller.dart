@@ -1,5 +1,5 @@
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/services/app_service.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/generated/l10n.dart';
@@ -12,7 +12,7 @@ class SplashController extends GetxController {
       String currentLang = 'en';
       currentLang = await CacheService.to.initRepos();
       if (currentLang != null) await S.load(Locale(currentLang));
-      final authLogicRes = await AppService.to.tryAutoLogin();
+      final authLogicRes = await AuthService.to.tryAutoLogin();
       String authRoute =
           authLogicRes == true ? Routes.HOME : Routes.WELCOME_SCREEN;
       return authRoute;

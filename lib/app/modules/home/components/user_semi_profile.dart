@@ -1,6 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:careve/app/components/badge.dart';
-import 'package:careve/app/services/app_service.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
@@ -17,7 +17,7 @@ class UserSemiProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userData = AppService.to.user?.value;
+    final userData = AuthService.to.user?.value;
     final height =
         Get.height - Get.mediaQuery.padding.top - Get.mediaQuery.padding.bottom;
     return Stack(

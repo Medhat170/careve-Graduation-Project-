@@ -10,12 +10,12 @@ abstract class Routes {
   static const VERIFICATION_CODE = _Paths.VERIFICATION_CODE;
   static const FIRST_TIME = _Paths.FIRST_TIME;
   static const DOCTORS = _Paths.DOCTORS;
-  static const MAIN = _Paths.MAIN;
   static const SINGLE_DOCTOR = _Paths.SINGLE_DOCTOR;
   static const USER_APPOINTMENTS = _Paths.USER_APPOINTMENTS;
   static const SELF_CHECKING = _Paths.SELF_CHECKING;
   static const SPLASH = _Paths.SPLASH;
   static const AWARENESS = _Paths.AWARENESS;
+  static const AWARENESS_INFO = _Paths.AWARENESS_INFO;
 }
 
 abstract class _Paths {
@@ -27,10 +27,10 @@ abstract class _Paths {
   static const VERIFICATION_CODE = '/verification-code';
   static const FIRST_TIME = '/first-time';
   static const DOCTORS = '/doctors';
-  static const MAIN = '/main';
   static const SINGLE_DOCTOR = '/single-doctor';
   static const USER_APPOINTMENTS = '/user-appointments';
   static const SELF_CHECKING = '/self-checking';
   static const SPLASH = '/splash';
   static const AWARENESS = '/awareness';
+  static const AWARENESS_INFO = '/awareness-info';
 }

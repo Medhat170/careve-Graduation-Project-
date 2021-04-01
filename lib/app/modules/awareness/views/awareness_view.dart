@@ -1,6 +1,8 @@
 import 'package:careve/app/components/animatedListHandler.dart';
 import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/modules/awareness/awareness_card.dart';
+import 'package:careve/app/modules/awareness/components/awareness_card.dart';
+import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -63,12 +65,20 @@ class AwarenessView extends GetView<AwarenessController> {
                                 image: null,
                                 title:
                                     'What is symptoms and causes of breast cancer?',
+                                onTap: () => Get.toNamed(
+                                  Routes.AWARENESS_INFO,
+                                  arguments: AwarenessType.VIDEO,
+                                ),
                               )
                             : AwarenessCard(
                                 title:
                                     'What is symptoms and causes of breast cancer?',
                                 auther: 'By Dr. Ahmed Anwar',
                                 dateTime: DateTime.now(),
+                                onTap: () => Get.toNamed(
+                                  Routes.AWARENESS_INFO,
+                                  arguments: AwarenessType.ARTICLE,
+                                ),
                               ),
                       ),
                     ],

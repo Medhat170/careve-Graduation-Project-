@@ -1,5 +1,3 @@
-import 'package:careve/app/modules/home/controllers/home_controller.dart';
-import 'package:careve/app/services/app_service.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/services/cache/setting_repo.dart';
@@ -18,17 +16,10 @@ class InitialBinding extends Bindings {
         settingsRepo,
       ),
     );
-    Get.put<AppService>(
-      AppService(
+    Get.put<AuthService>(
+      AuthService(
         cacheService,
       ),
-    );
-    Get.put<AuthService>(
-      AuthService(),
-    );
-    Get.put<HomeController>(
-      HomeController(),
-      permanent: true,
     );
   }
 }

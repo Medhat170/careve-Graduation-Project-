@@ -13,6 +13,7 @@ class AwarenessCard extends AwarenessCardRef {
     String auther,
     DateTime dateTime,
     Function onTap,
+    double elevation,
     EdgeInsets margin,
   }) : super(
           child ??
@@ -61,6 +62,7 @@ class AwarenessCard extends AwarenessCardRef {
           onTap: onTap,
           borderRadius: AppUtil.borderRadius,
           margin: margin,
+          elevation: elevation,
         );
 
   factory AwarenessCard.image({
@@ -82,26 +84,29 @@ class _AwarenessCardWithImage extends AwarenessCard {
             children: [
               Card(
                 color: ColorUtil.whiteColor,
-                elevation: 2.5,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: AppUtil.borderRadius,
                 ),
-                child: image != null
-                    ? Image.network(
-                        image,
-                        height: 90.0,
-                        width: 90.0,
-                        fit: BoxFit.cover,
-                      )
-                    : Image.asset(
-                        PathUtil.logoIcon,
-                        height: 80.0,
-                        width: 80.0,
-                        fit: BoxFit.cover,
-                      ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: image != null
+                      ? Image.network(
+                          image,
+                          height: 90.0,
+                          width: 90.0,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          PathUtil.logoIcon,
+                          height: 80.0,
+                          width: 80.0,
+                          fit: BoxFit.cover,
+                        ),
+                ),
               ),
               const SizedBox(
-                width: 20.0,
+                width: 10.0,
               ),
               Expanded(
                 child: Text(
@@ -119,12 +124,14 @@ class _AwarenessCardWithImage extends AwarenessCard {
           ),
           onTap: onTap,
           margin: margin,
+          elevation: 0.0,
         );
 }
 
 class AwarenessCardRef extends StatelessWidget {
   final Widget child;
   final Function onTap;
+  final double elevation;
   final EdgeInsets margin;
   final BorderRadius borderRadius;
 
@@ -132,6 +139,7 @@ class AwarenessCardRef extends StatelessWidget {
     this.child, {
     @required this.onTap,
     this.borderRadius,
+    this.elevation,
     this.margin,
   });
 
@@ -144,7 +152,7 @@ class AwarenessCardRef extends StatelessWidget {
       },
       child: Card(
         color: Colors.white,
-        elevation: 5.0,
+        elevation: elevation ?? 5.0,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,
         ),

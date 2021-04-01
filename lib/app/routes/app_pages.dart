@@ -1,16 +1,18 @@
 import 'package:get/get.dart';
+
 import 'package:careve/app/modules/auth/views/auth_view.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
 import 'package:careve/app/modules/auth/views/reset_password_view.dart';
 import 'package:careve/app/modules/auth/views/verification_code_view.dart';
 import 'package:careve/app/modules/awareness/bindings/awareness_binding.dart';
 import 'package:careve/app/modules/awareness/views/awareness_view.dart';
+import 'package:careve/app/modules/awareness_info/bindings/awareness_info_binding.dart';
+import 'package:careve/app/modules/awareness_info/views/awareness_info_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
 import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
-import 'package:careve/app/modules/main_bottom_navigation.dart';
 import 'package:careve/app/modules/self_checking/bindings/self_checking_binding.dart';
 import 'package:careve/app/modules/self_checking/views/self_checking_view.dart';
 import 'package:careve/app/modules/single_doctor/bindings/single_doctor_binding.dart';
@@ -64,10 +66,6 @@ class AppPages {
       binding: DoctorsBinding(),
     ),
     GetPage(
-      name: _Paths.MAIN,
-      page: () => MainView(),
-    ),
-    GetPage(
       name: _Paths.SINGLE_DOCTOR,
       page: () => SingleDoctorView(),
       binding: SingleDoctorBinding(),
@@ -91,6 +89,11 @@ class AppPages {
       name: _Paths.AWARENESS,
       page: () => AwarenessView(),
       binding: AwarenessBinding(),
+    ),
+    GetPage(
+      name: _Paths.AWARENESS_INFO,
+      page: () => AwarenessInfoView(),
+      binding: AwarenessInfoBinding(),
     ),
   ];
 }
