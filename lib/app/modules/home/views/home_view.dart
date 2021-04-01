@@ -2,6 +2,7 @@ import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/models/section.dart';
 import 'package:careve/app/modules/home/components/sectionItem.dart';
 import 'package:careve/app/modules/home/components/user_semi_profile.dart';
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -43,14 +44,15 @@ class HomeView extends GetView<HomeController> {
                       image: PathUtil.articlesImage,
                     ),
                     Section(
-                      name: S.of(context).doctors,
-                      image: PathUtil.doctorsImage,
-                    ),
+                        name: S.of(context).doctors,
+                        image: PathUtil.doctorsImage,
+                        onPressed: () => Get.toNamed(Routes.DOCTORS)),
                   ]
                       .map(
                         (section) => SectionItem(
                           title: section.name,
                           image: section.image,
+                          onTap: section.onPressed,
                         ),
                       )
                       .toList(),
