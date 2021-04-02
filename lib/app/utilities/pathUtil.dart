@@ -1,3 +1,5 @@
+import 'package:careve/generated/l10n.dart';
+
 const imagesPath = 'assets/images/';
 const iconsPath = 'assets/icons/';
 const url = 'https://laravelbreast.000webhostapp.com/public/api/';
@@ -10,6 +12,7 @@ class PathUtil {
   static const String hospitalsImage = imagesPath + 'hospitals.png';
   static const String selfCareImage = imagesPath + 'selfCare.png';
   static const String articlesImage = imagesPath + 'articles.png';
+  static const String defaultUserImage = imagesPath + 'defaultUserImage.png';
   static const String favIcon = iconsPath + 'fav.png';
   static const String facebookIcon = iconsPath + 'facebookIcon.png';
   static const String googleIcon = iconsPath + 'googleIcon.png';

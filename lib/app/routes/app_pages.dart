@@ -21,6 +21,8 @@ import 'package:careve/app/modules/splash/bindings/splash_binding.dart';
 import 'package:careve/app/modules/splash/views/splash_view.dart';
 import 'package:careve/app/modules/user_appointments/bindings/user_appointments_binding.dart';
 import 'package:careve/app/modules/user_appointments/views/user_appointments_view.dart';
+import 'package:careve/app/modules/user_profile/bindings/user_profile_binding.dart';
+import 'package:careve/app/modules/user_profile/views/user_profile_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
 import 'package:careve/app/modules/welcome_screen/views/welcome_screen_view.dart';
 
@@ -94,6 +96,11 @@ class AppPages {
       name: _Paths.AWARENESS_INFO,
       page: () => AwarenessInfoView(),
       binding: AwarenessInfoBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_PROFILE,
+      page: () => UserProfileView(),
+      binding: UserProfileBinding(),
     ),
   ];
 }
