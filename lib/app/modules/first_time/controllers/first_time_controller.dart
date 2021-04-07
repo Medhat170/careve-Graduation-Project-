@@ -8,7 +8,7 @@ class FirstTimeController extends GetxController {
   List<Map<String, String>> splashData = [
     {
       "text":
-          "You can find  the beast doctor and the nearest hospital to monitor your case",
+          "You can find  the best doctor and the nearest hospital to monitor your case",
       "image": PathUtil.splashscreen1Image
     },
     {

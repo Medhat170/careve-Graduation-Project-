@@ -50,6 +50,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       Text(
                         'careve',
                         style: TextStyle(
+                          color: ColorUtil.whiteColor,
                           fontSize: 74.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -58,6 +59,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       Text(
                         'Welcome...',
                         style: TextStyle(
+                          color: ColorUtil.whiteColor,
                           fontSize: 100.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -67,6 +69,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         child: Text(
                           'to careve for breast cancer awareness and women health care.',
                           style: TextStyle(
+                            color: ColorUtil.whiteColor,
                             fontSize: 46.sp,
                             fontWeight: FontWeight.w600,
                           ),
