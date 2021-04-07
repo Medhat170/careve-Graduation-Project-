@@ -38,7 +38,6 @@ dependencies:
   dio: ^4.0.0-prev3
   pin_code_text_field: ^1.8.0
   flutter_simple_rating_bar: ^0.0.3
-  titled_navigation_bar: ^5.0.0-nullsafety.0
   flutter_staggered_animations: ^1.0.0
   hive_flutter: ^1.0.0-nullsafety.0
   avatar_glow: ^2.0.1
