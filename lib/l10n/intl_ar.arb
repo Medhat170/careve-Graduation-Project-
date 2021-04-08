@@ -25,6 +25,8 @@
   "selectLanguageTitle": "اختر لغه العرض المفضله",
   "alreadyHaveAcc": "لديك حساب بالفعل؟",
   "donNotHaveAcc": "ليس لديك حساب؟",
+  "language": "اللغه",
+  "clearCache": "مسح الذاكره",
   "explore": "إكتشف",
   "signIn": "تسجيل الدخول",
   "signUp": "تسجيل جديد",

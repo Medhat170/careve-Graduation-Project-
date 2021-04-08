@@ -18,6 +18,8 @@ abstract class Routes {
   static const AWARENESS_INFO = _Paths.AWARENESS_INFO;
   static const USER_PROFILE = _Paths.USER_PROFILE;
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
+  static const CHAT = _Paths.CHAT;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const AWARENESS_INFO = '/awareness-info';
   static const USER_PROFILE = '/user-profile';
   static const EDIT_PROFILE = '/edit-profile';
+  static const CHAT = '/chat';
+  static const SETTINGS = '/settings';
 }

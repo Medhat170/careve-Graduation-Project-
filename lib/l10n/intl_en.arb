@@ -25,6 +25,8 @@
   "selectLanguageTitle": "Choose your preferred language",
   "alreadyHaveAcc": "already have account?",
   "donNotHaveAcc": "Don/'t  have account?",
+  "language": "language",
+  "clearCache": "Clear cache",
   "explore": "Explore",
   "signIn": "Sign In",
   "signUp": "Sign Up",

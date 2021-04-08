@@ -43,6 +43,7 @@ dependencies:
   avatar_glow: ^2.0.1
   youtube_player_flutter: ^8.0.0
   share: ^2.0.1
+  polygon_clipper: ^1.0.2
   bdaya_repository_pattern:
     git:
       url: git@github.com:Bdaya-Dev/Flutter-Repository-Pattern.git

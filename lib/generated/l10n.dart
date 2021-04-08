@@ -295,6 +295,26 @@ class S {
     );
   }
 
+  /// `اللغه`
+  String get language {
+    return Intl.message(
+      'اللغه',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `مسح الذاكره`
+  String get clearCache {
+    return Intl.message(
+      'مسح الذاكره',
+      name: 'clearCache',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `إكتشف`
   String get explore {
     return Intl.message(

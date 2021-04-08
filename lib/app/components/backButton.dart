@@ -12,14 +12,19 @@ class CircularBackButton extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () => Get.back(),
-          child: CircleAvatar(
-            backgroundColor: ColorUtil.lightGrey,
-            radius: 22.0,
-            child: Center(
-              child: Icon(
-                Icons.arrow_back_ios_rounded,
-                size: 22.0,
-                color: ColorUtil.primaryColor,
+          child: Card(
+            elevation: 8.0,
+            color: ColorUtil.lightGrey,
+            shape: CircleBorder(),
+            child: CircleAvatar(
+              backgroundColor: ColorUtil.lightGrey,
+              radius: 22.0,
+              child: Center(
+                child: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  size: 22.0,
+                  color: ColorUtil.primaryColor,
+                ),
               ),
             ),
           ),

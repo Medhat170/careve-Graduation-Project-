@@ -1,4 +1,3 @@
-import 'package:careve/app/modules/user_profile/views/profile_editing.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -9,6 +8,8 @@ import 'package:careve/app/modules/awareness/bindings/awareness_binding.dart';
 import 'package:careve/app/modules/awareness/views/awareness_view.dart';
 import 'package:careve/app/modules/awareness_info/bindings/awareness_info_binding.dart';
 import 'package:careve/app/modules/awareness_info/views/awareness_info_view.dart';
+import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
+import 'package:careve/app/modules/chat/views/chat_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
@@ -16,6 +17,8 @@ import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/self_checking/bindings/self_checking_binding.dart';
 import 'package:careve/app/modules/self_checking/views/self_checking_view.dart';
+import 'package:careve/app/modules/settings/bindings/settings_binding.dart';
+import 'package:careve/app/modules/settings/views/settings_view.dart';
 import 'package:careve/app/modules/single_doctor/bindings/single_doctor_binding.dart';
 import 'package:careve/app/modules/single_doctor/views/single_doctor_view.dart';
 import 'package:careve/app/modules/splash/bindings/splash_binding.dart';
@@ -23,6 +26,7 @@ import 'package:careve/app/modules/splash/views/splash_view.dart';
 import 'package:careve/app/modules/user_appointments/bindings/user_appointments_binding.dart';
 import 'package:careve/app/modules/user_appointments/views/user_appointments_view.dart';
 import 'package:careve/app/modules/user_profile/bindings/user_profile_binding.dart';
+import 'package:careve/app/modules/user_profile/views/profile_editing.dart';
 import 'package:careve/app/modules/user_profile/views/user_profile_view.dart';
 import 'package:careve/app/modules/welcome_screen/bindings/welcome_screen_binding.dart';
 import 'package:careve/app/modules/welcome_screen/views/welcome_screen_view.dart';
@@ -106,6 +110,16 @@ class AppPages {
     GetPage(
       name: _Paths.EDIT_PROFILE,
       page: () => ProfileEditingView(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => ChatView(),
+      binding: ChatBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }

@@ -1,3 +1,4 @@
+import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,19 +55,24 @@ class UserFeature extends StatelessWidget {
                     child: CircleAvatar(
                       backgroundColor: ColorUtil.primaryColor,
                       radius: 12,
-                      child: FittedBox(
-                        child: Text(
-                          trailingCount?.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 36.sp,
+                      child: Center(
+                        child: FittedBox(
+                          child: Text(
+                            trailingCount?.toString(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40.sp,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                 Icon(
-                  Icons.keyboard_arrow_right,
+                  !AppUtil.isLtr
+                      ? Icons.keyboard_arrow_left
+                      : Icons.keyboard_arrow_right,
                   size: 22.0,
                   color: ColorUtil.mediumGrey,
                 ),

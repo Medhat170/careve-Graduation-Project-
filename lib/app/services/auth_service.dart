@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bdaya_repository_pattern/bdaya_repository_pattern.dart';
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/user.dart';
@@ -104,9 +105,9 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         user(await CacheService.to.userRepo.updateUserCache(response));
         CacheService.to.settingsRepo.setCachedUserId(user.value.id);
         name.clear();
+        email.clear();
         password.clear();
         confirmedPassword.clear();
-        email.clear();
         Get.offAllNamed(Routes.HOME);
       } catch (error) {
         await AppUtil.showAlertDialog(body: error.toString());
@@ -193,6 +194,16 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       } catch (error) {
         await AppUtil.showAlertDialog(body: error.toString());
       }
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      await CacheService.to.userRepo.clear();
+      user.value = null;
+      Get.offAllNamed(Routes.AUTH);
+    } catch (e) {
+      printError(info: e.toString());
     }
   }
 

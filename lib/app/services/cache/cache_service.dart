@@ -9,14 +9,16 @@ class CacheService extends GetxService {
   CacheService(this.userRepo, this.settingsRepo);
 
   static CacheService get to => Get.find();
-
+  final performInit = true.obs;
   final UserRepo userRepo;
   final SettingsRepo settingsRepo;
 
   Future<String> initRepos() async {
-    await Hive.initFlutter('v1');
-    await userRepo.init();
-    await settingsRepo.init();
+    if (performInit.value) {
+      await Hive.initFlutter('v1');
+      await userRepo.init();
+      await settingsRepo.init();
+    }
     return settingsRepo.cachedLang;
   }
 
