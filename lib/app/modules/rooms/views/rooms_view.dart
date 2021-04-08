@@ -1,15 +1,13 @@
 import 'package:careve/app/components/animatedListHandler.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
-import 'package:careve/app/modules/chat/components/room_card.dart';
+import 'package:careve/app/modules/rooms/components/room_card.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import '../controllers/rooms_controller.dart';
 
-import '../controllers/chat_controller.dart';
-
-class ChatView extends GetView<ChatController> with CustomAppBar {
+class RoomsView extends GetView<RoomsController> with CustomAppBar {
   @override
   Widget build(BuildContext context) {
     return AppDirectionality(

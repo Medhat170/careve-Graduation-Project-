@@ -27,7 +27,7 @@ class UserProfileView extends GetView<UserProfileController> {
                 title: S.of(context).messages,
                 iconColor: Colors.amber,
                 trailingCount: 2,
-                onTap: () => Get.toNamed(Routes.CHAT),
+                onTap: () => Get.toNamed(Routes.ROOMS),
               ),
               UserFeature(
                 iconData: FontAwesomeIcons.solidBookmark,
