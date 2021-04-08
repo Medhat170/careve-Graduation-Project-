@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "awareness" : MessageLookupByLibrary.simpleMessage("التوعيه"),
     "back" : MessageLookupByLibrary.simpleMessage("رجوع"),
     "birthDate" : MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
+    "bloodType" : MessageLookupByLibrary.simpleMessage("فصيلة الدم"),
     "cancel" : MessageLookupByLibrary.simpleMessage("إلغاء"),
     "category" : MessageLookupByLibrary.simpleMessage("الفئه"),
     "chat" : MessageLookupByLibrary.simpleMessage("الدردشه"),

@@ -50,6 +50,10 @@ dependencies:
     git:
       url: https://github.com/Bdaya-Dev/custom-splash.git
       ref: master
+  file_picker:
+    git:
+      url: https://github.com/Bdaya-Dev/flutter_file_picker.git
+      ref: master
 
 
 dev_dependencies:
@@ -71,8 +75,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/
-     - assets/icons/
+    - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -86,12 +90,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-   - family: Segoe
-     fonts:
-       - asset: assets/fonts/Segoe UI.ttf
-       - asset: assets/fonts/Segoe UI Bold.ttf
-       - asset: assets/fonts/Segoe UI Bold Italic.ttf
-       - asset: assets/fonts/Segoe UI Italic.ttf
+    - family: Segoe
+      fonts:
+        - asset: assets/fonts/Segoe UI.ttf
+        - asset: assets/fonts/Segoe UI Bold.ttf
+        - asset: assets/fonts/Segoe UI Bold Italic.ttf
+        - asset: assets/fonts/Segoe UI Italic.ttf
 
   #   - family: Trajan Pro
   #     fonts:

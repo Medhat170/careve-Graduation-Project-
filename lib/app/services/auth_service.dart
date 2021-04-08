@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/user.dart';
@@ -6,7 +8,7 @@ import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
-import 'package:dio/dio.dart';
+import 'package:careve/app/components/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +20,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   final signUP = false.obs;
   final isDoc = false.obs;
   final user = Rx<User>();
-
+  GlobalKey<FormState> editFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> passwordsFormKey = GlobalKey<FormState>();
@@ -28,9 +30,23 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   TextEditingController password = TextEditingController();
   TextEditingController confirmedPassword = TextEditingController();
   TextEditingController name = TextEditingController();
+  TextEditingController address = TextEditingController();
+  final image = RxString();
+  final uploadedImage = Rx<File>();
+  final dateOfBirth = Rx<DateTime>();
+  final bloodType = RxString();
+  final bloodTypesRef = RxList<String>([
+    'A-',
+    'A+',
+    'B-',
+    'B+',
+    'AB-',
+    'AB+',
+    'O-',
+    'O+',
+  ]);
   final hidePassword = true.obs;
   final pinCodeError = RxString();
-  final dio = Dio();
 
   static AuthService get to => Get.find();
 
@@ -71,6 +87,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             body: {
               'email': email.text,
               'password': password.text,
+              'type': 'mobile',
             },
           );
         } else if (signUP.value && isDoc.value == false) {
@@ -80,6 +97,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'name': name.text,
               'email': email.text,
               'password': password.text,
+              'type': 'mobile',
             },
           );
         }
@@ -155,6 +173,29 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
   }
 
+  Future<void> editProfile() async {
+    final formData = editFormKey.currentState;
+    if (formData.validate()) {
+      formData.save();
+      print('Phone : ${phone?.text}');
+      print('Name : ${name?.text}');
+      print('Email : ${email?.text}');
+      print('DateOfBirth : ${dateOfBirth?.value?.toShortUserString()}');
+      print('BloodType : ${bloodType?.value}');
+      print('Address : ${address?.text}');
+      print('Password : ${password?.text}');
+      print('Confirmed password : ${confirmedPassword?.text}');
+      try {
+        startBusy();
+        //TODO Send api
+        endBusySuccess();
+        Get.back();
+      } catch (error) {
+        await AppUtil.showAlertDialog(body: error.toString());
+      }
+    }
+  }
+
   @override
   void onClose() {
     name.dispose();
@@ -162,6 +203,10 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     confirmedPassword.dispose();
     code.dispose();
     email.dispose();
+    address.dispose();
+    dateOfBirth.nil();
+    bloodType.nil();
+    image.nil();
     super.onClose();
   }
 }

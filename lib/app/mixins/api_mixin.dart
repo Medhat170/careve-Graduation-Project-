@@ -93,6 +93,7 @@ mixin ApiMixin {
   }
 
   String _errorMsg(dynamic error) {
+    print('Request error : ${error?.toString()}');
     var errorMessage = S.current.formatException;
     try {
       if (error?.entries != null) {
@@ -100,7 +101,7 @@ mixin ApiMixin {
           if (error?.value is String) {
             errorMessage = ' $errorMessage  ${error?.value} ';
           } else if (error?.value is List) {
-            errorMessage = ' $errorMessage  -${error?.value[0]} \n ';
+            errorMessage = ' $errorMessage\n -${error?.value[0]}';
           }
         }
       }

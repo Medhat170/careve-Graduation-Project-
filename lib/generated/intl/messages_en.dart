@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "awareness" : MessageLookupByLibrary.simpleMessage("Awareness"),
     "back" : MessageLookupByLibrary.simpleMessage("Back"),
     "birthDate" : MessageLookupByLibrary.simpleMessage("Birth date"),
+    "bloodType" : MessageLookupByLibrary.simpleMessage("Blood type"),
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),
     "category" : MessageLookupByLibrary.simpleMessage("Category"),
     "chat" : MessageLookupByLibrary.simpleMessage("Chat"),

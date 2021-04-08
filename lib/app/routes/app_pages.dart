@@ -1,3 +1,4 @@
+import 'package:careve/app/modules/user_profile/views/profile_editing.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -101,6 +102,10 @@ class AppPages {
       name: _Paths.USER_PROFILE,
       page: () => UserProfileView(),
       binding: UserProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFILE,
+      page: () => ProfileEditingView(),
     ),
   ];
 }

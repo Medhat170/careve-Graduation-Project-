@@ -28,4 +28,7 @@ class User {
 
   @HiveField(7)
   String address;
+
+  @HiveField(8)
+  DateTime dateOfBirth;
 }

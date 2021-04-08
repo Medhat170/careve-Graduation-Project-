@@ -5,6 +5,7 @@ const iconsPath = 'assets/icons/';
 const url = 'https://laravelbreast.000webhostapp.com/public/api/';
 
 class PathUtil {
+  static const String userImage = imagesPath + 'female_avatar.png';
   static const String welcomeImage = imagesPath + 'hands_background.png';
   static const String splashscreen1Image = imagesPath + 'undraw_splash1.png';
   static const String splashscreen3Image = imagesPath + 'undraw_splash3.png';

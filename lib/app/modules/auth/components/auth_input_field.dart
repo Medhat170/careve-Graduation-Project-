@@ -18,7 +18,7 @@ class AuthInputField extends StatelessWidget {
   AuthInputField(
     this.label,
     this.controller, {
-    @required this.validator,
+    this.validator,
     this.keyBoardType,
     this.isPhone = false,
     this.isPassword = false,

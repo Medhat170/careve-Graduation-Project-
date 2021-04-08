@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
@@ -26,8 +29,15 @@ class AppUtil {
       width: 0.5,
     ),
   );
+  static OutlineInputBorder lightGreyOutLineInputBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: ColorUtil.lightGrey,
+      width: 0.5,
+    ),
+    borderRadius: AppUtil.borderRadius,
+  );
   static ThemeData appTheme = ThemeData(
-    fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe',
     primaryColor: ColorUtil.primaryColor,
     scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -45,20 +55,15 @@ class AppUtil {
           topLeft: Radius.circular(10.0),
         );
 
-  static Future<DateTime> pickDate([DateTime initialDate]) async {
-    initialDate ??= DateTime.now();
+  static Future<DateTime> pickDate() async {
     final date = await showDatePicker(
       context: Get.overlayContext,
-      firstDate: DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
-      lastDate: initialDate.add(Duration(days: 20 * 365)),
-      initialDate: initialDate ?? DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2100),
+      initialDate: DateTime.now(),
     );
     print('Selected date : ' + intl.DateFormat.yMMMMd().format(date));
-    if (date != null) {
-      return DateTime.utc(date.year, date.month, date.day, 12);
-    } else {
-      return initialDate;
-    }
+    return DateTime.utc(date.year, date.month, date.day, 12);
   }
 
   static void showAlertSnack({
@@ -156,5 +161,30 @@ class AppUtil {
         ),
       ],
     );
+  }
+
+  static Future<List<File>> pickFiles({
+    bool allowMultiple = false,
+    FileType fileType = FileType.any,
+  }) async {
+    List<File> files = <File>[];
+    try {
+      FilePickerResult result = await FilePicker.platform.pickFiles(
+        allowMultiple: allowMultiple,
+        type: fileType,
+      );
+      if (result != null) {
+        files = result.files.map(
+          (file) {
+            print(file.name);
+            print(file.path);
+            return File(file.path);
+          },
+        ).toList();
+      }
+    } catch (e) {
+      print('FilePicker error : ${e.toString()}');
+    }
+    return files;
   }
 }

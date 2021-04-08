@@ -1,20 +1,22 @@
+import 'package:careve/app/models/user.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:get/get.dart';
 
 class UserProfileController extends GetxController {
-  //TODO: Implement UserProfileController
+  final userData = Rx<User>();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  static UserProfileController get to => Get.find();
 
   @override
   void onReady() {
+    userData.value = AuthService.to.user?.value;
+    AuthService.to.name.text = userData?.value?.name;
+    AuthService.to.email.text = userData?.value?.email;
+    AuthService.to.phone.text = userData?.value?.phone;
+    AuthService.to.address.text = userData?.value?.address;
+    AuthService.to.dateOfBirth(userData?.value?.dateOfBirth);
+    AuthService.to.bloodType(userData?.value?.bloodType);
+    AuthService.to.image(userData?.value?.image);
     super.onReady();
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

@@ -14,7 +14,7 @@ class CareveButton extends ButtonAppButton {
     double width,
     EdgeInsets margin,
     Color borderColor,
-    Color backgroundColor,
+    Color backgroundColor = ColorUtil.primaryColor,
     double elevation,
   }) : super(
           child ??
@@ -118,7 +118,7 @@ class ButtonAppButton extends StatelessWidget {
     this.margin,
     this.borderColor,
     this.elevation,
-    this.backgroundColor = ColorUtil.primaryColor,
+    this.backgroundColor,
   });
 
   @override

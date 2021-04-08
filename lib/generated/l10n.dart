@@ -974,6 +974,16 @@ class S {
       args: [],
     );
   }
+
+  /// `فصيلة الدم`
+  String get bloodType {
+    return Intl.message(
+      'فصيلة الدم',
+      name: 'bloodType',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

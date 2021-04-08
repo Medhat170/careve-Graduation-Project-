@@ -1,7 +1,6 @@
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/models/section.dart';
-import 'package:careve/app/modules/home/components/main_drawer.dart';
-import 'package:careve/app/modules/home/components/sectionItem.dart';
+import 'package:careve/app/modules/home/components/section_Item.dart';
 import 'package:careve/app/modules/home/components/user_semi_profile.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
@@ -16,8 +15,6 @@ class HomeView extends GetView<HomeController> {
     return AppDirectionality(
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(),
-          drawer: MainDrawer(),
           body: UserSemiProfile(
             child: Padding(
               padding: const EdgeInsets.symmetric(

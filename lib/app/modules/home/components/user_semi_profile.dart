@@ -1,5 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:careve/app/components/badge.dart';
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
@@ -71,19 +72,32 @@ class UserSemiProfile extends StatelessWidget {
                 ),
                 Badge(
                   title: '1',
-                  child: AvatarGlow(
-                    endRadius: 55.0,
-                    child: Material(
-                      elevation: 8.0,
-                      shape: CircleBorder(),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Image.asset(
-                          PathUtil.articlesImage,
-                          height: 45.0,
-                          fit: BoxFit.cover,
+                  child: GestureDetector(
+                    onTap: () => Get.toNamed(Routes.USER_PROFILE),
+                    child: AvatarGlow(
+                      endRadius: 55.0,
+                      child: Hero(
+                        tag: 'profile',
+                        child: Material(
+                          elevation: 8.0,
+                          shape: CircleBorder(),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            child: userData?.image == null ||
+                                    userData?.image?.length == 0
+                                ? Image.asset(
+                                    PathUtil.userImage,
+                                    height: 45.0,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    userData?.image,
+                                    height: 45.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                            radius: 35.0,
+                          ),
                         ),
-                        radius: 35.0,
                       ),
                     ),
                   ),
