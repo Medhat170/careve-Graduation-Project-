@@ -76,6 +76,7 @@
   "telPhone": "Tel-phone",
   "favorite": "Favorite",
   "chat": "Chat",
+  "messages": "Messages",
   "typeMessage": "Type a message",
   "noMessagesYet": "No messages yet",
   "cancel": "cancel",
@@ -95,5 +96,6 @@
   "articles": "Articles",
   "commonQuestions": "Common questions",
   "videos": "Videos",
-  "bloodType": "Blood type"
+  "bloodType": "Blood type",
+  "saved": "Saved"
 }

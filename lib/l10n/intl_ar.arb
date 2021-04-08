@@ -76,6 +76,7 @@
   "telPhone": "الهاتف",
   "favorite": "المفضله",
   "chat": "الدردشه",
+  "messages": "الرسائل",
   "typeMessage": "أكتب رساله",
   "noMessagesYet": "لا يوجد رسائل الى الان",
   "cancel": "إلغاء",
@@ -95,5 +96,6 @@
   "articles": "مقالات",
   "commonQuestions": "أسئلة شائعة",
   "videos": "فيديوهات",
-  "bloodType": "فصيلة الدم"
+  "bloodType": "فصيلة الدم",
+  "saved": "المحفوظات"
 }

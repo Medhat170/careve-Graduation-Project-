@@ -805,6 +805,16 @@ class S {
     );
   }
 
+  /// `الرسائل`
+  String get messages {
+    return Intl.message(
+      'الرسائل',
+      name: 'messages',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `أكتب رساله`
   String get typeMessage {
     return Intl.message(
@@ -1000,6 +1010,16 @@ class S {
     return Intl.message(
       'فصيلة الدم',
       name: 'bloodType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `المحفوظات`
+  String get saved {
+    return Intl.message(
+      'المحفوظات',
+      name: 'saved',
       desc: '',
       args: [],
     );

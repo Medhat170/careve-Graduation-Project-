@@ -5,6 +5,7 @@ import 'package:careve/app/modules/user_profile/component/user_feature.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -23,26 +24,26 @@ class UserProfileView extends GetView<UserProfileController> {
               ProfileData(),
               UserFeature(
                 iconData: FontAwesomeIcons.solidComments,
-                title: 'Messages',
+                title: S.of(context).messages,
                 iconColor: Colors.amber,
-                trailingCount: 1,
-                onTap: null,
+                trailingCount: 2,
+                onTap: () => Get.toNamed(Routes.CHAT),
               ),
               UserFeature(
                 iconData: FontAwesomeIcons.solidBookmark,
-                title: 'Saved',
+                title: S.of(context).saved,
                 iconColor: Colors.purple,
                 onTap: null,
               ),
               UserFeature(
                 iconData: FontAwesomeIcons.cogs,
-                title: 'Setting',
+                title: S.of(context).settings,
                 iconColor: ColorUtil.mediumGrey,
                 onTap: () => Get.toNamed(Routes.SETTINGS),
               ),
               UserFeature(
                 iconData: FontAwesomeIcons.signOutAlt,
-                title: 'Log Out',
+                title: S.of(context).signOut,
                 iconColor: Colors.deepPurpleAccent,
                 onTap: () async => await AuthService.to.signOut(),
               ),

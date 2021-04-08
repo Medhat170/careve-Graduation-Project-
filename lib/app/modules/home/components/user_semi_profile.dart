@@ -71,7 +71,7 @@ class UserSemiProfile extends StatelessWidget {
                   ),
                 ),
                 Badge(
-                  title: '1',
+                  title: '2',
                   child: GestureDetector(
                     onTap: () => Get.toNamed(Routes.USER_PROFILE),
                     child: AvatarGlow(
