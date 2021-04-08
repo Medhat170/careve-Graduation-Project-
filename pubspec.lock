@@ -239,12 +239,10 @@ packages:
   file_picker:
     dependency: "direct main"
     description:
-      path: "."
-      ref: master
-      resolved-ref: "627c0a31b22026809cea3c5cb3c0a81d2a632117"
-      url: "https://github.com/Bdaya-Dev/flutter_file_picker.git"
-    source: git
-    version: "2.1.7"
+      name: file_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   fixnum:
     dependency: transitive
     description:
@@ -275,7 +273,7 @@ packages:
       name: flutter_plugin_android_lifecycle
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.11"
+    version: "2.0.1"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -502,7 +500,7 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
+    version: "2.0.0"
   polygon_clipper:
     dependency: "direct main"
     description:

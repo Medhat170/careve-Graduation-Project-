@@ -44,16 +44,14 @@ dependencies:
   youtube_player_flutter: ^8.0.0
   share: ^2.0.1
   polygon_clipper: ^1.0.2
+  file_picker: ^3.0.1
+#  path_provider: ^2.0.1
   bdaya_repository_pattern:
     git:
       url: git@github.com:Bdaya-Dev/Flutter-Repository-Pattern.git
   bdaya_custom_splash:
     git:
       url: https://github.com/Bdaya-Dev/custom-splash.git
-      ref: master
-  file_picker:
-    git:
-      url: https://github.com/Bdaya-Dev/flutter_file_picker.git
       ref: master
 
 
