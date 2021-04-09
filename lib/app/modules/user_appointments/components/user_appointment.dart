@@ -19,7 +19,7 @@ class UserAppointment extends StatelessWidget {
     @required this.address,
     @required this.date,
     @required this.telephoneNumber,
-    this.specialty,
+    @required this.specialty,
   });
 
   @override
@@ -93,7 +93,7 @@ class UserAppointment extends StatelessWidget {
                   Icon(
                     FontAwesomeIcons.userMd,
                     color: ColorUtil.primaryColor,
-                    size: 14.0,
+                    size: 40.sp,
                   ),
                   const SizedBox(
                     width: 10.0,
@@ -110,16 +110,13 @@ class UserAppointment extends StatelessWidget {
                   ),
                 ],
               ),
-            const SizedBox(
-              height: 5.0,
-            ),
             if (address != null)
               Row(
                 children: [
                   Icon(
                     FontAwesomeIcons.locationArrow,
                     color: ColorUtil.primaryColor,
-                    size: 14.0,
+                    size: 40.sp,
                   ),
                   const SizedBox(
                     width: 10.0,
@@ -141,16 +138,13 @@ class UserAppointment extends StatelessWidget {
                   ),
                 ],
               ),
-            const SizedBox(
-              height: 5.0,
-            ),
             if (telephoneNumber != null)
               Row(
                 children: [
                   Icon(
                     FontAwesomeIcons.phone,
                     color: ColorUtil.primaryColor,
-                    size: 14.0,
+                    size: 40.sp,
                   ),
                   const SizedBox(
                     width: 10.0,
