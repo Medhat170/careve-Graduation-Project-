@@ -1024,6 +1024,86 @@ class S {
       args: [],
     );
   }
+
+  /// `الحجوزات`
+  String get appointments {
+    return Intl.message(
+      'الحجوزات',
+      name: 'appointments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حجز`
+  String get appointment {
+    return Intl.message(
+      'حجز',
+      name: 'appointment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `السجلات الطبيه`
+  String get medicalRecords {
+    return Intl.message(
+      'السجلات الطبيه',
+      name: 'medicalRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `السجل`
+  String get record {
+    return Intl.message(
+      'السجل',
+      name: 'record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اليوم`
+  String get today {
+    return Intl.message(
+      'اليوم',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `قادمه`
+  String get earlier {
+    return Intl.message(
+      'قادمه',
+      name: 'earlier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `فى وقت لاحق`
+  String get later {
+    return Intl.message(
+      'فى وقت لاحق',
+      name: 'later',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إتصل`
+  String get call {
+    return Intl.message(
+      'إتصل',
+      name: 'call',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

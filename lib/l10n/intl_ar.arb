@@ -97,5 +97,13 @@
   "commonQuestions": "أسئلة شائعة",
   "videos": "فيديوهات",
   "bloodType": "فصيلة الدم",
-  "saved": "المحفوظات"
+  "saved": "المحفوظات",
+  "appointments": "الحجوزات",
+  "appointment": "حجز",
+  "medicalRecords": "السجلات الطبيه",
+  "record": "السجل",
+  "today": "اليوم",
+  "earlier": "قادمه",
+  "later": "فى وقت لاحق",
+  "call": "إتصل"
 }

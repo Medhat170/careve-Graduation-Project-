@@ -22,11 +22,26 @@ class UserProfileView extends GetView<UserProfileController> {
             noScroll: true,
             children: [
               ProfileData(),
+              const SizedBox(
+                height: 5.0,
+              ),
               UserFeature(
                 iconData: FontAwesomeIcons.solidComments,
                 title: S.of(context).messages,
                 iconColor: Colors.amber,
                 trailingCount: 2,
+                onTap: () => Get.toNamed(Routes.ROOMS),
+              ),
+              UserFeature(
+                iconData: FontAwesomeIcons.calendarCheck,
+                title: S.of(context).appointments,
+                iconColor: Colors.teal,
+                onTap: () => Get.toNamed(Routes.USER_APPOINTMENTS),
+              ),
+              UserFeature(
+                iconData: FontAwesomeIcons.bookMedical,
+                title: S.of(context).medicalRecords,
+                iconColor: Colors.brown,
                 onTap: () => Get.toNamed(Routes.ROOMS),
               ),
               UserFeature(

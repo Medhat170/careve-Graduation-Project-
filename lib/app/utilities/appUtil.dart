@@ -38,7 +38,7 @@ class AppUtil {
     borderRadius: AppUtil.borderRadius,
   );
   static ThemeData appTheme = ThemeData(
-    fontFamily: 'Segoe',
+    fontFamily: 'Cairo',
     primaryColor: ColorUtil.primaryColor,
     scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,

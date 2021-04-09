@@ -5,8 +5,8 @@ import '../controllers/user_profile_controller.dart';
 class UserProfileBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<UserProfileController>(
-      () => UserProfileController(),
+    Get.put<UserProfileController>(
+      UserProfileController(),
     );
   }
 }

@@ -45,7 +45,7 @@ dependencies:
   share: ^2.0.1
   polygon_clipper: ^1.0.2
   file_picker: ^3.0.1
-#  path_provider: ^2.0.1
+  cached_network_image: ^3.0.0
   bdaya_repository_pattern:
     git:
       url: git@github.com:Bdaya-Dev/Flutter-Repository-Pattern.git
@@ -89,12 +89,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Segoe
+    - family: Cairo
       fonts:
-        - asset: assets/fonts/Segoe UI.ttf
-        - asset: assets/fonts/Segoe UI Bold.ttf
-        - asset: assets/fonts/Segoe UI Bold Italic.ttf
-        - asset: assets/fonts/Segoe UI Italic.ttf
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-Black.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
+        - asset: assets/fonts/Cairo-ExtraLight.ttf
+        - asset: assets/fonts/Cairo-Light.ttf
+        - asset: assets/fonts/Cairo-SemiBold.ttf
 
   #   - family: Trajan Pro
   #     fonts:

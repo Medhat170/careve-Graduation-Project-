@@ -97,5 +97,13 @@
   "commonQuestions": "Common questions",
   "videos": "Videos",
   "bloodType": "Blood type",
-  "saved": "Saved"
+  "saved": "Saved",
+  "appointments": "Appointments",
+  "appointment": "Appointment",
+  "medicalRecords": "Medical Records",
+  "record": "Record",
+  "today": "Today",
+  "earlier": "Earlier",
+  "later": "Later",
+  "call": "Call"
 }

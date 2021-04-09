@@ -1,20 +1,34 @@
 import 'package:get/get.dart';
 
 class UserAppointmentsController extends GetxController {
-  //TODO: Implement UserAppointmentsController
+  List<DateTime> dates = List.generate(
+    7,
+    (index) {
+      return DateTime.now().add(
+        Duration(days: index),
+      );
+    },
+  );
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  List<DateTime> get today => dates
+      .where(
+        (element) =>
+            element.day == DateTime.now().day &&
+            element.month == DateTime.now().month,
+      )
+      .toList();
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  List<DateTime> get earlier => dates
+      .where(
+        (element) =>
+            element.difference(DateTime.now()).inDays <= 2 &&
+            element.difference(DateTime.now()).inDays >= 1,
+      )
+      .toList();
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  List<DateTime> get later => dates
+      .where(
+        (element) => element.difference(DateTime.now()).inDays > 2,
+      )
+      .toList();
 }

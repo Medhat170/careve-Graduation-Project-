@@ -1,3 +1,4 @@
+import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/modules/user_profile/controllers/user_profile_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
@@ -40,7 +41,7 @@ class ProfileData extends GetView<UserProfileController> {
                                 height: 45.0,
                                 fit: BoxFit.cover,
                               )
-                            : Image.network(
+                            : NetImage(
                                 userData?.image,
                                 height: 45.0,
                                 fit: BoxFit.cover,

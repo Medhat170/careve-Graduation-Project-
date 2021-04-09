@@ -1,21 +1,103 @@
+import 'package:careve/app/components/animatedListHandler.dart';
+import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/mixins/app_bar_mixin.dart';
+import 'package:careve/app/modules/user_appointments/components/user_appointment.dart';
+import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/user_appointments_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UserAppointmentsView extends GetView<UserAppointmentsController> {
+class UserAppointmentsView extends GetView<UserAppointmentsController>
+    with CustomAppBar {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('UserAppointmentsView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'UserAppointmentsView is working',
-          style: TextStyle(fontSize: 20),
+    return AppDirectionality(
+      child: SafeArea(
+        child: Scaffold(
+          body: Column(
+            children: [
+              customAppBar(
+                S.of(context).appointments,
+                enableBack: true,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                  ),
+                  child: AnimatedListHandler(
+                    children: [
+                      if (controller.today != null) ...[
+                        Text(
+                          S.of(context).today,
+                          style: TextStyle(
+                            fontSize: 60.sp,
+                            fontWeight: FontWeight.bold,
+                            color: ColorUtil.blackColor,
+                          ),
+                        ),
+                        ...controller.today
+                            .map(
+                              (e) => UserAppointment(
+                                doctorName: 'Dr:Ahmed mohamed',
+                                date: e,
+                                telephoneNumber: '01020304050',
+                                address: 'Mansoura',
+                                specialty: 'breast cancer specialist',
+                              ),
+                            )
+                            .toList(),
+                      ],
+                      if (controller.earlier != null) ...[
+                        Text(
+                          S.of(context).earlier,
+                          style: TextStyle(
+                            fontSize: 60.sp,
+                            fontWeight: FontWeight.bold,
+                            color: ColorUtil.blackColor,
+                          ),
+                        ),
+                        ...controller.earlier
+                            .map(
+                              (e) => UserAppointment(
+                                doctorName: 'Dr:Ahmed mohamed',
+                                date: e,
+                                telephoneNumber: '01020304050',
+                                address: 'Mansoura',
+                                specialty: 'breast cancer specialist',
+                              ),
+                            )
+                            .toList(),
+                      ],
+                      if (controller.today != null) ...[
+                        Text(
+                          S.of(context).later,
+                          style: TextStyle(
+                            fontSize: 60.sp,
+                            fontWeight: FontWeight.bold,
+                            color: ColorUtil.blackColor,
+                          ),
+                        ),
+                        ...controller.later
+                            .map(
+                              (e) => UserAppointment(
+                                doctorName: 'Dr:Ahmed mohamed',
+                                date: e,
+                                telephoneNumber: '01020304050',
+                                address: 'Mansoura',
+                                specialty: 'breast cancer specialist',
+                              ),
+                            )
+                            .toList(),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
