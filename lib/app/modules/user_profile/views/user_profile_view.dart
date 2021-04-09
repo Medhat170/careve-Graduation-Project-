@@ -14,8 +14,8 @@ import '../controllers/user_profile_controller.dart';
 class UserProfileView extends GetView<UserProfileController> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: AnimatedListHandler(
             shrinkWrap: true,

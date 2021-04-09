@@ -73,7 +73,7 @@ class UserFeature extends StatelessWidget {
                   !AppUtil.isLtr
                       ? Icons.keyboard_arrow_left
                       : Icons.keyboard_arrow_right,
-                  size: 22.0,
+                  size: 26.0,
                   color: ColorUtil.mediumGrey,
                 ),
               ],

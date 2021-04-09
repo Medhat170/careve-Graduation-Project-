@@ -13,8 +13,8 @@ import '../controllers/saved_controller.dart';
 class SavedView extends GetView<SavedController> with CustomAppBar {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             children: [

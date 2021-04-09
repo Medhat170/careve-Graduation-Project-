@@ -14,8 +14,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ResetPasswordView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
             child: Form(

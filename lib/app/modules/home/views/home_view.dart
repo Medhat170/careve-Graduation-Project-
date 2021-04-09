@@ -12,8 +12,8 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: UserSemiProfile(
             child: Padding(

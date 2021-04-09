@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
-class AppDirectionality extends StatelessWidget {
-  final Widget child;
+class GlobalScaffold extends StatelessWidget {
+  final Widget body;
 
-  AppDirectionality({
-    @required this.child,
+  GlobalScaffold({
+    @required this.body,
   });
 
   @override
@@ -14,7 +14,7 @@ class AppDirectionality extends StatelessWidget {
       textDirection: intl.Intl.getCurrentLocale() == 'en'
           ? TextDirection.ltr
           : TextDirection.rtl,
-      child: child,
+      child: body,
     );
   }
 }

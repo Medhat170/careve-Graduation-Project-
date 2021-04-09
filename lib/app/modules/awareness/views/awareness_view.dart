@@ -19,8 +19,8 @@ class AwarenessView extends GetView<AwarenessController> {
 
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             children: [

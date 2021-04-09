@@ -10,8 +10,8 @@ import '../controllers/rooms_controller.dart';
 class RoomsView extends GetView<RoomsController> with CustomAppBar {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             children: [

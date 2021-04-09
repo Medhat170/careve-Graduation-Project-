@@ -16,8 +16,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AuthView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: SizedBox(
             height: Get.height -

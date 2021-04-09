@@ -13,8 +13,8 @@ import '../controllers/first_time_controller.dart';
 class FirstTimeView extends GetView<FirstTimeController> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Padding(
             padding: const EdgeInsets.symmetric(

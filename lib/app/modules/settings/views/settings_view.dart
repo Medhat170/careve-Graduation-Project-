@@ -14,8 +14,8 @@ import 'package:polygon_clipper/polygon_clipper.dart';
 class SettingsView extends GetView<SettingsController> with CustomAppBar {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,

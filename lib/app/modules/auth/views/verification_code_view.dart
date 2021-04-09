@@ -13,8 +13,8 @@ import 'package:pin_code_text_field/pin_code_text_field.dart';
 class VerificationCodeView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Obx(
             () => SingleChildScrollView(

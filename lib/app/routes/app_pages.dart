@@ -8,6 +8,8 @@ import 'package:careve/app/modules/awareness/bindings/awareness_binding.dart';
 import 'package:careve/app/modules/awareness/views/awareness_view.dart';
 import 'package:careve/app/modules/awareness_info/bindings/awareness_info_binding.dart';
 import 'package:careve/app/modules/awareness_info/views/awareness_info_view.dart';
+import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
+import 'package:careve/app/modules/chat/views/chat_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
@@ -132,6 +134,11 @@ class AppPages {
     GetPage(
       name: _Paths.SAVED,
       page: () => SavedView(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => ChatView(),
+      binding: ChatBinding(),
     ),
   ];
 }

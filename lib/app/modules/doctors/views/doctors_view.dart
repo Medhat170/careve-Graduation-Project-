@@ -9,8 +9,8 @@ import '../controllers/doctors_controller.dart';
 class DoctorsView extends GetView<DoctorsController> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             children: [

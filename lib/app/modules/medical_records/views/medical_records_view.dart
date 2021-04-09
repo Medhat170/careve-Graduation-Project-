@@ -13,8 +13,8 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
     with CustomAppBar {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             children: [

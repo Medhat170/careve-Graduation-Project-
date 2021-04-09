@@ -14,8 +14,8 @@ import 'package:get/get.dart';
 class ProfileEditingView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Form(
             key: controller.editFormKey,

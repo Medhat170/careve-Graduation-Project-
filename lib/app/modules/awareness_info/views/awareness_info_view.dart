@@ -14,8 +14,8 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
     with CustomAppBar {
   @override
   Widget build(BuildContext context) {
-    return AppDirectionality(
-      child: SafeArea(
+    return GlobalScaffold(
+      body: SafeArea(
         child: Scaffold(
           body: Column(
             children: [
