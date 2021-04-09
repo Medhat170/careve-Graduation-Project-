@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "didNotFind" : MessageLookupByLibrary.simpleMessage("We did\'t find any data"),
     "discountCard" : MessageLookupByLibrary.simpleMessage("Discount Card"),
     "doctor" : MessageLookupByLibrary.simpleMessage("Doctor"),
+    "doctorHint" : MessageLookupByLibrary.simpleMessage("Do not be! now you can find best doctors around you and follow up with them any time and chat too"),
     "doctors" : MessageLookupByLibrary.simpleMessage("Doctors"),
     "donNotHaveAcc" : MessageLookupByLibrary.simpleMessage("Don/\'t  have account?"),
     "done" : MessageLookupByLibrary.simpleMessage("Done"),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "favourite" : MessageLookupByLibrary.simpleMessage("Favourite"),
     "filesUploaded" : m0,
     "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
+    "findDoctor" : MessageLookupByLibrary.simpleMessage("Find Doctor"),
     "forgetPassword" : MessageLookupByLibrary.simpleMessage("forget password?"),
     "formatException" : MessageLookupByLibrary.simpleMessage("An unexpected error has occurred"),
     "gender" : MessageLookupByLibrary.simpleMessage("Gender"),
@@ -131,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("Unauthorized action !"),
     "verifyText" : MessageLookupByLibrary.simpleMessage("A 6 - Digit PIN has been sent to your email address, enter it below to continue"),
     "videos" : MessageLookupByLibrary.simpleMessage("Videos"),
-    "welcomeBack" : MessageLookupByLibrary.simpleMessage("Welcome back, ")
+    "welcomeBack" : MessageLookupByLibrary.simpleMessage("Welcome back, "),
+    "worried" : MessageLookupByLibrary.simpleMessage("Are you worried?")
   };
 }

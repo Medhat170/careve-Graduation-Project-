@@ -36,8 +36,9 @@ class HomeView extends GetView<HomeController> {
                       image: PathUtil.selfCareImage,
                     ),
                     Section(
-                      name: S.of(context).hospitals,
+                      name: S.of(context).medicalRecords,
                       image: PathUtil.hospitalsImage,
+                      onPressed: () => Get.toNamed(Routes.MEDICAL_RECORDS),
                     ),
                     Section(
                       name: S.of(context).awareness,

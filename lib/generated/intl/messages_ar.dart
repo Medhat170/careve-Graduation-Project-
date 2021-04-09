@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "didNotFind" : MessageLookupByLibrary.simpleMessage("لم نعثر على اى بيانات"),
     "discountCard" : MessageLookupByLibrary.simpleMessage("بطاقة الخصم"),
     "doctor" : MessageLookupByLibrary.simpleMessage("دكتور/ه"),
+    "doctorHint" : MessageLookupByLibrary.simpleMessage("لا تقلق ! الاّن يمكنك العثور على أطباء حولك والمتابعه معهم والتواصل أيضا فى أى وقت"),
     "doctors" : MessageLookupByLibrary.simpleMessage("أطباء"),
     "donNotHaveAcc" : MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "done" : MessageLookupByLibrary.simpleMessage("تم"),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
     "filesUploaded" : m0,
     "filter" : MessageLookupByLibrary.simpleMessage("تحديد البيانات المعروضه"),
+    "findDoctor" : MessageLookupByLibrary.simpleMessage("أبحث عن طبيب"),
     "forgetPassword" : MessageLookupByLibrary.simpleMessage("نسيت كلمه المرور؟"),
     "formatException" : MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
     "gender" : MessageLookupByLibrary.simpleMessage("النوع"),
@@ -131,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("غير مصرح لك !"),
     "verifyText" : MessageLookupByLibrary.simpleMessage("تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار"),
     "videos" : MessageLookupByLibrary.simpleMessage("فيديوهات"),
-    "welcomeBack" : MessageLookupByLibrary.simpleMessage("أهلاً, ")
+    "welcomeBack" : MessageLookupByLibrary.simpleMessage("أهلاً, "),
+    "worried" : MessageLookupByLibrary.simpleMessage("هل أنت قلق/ه")
   };
 }

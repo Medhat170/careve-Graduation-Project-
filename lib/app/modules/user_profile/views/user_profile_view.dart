@@ -39,16 +39,15 @@ class UserProfileView extends GetView<UserProfileController> {
                 onTap: () => Get.toNamed(Routes.USER_APPOINTMENTS),
               ),
               UserFeature(
-                iconData: FontAwesomeIcons.bookMedical,
-                title: S.of(context).medicalRecords,
-                iconColor: Colors.brown,
-                onTap: () => Get.toNamed(Routes.ROOMS),
-              ),
-              UserFeature(
                 iconData: FontAwesomeIcons.solidBookmark,
                 title: S.of(context).saved,
                 iconColor: Colors.purple,
-                onTap: null,
+                onTap: () => Get.toNamed(Routes.SAVED),
+              ),
+              UserFeature(
+                iconData: FontAwesomeIcons.hospital,
+                title: S.of(context).hospitals,
+                iconColor: Colors.brown,
               ),
               UserFeature(
                 iconData: FontAwesomeIcons.cogs,

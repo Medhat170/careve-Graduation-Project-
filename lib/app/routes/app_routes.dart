@@ -20,6 +20,8 @@ abstract class Routes {
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
   static const ROOMS = _Paths.ROOMS;
   static const SETTINGS = _Paths.SETTINGS;
+  static const MEDICAL_RECORDS = _Paths.MEDICAL_RECORDS;
+  static const SAVED = _Paths.SAVED;
 }
 
 abstract class _Paths {
@@ -41,4 +43,6 @@ abstract class _Paths {
   static const EDIT_PROFILE = '/edit-profile';
   static const ROOMS = '/rooms';
   static const SETTINGS = '/settings';
+  static const MEDICAL_RECORDS = '/medical-records';
+  static const SAVED = '/saved';
 }

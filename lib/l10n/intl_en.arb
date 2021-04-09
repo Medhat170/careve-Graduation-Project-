@@ -105,5 +105,8 @@
   "today": "Today",
   "earlier": "Earlier",
   "later": "Later",
-  "call": "Call"
+  "call": "Call",
+  "worried": "Are you worried?",
+  "findDoctor": "Find Doctor",
+  "doctorHint": "Do not be! now you can find best doctors around you and follow up with them any time and chat too"
 }

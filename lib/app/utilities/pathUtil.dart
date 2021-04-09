@@ -7,6 +7,7 @@ const url = 'https://laravelbreast.000webhostapp.com/public/api/';
 class PathUtil {
   static const String arImage = imagesPath + 'eg.png';
   static const String enImage = imagesPath + 'uk.png';
+  static const String worriedWomanImage = imagesPath + 'worried_woman.png';
   static const String userImage = imagesPath + 'female_avatar.png';
   static const String welcomeImage = imagesPath + 'hands_background.png';
   static const String splashscreen1Image = imagesPath + 'undraw_splash1.png';

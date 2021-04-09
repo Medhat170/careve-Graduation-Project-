@@ -1104,6 +1104,36 @@ class S {
       args: [],
     );
   }
+
+  /// `هل أنت قلق/ه`
+  String get worried {
+    return Intl.message(
+      'هل أنت قلق/ه',
+      name: 'worried',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أبحث عن طبيب`
+  String get findDoctor {
+    return Intl.message(
+      'أبحث عن طبيب',
+      name: 'findDoctor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا تقلق ! الاّن يمكنك العثور على أطباء حولك والمتابعه معهم والتواصل أيضا فى أى وقت`
+  String get doctorHint {
+    return Intl.message(
+      'لا تقلق ! الاّن يمكنك العثور على أطباء حولك والمتابعه معهم والتواصل أيضا فى أى وقت',
+      name: 'doctorHint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

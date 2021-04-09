@@ -1,5 +1,3 @@
-import 'package:careve/app/modules/rooms/bindings/rooms_binding.dart';
-import 'package:careve/app/modules/rooms/views/rooms_view.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -15,6 +13,11 @@ import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
 import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
+import 'package:careve/app/modules/medical_records/bindings/medical_records_binding.dart';
+import 'package:careve/app/modules/medical_records/views/medical_records_view.dart';
+import 'package:careve/app/modules/rooms/bindings/rooms_binding.dart';
+import 'package:careve/app/modules/rooms/views/rooms_view.dart';
+import 'package:careve/app/modules/saved/views/saved_view.dart';
 import 'package:careve/app/modules/self_checking/bindings/self_checking_binding.dart';
 import 'package:careve/app/modules/self_checking/views/self_checking_view.dart';
 import 'package:careve/app/modules/settings/bindings/settings_binding.dart';
@@ -120,6 +123,15 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.MEDICAL_RECORDS,
+      page: () => MedicalRecordsView(),
+      binding: MedicalRecordsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SAVED,
+      page: () => SavedView(),
     ),
   ];
 }

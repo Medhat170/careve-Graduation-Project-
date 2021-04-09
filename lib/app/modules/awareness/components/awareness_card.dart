@@ -18,6 +18,7 @@ class AwarenessCard extends AwarenessCardRef {
   }) : super(
           child ??
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title ?? '',
