@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppUtil {
   static final RegExp emailValidatorRegExp =
@@ -188,5 +189,111 @@ class AppUtil {
       print('FilePicker error : ${e.toString()}');
     }
     return files;
+  }
+
+  static Future<void> openMapsSheet({
+    double latitude,
+    double longitude,
+  }) async {
+    try {
+      String target = 'مستشفى';
+      if (latitude != null && longitude != null) {
+        target = '$latitude,$longitude';
+      } else if (AppUtil.isLtr) {
+        target = 'Hospital';
+      } else {
+        target = 'مستشفى';
+      }
+      final url = 'https://www.google.com/maps/search/?api=1&query=$target';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        print('error');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  static Future<void> callPhone(
+    BuildContext context, {
+    @required List<String> phoneNumbers,
+  }) async {
+    if (Platform.isIOS) {
+      showCupertinoModalPopup<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoActionSheet(
+            actions: <Widget>[
+              ...phoneNumbers.map((e) {
+                final url = 'tel://$e';
+                return CupertinoActionSheetAction(
+                  child: Text(
+                    e,
+                    style: TextStyle(
+                      color: ColorUtil.primaryColor,
+                    ),
+                  ),
+                  onPressed: () async {
+                    try {
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      }
+                    } catch (e) {
+                      print(e.toString());
+                    }
+                  },
+                );
+              }).toList(),
+            ],
+            cancelButton: CupertinoActionSheetAction(
+              isDefaultAction: true,
+              child: Text(
+                S.current.cancel,
+              ),
+              onPressed: () {
+                Get.back(result: true);
+              },
+            ),
+          );
+        },
+      );
+    } else {
+      await Get.bottomSheet(
+        Container(
+          decoration: new BoxDecoration(
+            color: Colors.white,
+            borderRadius: new BorderRadius.only(
+              topLeft: const Radius.circular(10.0),
+              topRight: const Radius.circular(10.0),
+            ),
+          ),
+          child: ListView.builder(
+            itemCount: phoneNumbers.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final url = 'tel://${phoneNumbers[index]}';
+              return ListTile(
+                title: Text(
+                  phoneNumbers[index],
+                  style: TextStyle(
+                    color: ColorUtil.primaryColor,
+                  ),
+                ),
+                onTap: () async {
+                  try {
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    }
+                  } catch (e) {
+                    print(e.toString());
+                  }
+                },
+              );
+            },
+          ),
+        ),
+      );
+    }
   }
 }

@@ -20,7 +20,7 @@ class AdditionActions extends GetView<AwarenessInfoController> {
           onPressed: () async {
             //Todo share files
             await Share.share(
-              'Check out this ${controller.example}',
+              'Check out this ${controller.videoUrl} \n Careve, because we care :)',
               subject: 'Careve, because we care :)',
             );
           },

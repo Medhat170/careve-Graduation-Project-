@@ -135,6 +135,10 @@ class UserAppointment extends StatelessWidget {
                     title: S.of(context).go,
                     height: 70.w,
                     width: 200.w,
+                    onTap: () async => await AppUtil.openMapsSheet(
+                      latitude: 31.22222222,
+                      longitude: 31.322332323,
+                    ),
                   ),
                 ],
               ),
@@ -163,6 +167,12 @@ class UserAppointment extends StatelessWidget {
                     title: S.of(context).call,
                     height: 70.w,
                     width: 200.w,
+                    onTap: () async => await AppUtil.callPhone(
+                      context,
+                      phoneNumbers: [
+                        '01020304050',
+                      ],
+                    ),
                   ),
                 ],
               ),

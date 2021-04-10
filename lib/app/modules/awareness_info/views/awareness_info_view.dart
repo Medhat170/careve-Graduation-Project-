@@ -1,8 +1,8 @@
 import 'package:careve/app/components/animatedListHandler.dart';
 import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/video_player_component.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/awareness_info/components/addition_actions.dart';
-import 'package:careve/app/modules/awareness_info/components/media_block.dart';
 import 'package:careve/app/modules/awareness_info/components/poster_view.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +15,29 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: Column(
-        children: [
+      body: VideoPlayerComponent(
+        upperChildren: [
           customAppBar(
             controller.title(),
             enableBack: true,
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30.0,
+              vertical: 10.0,
+            ),
+            child: Text(
+              'What is symptoms and causes of breast cancer?',
+              style: TextStyle(
+                color: ColorUtil.primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 56.sp,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+        lowerChildren: [
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -28,23 +45,6 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
               ),
               child: AnimatedListHandler(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 10.0,
-                    ),
-                    child: Text(
-                      'What is symptoms and causes of breast cancer?',
-                      style: TextStyle(
-                        color: ColorUtil.primaryColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 56.sp,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  if (controller.awarenessType == AwarenessType.VIDEO)
-                    MediaBlock(),
                   if (controller.awarenessType == AwarenessType.ARTICLE)
                     PosterView(),
                   AdditionActions(),
@@ -68,6 +68,11 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
             ),
           ),
         ],
+        videoUrls: controller.awarenessType != AwarenessType.VIDEO
+            ? null
+            : [
+                controller.videoUrl,
+              ],
       ),
     );
   }

@@ -945,11 +945,11 @@ class S {
     );
   }
 
-  /// `العناية بالنفس`
-  String get selfCare {
+  /// `الفحص الذاتى`
+  String get selfChecking {
     return Intl.message(
-      'العناية بالنفس',
-      name: 'selfCare',
+      'الفحص الذاتى',
+      name: 'selfChecking',
       desc: '',
       args: [],
     );
@@ -1205,6 +1205,16 @@ class S {
     );
   }
 
+  /// `تعلمى كيف تقومى بالفحص الذاتى لسرطان الثدى`
+  String get selfCheckingTitle {
+    return Intl.message(
+      'تعلمى كيف تقومى بالفحص الذاتى لسرطان الثدى',
+      name: 'selfCheckingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `الخطوة الأولى (أمام المرآة)`
   String get firstStep {
     return Intl.message(
@@ -1246,30 +1256,30 @@ class S {
   }
 
   /// `الخطوة الثانية (أمام المرآة)`
-  String get SecondStep {
+  String get secondStep {
     return Intl.message(
       'الخطوة الثانية (أمام المرآة)',
-      name: 'SecondStep',
+      name: 'secondStep',
       desc: '',
       args: [],
     );
   }
 
   /// `1- ارفعي يديك وتأكدي من عدم وجود التغييرات السابقة.`
-  String get SecondStepSubStep1 {
+  String get secondStepSubStep1 {
     return Intl.message(
       '1- ارفعي يديك وتأكدي من عدم وجود التغييرات السابقة.',
-      name: 'SecondStepSubStep1',
+      name: 'secondStepSubStep1',
       desc: '',
       args: [],
     );
   }
 
   /// `2- أثناء رفع يديك ، لاحظي إفرازات غير طبيعية أو دماء من الحلمة اليمنى أو اليسرى.`
-  String get SecondStepSubStep2 {
+  String get secondStepSubStep2 {
     return Intl.message(
       '2- أثناء رفع يديك ، لاحظي إفرازات غير طبيعية أو دماء من الحلمة اليمنى أو اليسرى.',
-      name: 'SecondStepSubStep2',
+      name: 'secondStepSubStep2',
       desc: '',
       args: [],
     );
@@ -1325,6 +1335,16 @@ class S {
     );
   }
 
+  /// `- لاحظى احساس لأى علامه من العلامات التاليه`
+  String get noticeFeeling {
+    return Intl.message(
+      '- لاحظى احساس لأى علامه من العلامات التاليه',
+      name: 'noticeFeeling',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `- الشعور بورم الإبط`
   String get armpitTumor {
     return Intl.message(
@@ -1345,10 +1365,10 @@ class S {
     );
   }
 
-  /// `- سمك - آلام الثدي`
+  /// `- سمك و آلم الثدي`
   String get thicknessAndPain {
     return Intl.message(
-      '- سمك - آلام الثدي',
+      '- سمك و آلم الثدي',
       name: 'thicknessAndPain',
       desc: '',
       args: [],

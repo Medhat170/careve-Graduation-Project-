@@ -90,7 +90,7 @@
   "normalUser": "Normal user",
   "welcomeBack": "Welcome back, ",
   "doctors": "Doctors",
-  "selfCare": "Self care",
+  "selfChecking": "Self checking",
   "hospitals": "Hospitals",
   "awareness": "Awareness",
   "articles": "Articles",
@@ -109,37 +109,31 @@
   "worried": "Are you worried?",
   "findDoctor": "Find Doctor",
   "doctorHint": "Do not be! now you can find best doctors around you and follow up with them any time and chat too",
-
   "splashText1": "You can find the best doctor and the nearest hospital to monitor your case",
   "splashText2": "Connect with other people who are experiencing the same things",
   "splashText3": "You can get articles and tests to check on your health",
-
   "articlesQuestion1": "What is symptoms and causes of breast cancer ?",
   "articlesQuestion2": "How to protect yourself from breast cancer ?",
   "articlesQuestion3": "Is breast cancer a genetic disease ?",
   "articlesQuestion4": "What is breast cancer and what is the incidence of breast cancer ?",
-
+  "selfCheckingTitle": "Learn how to do a breast self checking",
   "firstStep": "The first step (in front of the mirror)",
   "firstStepSubStep1": "1- Look at the breasts in the mirror with your hands in a straight position on the sides and then put your hands on the middle.",
   "firstStepSubStep2": "2- Make sure you look at the shape and color of the breast size and it is the usual for you without changing or without difference.",
   "noticeSign": "- Notice of the following signs in the breast",
-
-  "SecondStep":"The second step (in front of the mirror)",
-  "SecondStepSubStep1":"1- Raise your hands up and make sure there are no previous changes.",
-  "SecondStepSubStep2":"2- While raising your hands up, notice the discharge of any abnormal secretions or blood from the right or left nipples.",
-
-
-  "thirdStep":"The third step (in the bed)",
-  "thirdStepStepSubStep1":"1- Lie on the bed and use the left hand to examine the right breast and right hand to examine the left breast.",
-  "thirdStepStepSubStep2":"2- Using your fingertips and through a circular movement, check the breast (skin and tissues)",
-  "thirdStepStepSubStep3":"3- Make sure the breast is fully examined from the top to the bottom and side to side- from the collarbone to the top of your abdomen and from the armpit to the middle of the chest.",
-  "thirdStepStepSubStep4":"4- Until you make sure the breast is fully examined, you can start from the nipple and then move in larger and larger circles until you reach the outer area of the breast.",
-  "armpitTumor":"- Feeling of armpit tumor",
-  "general":"- Feeling of general",
-  "thicknessAndPain":"- thickness - breast pain",
-  "perceptualTumor":"- perceptual tumor",
-
-  "forthStep":"The fourth step (in the shower)",
-  "forthStepSubStep1":"The previous test was re-examined in the same way as in the shower."
-
+  "secondStep": "The second step (in front of the mirror)",
+  "secondStepSubStep1": "1- Raise your hands up and make sure there are no previous changes.",
+  "secondStepSubStep2": "2- While raising your hands up, notice the discharge of any abnormal secretions or blood from the right or left nipples.",
+  "thirdStep": "The third step (in the bed)",
+  "thirdStepStepSubStep1": "1- Lie on the bed and use the left hand to examine the right breast and right hand to examine the left breast.",
+  "thirdStepStepSubStep2": "2- Using your fingertips and through a circular movement, check the breast (skin and tissues)",
+  "thirdStepStepSubStep3": "3- Make sure the breast is fully examined from the top to the bottom and side to side- from the collarbone to the top of your abdomen and from the armpit to the middle of the chest.",
+  "thirdStepStepSubStep4": "4- Until you make sure the breast is fully examined, you can start from the nipple and then move in larger and larger circles until you reach the outer area of the breast.",
+  "noticeFeeling": "- Notice of the feeling of any of the following signs in the breast",
+  "armpitTumor": "- Feeling of armpit tumor",
+  "general": "- Feeling of general",
+  "thicknessAndPain": "- thickness - breast pain",
+  "perceptualTumor": "- perceptual tumor",
+  "forthStep": "The fourth step (in the shower)",
+  "forthStepSubStep1": "The previous test was re-examined in the same way as in the shower."
 }

@@ -25,9 +25,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "SecondStep" : MessageLookupByLibrary.simpleMessage("The second step (in front of the mirror)"),
-    "SecondStepSubStep1" : MessageLookupByLibrary.simpleMessage("1- Raise your hands up and make sure there are no previous changes."),
-    "SecondStepSubStep2" : MessageLookupByLibrary.simpleMessage("2- While raising your hands up, notice the discharge of any abnormal secretions or blood from the right or left nipples."),
     "aboutUs" : MessageLookupByLibrary.simpleMessage("About us"),
     "address" : MessageLookupByLibrary.simpleMessage("Address"),
     "alert" : MessageLookupByLibrary.simpleMessage("Alert"),
@@ -112,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noMessagesYet" : MessageLookupByLibrary.simpleMessage("No messages yet"),
     "noNetwork" : MessageLookupByLibrary.simpleMessage("Connection failed ,connect and try again"),
     "normalUser" : MessageLookupByLibrary.simpleMessage("Normal user"),
+    "noticeFeeling" : MessageLookupByLibrary.simpleMessage("- Notice of the feeling of any of the following signs in the breast"),
     "noticeSign" : MessageLookupByLibrary.simpleMessage("- Notice of the following signs in the breast"),
     "notifications" : MessageLookupByLibrary.simpleMessage("Notifications"),
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
@@ -127,8 +125,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
     "saved" : MessageLookupByLibrary.simpleMessage("Saved"),
     "search" : MessageLookupByLibrary.simpleMessage("Search"),
+    "secondStep" : MessageLookupByLibrary.simpleMessage("The second step (in front of the mirror)"),
+    "secondStepSubStep1" : MessageLookupByLibrary.simpleMessage("1- Raise your hands up and make sure there are no previous changes."),
+    "secondStepSubStep2" : MessageLookupByLibrary.simpleMessage("2- While raising your hands up, notice the discharge of any abnormal secretions or blood from the right or left nipples."),
     "selectLanguageTitle" : MessageLookupByLibrary.simpleMessage("Choose your preferred language"),
-    "selfCare" : MessageLookupByLibrary.simpleMessage("Self care"),
+    "selfChecking" : MessageLookupByLibrary.simpleMessage("Self checking"),
+    "selfCheckingTitle" : MessageLookupByLibrary.simpleMessage("Learn how to do a breast self checking"),
     "send" : MessageLookupByLibrary.simpleMessage("Send"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "shortPassword" : MessageLookupByLibrary.simpleMessage("Password is too short"),

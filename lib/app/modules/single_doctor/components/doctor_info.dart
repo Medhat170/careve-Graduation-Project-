@@ -1,4 +1,6 @@
 import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
+import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
@@ -111,7 +113,13 @@ class DoctorInfo extends StatelessWidget {
                               size: 22.0,
                               color: ColorUtil.primaryColor,
                             ),
-                            onTap: () {},
+                            onTap: () => Get.toNamed(
+                              Routes.CHAT,
+                              arguments: ChatRouteInputs(
+                                roomId: 0,
+                                roomName: 'Doctor_name',
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -125,7 +133,29 @@ class DoctorInfo extends StatelessWidget {
                               size: 22.0,
                               color: ColorUtil.primaryColor,
                             ),
-                            onTap: () {},
+                            onTap: () async => await AppUtil.callPhone(
+                              context,
+                              phoneNumbers: [
+                                '01020304050',
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 7.5,
+                        ),
+                        Expanded(
+                          child: CareveButton.icon(
+                            backgroundColor: Colors.white,
+                            icon: Icon(
+                              FontAwesomeIcons.locationArrow,
+                              size: 22.0,
+                              color: ColorUtil.primaryColor,
+                            ),
+                            onTap: () async => await AppUtil.openMapsSheet(
+                              latitude: 31.22222222,
+                              longitude: 31.322332323,
+                            ),
                           ),
                         ),
                       ],

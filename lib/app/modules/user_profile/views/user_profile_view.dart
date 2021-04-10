@@ -4,6 +4,7 @@ import 'package:careve/app/modules/user_profile/component/profile_data.dart';
 import 'package:careve/app/modules/user_profile/component/user_feature.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
+import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class UserProfileView extends GetView<UserProfileController> {
             iconData: FontAwesomeIcons.hospital,
             title: S.of(context).hospitals,
             iconColor: Colors.brown,
+            onTap: () async => await AppUtil.openMapsSheet(),
           ),
           UserFeature(
             iconData: FontAwesomeIcons.cogs,

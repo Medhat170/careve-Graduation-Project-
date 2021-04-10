@@ -39,6 +39,17 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: Column(
                     children: [
+                      Text(
+                        S.of(context).selectLanguageTitle,
+                        style: TextStyle(
+                          color: ColorUtil.blackColor,
+                          fontSize: 66.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
                       InkWell(
                         onTap: () => controller.changeLang('en'),
                         child: Text(
@@ -51,7 +62,7 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
                         ),
                       ),
                       const SizedBox(
-                        height: 20.0,
+                        height: 15.0,
                       ),
                       InkWell(
                         onTap: () => controller.changeLang('ar'),

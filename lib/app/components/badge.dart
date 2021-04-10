@@ -10,6 +10,7 @@ class Badge extends StatelessWidget {
   final double top;
   final double right;
   final double left;
+  final double radius;
 
   const Badge({
     this.title,
@@ -18,6 +19,7 @@ class Badge extends StatelessWidget {
     this.titleColor,
     this.top,
     this.right,
+    this.radius,
     this.left,
   }) : assert(child != null);
 
@@ -35,7 +37,7 @@ class Badge extends StatelessWidget {
               elevation: 5.0,
               shape: CircleBorder(),
               child: CircleAvatar(
-                radius: 10.0,
+                radius: radius ?? 10.0,
                 backgroundColor: backgroundColor ?? ColorUtil.errorColor,
                 child: FittedBox(
                   child: Text(
@@ -49,7 +51,7 @@ class Badge extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
       ],
     );
   }

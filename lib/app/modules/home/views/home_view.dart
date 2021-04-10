@@ -30,14 +30,15 @@ class HomeView extends GetView<HomeController> {
               physics: NeverScrollableScrollPhysics(),
               children: [
                 Section(
-                  name: S.of(context).selfCare,
+                  name: S.of(context).selfChecking,
                   image: PathUtil.selfCareImage,
+                  onPressed: () => Get.toNamed(Routes.SELF_CHECKING),
                 ),
                 Section(
-                  name: S.of(context).medicalRecords,
-                  image: PathUtil.hospitalsImage,
-                  onPressed: () => Get.toNamed(Routes.MEDICAL_RECORDS),
-                ),
+                    name: S.of(context).medicalRecords,
+                    image: PathUtil.hospitalsImage,
+                    onPressed: () => Get.toNamed(Routes.MEDICAL_RECORDS),
+                    notification: 1),
                 Section(
                   name: S.of(context).awareness,
                   image: PathUtil.articlesImage,
@@ -54,6 +55,7 @@ class HomeView extends GetView<HomeController> {
                       title: section.name,
                       image: section.image,
                       onTap: section.onPressed,
+                      notification: section.notification,
                     ),
                   )
                   .toList(),
