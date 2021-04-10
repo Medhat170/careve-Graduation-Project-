@@ -1134,6 +1134,256 @@ class S {
       args: [],
     );
   }
+
+  /// `يمكنك العثور على أفضل طبيب وأقرب مستشفى لمتابعة حالتك`
+  String get splashText1 {
+    return Intl.message(
+      'يمكنك العثور على أفضل طبيب وأقرب مستشفى لمتابعة حالتك',
+      name: 'splashText1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأشياء`
+  String get splashText2 {
+    return Intl.message(
+      'تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأشياء',
+      name: 'splashText2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `يمكنك الحصول على مقالات و فحوصات للتحقق من صحتك`
+  String get splashText3 {
+    return Intl.message(
+      'يمكنك الحصول على مقالات و فحوصات للتحقق من صحتك',
+      name: 'splashText3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ما هي اعراض واسباب سرطان الثدي ؟`
+  String get articlesQuestion1 {
+    return Intl.message(
+      'ما هي اعراض واسباب سرطان الثدي ؟',
+      name: 'articlesQuestion1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `كيف تحمي نفسك من سرطان الثدي ؟`
+  String get articlesQuestion2 {
+    return Intl.message(
+      'كيف تحمي نفسك من سرطان الثدي ؟',
+      name: 'articlesQuestion2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل سرطان الثدي مرض وراثي ؟`
+  String get articlesQuestion3 {
+    return Intl.message(
+      'هل سرطان الثدي مرض وراثي ؟',
+      name: 'articlesQuestion3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ما هو سرطان الثدي وما هي نسبة الإصابة به؟`
+  String get articlesQuestion4 {
+    return Intl.message(
+      'ما هو سرطان الثدي وما هي نسبة الإصابة به؟',
+      name: 'articlesQuestion4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الخطوة الأولى (أمام المرآة)`
+  String get firstStep {
+    return Intl.message(
+      'الخطوة الأولى (أمام المرآة)',
+      name: 'firstStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1- انظري إلى الثديين في المرآة مع وضعي يديك في وضع مستقيم على الجانبين ثم ضعي يديك في المنتصف.`
+  String get firstStepSubStep1 {
+    return Intl.message(
+      '1- انظري إلى الثديين في المرآة مع وضعي يديك في وضع مستقيم على الجانبين ثم ضعي يديك في المنتصف.',
+      name: 'firstStepSubStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2- تأكدي من إلقاء نظرة على شكل ولون حجم الثدي وأنه هو المعتاد بالنسبة لك دون تغيير أو بدون فرق.`
+  String get firstStepSubStep2 {
+    return Intl.message(
+      '2- تأكدي من إلقاء نظرة على شكل ولون حجم الثدي وأنه هو المعتاد بالنسبة لك دون تغيير أو بدون فرق.',
+      name: 'firstStepSubStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `- ملاحظة العلامات التالية في الثدي`
+  String get noticeSign {
+    return Intl.message(
+      '- ملاحظة العلامات التالية في الثدي',
+      name: 'noticeSign',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الخطوة الثانية (أمام المرآة)`
+  String get SecondStep {
+    return Intl.message(
+      'الخطوة الثانية (أمام المرآة)',
+      name: 'SecondStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1- ارفعي يديك وتأكدي من عدم وجود التغييرات السابقة.`
+  String get SecondStepSubStep1 {
+    return Intl.message(
+      '1- ارفعي يديك وتأكدي من عدم وجود التغييرات السابقة.',
+      name: 'SecondStepSubStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2- أثناء رفع يديك ، لاحظي إفرازات غير طبيعية أو دماء من الحلمة اليمنى أو اليسرى.`
+  String get SecondStepSubStep2 {
+    return Intl.message(
+      '2- أثناء رفع يديك ، لاحظي إفرازات غير طبيعية أو دماء من الحلمة اليمنى أو اليسرى.',
+      name: 'SecondStepSubStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الخطوة الثالثة (في السرير)`
+  String get thirdStep {
+    return Intl.message(
+      'الخطوة الثالثة (في السرير)',
+      name: 'thirdStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1- الاستلقاء على السرير واستخدام اليد اليسرى لفحص الثدي الأيمن واليد اليمنى لفحص الثدي الأيسر.`
+  String get thirdStepStepSubStep1 {
+    return Intl.message(
+      '1- الاستلقاء على السرير واستخدام اليد اليسرى لفحص الثدي الأيمن واليد اليمنى لفحص الثدي الأيسر.',
+      name: 'thirdStepStepSubStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2- باستخدام أطراف أصابعك ومن خلال حركة دائرية يتم فحص الثدي (الجلد والأنسجة)`
+  String get thirdStepStepSubStep2 {
+    return Intl.message(
+      '2- باستخدام أطراف أصابعك ومن خلال حركة دائرية يتم فحص الثدي (الجلد والأنسجة)',
+      name: 'thirdStepStepSubStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3- تأكدي من فحص الثدي بشكل كامل من أعلى إلى أسفل ومن جانب إلى آخر - من الترقوة إلى أعلى البطن ومن الإبط إلى منتصف الصدر.`
+  String get thirdStepStepSubStep3 {
+    return Intl.message(
+      '3- تأكدي من فحص الثدي بشكل كامل من أعلى إلى أسفل ومن جانب إلى آخر - من الترقوة إلى أعلى البطن ومن الإبط إلى منتصف الصدر.',
+      name: 'thirdStepStepSubStep3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4- حتى يتم التأكد من فحص الثدي بشكل كامل ، يمكنكي البدء من الحلمة ثم التحرك في دوائر أكبر وأكبر حتى تصل إلى المنطقة الخارجية من الثدي.`
+  String get thirdStepStepSubStep4 {
+    return Intl.message(
+      '4- حتى يتم التأكد من فحص الثدي بشكل كامل ، يمكنكي البدء من الحلمة ثم التحرك في دوائر أكبر وأكبر حتى تصل إلى المنطقة الخارجية من الثدي.',
+      name: 'thirdStepStepSubStep4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `- الشعور بورم الإبط`
+  String get armpitTumor {
+    return Intl.message(
+      '- الشعور بورم الإبط',
+      name: 'armpitTumor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `- الشعور العام`
+  String get general {
+    return Intl.message(
+      '- الشعور العام',
+      name: 'general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `- سمك - آلام الثدي`
+  String get thicknessAndPain {
+    return Intl.message(
+      '- سمك - آلام الثدي',
+      name: 'thicknessAndPain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `- ورم إدراكي`
+  String get perceptualTumor {
+    return Intl.message(
+      '- ورم إدراكي',
+      name: 'perceptualTumor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الخطوة الرابعة (في الحمام)`
+  String get forthStep {
+    return Intl.message(
+      'الخطوة الرابعة (في الحمام)',
+      name: 'forthStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أعيدي فحص الاختبار السابق بنفس الطريقة المتبعة في الحمام.`
+  String get forthStepSubStep1 {
+    return Intl.message(
+      'أعيدي فحص الاختبار السابق بنفس الطريقة المتبعة في الحمام.',
+      name: 'forthStepSubStep1',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
