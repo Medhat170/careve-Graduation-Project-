@@ -13,7 +13,7 @@ class DoctorHintCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: ColorUtil.primaryColor,
-      elevation: 3.0,
+      elevation: 6.0,
       margin: const EdgeInsets.symmetric(
         horizontal: 25.0,
         vertical: 10.0,
