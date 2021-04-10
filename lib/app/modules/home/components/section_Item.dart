@@ -3,7 +3,7 @@ import 'package:careve/app/utilities/appUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import'package:get/get.dart';
 class SectionItem extends StatelessWidget {
   final String title;
   final String image;
@@ -23,7 +23,7 @@ class SectionItem extends StatelessWidget {
       title: notification?.toString(),
       top: 5.0,
       right: 5.0,
-      radius: 14.0,
+      radius: 30.w,
       child: InkWell(
         onTap: onTap,
         child: Card(
@@ -32,7 +32,8 @@ class SectionItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: AppUtil.borderRadius,
           ),
-          child: Padding(
+          child: Container(
+            width: Get.width * 0.5,
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: Column(
               children: [
