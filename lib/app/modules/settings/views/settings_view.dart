@@ -28,7 +28,7 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
             onPressed: () async {
               await Get.bottomSheet(
                 Container(
-                  height: 200,
+                  height: Get.height *0.30,
                   decoration: new BoxDecoration(
                     color: Colors.white,
                     borderRadius: new BorderRadius.only(
@@ -36,7 +36,7 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
                       topRight: const Radius.circular(10.0),
                     ),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: Column(
                     children: [
                       Text(
