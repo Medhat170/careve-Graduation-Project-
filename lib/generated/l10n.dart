@@ -1125,20 +1125,20 @@ class S {
     );
   }
 
-  /// `هل أنت قلق/ه`
+  /// `هل أنت قلقه`
   String get worried {
     return Intl.message(
-      'هل أنت قلق/ه',
+      'هل أنت قلقه',
       name: 'worried',
       desc: '',
       args: [],
     );
   }
 
-  /// `أبحث عن طبيب`
+  /// `أبحثي عن طبيب`
   String get findDoctor {
     return Intl.message(
-      'أبحث عن طبيب',
+      'أبحثي عن طبيب',
       name: 'findDoctor',
       desc: '',
       args: [],

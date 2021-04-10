@@ -71,7 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
     "filesUploaded" : m0,
     "filter" : MessageLookupByLibrary.simpleMessage("تحديد البيانات المعروضه"),
-    "findDoctor" : MessageLookupByLibrary.simpleMessage("أبحث عن طبيب"),
+    "findDoctor" : MessageLookupByLibrary.simpleMessage("أبحثي عن طبيب"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("الخطوة الأولى (أمام المرآة)"),
     "firstStepSubStep1" : MessageLookupByLibrary.simpleMessage("1- انظري إلى الثديين في المرآة مع وضعي يديك في وضع مستقيم على الجانبين ثم ضعي يديك في المنتصف."),
     "firstStepSubStep2" : MessageLookupByLibrary.simpleMessage("2- تأكدي من إلقاء نظرة على شكل ولون حجم الثدي وأنه هو المعتاد بالنسبة لك دون تغيير أو بدون فرق."),
@@ -163,6 +163,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome" : MessageLookupByLibrary.simpleMessage("أهلا بكم..."),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("أهلاً, "),
     "welcomeText" : MessageLookupByLibrary.simpleMessage("فى careve للإهتمام بالتوعية بسرطان الثدي والعناية بصحة المرأة."),
-    "worried" : MessageLookupByLibrary.simpleMessage("هل أنت قلق/ه")
+    "worried" : MessageLookupByLibrary.simpleMessage("هل أنت قلقه")
   };
 }
