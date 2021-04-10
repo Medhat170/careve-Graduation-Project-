@@ -48,7 +48,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         height: 100.w,
                       ),
                       Text(
-                        'careve',
+                        'Careve',
                         style: TextStyle(
                           color: ColorUtil.whiteColor,
                           fontSize: 74.sp,
@@ -57,7 +57,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       ),
                       Spacer(),
                       Text(
-                        'Welcome...',
+                        S.of(context).welcome,
                         style: TextStyle(
                           color: ColorUtil.whiteColor,
                           fontSize: 100.sp,
@@ -67,7 +67,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       SizedBox(
                         width: Get.width * 0.6,
                         child: Text(
-                          'to careve for breast cancer awareness and women health care.',
+                          S.of(context).welcomeText,
                           style: TextStyle(
                             color: ColorUtil.whiteColor,
                             fontSize: 46.sp,

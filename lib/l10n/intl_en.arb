@@ -1,4 +1,6 @@
 {
+  "welcome": "Welcome...",
+  "welcomeText": "to careve for breast cancer awareness and women health care.",
   "hasMinLength": "Please insert {length} digit as least",
   "resetPasswordDesc": "Please enter your new password to reset it",
   "passwordsDoNotMatch": "Passwords do not match !",

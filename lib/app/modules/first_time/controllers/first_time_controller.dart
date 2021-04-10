@@ -1,5 +1,6 @@
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,17 +8,16 @@ class FirstTimeController extends GetxController {
   final currentIndex = 0.obs;
   List<Map<String, String>> splashData = [
     {
-      "text":
-          "You can find  the best doctor and the nearest hospital to monitor your case",
-      "image": PathUtil.splashscreen1Image
+      "text": S.current.splashText1,
+      "image": PathUtil.splashscreen1Image,
     },
     {
-      "text": "Connect With Other People Who Are Experiencing The Same Things",
-      "image": PathUtil.splashscreen1Image
+      "text": S.current.splashText2,
+      "image": PathUtil.splashscreen1Image,
     },
     {
-      "text": "you can get articles and tests to check on your health",
-      "image": PathUtil.splashscreen3Image
+      "text": S.current.splashText3,
+      "image": PathUtil.splashscreen3Image,
     },
   ];
 

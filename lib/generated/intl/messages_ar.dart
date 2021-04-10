@@ -142,7 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "socketException" : MessageLookupByLibrary.simpleMessage("تحقق من اتصالك بالانترنت"),
     "specialization" : MessageLookupByLibrary.simpleMessage("التخصص"),
     "splashText1" : MessageLookupByLibrary.simpleMessage("يمكنك العثور على أفضل طبيب وأقرب مستشفى لمتابعة حالتك"),
-    "splashText2" : MessageLookupByLibrary.simpleMessage("تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأشياء"),
+    "splashText2" : MessageLookupByLibrary.simpleMessage("تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأعراض"),
     "splashText3" : MessageLookupByLibrary.simpleMessage("يمكنك الحصول على مقالات و فحوصات للتحقق من صحتك"),
     "startDate" : MessageLookupByLibrary.simpleMessage("تاريخ البدء"),
     "telPhone" : MessageLookupByLibrary.simpleMessage("الهاتف"),
@@ -158,7 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("غير مصرح لك !"),
     "verifyText" : MessageLookupByLibrary.simpleMessage("تم إرسال كود من 6 أرقام إلى رقم هاتفك قم بإدراجه للإستمرار"),
     "videos" : MessageLookupByLibrary.simpleMessage("فيديوهات"),
+    "welcome" : MessageLookupByLibrary.simpleMessage("أهلا بكم..."),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("أهلاً, "),
+    "welcomeText" : MessageLookupByLibrary.simpleMessage("فى careve للإهتمام بالتوعية بسرطان الثدي والعناية بصحة المرأة."),
     "worried" : MessageLookupByLibrary.simpleMessage("هل أنت قلق/ه")
   };
 }

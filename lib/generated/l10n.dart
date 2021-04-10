@@ -35,6 +35,26 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `أهلا بكم...`
+  String get welcome {
+    return Intl.message(
+      'أهلا بكم...',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `فى careve للإهتمام بالتوعية بسرطان الثدي والعناية بصحة المرأة.`
+  String get welcomeText {
+    return Intl.message(
+      'فى careve للإهتمام بالتوعية بسرطان الثدي والعناية بصحة المرأة.',
+      name: 'welcomeText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `برجاء إدخال {length} حروف على الأقل`
   String hasMinLength(Object length) {
     return Intl.message(
@@ -1145,10 +1165,10 @@ class S {
     );
   }
 
-  /// `تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأشياء`
+  /// `تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأعراض`
   String get splashText2 {
     return Intl.message(
-      'تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأشياء',
+      'تواصل مع الأشخاص الآخرين الذين يعانون من نفس الأعراض',
       name: 'splashText2',
       desc: '',
       args: [],

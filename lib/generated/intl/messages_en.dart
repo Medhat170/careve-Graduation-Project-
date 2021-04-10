@@ -158,7 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "unAuthorized" : MessageLookupByLibrary.simpleMessage("Unauthorized action !"),
     "verifyText" : MessageLookupByLibrary.simpleMessage("A 6 - Digit PIN has been sent to your email address, enter it below to continue"),
     "videos" : MessageLookupByLibrary.simpleMessage("Videos"),
+    "welcome" : MessageLookupByLibrary.simpleMessage("Welcome..."),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("Welcome back, "),
+    "welcomeText" : MessageLookupByLibrary.simpleMessage("to careve for breast cancer awareness and women health care."),
     "worried" : MessageLookupByLibrary.simpleMessage("Are you worried?")
   };
 }
