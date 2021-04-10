@@ -15,68 +15,63 @@ class PhoneEntryView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: SingleChildScrollView(
-            child: Form(
-              key: controller.phoneFormKey,
-              child: Obx(
-                () => Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 30.0,
-                  ),
-                  child: Stack(
+      body: SingleChildScrollView(
+        child: Form(
+          key: controller.phoneFormKey,
+          child: Obx(
+            () => Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30.0,
+                vertical: 30.0,
+              ),
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 50,
-                            ),
-                            child: Image.asset(
-                              PathUtil.logoIcon,
-                              height: 250.sp,
-                            ),
-                          ),
-                          Text(
-                            S.of(context).phoneNeededDesc,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 46.sp,
-                              color: ColorUtil.mediumGrey,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          const SizedBox(
-                            height: 15.0,
-                          ),
-                          AuthInputField(
-                            S.of(context).phoneNumber,
-                            controller.phone,
-                            isPhone: true,
-                            loading: controller.isBusy.value,
-                            keyBoardType: TextInputType.number,
-                            validator: QuickTextValidator(
-                              isPhone: true,
-                            ).call,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          CareveButton(
-                            title: S.of(context).done,
-                            onTap: () async =>
-                                await controller.sendPhoneNumber(),
-                            backgroundColor: ColorUtil.primaryColor,
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 50,
+                        ),
+                        child: Image.asset(
+                          PathUtil.logoIcon,
+                          height: 250.sp,
+                        ),
                       ),
-                      CircularBackButton(),
+                      Text(
+                        S.of(context).phoneNeededDesc,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 46.sp,
+                          color: ColorUtil.mediumGrey,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      AuthInputField(
+                        S.of(context).phoneNumber,
+                        controller.phone,
+                        isPhone: true,
+                        loading: controller.isBusy.value,
+                        keyBoardType: TextInputType.number,
+                        validator: QuickTextValidator(
+                          isPhone: true,
+                        ).call,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CareveButton(
+                        title: S.of(context).done,
+                        onTap: () async => await controller.sendPhoneNumber(),
+                        backgroundColor: ColorUtil.primaryColor,
+                      ),
                     ],
                   ),
-                ),
+                  CircularBackButton(),
+                ],
               ),
             ),
           ),

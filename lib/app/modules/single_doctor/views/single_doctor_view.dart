@@ -13,31 +13,27 @@ class SingleDoctorView extends GetView<SingleDoctorController>
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              customAppBar(
-                'Doctor_name',
-                enableBack: true,
-              ),
-              Expanded(
-                child: AnimatedListHandler(
-                  children: [
-                    DoctorInfo(
-                      id: '0',
-                      image: PathUtil.hospitalsImage,
-                      name: 'Dr. Mayme Gomez',
-                      specialty: 'Breast tumors',
-                      rate: 4,
-                    ),
-                    Appointments(),
-                  ],
-                ),
-              )
-            ],
+      body: Column(
+        children: [
+          customAppBar(
+            'Doctor_name',
+            enableBack: true,
           ),
-        ),
+          Expanded(
+            child: AnimatedListHandler(
+              children: [
+                DoctorInfo(
+                  id: '0',
+                  image: PathUtil.hospitalsImage,
+                  name: 'Dr. Mayme Gomez',
+                  specialty: 'Breast tumors',
+                  rate: 4,
+                ),
+                Appointments(),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

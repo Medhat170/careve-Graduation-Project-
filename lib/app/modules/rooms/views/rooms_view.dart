@@ -11,32 +11,28 @@ class RoomsView extends GetView<RoomsController> with CustomAppBar {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
+      body: Column(
+        children: [
+          customAppBar(
+            S.of(context).messages,
+            enableBack: true,
+            trailingCount: 2,
+          ),
+          AnimatedListHandler(
+            shrinkWrap: true,
             children: [
-              customAppBar(
-                S.of(context).messages,
-                enableBack: true,
-                trailingCount: 2,
-              ),
-              AnimatedListHandler(
-                shrinkWrap: true,
-                children: [
-                  ...List.generate(
-                    5,
-                    (index) => RoomCard(
-                      username: 'Dr: Ahmed mohamed',
-                      dateTime: DateTime.now(),
-                      lastMessage: 'Hi,there i am using careve app!',
-                      unRead: index == 0 || index == 3,
-                    ),
-                  ),
-                ],
+              ...List.generate(
+                5,
+                (index) => RoomCard(
+                  username: 'Dr: Ahmed mohamed',
+                  dateTime: DateTime.now(),
+                  lastMessage: 'Hi,there i am using careve app!',
+                  unRead: index == 0 || index == 3,
+                ),
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

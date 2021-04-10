@@ -20,74 +20,70 @@ class AwarenessView extends GetView<AwarenessController> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              Obx(
-                () => controller.customAppBar(
-                  S.of(context).awareness,
-                  enableBack: true,
-                  enableSearch: true,
-                ),
-              ),
-              TabBar(
-                controller: controller.tabController,
-                isScrollable: true,
-                indicatorColor: ColorUtil.primaryColor,
-                onTap: controller.onChangeTab,
-                tabs: _tabs
-                    .map(
-                      (e) => Tab(
-                        child: Text(
-                          e,
-                          style: TextStyle(
-                            color: ColorUtil.primaryColor,
-                            fontSize: 44.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Expanded(
-                child: Obx(
-                  () => AnimatedListHandler(
-                    children: [
-                      ...List.generate(
-                        8,
-                        (index) => controller.currentIndex.value != 1
-                            ? AwarenessCard.image(
-                                image: null,
-                                title:
-                                    'What is symptoms and causes of breast cancer?',
-                                onTap: () => Get.toNamed(
-                                  Routes.AWARENESS_INFO,
-                                  arguments: AwarenessType.VIDEO,
-                                ),
-                              )
-                            : AwarenessCard(
-                                title:
-                                    'What is symptoms and causes of breast cancer?',
-                                auther: 'By Dr. Ahmed Anwar',
-                                dateTime: DateTime.now(),
-                                onTap: () => Get.toNamed(
-                                  Routes.AWARENESS_INFO,
-                                  arguments: AwarenessType.ARTICLE,
-                                ),
-                              ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+      body: Column(
+        children: [
+          Obx(
+            () => controller.customAppBar(
+              S.of(context).awareness,
+              enableBack: true,
+              enableSearch: true,
+            ),
           ),
-        ),
+          TabBar(
+            controller: controller.tabController,
+            isScrollable: true,
+            indicatorColor: ColorUtil.primaryColor,
+            onTap: controller.onChangeTab,
+            tabs: _tabs
+                .map(
+                  (e) => Tab(
+                    child: Text(
+                      e,
+                      style: TextStyle(
+                        color: ColorUtil.primaryColor,
+                        fontSize: 44.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Expanded(
+            child: Obx(
+              () => AnimatedListHandler(
+                children: [
+                  ...List.generate(
+                    8,
+                    (index) => controller.currentIndex.value != 1
+                        ? AwarenessCard.image(
+                            image: null,
+                            title:
+                                'What is symptoms and causes of breast cancer?',
+                            onTap: () => Get.toNamed(
+                              Routes.AWARENESS_INFO,
+                              arguments: AwarenessType.VIDEO,
+                            ),
+                          )
+                        : AwarenessCard(
+                            title:
+                                'What is symptoms and causes of breast cancer?',
+                            auther: 'By Dr. Ahmed Anwar',
+                            dateTime: DateTime.now(),
+                            onTap: () => Get.toNamed(
+                              Routes.AWARENESS_INFO,
+                              arguments: AwarenessType.ARTICLE,
+                            ),
+                          ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

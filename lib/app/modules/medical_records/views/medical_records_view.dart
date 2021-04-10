@@ -14,24 +14,20 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              customAppBar(
-                S.of(context).medicalRecords,
-                enableBack: true,
-              ),
-              Expanded(
-                child: AnimatedListHandler(
-                  children: [
-                    DoctorHintCard(),
-                  ],
-                ),
-              ),
-            ],
+      body: Column(
+        children: [
+          customAppBar(
+            S.of(context).medicalRecords,
+            enableBack: true,
           ),
-        ),
+          Expanded(
+            child: AnimatedListHandler(
+              children: [
+                DoctorHintCard(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

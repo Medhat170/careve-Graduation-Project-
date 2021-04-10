@@ -10,40 +10,36 @@ class DoctorsView extends GetView<DoctorsController> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              Obx(
-                () => controller.customAppBar(
-                  'Top Doctors',
-                  enableBack: true,
-                  enableSearch: true,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: 10.0,
-                    bottom: 5.0,
-                  ),
-                  child: AnimatedListHandler(
-                    children: List.generate(
-                      2,
-                      (index) => DoctorItem(
-                        name: 'Dr. Mayme Gomez',
-                        id: 'Dr1',
-                        rate: 4.5,
-                        specialty: 'Breast tumors',
-                        image: PathUtil.logoIcon,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+      body: Column(
+        children: [
+          Obx(
+            () => controller.customAppBar(
+              'Top Doctors',
+              enableBack: true,
+              enableSearch: true,
+            ),
           ),
-        ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 10.0,
+                bottom: 5.0,
+              ),
+              child: AnimatedListHandler(
+                children: List.generate(
+                  2,
+                  (index) => DoctorItem(
+                    name: 'Dr. Mayme Gomez',
+                    id: 'Dr1',
+                    rate: 4.5,
+                    specialty: 'Breast tumors',
+                    image: PathUtil.logoIcon,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -14,42 +14,38 @@ class SavedView extends GetView<SavedController> with CustomAppBar {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              customAppBar(
-                S.of(context).saved,
-                enableBack: true,
-                trailing: IconButton(
-                  icon: Icon(
-                    FontAwesomeIcons.broom,
-                    color: ColorUtil.errorColor,
-                    size: 20.0,
-                  ),
-                  onPressed: () {},
-                ),
+      body: Column(
+        children: [
+          customAppBar(
+            S.of(context).saved,
+            enableBack: true,
+            trailing: IconButton(
+              icon: Icon(
+                FontAwesomeIcons.broom,
+                color: ColorUtil.errorColor,
+                size: 20.0,
               ),
-              Expanded(
-                child: AnimatedListHandler(
-                  children: [
-                    ...List.generate(
-                      2,
-                      (index) => SavedCard(
-                        title: 'What is symptoms and causes of breast cancer?',
-                        image: index == 0 ? 'image' : null,
-                        dateTime: DateTime.now(),
-                        type: index == 0
-                            ? AwarenessType.VIDEO
-                            : AwarenessType.ARTICLE,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              onPressed: () {},
+            ),
           ),
-        ),
+          Expanded(
+            child: AnimatedListHandler(
+              children: [
+                ...List.generate(
+                  2,
+                  (index) => SavedCard(
+                    title: 'What is symptoms and causes of breast cancer?',
+                    image: index == 0 ? 'image' : null,
+                    dateTime: DateTime.now(),
+                    type: index == 0
+                        ? AwarenessType.VIDEO
+                        : AwarenessType.ARTICLE,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

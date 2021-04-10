@@ -15,90 +15,86 @@ class ResetPasswordView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: SingleChildScrollView(
-            child: Form(
-              key: controller.passwordsFormKey,
-              child: Obx(
-                () => Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 30.0,
-                  ),
-                  child: Stack(
+      body: SingleChildScrollView(
+        child: Form(
+          key: controller.passwordsFormKey,
+          child: Obx(
+            () => Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30.0,
+                vertical: 30.0,
+              ),
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 50,
-                            ),
-                            child: Image.asset(
-                              PathUtil.logoIcon,
-                              height: 250.sp,
-                            ),
-                          ),
-                          Text(
-                            S.of(context).resetPasswordDesc,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 46.sp,
-                              color: ColorUtil.mediumGrey,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          const SizedBox(
-                            height: 15.0,
-                          ),
-                          AuthInputField(
-                            S.of(context).password,
-                            controller.password,
-                            loading: controller.isBusy.value,
-                            isPassword: true,
-                            hidePassword: controller.hidePassword.value,
-                            changeObscuring: () => controller.hidePassword
-                                .value = !controller.hidePassword.value,
-                            keyBoardType: TextInputType.text,
-                            validator: QuickTextValidator(
-                              hasMinLength: 8,
-                            ).call,
-                          ),
-                          AuthInputField(
-                            S.of(context).confirmPassword,
-                            controller.confirmedPassword,
-                            loading: controller.isBusy.value,
-                            isPassword: true,
-                            hidePassword: controller.hidePassword.value,
-                            changeObscuring: () => controller.hidePassword
-                                .value = !controller.hidePassword.value,
-                            keyBoardType: TextInputType.text,
-                            validator: QuickTextValidator(
-                              extraValidation: (String value) {
-                                if (controller.password.text !=
-                                    controller.confirmedPassword.text) {
-                                  return S.current.passwordsDoNotMatch;
-                                }
-                                return null;
-                              },
-                              hasMinLength: 8,
-                            ).call,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          CareveButton(
-                            title: S.of(context).done,
-                            onTap: () async => await controller.restPassword(),
-                            backgroundColor: ColorUtil.primaryColor,
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 50,
+                        ),
+                        child: Image.asset(
+                          PathUtil.logoIcon,
+                          height: 250.sp,
+                        ),
                       ),
-                      CircularBackButton(),
+                      Text(
+                        S.of(context).resetPasswordDesc,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 46.sp,
+                          color: ColorUtil.mediumGrey,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      AuthInputField(
+                        S.of(context).password,
+                        controller.password,
+                        loading: controller.isBusy.value,
+                        isPassword: true,
+                        hidePassword: controller.hidePassword.value,
+                        changeObscuring: () => controller.hidePassword.value =
+                            !controller.hidePassword.value,
+                        keyBoardType: TextInputType.text,
+                        validator: QuickTextValidator(
+                          hasMinLength: 8,
+                        ).call,
+                      ),
+                      AuthInputField(
+                        S.of(context).confirmPassword,
+                        controller.confirmedPassword,
+                        loading: controller.isBusy.value,
+                        isPassword: true,
+                        hidePassword: controller.hidePassword.value,
+                        changeObscuring: () => controller.hidePassword.value =
+                            !controller.hidePassword.value,
+                        keyBoardType: TextInputType.text,
+                        validator: QuickTextValidator(
+                          extraValidation: (String value) {
+                            if (controller.password.text !=
+                                controller.confirmedPassword.text) {
+                              return S.current.passwordsDoNotMatch;
+                            }
+                            return null;
+                          },
+                          hasMinLength: 8,
+                        ).call,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CareveButton(
+                        title: S.of(context).done,
+                        onTap: () async => await controller.restPassword(),
+                        backgroundColor: ColorUtil.primaryColor,
+                      ),
                     ],
                   ),
-                ),
+                  CircularBackButton(),
+                ],
               ),
             ),
           ),

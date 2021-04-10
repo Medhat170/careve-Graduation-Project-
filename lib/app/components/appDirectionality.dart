@@ -14,7 +14,11 @@ class GlobalScaffold extends StatelessWidget {
       textDirection: intl.Intl.getCurrentLocale() == 'en'
           ? TextDirection.ltr
           : TextDirection.rtl,
-      child: body,
+      child: SafeArea(
+        child: Scaffold(
+          body: body,
+        ),
+      ),
     );
   }
 }

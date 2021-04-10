@@ -15,60 +15,56 @@ class ProfileEditingView extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Form(
-            key: controller.editFormKey,
-            child: Obx(() {
-              print(controller.dateOfBirth?.value?.toString());
-              return ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 5.0,
-                ),
-                children: <Widget>[
-                  ProfileImageHandler(),
-                  AuthInputField(
-                    S.of(context).name,
-                    controller.name,
-                    loading: controller.isBusy.value,
-                    keyBoardType: TextInputType.text,
-                    validator: QuickTextValidator().call,
-                  ),
-                  AuthInputField(
-                    S.of(context).email,
-                    controller.email,
-                    loading: controller.isBusy.value,
-                    keyBoardType: TextInputType.emailAddress,
-                    validator: QuickTextValidator(
-                      isEmail: true,
-                    ).call,
-                  ),
-                  AuthInputField(
-                    S.of(context).address,
-                    controller.address,
-                    loading: controller.isBusy.value,
-                    keyBoardType: TextInputType.streetAddress,
-                  ),
-                  AuthInputField(
-                    S.of(context).phoneNumber,
-                    controller.phone,
-                    loading: controller.isBusy.value,
-                    keyBoardType: TextInputType.number,
-                  ),
-                  BirthDateHandler(),
-                  BloodTypeList(),
-                  controller.isBusy.value
-                      ? Loading()
-                      : CareveButton(
-                          title: S.of(context).edit,
-                          onTap: () => controller.editProfile,
-                        ),
-                ],
-              );
-            }),
-          ),
-        ),
+      body: Form(
+        key: controller.editFormKey,
+        child: Obx(() {
+          print(controller.dateOfBirth?.value?.toString());
+          return ListView(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 5.0,
+            ),
+            children: <Widget>[
+              ProfileImageHandler(),
+              AuthInputField(
+                S.of(context).name,
+                controller.name,
+                loading: controller.isBusy.value,
+                keyBoardType: TextInputType.text,
+                validator: QuickTextValidator().call,
+              ),
+              AuthInputField(
+                S.of(context).email,
+                controller.email,
+                loading: controller.isBusy.value,
+                keyBoardType: TextInputType.emailAddress,
+                validator: QuickTextValidator(
+                  isEmail: true,
+                ).call,
+              ),
+              AuthInputField(
+                S.of(context).address,
+                controller.address,
+                loading: controller.isBusy.value,
+                keyBoardType: TextInputType.streetAddress,
+              ),
+              AuthInputField(
+                S.of(context).phoneNumber,
+                controller.phone,
+                loading: controller.isBusy.value,
+                keyBoardType: TextInputType.number,
+              ),
+              BirthDateHandler(),
+              BloodTypeList(),
+              controller.isBusy.value
+                  ? Loading()
+                  : CareveButton(
+                      title: S.of(context).edit,
+                      onTap: () => controller.editProfile,
+                    ),
+            ],
+          );
+        }),
       ),
     );
   }

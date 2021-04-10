@@ -14,91 +14,87 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      body: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              customAppBar(
-                S.of(context).appointments,
-                enableBack: true,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                  ),
-                  child: AnimatedListHandler(
-                    children: [
-                      if (controller.today != null) ...[
-                        Text(
-                          S.of(context).today,
-                          style: TextStyle(
-                            fontSize: 60.sp,
-                            fontWeight: FontWeight.bold,
-                            color: ColorUtil.blackColor,
-                          ),
-                        ),
-                        ...controller.today
-                            .map(
-                              (e) => UserAppointment(
-                                doctorName: 'Dr:Ahmed mohamed',
-                                date: e,
-                                telephoneNumber: '01020304050',
-                                address: 'Mansoura',
-                                specialty: 'breast cancer specialist',
-                              ),
-                            )
-                            .toList(),
-                      ],
-                      if (controller.earlier != null) ...[
-                        Text(
-                          S.of(context).earlier,
-                          style: TextStyle(
-                            fontSize: 60.sp,
-                            fontWeight: FontWeight.bold,
-                            color: ColorUtil.blackColor,
-                          ),
-                        ),
-                        ...controller.earlier
-                            .map(
-                              (e) => UserAppointment(
-                                doctorName: 'Dr:Ahmed mohamed',
-                                date: e,
-                                telephoneNumber: '01020304050',
-                                address: 'Mansoura',
-                                specialty: 'breast cancer specialist',
-                              ),
-                            )
-                            .toList(),
-                      ],
-                      if (controller.today != null) ...[
-                        Text(
-                          S.of(context).later,
-                          style: TextStyle(
-                            fontSize: 60.sp,
-                            fontWeight: FontWeight.bold,
-                            color: ColorUtil.blackColor,
-                          ),
-                        ),
-                        ...controller.later
-                            .map(
-                              (e) => UserAppointment(
-                                doctorName: 'Dr:Ahmed mohamed',
-                                date: e,
-                                telephoneNumber: '01020304050',
-                                address: 'Mansoura',
-                                specialty: 'breast cancer specialist',
-                              ),
-                            )
-                            .toList(),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
-            ],
+      body: Column(
+        children: [
+          customAppBar(
+            S.of(context).appointments,
+            enableBack: true,
           ),
-        ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+              ),
+              child: AnimatedListHandler(
+                children: [
+                  if (controller.today != null) ...[
+                    Text(
+                      S.of(context).today,
+                      style: TextStyle(
+                        fontSize: 60.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ColorUtil.blackColor,
+                      ),
+                    ),
+                    ...controller.today
+                        .map(
+                          (e) => UserAppointment(
+                            doctorName: 'Dr:Ahmed mohamed',
+                            date: e,
+                            telephoneNumber: '01020304050',
+                            address: 'Mansoura',
+                            specialty: 'breast cancer specialist',
+                          ),
+                        )
+                        .toList(),
+                  ],
+                  if (controller.earlier != null) ...[
+                    Text(
+                      S.of(context).earlier,
+                      style: TextStyle(
+                        fontSize: 60.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ColorUtil.blackColor,
+                      ),
+                    ),
+                    ...controller.earlier
+                        .map(
+                          (e) => UserAppointment(
+                            doctorName: 'Dr:Ahmed mohamed',
+                            date: e,
+                            telephoneNumber: '01020304050',
+                            address: 'Mansoura',
+                            specialty: 'breast cancer specialist',
+                          ),
+                        )
+                        .toList(),
+                  ],
+                  if (controller.today != null) ...[
+                    Text(
+                      S.of(context).later,
+                      style: TextStyle(
+                        fontSize: 60.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ColorUtil.blackColor,
+                      ),
+                    ),
+                    ...controller.later
+                        .map(
+                          (e) => UserAppointment(
+                            doctorName: 'Dr:Ahmed mohamed',
+                            date: e,
+                            telephoneNumber: '01020304050',
+                            address: 'Mansoura',
+                            specialty: 'breast cancer specialist',
+                          ),
+                        )
+                        .toList(),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

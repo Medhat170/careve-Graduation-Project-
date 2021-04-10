@@ -114,8 +114,9 @@ class AppUtil {
   }) async {
     return await Get.defaultDialog<bool>(
       title: S.current.alert ?? title,
-      content: GlobalScaffold(
-        body: Text(
+      content: Directionality(
+        textDirection: AppUtil.isLtr ? TextDirection.ltr : TextDirection.rtl,
+        child: Text(
           body ?? '',
           style: TextStyle(
             color: Colors.black,
