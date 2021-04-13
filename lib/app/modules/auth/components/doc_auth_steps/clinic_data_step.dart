@@ -85,6 +85,8 @@ class ClinicDataStep extends Step {
                           print(
                             'You picked: ${pickedLocation.formattedAddress}',
                           );
+                          AuthService.to.address.text =
+                              pickedLocation.formattedAddress;
                         }
                       },
                     ),
