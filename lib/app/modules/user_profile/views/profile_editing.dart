@@ -1,10 +1,10 @@
 import 'package:careve/app/components/appButton.dart';
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/loading.dart';
+import 'package:careve/app/components/user_image_handler.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/modules/user_profile/component/blood_type_list.dart';
 import 'package:careve/app/modules/user_profile/component/date_of_birth_handler.dart';
-import 'package:careve/app/modules/user_profile/component/user_image_handler.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';

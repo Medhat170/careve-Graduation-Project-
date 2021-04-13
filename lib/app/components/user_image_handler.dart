@@ -14,7 +14,7 @@ class ProfileImageHandler extends GetView<AuthService> {
       () {
         final userData = controller.user?.value;
         Widget imageProvider = Image.asset(
-          PathUtil.userImage,
+          PathUtil.logoIcon,
           height: 50.0,
           fit: BoxFit.cover,
         );

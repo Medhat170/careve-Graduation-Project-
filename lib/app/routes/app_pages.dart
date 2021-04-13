@@ -1,3 +1,4 @@
+import 'package:careve/app/modules/auth/views/doctor_auth.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -54,6 +55,10 @@ class AppPages {
     GetPage(
       name: _Paths.AUTH,
       page: () => AuthView(),
+    ),
+    GetPage(
+      name: _Paths.DOCTOR_AUTH,
+      page: () => DoctorAuthView(),
     ),
     GetPage(
       name: _Paths.PHONE_ENTRY,

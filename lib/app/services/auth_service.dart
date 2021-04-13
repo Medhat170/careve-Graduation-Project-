@@ -11,6 +11,7 @@ import 'package:careve/app/utilities/pathUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:careve/app/components/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class AuthService extends GetxService with ApiMixin, BusyMixin {
@@ -20,10 +21,17 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
 
   final signUP = false.obs;
   final isDoc = false.obs;
+  final currentStep = 0.obs;
+  final complete = false.obs;
+  final hidePassword = true.obs;
+  final pinCodeError = RxString();
   final user = Rx<User>();
   GlobalKey<FormState> editFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> personalDataFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> clinicFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> docVerificationFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> passwordsFormKey = GlobalKey<FormState>();
   TextEditingController phone = TextEditingController();
   TextEditingController code = TextEditingController();
@@ -46,14 +54,89 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     'O-',
     'O+',
   ]);
-  final hidePassword = true.obs;
-  final pinCodeError = RxString();
 
   static AuthService get to => Get.find();
 
   bool get isAuth => userId != null;
 
   String get userId => cacheService?.settingsRepo?.cachedUserId;
+  final currentLocation = Rx<Position>();
+
+  void onStepContinue() async {
+    try {
+      if (currentStep.value == 0) {
+        final formData = personalDataFormKey.currentState;
+        if (formData.validate()) {
+          if (currentLocation != null) {
+            startBusy();
+            currentLocation(await AppUtil.getCurrentLocation());
+            endBusySuccess();
+          }
+          goTo(currentStep.value + 1);
+        }
+      } else if (currentStep.value == 1) {
+        final formData = clinicFormKey.currentState;
+        if (formData.validate()) {
+          goTo(currentStep.value + 1);
+        }
+      } else if (currentStep.value == 2) {
+        final formData = docVerificationFormKey.currentState;
+        if (formData.validate()) {
+          goTo(currentStep.value + 1);
+        }
+        complete.value = true;
+      } else {
+        print('----------- Invalid Stepper input -----------');
+      }
+      stepStates[currentStep.value] = StepState.editing;
+      stepStates[currentStep.value - 1] = StepState.complete;
+      stepActivation[currentStep.value] = true;
+      stepActivation[currentStep.value - 1] = false;
+    } catch (e) {
+      print(
+        '----------- Invalid Stepper Exception (${e.toString()}) -----------',
+      );
+    }
+  }
+
+  void onStepCancel() {
+    if (currentStep.value > 0) {
+      goTo(currentStep.value - 1);
+    }
+    stepStates[currentStep.value] = StepState.editing;
+    stepStates[currentStep.value + 1] = StepState.disabled;
+    stepActivation[currentStep.value] = true;
+    stepActivation[currentStep.value + 1] = false;
+  }
+
+  final stepStates = RxList<StepState>([
+    StepState.editing,
+    StepState.disabled,
+    StepState.disabled,
+  ]);
+  final stepActivation = RxList<bool>([
+    true,
+    false,
+    false,
+  ]);
+
+  void goTo(int step) {
+    currentStep(step);
+  }
+
+  @override
+  void onClose() {
+    name.dispose();
+    password.dispose();
+    confirmedPassword.dispose();
+    code.dispose();
+    email.dispose();
+    address.dispose();
+    dateOfBirth.nil();
+    bloodType.nil();
+    image.nil();
+    super.onClose();
+  }
 
   Future<bool> tryAutoLogin() async {
     var cachedUserId = cacheService?.settingsRepo?.cachedUserId;
@@ -205,19 +288,5 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     } catch (e) {
       printError(info: e.toString());
     }
-  }
-
-  @override
-  void onClose() {
-    name.dispose();
-    password.dispose();
-    confirmedPassword.dispose();
-    code.dispose();
-    email.dispose();
-    address.dispose();
-    dateOfBirth.nil();
-    bloodType.nil();
-    image.nil();
-    super.onClose();
   }
 }

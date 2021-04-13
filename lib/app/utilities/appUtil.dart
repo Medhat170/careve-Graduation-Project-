@@ -6,6 +6,7 @@ import 'package:careve/generated/l10n.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -295,5 +296,23 @@ class AppUtil {
         ),
       );
     }
+  }
+
+  static Future<Position> getCurrentLocation() async {
+    Position position;
+    try {
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        await Geolocator.requestPermission();
+      }
+      final geo = GeolocatorPlatform.instance;
+      position = await geo.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      print('User location : (${position.latitude},${position.longitude})');
+    } catch (e) {
+      print('Geolocator error : (${e.toString()})');
+    }
+    return position;
   }
 }

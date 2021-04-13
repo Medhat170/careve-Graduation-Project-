@@ -14,6 +14,7 @@ class AuthInputField extends StatelessWidget {
   final TextInputType keyBoardType;
   final FormFieldValidator<String> validator;
   final Function changeObscuring;
+  final Widget suffix;
 
   AuthInputField(
     this.label,
@@ -26,6 +27,7 @@ class AuthInputField extends StatelessWidget {
     this.hidePassword = false,
     this.changeObscuring,
     this.loading = false,
+    this.suffix,
   });
 
   @override
@@ -43,25 +45,32 @@ class AuthInputField extends StatelessWidget {
         const SizedBox(
           height: 10.0,
         ),
-        AppTextField(
-          controller,
-          validator: validator,
-          changeObscuring: changeObscuring,
-          hidePassword: hidePassword,
-          hintText: hintText,
-          isPassword: isPassword,
-          keyBoardType: keyBoardType,
-          readOnly: loading,
-          prefixWidget: !isPhone
-              ? null
-              : Text(
-                  '+20',
-                  style: TextStyle(
-                    color: ColorUtil.blackColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18.0,
-                  ),
-                ),
+        Row(
+          children: [
+            Expanded(
+              child: AppTextField(
+                controller,
+                validator: validator,
+                changeObscuring: changeObscuring,
+                hidePassword: hidePassword,
+                hintText: hintText,
+                isPassword: isPassword,
+                keyBoardType: keyBoardType,
+                readOnly: loading,
+                prefixWidget: !isPhone
+                    ? null
+                    : Text(
+                        '+20',
+                        style: TextStyle(
+                          color: ColorUtil.blackColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18.0,
+                        ),
+                      ),
+              ),
+            ),
+            if (suffix != null) suffix
+          ],
         ),
         const SizedBox(
           height: 20.0,

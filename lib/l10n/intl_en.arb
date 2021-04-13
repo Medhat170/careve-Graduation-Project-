@@ -137,5 +137,8 @@
   "thicknessAndPain": "- thickness - breast pain",
   "perceptualTumor": "- perceptual tumor",
   "forthStep": "The fourth step (in the shower)",
-  "forthStepSubStep1": "The previous test was re-examined in the same way as in the shower."
+  "forthStepSubStep1": "The previous test was re-examined in the same way as in the shower.",
+  "personalData": "Personal data",
+  "clinicData": "Clinic data",
+  "professionalData": "Professional data"
 }

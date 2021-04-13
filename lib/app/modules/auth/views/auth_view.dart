@@ -130,59 +130,6 @@ class AuthView extends GetView<AuthService> {
                                 ),
                               ],
                             ),
-                          // Column(
-                          //   crossAxisAlignment: CrossAxisAlignment.center,
-                          //   children: [
-                          //     Padding(
-                          //       padding: const EdgeInsets.symmetric(
-                          //         vertical: 20.0,
-                          //       ),
-                          //       child: Text(
-                          //         '- OR -',
-                          //         style: TextStyle(
-                          //           fontSize: 40.sp,
-                          //         ),
-                          //       ),
-                          //     ),
-                          //     Row(
-                          //       children: [
-                          //         Expanded(
-                          //           child: CareveButton.icon(
-                          //             title: 'facebook',
-                          //             onTap: () {},
-                          //             elevation: 2.0,
-                          //             backgroundColor: ColorUtil.lightGrey,
-                          //             textColor: ColorUtil.blackColor,
-                          //             icon: Image.asset(
-                          //               PathUtil.facebookIcon,
-                          //               width: 40.0,
-                          //               height: 40.0,
-                          //             ),
-                          //           ),
-                          //         ),
-                          //         const SizedBox(
-                          //           width: 20.0,
-                          //         ),
-                          //         Expanded(
-                          //           child: CareveButton.icon(
-                          //             title: 'Google',
-                          //             onTap: () {},
-                          //             elevation: 2.0,
-                          //             backgroundColor: ColorUtil.lightGrey,
-                          //             textColor: ColorUtil.blackColor,
-                          //             icon: Image.asset(
-                          //               PathUtil.googleIcon,
-                          //               width: 40.0,
-                          //               height: 40.0,
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       ],
-                          //     ),
-                          //
-                          //
-                          //   ],
-                          // ),
                           const SizedBox(
                             height: 20.0,
                           ),

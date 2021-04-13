@@ -1424,6 +1424,36 @@ class S {
       args: [],
     );
   }
+
+  /// `المعلومات الشخصيه`
+  String get personalData {
+    return Intl.message(
+      'المعلومات الشخصيه',
+      name: 'personalData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `معلومات العياده`
+  String get clinicData {
+    return Intl.message(
+      'معلومات العياده',
+      name: 'clinicData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `المعلومات المهنيه`
+  String get professionalData {
+    return Intl.message(
+      'المعلومات المهنيه',
+      name: 'professionalData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
