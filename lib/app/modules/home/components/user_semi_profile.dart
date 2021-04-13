@@ -75,7 +75,7 @@ class UserSemiProfile extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () => Get.toNamed(Routes.USER_PROFILE),
                     child: AvatarGlow(
-                      endRadius: 55.0,
+                      endRadius: 150.w,
                       child: Hero(
                         tag: 'profile',
                         child: Material(
@@ -87,15 +87,15 @@ class UserSemiProfile extends StatelessWidget {
                                     userData?.image?.length == 0
                                 ? Image.asset(
                                     PathUtil.userImage,
-                                    height: 45.0,
+                                    height: 80.w,
                                     fit: BoxFit.cover,
                                   )
                                 : Image.network(
                                     userData?.image,
-                                    height: 45.0,
+                                    height: 80.w,
                                     fit: BoxFit.cover,
                                   ),
-                            radius: 35.0,
+                            radius: 90.w,
                           ),
                         ),
                       ),
