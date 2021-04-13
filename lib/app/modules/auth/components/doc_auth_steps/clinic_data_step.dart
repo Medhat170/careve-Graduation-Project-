@@ -77,7 +77,7 @@ class ClinicDataStep extends Step {
                                 currentLocation.latitude,
                                 currentLocation.longitude,
                               ),
-                              useCurrentLocation: true,
+                              useCurrentLocation: false,
                             ),
                           ),
                         );
