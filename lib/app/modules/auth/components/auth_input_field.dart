@@ -11,6 +11,8 @@ class AuthInputField extends StatelessWidget {
   final bool hidePassword;
   final bool isPassword;
   final bool isPhone;
+  final ValueChanged<String> onChanged;
+  final ValueChanged<String> onFieldSubmitted;
   final TextInputType keyBoardType;
   final FormFieldValidator<String> validator;
   final Function changeObscuring;
@@ -24,6 +26,8 @@ class AuthInputField extends StatelessWidget {
     this.isPhone = false,
     this.isPassword = false,
     this.hintText = '',
+    this.onChanged,
+    this.onFieldSubmitted,
     this.hidePassword = false,
     this.changeObscuring,
     this.loading = false,
@@ -57,6 +61,10 @@ class AuthInputField extends StatelessWidget {
                 isPassword: isPassword,
                 keyBoardType: keyBoardType,
                 readOnly: loading,
+                onChanged: onChanged,
+                onFieldSubmitted: (String value) {
+                  onFieldSubmitted(value);
+                },
                 prefixWidget: !isPhone
                     ? null
                     : Text(

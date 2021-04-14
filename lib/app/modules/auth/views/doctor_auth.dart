@@ -1,8 +1,8 @@
 import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/components/loading.dart';
-import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step.dart';
+import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step/clinic_data_step.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/personal_data_step.dart';
-import 'package:careve/app/modules/auth/components/doc_auth_steps/professional_data_step.dart';
+import 'package:careve/app/modules/auth/components/doc_auth_steps/professional_data_step/professional_data_step.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
@@ -63,7 +63,7 @@ class DoctorAuthView extends GetView<AuthService> {
                                       S.of(context).back,
                                       style: TextStyle(
                                         color: ColorUtil.errorColor,
-                                        fontSize: 34.sp,
+                                        fontSize: 36.sp,
                                       ),
                                     ),
                                   ),
@@ -71,10 +71,7 @@ class DoctorAuthView extends GetView<AuthService> {
                                 FloatingActionButton.extended(
                                   tooltip: S.of(context).clinicData,
                                   onPressed: controller.currentStep.value == 2
-                                      ? () {
-                                          // => Get.offAllNamed(
-                                          //     Routes.MAIN)
-                                        }
+                                      ? () async => await controller.auth()
                                       : onStepContinue,
                                   backgroundColor: ColorUtil.primaryColor,
                                   elevation: 5.0,

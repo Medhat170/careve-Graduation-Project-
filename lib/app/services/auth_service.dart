@@ -1,8 +1,7 @@
 import 'dart:io';
-
-import 'package:bdaya_repository_pattern/bdaya_repository_pattern.dart';
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
+import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/models/user.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
@@ -36,10 +35,12 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   TextEditingController phone = TextEditingController();
   TextEditingController code = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController nationalId = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmedPassword = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController address = TextEditingController();
+  final cv = Rx<File>();
   final image = RxString();
   final uploadedImage = Rx<File>();
   final dateOfBirth = Rx<DateTime>();
@@ -55,6 +56,120 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     'O+',
   ]);
 
+  final userClinics = Rx<UserClinics>(
+    UserClinics(
+      clinics: [
+        Clinic(
+          phone: null,
+          address: Address(
+            title: 'Default clinic',
+          ),
+          days: List.generate(
+            7,
+            (index) => Day(),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  void addNewClinic() {
+    userClinics.update((val) {
+      val.clinics.add(
+        Clinic(
+          phone: null,
+          address: Address(
+            title: 'clinic',
+          ),
+          days: [
+            S.current.sat,
+            S.current.sun,
+            S.current.mon,
+            S.current.tue,
+            S.current.wed,
+            S.current.thu,
+            S.current.fri,
+          ]
+              .map(
+                (e) => Day(
+                  day: e,
+                ),
+              )
+              .toList(),
+        ),
+      );
+    });
+  }
+
+  String changeAddress(
+    int index, {
+    String formattedAddress,
+    String title,
+    double lat,
+    double long,
+  }) {
+    if (title != null) {
+      userClinics.value.clinics[index].address.title = title;
+    }
+    if (lat != null) {
+      userClinics.value.clinics[index].address.lat = lat;
+    }
+    if (long != null) {
+      userClinics.value.clinics[index].address.long = long;
+    }
+    if (formattedAddress != null) {
+      userClinics.value.clinics[index].address.formattedAddress =
+          formattedAddress;
+    }
+    // userClinics.update((val) {
+    //   val.clinics[index].address = userClinics.value.clinics[index].address;
+    // });
+    return formattedAddress;
+  }
+
+  String changePhone(int index, String newPhone) {
+    // String value = newPhone.split('').reversed.join();
+    // userClinics.update((val) {
+    //   val.clinics[index].phone = value;
+    // });
+    userClinics.value.clinics[index].phone = newPhone;
+    return newPhone;
+  }
+
+  void removeDay(int clinicIndex, int dayIndex) {
+    userClinics.update((val) {
+      val.clinics[clinicIndex].days[dayIndex] = Day();
+    });
+  }
+
+  void removeClinic(int clinicIndex) {
+    userClinics.update((val) {
+      val.clinics.removeAt(clinicIndex);
+    });
+  }
+
+  void changeDay(
+    int clinicIndex,
+    int dayIndex, {
+    DateTime startTime,
+    DateTime endTime,
+    String day,
+  }) {
+    if (day != null) {
+      userClinics.value.clinics[clinicIndex].days[dayIndex].day = day;
+    } else if (startTime != null) {
+      userClinics.value.clinics[clinicIndex].days[dayIndex].startTime =
+          startTime;
+    } else if (endTime != null) {
+      userClinics.value.clinics[clinicIndex].days[dayIndex].endTime = endTime;
+    }
+    userClinics.value.clinics[clinicIndex].days[dayIndex].status = 1;
+    userClinics.update((val) {
+      val.clinics[clinicIndex].days[dayIndex] =
+          userClinics.value.clinics[clinicIndex].days[dayIndex];
+    });
+  }
+
   static AuthService get to => Get.find();
 
   bool get isAuth => userId != null;
@@ -67,7 +182,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       if (currentStep.value == 0) {
         final formData = personalDataFormKey.currentState;
         if (formData.validate()) {
-          if (currentLocation != null) {
+          if (currentLocation.value == null) {
             startBusy();
             currentLocation(await AppUtil.getCurrentLocation());
             endBusySuccess();
@@ -124,20 +239,6 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     currentStep(step);
   }
 
-  @override
-  void onClose() {
-    name.dispose();
-    password.dispose();
-    confirmedPassword.dispose();
-    code.dispose();
-    email.dispose();
-    address.dispose();
-    dateOfBirth.nil();
-    bloodType.nil();
-    image.nil();
-    super.onClose();
-  }
-
   Future<bool> tryAutoLogin() async {
     var cachedUserId = cacheService?.settingsRepo?.cachedUserId;
     if (cachedUserId == null) {
@@ -155,6 +256,37 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<void> auth() async {
+    try {
+      startBusy();
+      var response;
+      if (signUP.value == false) {
+        response = await post(
+          url: ApiPath.login,
+          body: {
+            'email': email.text,
+            'password': password.text,
+            'type': 'mobile',
+          },
+        );
+      } else if (signUP.value && isDoc.value == false) {
+        response = (await patientAuth());
+      } else if (signUP.value && isDoc.value == true) {
+        response = (await docAuth());
+      }
+      if (response != null) {
+        user(await CacheService.to.userRepo.updateUserCache(response));
+        CacheService.to.settingsRepo.setCachedUserId(user.value.id);
+        Get.offAllNamed(Routes.HOME);
+      }
+    } catch (error) {
+      printError(info: error.toString());
+      await AppUtil.showAlertDialog(body: error.toString());
+    }
+    endBusySuccess();
+  }
+
+  Future<Map<String, dynamic>> patientAuth() async {
+    var response;
     final formData = authFormKey.currentState;
     if (formData.validate()) {
       formData.save();
@@ -163,20 +295,35 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       print('Password : ${password?.text}');
       print('Confirmed password : ${confirmedPassword?.text}');
       try {
-        startBusy();
-        var response;
-        if (signUP.value == false) {
+        response = await post(
+          url: ApiPath.patientSignUp,
+          body: {
+            'name': name.text,
+            'email': email.text,
+            'password': password.text,
+            'type': 'mobile',
+          },
+        );
+        name.clear();
+        email.clear();
+        password.clear();
+        confirmedPassword.clear();
+      } catch (error) {
+        rethrow;
+      }
+    }
+    return response;
+  }
+
+  Future<Map<String, dynamic>> docAuth() async {
+    var response;
+    final formData = docVerificationFormKey.currentState;
+    if (formData.validate()) {
+      formData.save();
+      try {
+        if (cv.value != null) {
           response = await post(
-            url: ApiPath.login,
-            body: {
-              'email': email.text,
-              'password': password.text,
-              'type': 'mobile',
-            },
-          );
-        } else if (signUP.value && isDoc.value == false) {
-          response = await post(
-            url: ApiPath.patientSignUp,
+            url: ApiPath.docSignUp,
             body: {
               'name': name.text,
               'email': email.text,
@@ -184,19 +331,37 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'type': 'mobile',
             },
           );
+          name.clear();
+          email.clear();
+          password.clear();
+          confirmedPassword.clear();
+          nationalId.clear();
+          cv.nil();
+          userClinics.nil();
+          userClinics(
+            UserClinics(
+              clinics: [
+                Clinic(
+                  phone: null,
+                  address: Address(
+                    title: 'Default clinic',
+                  ),
+                  days: List.generate(
+                    7,
+                    (index) => Day(),
+                  ),
+                ),
+              ],
+            ),
+          );
+        } else {
+          throw S.current.cvValidation;
         }
-        user(await CacheService.to.userRepo.updateUserCache(response));
-        CacheService.to.settingsRepo.setCachedUserId(user.value.id);
-        name.clear();
-        email.clear();
-        password.clear();
-        confirmedPassword.clear();
-        Get.offAllNamed(Routes.HOME);
       } catch (error) {
-        await AppUtil.showAlertDialog(body: error.toString());
+        rethrow;
       }
-      endBusySuccess();
     }
+    return response;
   }
 
   Future<void> sendPhoneNumber() async {
@@ -288,5 +453,22 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     } catch (e) {
       printError(info: e.toString());
     }
+  }
+
+  @override
+  void onClose() {
+    name.dispose();
+    password.dispose();
+    confirmedPassword.dispose();
+    code.dispose();
+    email.dispose();
+    address.dispose();
+    dateOfBirth.nil();
+    bloodType.nil();
+    image.nil();
+    nationalId.clear();
+    cv.nil();
+    userClinics.nil();
+    super.onClose();
   }
 }

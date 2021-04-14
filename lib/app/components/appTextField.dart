@@ -20,6 +20,7 @@ class AppTextField extends StatelessWidget {
   final Function changeObscuring;
   final bool disablePrefixColor;
   final bool autoFocus;
+  final String initialValue;
 
   AppTextField(
     this.controller, {
@@ -28,6 +29,7 @@ class AppTextField extends StatelessWidget {
     this.isPassword = false,
     this.disablePrefixColor = false,
     this.prefixWidget,
+    this.initialValue,
     this.validator,
     this.onFieldSubmitted,
     this.onChanged,
@@ -43,7 +45,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: autoFocus,
+      autofocus: false,
       controller: controller,
       onChanged: onChanged,
       validator: validator,
@@ -55,6 +57,7 @@ class AppTextField extends StatelessWidget {
         fontWeight: FontWeight.w500,
       ),
       textAlign: textAlignment,
+      initialValue: controller == null ? initialValue : null,
       textInputAction: TextInputAction.done,
       cursorColor: ColorUtil.primaryColor,
       keyboardType: keyBoardType,

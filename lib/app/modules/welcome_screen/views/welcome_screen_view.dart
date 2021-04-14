@@ -100,7 +100,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         onTap: () {
                           AuthService.to.isDoc(true);
                           Get.toNamed(
-                            Routes.DOCTOR_AUTH,
+                            Routes.AUTH,
                           );
                         },
                         textColor: ColorUtil.primaryColor,

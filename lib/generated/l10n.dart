@@ -55,6 +55,16 @@ class S {
     );
   }
 
+  /// `الرقم القومى`
+  String get nationalId {
+    return Intl.message(
+      'الرقم القومى',
+      name: 'nationalId',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `برجاء إدخال {length} حروف على الأقل`
   String hasMinLength(Object length) {
     return Intl.message(
@@ -1450,6 +1460,136 @@ class S {
     return Intl.message(
       'المعلومات المهنيه',
       name: 'professionalData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أضف ملفك المهنى او موفقاتك الطبيه`
+  String get attachCV {
+    return Intl.message(
+      'أضف ملفك المهنى او موفقاتك الطبيه',
+      name: 'attachCV',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ملفك المهنى او موفقاتك الطبيه ضروريه للتسجبل`
+  String get cvValidation {
+    return Intl.message(
+      'ملفك المهنى او موفقاتك الطبيه ضروريه للتسجبل',
+      name: 'cvValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أضف عيادات اكثر`
+  String get addClinic {
+    return Intl.message(
+      'أضف عيادات اكثر',
+      name: 'addClinic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الأيام`
+  String get days {
+    return Intl.message(
+      'الأيام',
+      name: 'days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `سبت`
+  String get sat {
+    return Intl.message(
+      'سبت',
+      name: 'sat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أحد`
+  String get sun {
+    return Intl.message(
+      'أحد',
+      name: 'sun',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أثنين`
+  String get mon {
+    return Intl.message(
+      'أثنين',
+      name: 'mon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ثلاثاء`
+  String get tue {
+    return Intl.message(
+      'ثلاثاء',
+      name: 'tue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أربعاء`
+  String get wed {
+    return Intl.message(
+      'أربعاء',
+      name: 'wed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `خميس`
+  String get thu {
+    return Intl.message(
+      'خميس',
+      name: 'thu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `جمعه`
+  String get fri {
+    return Intl.message(
+      'جمعه',
+      name: 'fri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `من`
+  String get from {
+    return Intl.message(
+      'من',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إلى`
+  String get to {
+    return Intl.message(
+      'إلى',
+      name: 'to',
       desc: '',
       args: [],
     );

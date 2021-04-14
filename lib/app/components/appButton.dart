@@ -63,7 +63,7 @@ class _CareveButtonWithIcon extends CareveButton {
     double width,
     EdgeInsets margin,
     Color borderColor,
-    Color backgroundColor,
+    Color backgroundColor = ColorUtil.primaryColor,
     double elevation,
   })  : assert(icon != null),
         super(

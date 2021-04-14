@@ -69,6 +69,23 @@ class AppUtil {
     return DateTime.utc(date.year, date.month, date.day, 12);
   }
 
+  static Future<DateTime> pickTime() async {
+    final result = await showTimePicker(
+      context: Get.overlayContext,
+      initialTime: TimeOfDay.now(),
+    );
+    print('Selected time : ' + result.toString());
+    final date = DateTime.now();
+    final time = DateTime(
+      date.year,
+      date.month,
+      date.day,
+      result.hour,
+      result.minute,
+    );
+    return time;
+  }
+
   static void showAlertSnack({
     String title,
     String body,

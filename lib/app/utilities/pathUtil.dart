@@ -25,5 +25,6 @@ class PathUtil {
 
 class ApiPath {
   static const String patientSignUp = url + 'patientsignup?';
+  static const String docSignUp = url + 'docsignup?';
   static const String login = url + 'login';
 }

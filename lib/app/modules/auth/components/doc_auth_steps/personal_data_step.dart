@@ -2,10 +2,12 @@ import 'package:careve/app/components/user_image_handler.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class PersonalDataStep extends Step {
   PersonalDataStep({
@@ -83,6 +85,35 @@ class PersonalDataStep extends Step {
                       },
                       hasMinLength: 8,
                     ).call,
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        S.current.alreadyHaveAcc,
+                        style: TextStyle(
+                          fontSize: 46.sp,
+                          color: ColorUtil.mediumGrey,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          AuthService.to.signUP(false);
+                          Get.back();
+                        },
+                        child: Text(
+                          S.current.signIn,
+                          style: TextStyle(
+                            fontSize: 50.sp,
+                            color: ColorUtil.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

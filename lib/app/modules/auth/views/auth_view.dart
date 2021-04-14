@@ -106,9 +106,7 @@ class AuthView extends GetView<AuthService> {
                                   title: controller.signUP.value
                                       ? S.of(context).signUp
                                       : S.of(context).signIn,
-                                  onTap: () async {
-                                    await controller.auth();
-                                  },
+                                  onTap: () async => await controller.auth(),
                                   backgroundColor: ColorUtil.primaryColor,
                                 ),
                           const SizedBox(
@@ -147,8 +145,16 @@ class AuthView extends GetView<AuthService> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () =>
-                                    controller.signUP(!controller.signUP.value),
+                                onTap: () {
+                                  if (controller.isDoc.value) {
+                                    controller.signUP(true);
+                                    Get.toNamed(
+                                      Routes.DOCTOR_AUTH,
+                                    );
+                                  } else {
+                                    controller.signUP(!controller.signUP.value);
+                                  }
+                                },
                                 child: Text(
                                   controller.signUP.value
                                       ? S.of(context).signIn

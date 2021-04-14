@@ -1,6 +1,7 @@
 {
   "welcome": "Welcome...",
   "welcomeText": "to careve for breast cancer awareness and women health care.",
+  "nationalId": "National id",
   "hasMinLength": "Please insert {length} digit as least",
   "resetPasswordDesc": "Please enter your new password to reset it",
   "passwordsDoNotMatch": "Passwords do not match !",
@@ -140,5 +141,18 @@
   "forthStepSubStep1": "The previous test was re-examined in the same way as in the shower.",
   "personalData": "Personal data",
   "clinicData": "Clinic data",
-  "professionalData": "Professional data"
+  "professionalData": "Professional data",
+  "attachCV": "Attach your cv or any medical approval",
+  "cvValidation": "Cv or any medical approval is required!",
+  "addClinic": "Add more clinics",
+  "days": "Days",
+  "sat": "Sat",
+  "sun": "Sun",
+  "mon": "Mon",
+  "tue": "Tue",
+  "wed": "Wed",
+  "thu": "Thu",
+  "fri": "Fri",
+  "from": "From",
+  "to": "To"
 }

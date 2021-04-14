@@ -1,5 +1,6 @@
 import 'package:careve/app/components/user_image_handler.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
+import 'package:careve/app/modules/auth/components/doc_auth_steps/professional_data_step/cv_component.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/app/utilities/validators.dart';
@@ -34,22 +35,16 @@ class ProfessionalDataStep extends Step {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // AuthInputField(
-                  //   S.current.name,
-                  //   AuthService.to.name,
-                  //   loading: AuthService.to.isBusy.value,
-                  //   keyBoardType: TextInputType.text,
-                  //   validator: QuickTextValidator().call,
-                  // ),
-                  // AuthInputField(
-                  //   S.current.email,
-                  //   AuthService.to.email,
-                  //   loading: AuthService.to.isBusy.value,
-                  //   keyBoardType: TextInputType.emailAddress,
-                  //   validator: QuickTextValidator(
-                  //     isEmail: true,
-                  //   ).call,
-                  // ),
+                  AuthInputField(
+                    S.current.nationalId,
+                    AuthService.to.nationalId,
+                    loading: AuthService.to.isBusy.value,
+                    keyBoardType: TextInputType.number,
+                    validator: QuickTextValidator(
+                      isNationalId: true,
+                    ).call,
+                  ),
+                  CVComponent(),
                 ],
               ),
             ),
