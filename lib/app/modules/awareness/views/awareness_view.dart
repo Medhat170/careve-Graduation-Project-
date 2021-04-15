@@ -3,6 +3,7 @@ import 'package:careve/app/components/appDirectionality.dart';
 import 'package:careve/app/modules/awareness/components/awareness_card.dart';
 import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -85,6 +86,24 @@ class AwarenessView extends GetView<AwarenessController> {
           ),
         ],
       ),
+      floatingActionButton: AuthService.to.isDoc.value
+          ? FloatingActionButton.extended(
+              backgroundColor: ColorUtil.primaryColor,
+              elevation: 10.0,
+              icon: Icon(
+                Icons.add,
+                color: ColorUtil.whiteColor,
+                size: 18.0,
+              ),
+              onPressed: () => Get.toNamed(Routes.ADD_AWARENESS),
+              label: Text(
+                S.of(context).addAwareness,
+                style: TextStyle(
+                  color: ColorUtil.whiteColor,
+                ),
+              ),
+            )
+          : null,
     );
   }
 }

@@ -155,5 +155,16 @@
   "fri": "جمعه",
   "from": "من",
   "to": "إلى",
-  "patients": "المرضى"
+  "patients": "المرضى",
+  "addAwareness": "أضف مقال",
+  "awarenessType": "نوع التوعيه",
+  "youTubeLink": "رابط اليوتيوب",
+  "article": "المقال",
+  "question": "السؤال",
+  "answer": "الإجابه",
+  "title": "العنوان",
+  "qa": "سؤال و جواب",
+  "video": "فيديو",
+  "addImageForAwareness": "أضف صوره لهذه التوعيتك",
+  "clear": "محو"
 }

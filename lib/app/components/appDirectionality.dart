@@ -3,9 +3,11 @@ import 'package:intl/intl.dart' as intl;
 
 class GlobalScaffold extends StatelessWidget {
   final Widget body;
+  final Widget floatingActionButton;
 
   GlobalScaffold({
     @required this.body,
+    this.floatingActionButton,
   });
 
   @override
@@ -17,6 +19,7 @@ class GlobalScaffold extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           body: body,
+          floatingActionButton: floatingActionButton,
         ),
       ),
     );

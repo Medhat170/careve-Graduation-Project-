@@ -1604,6 +1604,116 @@ class S {
       args: [],
     );
   }
+
+  /// `أضف مقال`
+  String get addAwareness {
+    return Intl.message(
+      'أضف مقال',
+      name: 'addAwareness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `نوع التوعيه`
+  String get awarenessType {
+    return Intl.message(
+      'نوع التوعيه',
+      name: 'awarenessType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `رابط اليوتيوب`
+  String get youTubeLink {
+    return Intl.message(
+      'رابط اليوتيوب',
+      name: 'youTubeLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `المقال`
+  String get article {
+    return Intl.message(
+      'المقال',
+      name: 'article',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `السؤال`
+  String get question {
+    return Intl.message(
+      'السؤال',
+      name: 'question',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الإجابه`
+  String get answer {
+    return Intl.message(
+      'الإجابه',
+      name: 'answer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `العنوان`
+  String get title {
+    return Intl.message(
+      'العنوان',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `سؤال و جواب`
+  String get qa {
+    return Intl.message(
+      'سؤال و جواب',
+      name: 'qa',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `فيديو`
+  String get video {
+    return Intl.message(
+      'فيديو',
+      name: 'video',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أضف صوره لهذه التوعيتك`
+  String get addImageForAwareness {
+    return Intl.message(
+      'أضف صوره لهذه التوعيتك',
+      name: 'addImageForAwareness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `محو`
+  String get clear {
+    return Intl.message(
+      'محو',
+      name: 'clear',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

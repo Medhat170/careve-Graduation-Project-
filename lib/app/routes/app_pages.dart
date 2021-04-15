@@ -1,4 +1,5 @@
 import 'package:careve/app/modules/auth/views/doctor_auth.dart';
+import 'package:careve/app/modules/awareness/views/add_article_view.dart';
 import 'package:get/get.dart';
 
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -139,6 +140,10 @@ class AppPages {
     GetPage(
       name: _Paths.SAVED,
       page: () => SavedView(),
+    ),
+    GetPage(
+      name: _Paths.ADD_AWARENESS,
+      page: () => AddAwarenessView(),
     ),
     GetPage(
       name: _Paths.CHAT,

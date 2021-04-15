@@ -155,5 +155,16 @@
   "fri": "Fri",
   "from": "From",
   "to": "To",
-  "patients": "Patients"
+  "patients": "Patients",
+  "addAwareness": "Add awareness",
+  "awarenessType": "Awareness type",
+  "youTubeLink": "YouTube link",
+  "article": "Article",
+  "question": "Question",
+  "answer": "Answer",
+  "title": "Title",
+  "qa": "Question&Answer",
+  "video": "Video",
+  "addImageForAwareness": "Add image for this awareness",
+  "clear": "Clear"
 }
