@@ -449,7 +449,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     try {
       await CacheService.to.userRepo.clear();
       user.value = null;
-      Get.offAllNamed(Routes.AUTH);
+      Get.offAllNamed(Routes.WELCOME_SCREEN);
     } catch (e) {
       printError(info: e.toString());
     }

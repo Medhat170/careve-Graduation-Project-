@@ -124,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "passwordNull" : MessageLookupByLibrary.simpleMessage("Please Enter your password"),
     "passwordsDoNotMatch" : MessageLookupByLibrary.simpleMessage("Passwords do not match !"),
+    "patients" : MessageLookupByLibrary.simpleMessage("Patients"),
     "perceptualTumor" : MessageLookupByLibrary.simpleMessage("- perceptual tumor"),
     "personalData" : MessageLookupByLibrary.simpleMessage("Personal data"),
     "phoneNeededDesc" : MessageLookupByLibrary.simpleMessage("Please enter your phone number to send a verification code"),

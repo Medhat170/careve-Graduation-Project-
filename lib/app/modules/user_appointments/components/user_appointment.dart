@@ -1,4 +1,5 @@
 import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/appUtil.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class UserAppointment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDoc = AuthService.to.isDoc?.value;
     int duration = date.difference(DateTime.now()).inDays;
     return Card(
       elevation: 6.5,
@@ -87,7 +89,7 @@ class UserAppointment extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            if (specialty != null)
+            if (specialty != null && !isDoc)
               Row(
                 children: [
                   Icon(
@@ -131,15 +133,16 @@ class UserAppointment extends StatelessWidget {
                       ),
                     ),
                   ),
-                  CareveButton(
-                    title: S.of(context).go,
-                    height: 70.w,
-                    width: 200.w,
-                    onTap: () async => await AppUtil.openMapsSheet(
-                      latitude: 31.22222222,
-                      longitude: 31.322332323,
+                  if (!isDoc)
+                    CareveButton(
+                      title: S.of(context).go,
+                      height: 70.w,
+                      width: 200.w,
+                      onTap: () async => await AppUtil.openMapsSheet(
+                        latitude: 31.22222222,
+                        longitude: 31.322332323,
+                      ),
                     ),
-                  ),
                 ],
               ),
             if (telephoneNumber != null)

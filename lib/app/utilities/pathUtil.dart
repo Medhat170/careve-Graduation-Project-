@@ -1,5 +1,3 @@
-import 'package:careve/generated/l10n.dart';
-
 const imagesPath = 'assets/images/';
 const iconsPath = 'assets/icons/';
 const url = 'https://laravelbreast.000webhostapp.com/public/api/';
@@ -7,6 +5,9 @@ const url = 'https://laravelbreast.000webhostapp.com/public/api/';
 class PathUtil {
   static const String arImage = imagesPath + 'eg.png';
   static const String enImage = imagesPath + 'uk.png';
+  static const String appointmentImage = imagesPath + 'appointment.png';
+  static const String patientImage = imagesPath + 'patient.png';
+  static const String chatImage = imagesPath + 'chat.png';
   static const String worriedWomanImage = imagesPath + 'worried_woman.png';
   static const String userImage = imagesPath + 'female_avatar.png';
   static const String welcomeImage = imagesPath + 'hands_background.jpg';

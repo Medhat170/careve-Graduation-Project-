@@ -154,5 +154,6 @@
   "thu": "Thu",
   "fri": "Fri",
   "from": "From",
-  "to": "To"
+  "to": "To",
+  "patients": "Patients"
 }
