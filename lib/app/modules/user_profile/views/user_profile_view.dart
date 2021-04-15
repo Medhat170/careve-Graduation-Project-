@@ -24,31 +24,41 @@ class UserProfileView extends GetView<UserProfileController> {
           const SizedBox(
             height: 5.0,
           ),
-          UserFeature(
-            iconData: FontAwesomeIcons.solidComments,
-            title: S.of(context).messages,
-            iconColor: Colors.amber,
-            trailingCount: 2,
-            onTap: () => Get.toNamed(Routes.ROOMS),
-          ),
-          UserFeature(
-            iconData: FontAwesomeIcons.calendarCheck,
-            title: S.of(context).appointments,
-            iconColor: Colors.teal,
-            onTap: () => Get.toNamed(Routes.USER_APPOINTMENTS),
-          ),
+          if (!AuthService.to.isDoc.value)
+            UserFeature(
+              iconData: FontAwesomeIcons.solidComments,
+              title: S.of(context).messages,
+              iconColor: Colors.amber,
+              trailingCount: 2,
+              onTap: () => Get.toNamed(Routes.ROOMS),
+            ),
+          if (!AuthService.to.isDoc.value)
+            UserFeature(
+              iconData: FontAwesomeIcons.calendarCheck,
+              title: S.of(context).appointments,
+              iconColor: Colors.teal,
+              onTap: () => Get.toNamed(Routes.USER_APPOINTMENTS),
+            ),
+          if (AuthService.to.isDoc.value)
+            UserFeature(
+              iconData: FontAwesomeIcons.calendarCheck,
+              title: S.of(context).editAppointmentsClinics,
+              iconColor: Colors.amber,
+              onTap: () => Get.toNamed(Routes.APPOINTMENTS_CLINICS_EDITING),
+            ),
           UserFeature(
             iconData: FontAwesomeIcons.solidBookmark,
             title: S.of(context).saved,
             iconColor: Colors.purple,
             onTap: () => Get.toNamed(Routes.SAVED),
           ),
-          UserFeature(
-            iconData: FontAwesomeIcons.hospital,
-            title: S.of(context).hospitals,
-            iconColor: Colors.brown,
-            onTap: () async => await AppUtil.openMapsSheet(),
-          ),
+          if (!AuthService.to.isDoc.value)
+            UserFeature(
+              iconData: FontAwesomeIcons.hospital,
+              title: S.of(context).hospitals,
+              iconColor: Colors.brown,
+              onTap: () async => await AppUtil.openMapsSheet(),
+            ),
           UserFeature(
             iconData: FontAwesomeIcons.cogs,
             title: S.of(context).settings,

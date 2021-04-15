@@ -5,8 +5,8 @@ import '../controllers/medical_records_controller.dart';
 class MedicalRecordsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<MedicalRecordsController>(
-      () => MedicalRecordsController(),
+    Get.put<MedicalRecordsController>(
+      MedicalRecordsController(Get.arguments),
     );
   }
 }

@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "done" : MessageLookupByLibrary.simpleMessage("Done"),
     "earlier" : MessageLookupByLibrary.simpleMessage("Earlier"),
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
+    "editAppointmentsClinics" : MessageLookupByLibrary.simpleMessage("Edit appointments & clinics"),
     "editProfile" : MessageLookupByLibrary.simpleMessage("Edit profile"),
     "email" : MessageLookupByLibrary.simpleMessage("E-mail"),
     "emailNull" : MessageLookupByLibrary.simpleMessage("Please Enter your Email"),

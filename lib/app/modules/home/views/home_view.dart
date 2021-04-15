@@ -60,7 +60,7 @@ class HomeView extends GetView<HomeController> {
                   Section(
                     name: S.of(context).patients,
                     image: PathUtil.patientImage,
-                    onPressed: () => Get.toNamed(Routes.AWARENESS),
+                    onPressed: () => Get.toNamed(Routes.PATIENTS),
                   ),
                 Section(
                   name: S.of(context).awareness,

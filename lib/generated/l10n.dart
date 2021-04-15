@@ -1714,6 +1714,16 @@ class S {
       args: [],
     );
   }
+
+  /// `تعديل المواعيد والعيادات`
+  String get editAppointmentsClinics {
+    return Intl.message(
+      'تعديل المواعيد والعيادات',
+      name: 'editAppointmentsClinics',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

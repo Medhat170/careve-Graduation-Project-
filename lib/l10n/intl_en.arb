@@ -166,5 +166,6 @@
   "qa": "Question&Answer",
   "video": "Video",
   "addImageForAwareness": "Add image for this awareness",
-  "clear": "Clear"
+  "clear": "Clear",
+  "editAppointmentsClinics": "Edit appointments & clinics"
 }

@@ -1,12 +1,12 @@
-import 'package:careve/app/modules/auth/views/doctor_auth.dart';
-import 'package:careve/app/modules/awareness/views/add_article_view.dart';
 import 'package:get/get.dart';
-
+import 'package:careve/app/modules/appointments_clinics_editing/views/appointments_clinics_editing_view.dart';
 import 'package:careve/app/modules/auth/views/auth_view.dart';
+import 'package:careve/app/modules/auth/views/doctor_auth.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
 import 'package:careve/app/modules/auth/views/reset_password_view.dart';
 import 'package:careve/app/modules/auth/views/verification_code_view.dart';
 import 'package:careve/app/modules/awareness/bindings/awareness_binding.dart';
+import 'package:careve/app/modules/awareness/views/add_article_view.dart';
 import 'package:careve/app/modules/awareness/views/awareness_view.dart';
 import 'package:careve/app/modules/awareness_info/bindings/awareness_info_binding.dart';
 import 'package:careve/app/modules/awareness_info/views/awareness_info_view.dart';
@@ -19,6 +19,8 @@ import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/medical_records/bindings/medical_records_binding.dart';
 import 'package:careve/app/modules/medical_records/views/medical_records_view.dart';
+import 'package:careve/app/modules/patients/bindings/patients_binding.dart';
+import 'package:careve/app/modules/patients/views/patients_view.dart';
 import 'package:careve/app/modules/rooms/bindings/rooms_binding.dart';
 import 'package:careve/app/modules/rooms/views/rooms_view.dart';
 import 'package:careve/app/modules/saved/views/saved_view.dart';
@@ -149,6 +151,15 @@ class AppPages {
       name: _Paths.CHAT,
       page: () => ChatView(),
       binding: ChatBinding(),
+    ),
+    GetPage(
+      name: _Paths.PATIENTS,
+      page: () => PatientsView(),
+      binding: PatientsBinding(),
+    ),
+    GetPage(
+      name: _Paths.APPOINTMENTS_CLINICS_EDITING,
+      page: () => AppointmentsClinicsEditingView(),
     ),
   ];
 }
