@@ -1,8 +1,8 @@
 import 'package:bdaya_custom_splash/bdaya_custom_splash.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -21,7 +21,7 @@ class SplashView extends GetView<SplashController> {
         );
       },
       initFunction: () async {
-        return await controller.initFunction(context);
+        return controller.initFunction(context);
       },
       logoBuilder: () {
         return Center(
@@ -32,12 +32,12 @@ class SplashView extends GetView<SplashController> {
         );
       },
       onNavigateTo: (result) async {
-        bool firstTime = CacheService.to?.settingsRepo?.firstTime;
+        final bool firstTime = CacheService.to?.settingsRepo?.firstTime;
         if (firstTime == null || firstTime == true) {
-          await CacheService.to?.settingsRepo?.setFirstTime(false);
+          await CacheService.to?.settingsRepo?.setFirstTime(value: false);
           Get.offAllNamed(Routes.FIRST_TIME);
         } else {
-          Get.offAllNamed(result);
+          Get.offAllNamed(result.toString());
         }
       },
     );

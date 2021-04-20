@@ -1,5 +1,5 @@
 import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -12,7 +12,7 @@ class AdditionActions extends GetView<AwarenessInfoController> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             FontAwesomeIcons.share,
             color: ColorUtil.mediumGrey,
             size: 20.0,
@@ -26,7 +26,7 @@ class AdditionActions extends GetView<AwarenessInfoController> {
           },
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             FontAwesomeIcons.solidBookmark,
             color: ColorUtil.mediumGrey,
             size: 20.0,

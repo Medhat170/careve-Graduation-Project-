@@ -1,17 +1,15 @@
 import 'package:careve/app/components/loading.dart';
-import 'package:careve/app/modules/chat/controllers/chat_controller.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:path/path.dart';
 
 class ImageViewer extends StatelessWidget {
   final String image;
   final int id;
 
-  ImageViewer({
+  const ImageViewer({
     @required this.image,
     @required this.id,
   });
@@ -34,11 +32,11 @@ class ImageViewer extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 FontAwesomeIcons.arrowAltCircleDown,
                 color: Colors.black,
               ),
-              // onPressed: () async =>
+              onPressed: () {},
               //     await ChatController.to.downloadFile(image, basename(image)),
             )
           ],

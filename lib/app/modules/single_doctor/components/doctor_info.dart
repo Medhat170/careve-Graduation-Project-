@@ -1,9 +1,9 @@
-import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +17,7 @@ class DoctorInfo extends StatelessWidget {
   final double rate;
   final String id;
 
-  DoctorInfo({
+  const DoctorInfo({
     this.name,
     this.specialty,
     this.image,
@@ -81,16 +81,13 @@ class DoctorInfo extends StatelessWidget {
                   if (rate != null)
                     RatingBar(
                       rating: rate,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.star,
                         size: 16,
                         color: Colors.grey,
                       ),
-                      starCount: 5,
                       spacing: 2.0,
                       size: 5,
-                      isIndicator: false,
-                      allowHalfRating: true,
                       onRatingCallback:
                           (double value, ValueNotifier<bool> isIndicator) {
                         print('Number of stars-->  $value');
@@ -108,7 +105,7 @@ class DoctorInfo extends StatelessWidget {
                         Expanded(
                           child: CareveButton.icon(
                             backgroundColor: Colors.white,
-                            icon: Icon(
+                            icon: const Icon(
                               FontAwesomeIcons.comment,
                               size: 22.0,
                               color: ColorUtil.primaryColor,
@@ -128,12 +125,12 @@ class DoctorInfo extends StatelessWidget {
                         Expanded(
                           child: CareveButton.icon(
                             backgroundColor: Colors.white,
-                            icon: Icon(
+                            icon: const Icon(
                               FontAwesomeIcons.phone,
                               size: 22.0,
                               color: ColorUtil.primaryColor,
                             ),
-                            onTap: () async => await AppUtil.callPhone(
+                            onTap: () => AppUtil.callPhone(
                               context,
                               phoneNumbers: [
                                 '01020304050',
@@ -147,12 +144,12 @@ class DoctorInfo extends StatelessWidget {
                         Expanded(
                           child: CareveButton.icon(
                             backgroundColor: Colors.white,
-                            icon: Icon(
+                            icon: const Icon(
                               FontAwesomeIcons.locationArrow,
                               size: 22.0,
                               color: ColorUtil.primaryColor,
                             ),
-                            onTap: () async => await AppUtil.openMapsSheet(
+                            onTap: () => AppUtil.openMapsSheet(
                               latitude: 31.22222222,
                               longitude: 31.322332323,
                             ),

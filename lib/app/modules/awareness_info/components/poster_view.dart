@@ -1,4 +1,4 @@
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

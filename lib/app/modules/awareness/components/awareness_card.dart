@@ -1,6 +1,6 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -148,7 +148,7 @@ class AwarenessCardRef extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
+        FocusScope.of(context).requestFocus(FocusNode());
         onTap();
       },
       child: Card(
@@ -158,7 +158,7 @@ class AwarenessCardRef extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         margin: margin ??
-            EdgeInsets.symmetric(
+            const EdgeInsets.symmetric(
               horizontal: 20.0,
               vertical: 5.0,
             ),

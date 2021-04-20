@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +17,7 @@ class AppUtil {
   static BorderRadius borderRadius = BorderRadius.circular(10.0);
   static BorderRadius borderRadius25 = BorderRadius.circular(25.0);
   static UnderlineInputBorder transparentUnderLineInputBorder =
-      UnderlineInputBorder(
+      const UnderlineInputBorder(
     borderSide: BorderSide(
       color: Colors.transparent,
       width: 0.5,
@@ -27,13 +26,13 @@ class AppUtil {
 
   static OutlineInputBorder transparentUOutLineInputBorder = OutlineInputBorder(
     borderRadius: borderRadius,
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: Colors.transparent,
       width: 0.5,
     ),
   );
   static OutlineInputBorder lightGreyOutLineInputBorder = OutlineInputBorder(
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: ColorUtil.lightGrey,
       width: 0.5,
     ),
@@ -49,11 +48,11 @@ class AppUtil {
   static bool get isLtr => intl.Intl.getCurrentLocale() == 'en';
 
   static BorderRadius customBorderRadius = isLtr
-      ? BorderRadius.only(
+      ? const BorderRadius.only(
           topRight: Radius.circular(10.0),
           bottomRight: Radius.circular(10.0),
         )
-      : BorderRadius.only(
+      : const BorderRadius.only(
           bottomLeft: Radius.circular(10.0),
           topLeft: Radius.circular(10.0),
         );
@@ -65,16 +64,17 @@ class AppUtil {
       lastDate: DateTime(2100),
       initialDate: DateTime.now(),
     );
-    print('Selected date : ' + intl.DateFormat.yMMMMd().format(date));
+    print('Selected date : ${intl.DateFormat.yMMMMd().format(date)}');
     return DateTime.utc(date.year, date.month, date.day, 12);
   }
 
-  static Future<DateTime> pickTime() async {
+  static Future<DateTime> pickTime({String helpText}) async {
     final result = await showTimePicker(
       context: Get.overlayContext,
+      helpText: helpText,
       initialTime: TimeOfDay.now(),
     );
-    print('Selected time : ' + result.toString());
+    print('Selected time : $result');
     final date = DateTime.now();
     final time = DateTime(
       date.year,
@@ -109,7 +109,7 @@ class AppUtil {
       ),
       messageText: Text(
         body,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w500,
           fontSize: 14.0,
@@ -131,13 +131,13 @@ class AppUtil {
     String cancelText,
     RxBool loading,
   }) async {
-    return await Get.defaultDialog<bool>(
+    return Get.defaultDialog<bool>(
       title: S.current.alert ?? title,
       content: Directionality(
         textDirection: AppUtil.isLtr ? TextDirection.ltr : TextDirection.rtl,
         child: Text(
           body ?? '',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w500,
             fontSize: 16.0,
@@ -170,10 +170,10 @@ class AppUtil {
           ),
         ],
         InkWell(
-          onTap: onConfirm ?? () => Get.back(result: true),
+          onTap: () => onConfirm ?? Get.back(result: true),
           child: Text(
             confirmText ?? S.current.done,
-            style: TextStyle(
+            style: const TextStyle(
               color: ColorUtil.primaryColor,
               fontWeight: FontWeight.w500,
               fontSize: 18.0,
@@ -190,7 +190,7 @@ class AppUtil {
   }) async {
     List<File> files = <File>[];
     try {
-      FilePickerResult result = await FilePicker.platform.pickFiles(
+      final FilePickerResult result = await FilePicker.platform.pickFiles(
         allowMultiple: allowMultiple,
         type: fileType,
       );
@@ -246,12 +246,6 @@ class AppUtil {
               ...phoneNumbers.map((e) {
                 final url = 'tel://$e';
                 return CupertinoActionSheetAction(
-                  child: Text(
-                    e,
-                    style: TextStyle(
-                      color: ColorUtil.primaryColor,
-                    ),
-                  ),
                   onPressed: () async {
                     try {
                       if (await canLaunch(url)) {
@@ -261,17 +255,23 @@ class AppUtil {
                       print(e.toString());
                     }
                   },
+                  child: Text(
+                    e,
+                    style: const TextStyle(
+                      color: ColorUtil.primaryColor,
+                    ),
+                  ),
                 );
               }).toList(),
             ],
             cancelButton: CupertinoActionSheetAction(
               isDefaultAction: true,
-              child: Text(
-                S.current.cancel,
-              ),
               onPressed: () {
                 Get.back(result: true);
               },
+              child: Text(
+                S.current.cancel,
+              ),
             ),
           );
         },
@@ -279,11 +279,11 @@ class AppUtil {
     } else {
       await Get.bottomSheet(
         Container(
-          decoration: new BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: new BorderRadius.only(
-              topLeft: const Radius.circular(10.0),
-              topRight: const Radius.circular(10.0),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.0),
+              topRight: Radius.circular(10.0),
             ),
           ),
           child: ListView.builder(
@@ -294,7 +294,7 @@ class AppUtil {
               return ListTile(
                 title: Text(
                   phoneNumbers[index],
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: ColorUtil.primaryColor,
                   ),
                 ),
@@ -318,7 +318,7 @@ class AppUtil {
   static Future<Position> getCurrentLocation() async {
     Position position;
     try {
-      LocationPermission permission = await Geolocator.checkPermission();
+      final LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         await Geolocator.requestPermission();
       }

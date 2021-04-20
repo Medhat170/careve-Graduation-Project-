@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +11,12 @@ class Loading extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         child: Platform.isAndroid
-            ? CircularProgressIndicator(
+            ? const CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
                   ColorUtil.primaryColor,
                 ),
               )
-            : CupertinoActivityIndicator(),
+            : const CupertinoActivityIndicator(),
       ),
     );
   }

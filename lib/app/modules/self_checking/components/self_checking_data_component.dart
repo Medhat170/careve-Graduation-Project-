@@ -1,13 +1,13 @@
-import 'package:careve/app/components/animatedListHandler.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
 import 'package:careve/app/models/self_checking_data.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelfCheckingDataComponent extends StatelessWidget {
   final SelfCheckingData selfCheckingData;
 
-  SelfCheckingDataComponent({
+  const SelfCheckingDataComponent({
     @required this.selfCheckingData,
   });
 

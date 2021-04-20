@@ -1,10 +1,10 @@
-import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/components/extensions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,7 +15,7 @@ class UserAppointment extends StatelessWidget {
   final String telephoneNumber;
   final String specialty;
 
-  UserAppointment({
+  const UserAppointment({
     @required this.doctorName,
     @required this.address,
     @required this.date,
@@ -26,7 +26,7 @@ class UserAppointment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDoc = AuthService.to.isDoc?.value;
-    int duration = date.difference(DateTime.now()).inDays;
+    final int duration = date.difference(DateTime.now()).inDays;
     return Card(
       elevation: 6.5,
       color: ColorUtil.lightGrey,
@@ -138,7 +138,7 @@ class UserAppointment extends StatelessWidget {
                       title: S.of(context).go,
                       height: 70.w,
                       width: 200.w,
-                      onTap: () async => await AppUtil.openMapsSheet(
+                      onTap: () => AppUtil.openMapsSheet(
                         latitude: 31.22222222,
                         longitude: 31.322332323,
                       ),
@@ -170,7 +170,7 @@ class UserAppointment extends StatelessWidget {
                     title: S.of(context).call,
                     height: 70.w,
                     width: 200.w,
-                    onTap: () async => await AppUtil.callPhone(
+                    onTap: () => AppUtil.callPhone(
                       context,
                       phoneNumbers: [
                         '01020304050',

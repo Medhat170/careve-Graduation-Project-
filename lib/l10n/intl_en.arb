@@ -167,5 +167,11 @@
   "video": "Video",
   "addImageForAwareness": "Add image for this awareness",
   "clear": "Clear",
-  "editAppointmentsClinics": "Edit appointments & clinics"
+  "editAppointmentsClinics": "Edit appointments & clinics",
+  "timeIsBefore": "End time must be set to a time which is after the start time but not vice versa",
+  "nullStartTime": "Start time did not set",
+  "startTimeSet": "Set start time",
+  "endTimeSet": "Set End time",
+  "cv": "Cv/Medical approval",
+  "daysEmpty": "Seems that there is one or more clinics have no days ,You must set some days"
 }

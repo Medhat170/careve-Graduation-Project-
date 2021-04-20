@@ -23,7 +23,6 @@ class AwarenessController extends GetxController
     tabController = TabController(
       length: 3,
       vsync: this,
-      initialIndex: 0,
     );
     super.onInit();
   }

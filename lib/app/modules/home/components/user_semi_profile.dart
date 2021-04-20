@@ -2,8 +2,8 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:careve/app/components/badge.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class UserSemiProfile extends StatelessWidget {
   final Widget child;
 
-  UserSemiProfile({
+  const UserSemiProfile({
     @required this.child,
   }) : assert(child != null);
 
@@ -80,11 +80,12 @@ class UserSemiProfile extends StatelessWidget {
                         tag: 'profile',
                         child: Material(
                           elevation: 8.0,
-                          shape: CircleBorder(),
+                          shape: const CircleBorder(),
                           child: CircleAvatar(
                             backgroundColor: Colors.white,
+                            radius: 90.w,
                             child: userData?.image == null ||
-                                    userData?.image?.length == 0
+                                    userData.image.isEmpty
                                 ? Image.asset(
                                     PathUtil.userImage,
                                     height: 80.w,
@@ -95,7 +96,6 @@ class UserSemiProfile extends StatelessWidget {
                                     height: 80.w,
                                     fit: BoxFit.cover,
                                   ),
-                            radius: 90.w,
                           ),
                         ),
                       ),

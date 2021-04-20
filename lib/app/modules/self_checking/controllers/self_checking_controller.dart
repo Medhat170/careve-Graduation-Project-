@@ -1,5 +1,5 @@
 import 'package:careve/app/models/self_checking_data.dart';
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:get/get.dart';
 

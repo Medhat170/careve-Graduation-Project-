@@ -1,13 +1,14 @@
-import 'package:careve/app/components/animatedListHandler.dart';
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/user_appointments/components/user_appointment.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../controllers/user_appointments_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../controllers/user_appointments_controller.dart';
 
 class UserAppointmentsView extends GetView<UserAppointmentsController>
     with CustomAppBar {

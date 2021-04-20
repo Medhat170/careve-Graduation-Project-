@@ -6,7 +6,7 @@ class AnimatedListHandler extends StatelessWidget {
   final bool shrinkWrap;
   final bool noScroll;
 
-  AnimatedListHandler({
+  const AnimatedListHandler({
     @required this.children,
     this.noScroll = false,
     this.shrinkWrap = false,
@@ -17,7 +17,7 @@ class AnimatedListHandler extends StatelessWidget {
     return AnimationLimiter(
       child: ListView.builder(
         shrinkWrap: shrinkWrap,
-        physics: noScroll ? NeverScrollableScrollPhysics() : null,
+        physics: noScroll ? const NeverScrollableScrollPhysics() : null,
         itemCount: children.length,
         itemBuilder: (BuildContext context, int position) {
           return AnimationConfiguration.staggeredList(

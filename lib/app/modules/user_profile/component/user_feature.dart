@@ -1,5 +1,5 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,7 +10,7 @@ class UserFeature extends StatelessWidget {
   final Function onTap;
   final int trailingCount;
 
-  UserFeature({
+  const UserFeature({
     @required this.iconData,
     @required this.title,
     this.iconColor,
@@ -80,7 +80,7 @@ class UserFeature extends StatelessWidget {
             ),
           ),
         ),
-        Divider(
+        const Divider(
           color: ColorUtil.mediumGrey,
         ),
       ],

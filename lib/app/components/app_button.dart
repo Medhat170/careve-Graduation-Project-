@@ -1,5 +1,5 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -125,7 +125,7 @@ class ButtonAppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
+        FocusScope.of(context).requestFocus(FocusNode());
         onTap();
       },
       child: Card(

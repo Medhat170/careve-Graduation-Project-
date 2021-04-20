@@ -1,7 +1,7 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:careve/app/components/extensions.dart';
 

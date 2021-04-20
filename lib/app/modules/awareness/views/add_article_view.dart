@@ -1,7 +1,7 @@
-import 'package:careve/app/components/animatedListHandler.dart';
-import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/components/appDropDownMenu.dart';
-import 'package:careve/app/components/appTextField.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/global_scaffold.dart';
+import 'package:careve/app/components/app_drop_down_menu.dart';
+import 'package:careve/app/components/app_text_field.dart';
 import 'package:careve/app/modules/awareness/components/awareness_image_handler.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
@@ -41,7 +41,7 @@ class AddAwarenessView extends GetView<AwarenessController> {
                         hintText: controller.articleType?.value == null
                             ? S.of(context).awarenessType
                             : controller.articleType?.value ?? '-',
-                        validator: QuickTextValidator().call,
+                        validator: const QuickTextValidator().call,
                       ),
                       const SizedBox(
                         height: 10.0,
@@ -50,8 +50,7 @@ class AddAwarenessView extends GetView<AwarenessController> {
                         controller.title,
                         hintText: S.of(context).title,
                         readOnly: controller.isBusy.value,
-                        keyBoardType: TextInputType.text,
-                        validator: QuickTextValidator().call,
+                        validator: const QuickTextValidator().call,
                       ),
                       const SizedBox(
                         height: 10.0,
@@ -61,8 +60,7 @@ class AddAwarenessView extends GetView<AwarenessController> {
                         hintText: S.of(context).article,
                         readOnly: controller.isBusy.value,
                         maxLines: 8,
-                        keyBoardType: TextInputType.text,
-                        validator: QuickTextValidator().call,
+                        validator: const QuickTextValidator().call,
                       ),
                       const SizedBox(
                         height: 10.0,
@@ -73,7 +71,7 @@ class AddAwarenessView extends GetView<AwarenessController> {
                           hintText: S.of(context).youTubeLink,
                           readOnly: controller.isBusy.value,
                           keyBoardType: TextInputType.url,
-                          validator: QuickTextValidator().call,
+                          validator: const QuickTextValidator().call,
                         ),
                       const SizedBox(
                         height: 10.0,

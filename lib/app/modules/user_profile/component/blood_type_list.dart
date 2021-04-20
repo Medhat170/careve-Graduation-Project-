@@ -1,7 +1,7 @@
-import 'package:careve/app/components/appDropDownMenu.dart';
+import 'package:careve/app/components/app_drop_down_menu.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class BloodTypeList extends GetView<AuthService> {
   @override
   Widget build(BuildContext context) {
-    List<String> bloodTypesList = controller.bloodTypesRef.toList();
+    final List<String> bloodTypesList = controller.bloodTypesRef.toList();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(

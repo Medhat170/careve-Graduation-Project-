@@ -1,7 +1,7 @@
-import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/modules/awareness/controllers/awareness_controller.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -47,14 +47,13 @@ class AwarenessImageHandler extends GetView<AwarenessController> {
                         )
                       : Center(
                           child: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.add,
                               color: ColorUtil.mediumGrey,
                               size: 20.0,
                             ),
                             onPressed: () async => controller.image(
                               (await AppUtil.pickFiles(
-                                allowMultiple: false,
                                 fileType: FileType.image,
                               ))
                                   ?.first,
@@ -62,7 +61,7 @@ class AwarenessImageHandler extends GetView<AwarenessController> {
                           ),
                         ),
                 ),
-                Spacer(),
+                const Spacer(),
                 if (controller.image.value != null)
                   CareveButton.icon(
                     width: 400.w,

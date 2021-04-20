@@ -1,6 +1,6 @@
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
@@ -13,7 +13,7 @@ class DoctorItem extends StatelessWidget {
   final double rate;
   final String id;
 
-  DoctorItem({
+  const DoctorItem({
     this.name,
     this.specialty,
     this.image,
@@ -74,16 +74,13 @@ class DoctorItem extends StatelessWidget {
                     if (rate != null)
                       RatingBar(
                         rating: rate,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.star,
                           size: 16,
                           color: Colors.grey,
                         ),
-                        starCount: 5,
                         spacing: 5.0,
                         size: 3,
-                        isIndicator: false,
-                        allowHalfRating: true,
                         onRatingCallback:
                             (double value, ValueNotifier<bool> isIndicator) {
                           print('Number of stars-->  $value');

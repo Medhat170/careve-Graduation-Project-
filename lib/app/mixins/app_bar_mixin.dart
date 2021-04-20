@@ -1,6 +1,6 @@
-import 'package:careve/app/components/appTextField.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/components/app_text_field.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +33,7 @@ mixin CustomAppBar {
   }
 
   Widget originalAppBar(
+    // ignore: avoid_positional_boolean_parameters
     bool enableBack,
     bool enableSearch,
     String barTitle,
@@ -46,18 +47,16 @@ mixin CustomAppBar {
         top: 9.0,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          enableBack
-              ? IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: ColorUtil.primaryColor,
-                    size: 22.0,
-                  ),
-                  onPressed: () => Get.back(result: true),
-                )
-              : SizedBox.shrink(),
+          if (enableBack)
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: ColorUtil.primaryColor,
+                size: 22.0,
+              ),
+              onPressed: () => Get.back(result: true),
+            ),
           const SizedBox(
             width: 5.0,
           ),
@@ -79,7 +78,7 @@ mixin CustomAppBar {
                 onTap: () {
                   startSearching(true);
                 },
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   backgroundColor: ColorUtil.lightGrey,
                   radius: 14,
                   child: Icon(
@@ -90,23 +89,24 @@ mixin CustomAppBar {
                 ),
               ),
             ),
-          trailing != null
-              ? trailing
-              : trailingCount == null || trailingCount == 0
-                  ? SizedBox.shrink()
-                  : CircleAvatar(
-                      backgroundColor: ColorUtil.primaryColor,
-                      radius: 14,
-                      child: FittedBox(
-                        child: Text(
-                          trailingCount.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+          if (trailing != null)
+            trailing
+          else
+            trailingCount == null || trailingCount == 0
+                ? const SizedBox.shrink()
+                : CircleAvatar(
+                    backgroundColor: ColorUtil.primaryColor,
+                    radius: 14,
+                    child: FittedBox(
+                      child: Text(
+                        trailingCount.toString(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+                  ),
         ],
       ),
     );
@@ -120,10 +120,9 @@ mixin CustomAppBar {
         top: 9.0,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               FontAwesomeIcons.times,
               color: ColorUtil.primaryColor,
               size: 22.0,
@@ -140,7 +139,7 @@ mixin CustomAppBar {
                 onFieldSubmitted: (String value) {
                   print(searchText.text);
                 },
-                prefixWidget: Icon(
+                prefixWidget: const Icon(
                   FontAwesomeIcons.search,
                   color: ColorUtil.mediumGrey,
                   size: 16.0,

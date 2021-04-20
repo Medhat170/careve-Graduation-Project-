@@ -1,4 +1,4 @@
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,7 +7,7 @@ class SettingItem extends StatelessWidget {
   final Function onPressed;
   final Widget trailing;
 
-  SettingItem({
+  const SettingItem({
     this.title,
     this.onPressed,
     this.trailing,
@@ -27,8 +27,6 @@ class SettingItem extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   child: Text(
@@ -46,7 +44,7 @@ class SettingItem extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            Divider(
+            const Divider(
               color: ColorUtil.mediumGrey,
             ),
           ],

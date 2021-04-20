@@ -1,11 +1,11 @@
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:get/get.dart';
 
 enum AwarenessType {
-  ARTICLE,
-  VIDEO,
-  COMMON_QUESTION,
+  article,
+  video,
+  commonQuestion,
 }
 
 class AwarenessInfoController extends GetxController {
@@ -19,9 +19,9 @@ class AwarenessInfoController extends GetxController {
 
   String title() {
     var barTitle = S.current.articles;
-    if (awarenessType == AwarenessType.COMMON_QUESTION) {
+    if (awarenessType == AwarenessType.commonQuestion) {
       barTitle = S.current.commonQuestions;
-    } else if (awarenessType == AwarenessType.VIDEO) {
+    } else if (awarenessType == AwarenessType.video) {
       barTitle = S.current.videos;
     } else {
       barTitle = S.current.articles;

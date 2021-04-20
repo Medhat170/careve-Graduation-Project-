@@ -1,5 +1,5 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 
 class AppDropDownMenu extends StatelessWidget {
@@ -8,7 +8,7 @@ class AppDropDownMenu extends StatelessWidget {
   final List<String> listElements;
   final FormFieldValidator<String> validator;
 
-  AppDropDownMenu({
+  const AppDropDownMenu({
     this.hintText = '',
     this.onChanged,
     @required this.listElements,
@@ -29,14 +29,14 @@ class AppDropDownMenu extends StatelessWidget {
           child: InputDecorator(
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.white,
                   width: 0.5,
                 ),
                 borderRadius: AppUtil.borderRadius,
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: ColorUtil.lightGrey,
                   width: 0.5,
                 ),
@@ -48,7 +48,7 @@ class AppDropDownMenu extends StatelessWidget {
                 color: ColorUtil.errorColor,
                 fontSize: 12.0,
               ),
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: ColorUtil.mediumGrey,
                 fontSize: 14.0,
               ),
@@ -59,14 +59,13 @@ class AppDropDownMenu extends StatelessWidget {
                 value: currentValue,
                 isDense: true,
                 onChanged: (String value) {
-                  FocusScope.of(context).requestFocus(new FocusNode());
+                  FocusScope.of(context).requestFocus(FocusNode());
                   onChanged(value);
                 },
-                isExpanded: false,
                 hint: FittedBox(
                   child: Text(
                     currentValue ?? hintText,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: ColorUtil.mediumGrey,
                       fontWeight: FontWeight.w600,
                     ),
@@ -76,7 +75,7 @@ class AppDropDownMenu extends StatelessWidget {
                 ),
                 iconDisabledColor: ColorUtil.lightGrey,
                 iconEnabledColor: ColorUtil.lightGrey,
-                icon: Icon(
+                icon: const Icon(
                   Icons.keyboard_arrow_down,
                   color: ColorUtil.mediumGrey,
                 ),
@@ -90,7 +89,7 @@ class AppDropDownMenu extends StatelessWidget {
                         ),
                         child: Text(
                           value,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: ColorUtil.primaryColor,
                           ),
                           textAlign: TextAlign.center,

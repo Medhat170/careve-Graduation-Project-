@@ -1,8 +1,8 @@
-import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step/clinic_component.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +13,7 @@ class ClinicDataStep extends Step {
     StepState stepState = StepState.editing,
   }) : super(
           title: !isActive
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : FittedBox(
                   child: Text(
                     S.current.clinicData,
@@ -48,7 +48,7 @@ class ClinicDataStep extends Step {
                       CareveButton.icon(
                         width: 150.w,
                         height: 100.w,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.add,
                           color: ColorUtil.primaryColor,
                           size: 22.0,

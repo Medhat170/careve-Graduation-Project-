@@ -1,16 +1,16 @@
-import 'package:careve/app/components/appButton.dart';
-import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/components/backButton.dart';
+import 'package:careve/app/components/app_button.dart';
+import 'package:careve/app/components/global_scaffold.dart';
+import 'package:careve/app/components/back_button.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthView extends GetView<AuthService> {
@@ -52,14 +52,14 @@ class AuthView extends GetView<AuthService> {
                               controller.name,
                               loading: controller.isBusy.value,
                               keyBoardType: TextInputType.text,
-                              validator: QuickTextValidator().call,
+                              validator: const QuickTextValidator().call,
                             ),
                           AuthInputField(
                             S.of(context).email,
                             controller.email,
                             loading: controller.isBusy.value,
                             keyBoardType: TextInputType.emailAddress,
-                            validator: QuickTextValidator(
+                            validator: const QuickTextValidator(
                               isEmail: true,
                             ).call,
                           ),
@@ -69,10 +69,9 @@ class AuthView extends GetView<AuthService> {
                             loading: controller.isBusy.value,
                             isPassword: true,
                             hidePassword: controller.hidePassword.value,
-                            changeObscuring: () => controller.hidePassword
-                                .value = !controller.hidePassword.value,
+                            changeObscuring: controller.changeObscuring,
                             keyBoardType: TextInputType.text,
-                            validator: QuickTextValidator(
+                            validator: const QuickTextValidator(
                               hasMinLength: 8,
                             ).call,
                           ),
@@ -83,8 +82,7 @@ class AuthView extends GetView<AuthService> {
                               loading: controller.isBusy.value,
                               isPassword: true,
                               hidePassword: controller.hidePassword.value,
-                              changeObscuring: () => controller.hidePassword
-                                  .value = !controller.hidePassword.value,
+                              changeObscuring: controller.changeObscuring,
                               keyBoardType: TextInputType.text,
                               validator: QuickTextValidator(
                                 extraValidation: (String value) {
@@ -100,15 +98,15 @@ class AuthView extends GetView<AuthService> {
                           const SizedBox(
                             height: 10,
                           ),
-                          controller.isBusy.value
-                              ? Loading()
-                              : CareveButton(
-                                  title: controller.signUP.value
-                                      ? S.of(context).signUp
-                                      : S.of(context).signIn,
-                                  onTap: () async => await controller.auth(),
-                                  backgroundColor: ColorUtil.primaryColor,
-                                ),
+                          if (controller.isBusy.value)
+                            Loading()
+                          else
+                            CareveButton(
+                              title: controller.signUP.value
+                                  ? S.of(context).signUp
+                                  : S.of(context).signIn,
+                              onTap: () => controller.auth(),
+                            ),
                           const SizedBox(
                             height: 15.0,
                           ),

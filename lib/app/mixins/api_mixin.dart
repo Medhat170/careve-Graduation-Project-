@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 mixin ApiMixin {
-  var _dio = Dio();
+  final _dio = Dio();
   var _formData = FormData();
 
   Future<Map<String, dynamic>> post({
@@ -21,7 +21,7 @@ mixin ApiMixin {
     _formData = FormData();
     _addBody(body ?? {});
     _addFiles(files ?? {});
-    return (await request(
+    return request(
       _dio.post(
         url,
         data: _formData,
@@ -33,7 +33,7 @@ mixin ApiMixin {
           sendTimeout: sendTimeout,
         ),
       ),
-    ));
+    );
   }
 
   Future get({
@@ -43,7 +43,7 @@ mixin ApiMixin {
     int receiveTimeout,
     Function(int count, int total) onReceiveProgress,
   }) async {
-    return (await request(
+    return request(
       _dio.get(
         url,
         onReceiveProgress: onReceiveProgress,
@@ -53,29 +53,26 @@ mixin ApiMixin {
           sendTimeout: sendTimeout,
         ),
       ),
-    ));
+    );
   }
 
   void _addBody(Map<String, dynamic> data) {
     if (data != null) {
-      _formData.fields
-        ..addAll(
-          data.entries.map(
-            (element) => MapEntry(
-              element?.key,
-              element?.value,
-            ),
+      _formData.fields.addAll(
+        data.entries.map(
+          (element) => MapEntry(
+            element?.key,
+            element?.value?.toString(),
           ),
-        );
+        ),
+      );
     }
   }
 
   void _addFiles(Map<String, List<File>> files) {
-    if (files != null ||
-        files?.entries != null ||
-        files?.entries?.length != 0) {
-      for (var entry in files?.entries) {
-        if (entry?.value != null || entry?.value?.length != 0) {
+    if (files != null || files?.entries != null || files.entries.isNotEmpty) {
+      for (final entry in files?.entries) {
+        if (entry?.value != null || entry.value.isNotEmpty) {
           _formData.files.addAll(
             entry.value.map(
               (e) => MapEntry(
@@ -97,7 +94,7 @@ mixin ApiMixin {
     var errorMessage = S.current.formatException;
     try {
       if (error?.entries != null) {
-        for (var error in error?.entries) {
+        for (final error in error?.entries) {
           if (error?.value is String) {
             errorMessage = ' $errorMessage  ${error?.value} ';
           } else if (error?.value is List) {
@@ -115,8 +112,9 @@ mixin ApiMixin {
     Future<Response> future,
   ) async {
     try {
-      final data = (await future);
-      final Map<String, dynamic> response = json.decode(data.toString());
+      final data = await future;
+      final Map<String, dynamic> response =
+          json.decode(data.toString()) as Map<String, dynamic>;
       print('Response : ${data.toString()}');
       return response;
     } on DioError catch (dioError) {

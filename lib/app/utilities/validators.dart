@@ -1,4 +1,4 @@
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/generated/l10n.dart';
 
 class QuickGenericValidator<T> {

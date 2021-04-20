@@ -1,10 +1,10 @@
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
-import 'package:careve/app/modules/settings/components/settingItem.dart';
+import 'package:careve/app/modules/settings/components/setting_item.dart';
 import 'package:careve/app/modules/settings/controllers/settings_controller.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,6 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           customAppBar(
@@ -28,12 +27,12 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
             onPressed: () async {
               await Get.bottomSheet(
                 Container(
-                  height: Get.height *0.30,
-                  decoration: new BoxDecoration(
+                  height: Get.height * 0.30,
+                  decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: new BorderRadius.only(
-                      topLeft: const Radius.circular(10.0),
-                      topRight: const Radius.circular(10.0),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0),
                     ),
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -87,11 +86,11 @@ class SettingsView extends GetView<SettingsController> with CustomAppBar {
                 sides: 6,
                 borderRadius: 5.0,
                 child: Container(
+                  color: Colors.white,
                   child: Image.asset(
                     !AppUtil.isLtr ? PathUtil.arImage : PathUtil.enImage,
                     fit: BoxFit.fill,
                   ),
-                  color: Colors.white,
                 ),
               ),
             ),

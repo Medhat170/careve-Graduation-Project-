@@ -1,9 +1,9 @@
-import 'package:careve/app/components/appButton.dart';
-import 'package:careve/app/components/appDirectionality.dart';
-import 'package:careve/app/components/backButton.dart';
+import 'package:careve/app/components/app_button.dart';
+import 'package:careve/app/components/global_scaffold.dart';
+import 'package:careve/app/components/back_button.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -71,23 +71,21 @@ class VerificationCodeView extends GetView<AuthService> {
                       },
                       pinBoxWidth: 120.w,
                       pinBoxHeight: 160.w,
-                      hasUnderline: false,
                       wrapAlignment: WrapAlignment.spaceAround,
                       pinBoxDecoration:
                           ProvidedPinBoxDecoration.defaultPinBoxDecoration,
-                      pinTextStyle: TextStyle(
+                      pinTextStyle: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w600,
                       ),
                       pinTextAnimatedSwitcherTransition:
                           ProvidedPinBoxTextAnimation.defaultNoTransition,
-                      pinTextAnimatedSwitcherDuration: Duration(
+                      pinTextAnimatedSwitcherDuration: const Duration(
                         milliseconds: 300,
                       ),
                       highlightAnimation: true,
                       highlightAnimationBeginColor: Colors.black,
                       highlightAnimationEndColor: ColorUtil.primaryColor,
-                      keyboardType: TextInputType.number,
                     ),
                     if (controller.pinCodeError.value != null)
                       Padding(
@@ -107,8 +105,7 @@ class VerificationCodeView extends GetView<AuthService> {
                     ),
                     CareveButton(
                       title: S.of(context).done,
-                      onTap: () async => await controller.verifyCode(),
-                      backgroundColor: ColorUtil.primaryColor,
+                      onTap: () => controller.verifyCode(),
                     ),
                   ],
                 ),

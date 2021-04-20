@@ -1,13 +1,13 @@
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import '../../../components/extensions.dart';
 
 class AppointmentItem extends StatelessWidget {
   final DateTime date;
 
-  AppointmentItem({
+  const AppointmentItem({
     @required this.date,
   });
 
@@ -27,7 +27,7 @@ class AppointmentItem extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.access_time_rounded,
               color: ColorUtil.primaryColor,
               size: 24.0,
@@ -48,7 +48,7 @@ class AppointmentItem extends StatelessWidget {
             const SizedBox(
               width: 10.0,
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios_rounded,
               color: ColorUtil.primaryColor,
               size: 24.0,

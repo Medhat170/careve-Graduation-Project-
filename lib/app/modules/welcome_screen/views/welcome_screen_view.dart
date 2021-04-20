@@ -1,14 +1,15 @@
-import 'package:careve/app/components/appButton.dart';
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/app_button.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../controllers/welcome_screen_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../controllers/welcome_screen_controller.dart';
 
 class WelcomeScreenView extends GetView<WelcomeScreenController> {
   @override
@@ -19,7 +20,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
           body: Stack(
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
                       PathUtil.welcomeImage,
@@ -55,7 +56,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         S.of(context).welcome,
                         style: TextStyle(
@@ -81,8 +82,6 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       ),
                       CareveButton(
                         title: S.of(context).normalUser,
-                        textColor: ColorUtil.whiteColor,
-                        backgroundColor: ColorUtil.primaryColor,
                         onTap: () {
                           AuthService.to.isDoc(false);
                           Get.toNamed(
@@ -98,6 +97,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                         backgroundColor: Colors.transparent,
                         borderColor: ColorUtil.primaryColor,
                         onTap: () {
+                          AuthService.to.signUP(false);
                           AuthService.to.isDoc(true);
                           Get.toNamed(
                             Routes.AUTH,

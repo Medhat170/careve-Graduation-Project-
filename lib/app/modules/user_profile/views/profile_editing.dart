@@ -1,5 +1,5 @@
-import 'package:careve/app/components/appButton.dart';
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/app_button.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/components/user_image_handler.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
@@ -31,14 +31,14 @@ class ProfileEditingView extends GetView<AuthService> {
                 controller.name,
                 loading: controller.isBusy.value,
                 keyBoardType: TextInputType.text,
-                validator: QuickTextValidator().call,
+                validator: const QuickTextValidator().call,
               ),
               AuthInputField(
                 S.of(context).email,
                 controller.email,
                 loading: controller.isBusy.value,
                 keyBoardType: TextInputType.emailAddress,
-                validator: QuickTextValidator(
+                validator: const QuickTextValidator(
                   isEmail: true,
                 ).call,
               ),
@@ -56,12 +56,13 @@ class ProfileEditingView extends GetView<AuthService> {
               ),
               BirthDateHandler(),
               BloodTypeList(),
-              controller.isBusy.value
-                  ? Loading()
-                  : CareveButton(
-                      title: S.of(context).edit,
-                      onTap: () => controller.editProfile,
-                    ),
+              if (controller.isBusy.value)
+                Loading()
+              else
+                CareveButton(
+                  title: S.of(context).edit,
+                  onTap: () => controller.editProfile,
+                ),
             ],
           );
         }),

@@ -1,8 +1,8 @@
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
-import 'package:careve/app/modules/chat/components/messageHandler.dart';
-import 'package:careve/app/modules/chat/components/messageViewer.dart';
+import 'package:careve/app/modules/chat/components/message_handler.dart';
+import 'package:careve/app/modules/chat/components/message_viewer.dart';
 import 'package:careve/app/modules/chat/controllers/chat_controller.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class ChatView extends GetView<ChatController> with CustomAppBar {
                         },
                         child: ListView(
                           reverse: true,
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             top: 8.0,
                             right: 8.0,
                             left: 8.0,
@@ -44,7 +44,6 @@ class ChatView extends GetView<ChatController> with CustomAppBar {
                             ...[
                               MessageViewer(
                                 id: 0,
-                                files: [],
                                 content: 'Hi there! I am using careve app',
                                 type: SelfOrOtherEnum.other,
                                 date: DateTime.now().toTimeOnly(),
@@ -52,7 +51,6 @@ class ChatView extends GetView<ChatController> with CustomAppBar {
                               ),
                               MessageViewer(
                                 id: 0,
-                                files: [],
                                 content: 'Hello there',
                                 type: SelfOrOtherEnum.self,
                                 date: DateTime.now().toTimeOnly(),

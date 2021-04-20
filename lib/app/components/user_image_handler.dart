@@ -1,7 +1,7 @@
-import 'package:careve/app/components/backButton.dart';
+import 'package:careve/app/components/back_button.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,7 +24,7 @@ class ProfileImageHandler extends GetView<AuthService> {
             height: 50.0,
             fit: BoxFit.cover,
           );
-        } else if (userData?.image != null && userData.image.length > 0) {
+        } else if (userData?.image != null && userData.image.isNotEmpty) {
           imageProvider = Image.network(
             userData?.image,
             height: 50.0,
@@ -44,13 +44,13 @@ class ProfileImageHandler extends GetView<AuthService> {
                     tag: 'profile',
                     child: Material(
                       elevation: 8.0,
-                      shape: CircleBorder(),
+                      shape: const CircleBorder(),
                       child: Stack(
                         children: [
                           CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: imageProvider,
                             radius: 50.0,
+                            child: imageProvider,
                           ),
                           Positioned(
                             top: 0.0,
@@ -61,14 +61,13 @@ class ProfileImageHandler extends GetView<AuthService> {
                               backgroundColor: Colors.black26,
                               child: Center(
                                 child: IconButton(
-                                  icon: Icon(
+                                  icon: const Icon(
                                     FontAwesomeIcons.camera,
                                     color: Colors.white,
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
                                     final result = (await AppUtil.pickFiles(
-                                      allowMultiple: false,
                                       fileType: FileType.image,
                                     ))
                                         ?.first;

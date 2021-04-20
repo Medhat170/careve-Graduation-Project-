@@ -1,5 +1,5 @@
-import 'package:careve/app/components/appTextField.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/components/app_text_field.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +18,7 @@ class AuthInputField extends StatelessWidget {
   final Function changeObscuring;
   final Widget suffix;
 
-  AuthInputField(
+  const AuthInputField(
     this.label,
     this.controller, {
     this.validator,
@@ -67,7 +67,7 @@ class AuthInputField extends StatelessWidget {
                 },
                 prefixWidget: !isPhone
                     ? null
-                    : Text(
+                    : const Text(
                         '+20',
                         style: TextStyle(
                           color: ColorUtil.blackColor,

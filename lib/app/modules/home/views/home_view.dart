@@ -1,10 +1,10 @@
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/models/section.dart';
-import 'package:careve/app/modules/home/components/section_Item.dart';
+import 'package:careve/app/modules/home/components/section_item.dart';
 import 'package:careve/app/modules/home/components/user_semi_profile.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,9 +27,17 @@ class HomeView extends GetView<HomeController> {
               return true;
             },
             child: GridView(
-              scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                crossAxisCount: 2,
+                mainAxisExtent: (Get.height -
+                        Get.mediaQuery.padding.top -
+                        Get.mediaQuery.padding.bottom) /
+                    4,
+              ),
               children: [
                 if (!isDoc)
                   Section(
@@ -83,16 +91,6 @@ class HomeView extends GetView<HomeController> {
                     ),
                   )
                   .toList(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1 / 1,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                crossAxisCount: 2,
-                mainAxisExtent: (Get.height -
-                        Get.mediaQuery.padding.top -
-                        Get.mediaQuery.padding.bottom) /
-                    4,
-              ),
             ),
           ),
         ),

@@ -1,8 +1,7 @@
-import 'package:careve/app/components/user_image_handler.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/professional_data_step/cv_component.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class ProfessionalDataStep extends Step {
     StepState stepState = StepState.editing,
   }) : super(
           title: !isActive
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : FittedBox(
                   child: Text(
                     S.current.professionalData,
@@ -40,7 +39,7 @@ class ProfessionalDataStep extends Step {
                     AuthService.to.nationalId,
                     loading: AuthService.to.isBusy.value,
                     keyBoardType: TextInputType.number,
-                    validator: QuickTextValidator(
+                    validator: const QuickTextValidator(
                       isNationalId: true,
                     ).call,
                   ),

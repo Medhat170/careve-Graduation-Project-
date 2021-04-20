@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:careve/app/modules/chat/controllers/chat_controller.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -32,13 +32,13 @@ class FilesViewer extends GetView<ChatController> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           FontAwesomeIcons.filePdf,
                                           color: ColorUtil.primaryColor,
                                         ),
                                         Text(
                                           e.key,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: ColorUtil.primaryColor,
                                           ),
                                         ),
@@ -89,7 +89,7 @@ class FilesViewer extends GetView<ChatController> {
                 ],
               ),
             )
-          : SizedBox.shrink(),
+          : const SizedBox.shrink(),
     );
   }
 }

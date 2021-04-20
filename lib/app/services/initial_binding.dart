@@ -8,10 +8,10 @@ import 'package:get/get.dart';
 class InitialBinding extends Bindings {
   @override
   void dependencies() {
-    var userRepo = Get.put(UserRepo());
-    var settingsRepo = Get.put(SettingsRepo());
+    final userRepo = Get.put(UserRepo());
+    final settingsRepo = Get.put(SettingsRepo());
 
-    var cacheService = Get.put<CacheService>(
+    final cacheService = Get.put<CacheService>(
       CacheService(
         userRepo,
         settingsRepo,

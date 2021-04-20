@@ -5,7 +5,7 @@ class GlobalScaffold extends StatelessWidget {
   final Widget body;
   final Widget floatingActionButton;
 
-  GlobalScaffold({
+  const GlobalScaffold({
     @required this.body,
     this.floatingActionButton,
   });

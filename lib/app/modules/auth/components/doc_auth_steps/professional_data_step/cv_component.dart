@@ -1,7 +1,7 @@
-import 'package:careve/app/components/appButton.dart';
+import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,12 +13,29 @@ class CVComponent extends GetView<AuthService> {
   Widget build(BuildContext context) {
     return Obx(
       () => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
+          Text(
+            S.of(context).cv,
+            style: TextStyle(
+              color: ColorUtil.mediumGrey,
+              fontSize: 40.sp,
+            ),
+          ),
+          if (controller.cv.value == null)
+            Row(
+              textDirection:
+                  AppUtil.isLtr ? TextDirection.ltr : TextDirection.rtl,
               children: <Widget>[
+                Expanded(
+                  child: Text(
+                    S.of(context).attachCV,
+                    style: TextStyle(
+                      color: ColorUtil.mediumGrey,
+                      fontSize: 34.sp,
+                    ),
+                  ),
+                ),
                 CareveButton.icon(
                   height: 130.w,
                   width: 130.w,
@@ -30,20 +47,11 @@ class CVComponent extends GetView<AuthService> {
                   ),
                   backgroundColor: ColorUtil.lightGrey,
                   onTap: () async => controller.cv(
-                    (await AppUtil.pickFiles(allowMultiple: false))?.first,
-                  ),
-                ),
-                Spacer(),
-                Text(
-                  S.of(context).attachCV,
-                  style: TextStyle(
-                    color: ColorUtil.mediumGrey,
-                    fontSize: 40.sp,
+                    (await AppUtil.pickFiles())?.first,
                   ),
                 ),
               ],
             ),
-          ),
           if (controller.cv.value != null)
             Stack(
               children: [

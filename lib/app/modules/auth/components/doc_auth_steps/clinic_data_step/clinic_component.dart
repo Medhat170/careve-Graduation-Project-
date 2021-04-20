@@ -1,9 +1,8 @@
-import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step/days_component.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class ClinicComponent extends StatelessWidget {
   final int index;
 
-  ClinicComponent({
+  const ClinicComponent({
     @required this.index,
   });
 
@@ -47,9 +46,9 @@ class ClinicComponent extends StatelessWidget {
                         .changeAddress(index, formattedAddress: value);
                   },
                   keyBoardType: TextInputType.text,
-                  validator: QuickTextValidator().call,
+                  validator: const QuickTextValidator().call,
                   suffix: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add_location_alt_rounded,
                       color: ColorUtil.primaryColor,
                       size: 24.0,
@@ -65,12 +64,14 @@ class ClinicComponent extends StatelessWidget {
                           builder: (context) => PlacePicker(
                             apiKey: 'AIzaSyByhDTGyST-Uxd8CxyuOs2TbiakqLJz1y8',
                             onPlacePicked: (result) {
-                              print(result);
                               Navigator.of(context).pop(result);
                             },
                             initialPosition: LatLng(
-                              AuthService.to.currentLocation.value.latitude,
-                              AuthService.to.currentLocation.value.longitude,
+                              AuthService.to.currentLocation?.value?.latitude ??
+                                  31.55555555,
+                              AuthService
+                                      .to.currentLocation?.value?.longitude ??
+                                  31.55555555,
                             ),
                             useCurrentLocation: false,
                           ),
@@ -101,7 +102,7 @@ class ClinicComponent extends StatelessWidget {
                   onChanged: (String value) {
                     AuthService.to.changePhone(index, value);
                   },
-                  validator: QuickTextValidator(
+                  validator: const QuickTextValidator(
                     isPhone: true,
                   ).call,
                 ),

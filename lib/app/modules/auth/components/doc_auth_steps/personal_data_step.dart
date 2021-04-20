@@ -1,8 +1,8 @@
 import 'package:careve/app/components/user_image_handler.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class PersonalDataStep extends Step {
     StepState stepState = StepState.editing,
   }) : super(
           title: !isActive
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : FittedBox(
                   child: Text(
                     S.current.personalData,
@@ -42,14 +42,14 @@ class PersonalDataStep extends Step {
                     AuthService.to.name,
                     loading: AuthService.to.isBusy.value,
                     keyBoardType: TextInputType.text,
-                    validator: QuickTextValidator().call,
+                    validator: const QuickTextValidator().call,
                   ),
                   AuthInputField(
                     S.current.email,
                     AuthService.to.email,
                     loading: AuthService.to.isBusy.value,
                     keyBoardType: TextInputType.emailAddress,
-                    validator: QuickTextValidator(
+                    validator: const QuickTextValidator(
                       isEmail: true,
                     ).call,
                   ),
@@ -59,10 +59,9 @@ class PersonalDataStep extends Step {
                     loading: AuthService.to.isBusy.value,
                     isPassword: true,
                     hidePassword: AuthService.to.hidePassword.value,
-                    changeObscuring: () => AuthService.to.hidePassword.value =
-                        !AuthService.to.hidePassword.value,
+                    changeObscuring: AuthService.to.changeObscuring,
                     keyBoardType: TextInputType.text,
-                    validator: QuickTextValidator(
+                    validator: const QuickTextValidator(
                       hasMinLength: 8,
                     ).call,
                   ),
@@ -72,8 +71,7 @@ class PersonalDataStep extends Step {
                     loading: AuthService.to.isBusy.value,
                     isPassword: true,
                     hidePassword: AuthService.to.hidePassword.value,
-                    changeObscuring: () => AuthService.to.hidePassword.value =
-                        !AuthService.to.hidePassword.value,
+                    changeObscuring: AuthService.to.changeObscuring,
                     keyBoardType: TextInputType.text,
                     validator: QuickTextValidator(
                       extraValidation: (String value) {

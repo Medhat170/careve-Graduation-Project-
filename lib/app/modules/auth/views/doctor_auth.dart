@@ -1,11 +1,11 @@
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step/clinic_data_step.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/personal_data_step.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/professional_data_step/professional_data_step.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -32,18 +32,17 @@ class DoctorAuthView extends GetView<AuthService> {
                       isActive: controller.stepActivation[0],
                       stepState: controller.stepStates[0],
                     ),
-                    ClinicDataStep(
+                    ProfessionalDataStep(
                       isActive: controller.stepActivation[1],
                       stepState: controller.stepStates[1],
                     ),
-                    ProfessionalDataStep(
+                    ClinicDataStep(
                       isActive: controller.stepActivation[2],
                       stepState: controller.stepStates[2],
                     ),
                   ],
                   currentStep: controller.currentStep.value,
                   onStepContinue: controller.onStepContinue,
-                  onStepTapped: null,
                   onStepCancel: controller.onStepCancel,
                   controlsBuilder: (
                     BuildContext context, {
@@ -67,12 +66,9 @@ class DoctorAuthView extends GetView<AuthService> {
                                       ),
                                     ),
                                   ),
-                                Spacer(),
+                                const Spacer(),
                                 FloatingActionButton.extended(
-                                  tooltip: S.of(context).clinicData,
-                                  onPressed: controller.currentStep.value == 2
-                                      ? () async => await controller.auth()
-                                      : onStepContinue,
+                                  onPressed: onStepContinue,
                                   backgroundColor: ColorUtil.primaryColor,
                                   elevation: 5.0,
                                   icon: controller.currentStep.value == 2
@@ -92,11 +88,11 @@ class DoctorAuthView extends GetView<AuthService> {
                                         ),
                                   label: Text(
                                     controller.currentStep.value == 1
-                                        ? S.of(context).professionalData
+                                        ? S.of(context).clinicData
                                         : controller.currentStep.value == 2
                                             ? S.of(context).signUp
-                                            : S.of(context).clinicData,
-                                    style: TextStyle(
+                                            : S.of(context).professionalData,
+                                    style: const TextStyle(
                                       color: Colors.white,
                                     ),
                                   ),

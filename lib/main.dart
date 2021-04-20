@@ -1,7 +1,7 @@
 import 'package:careve/app/services/cache/cache_service.dart';
-import 'package:careve/app/services/initialBinding.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/services/initial_binding.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,15 +27,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     precacheImage(
-      AssetImage(
+      const AssetImage(
         PathUtil.welcomeImage,
       ),
       context,
     );
     return ScreenUtilInit(
-      designSize: Size(1080, 1920),
+      designSize: const Size(1080, 1920),
       builder: () => GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
         child: GetMaterialApp(
           title: 'Careve',
           debugShowCheckedModeBanner: false,
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           getPages: AppPages.routes,
           initialRoute: Routes.SPLASH,
           initialBinding: InitialBinding(),
-          localizationsDelegates: [
+          localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

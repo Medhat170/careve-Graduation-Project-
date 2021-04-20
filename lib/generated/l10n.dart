@@ -1724,6 +1724,66 @@ class S {
       args: [],
     );
   }
+
+  /// `وقت النهايه يجب ان يكون بوقت بعد وقت البدايه وليس العكس`
+  String get timeIsBefore {
+    return Intl.message(
+      'وقت النهايه يجب ان يكون بوقت بعد وقت البدايه وليس العكس',
+      name: 'timeIsBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `وقت البدايه لم يتم ضبطه`
+  String get nullStartTime {
+    return Intl.message(
+      'وقت البدايه لم يتم ضبطه',
+      name: 'nullStartTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ضبط وقت البدايه`
+  String get startTimeSet {
+    return Intl.message(
+      'ضبط وقت البدايه',
+      name: 'startTimeSet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ضبط وقت النهايه`
+  String get endTimeSet {
+    return Intl.message(
+      'ضبط وقت النهايه',
+      name: 'endTimeSet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `السيره الذاتيه/المواقفه الطبيه`
+  String get cv {
+    return Intl.message(
+      'السيره الذاتيه/المواقفه الطبيه',
+      name: 'cv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `يبدو ان هناك عياده أو أكثر لم يُضع لها أيام ؛عليك ضبط بعض الأيام`
+  String get daysEmpty {
+    return Intl.message(
+      'يبدو ان هناك عياده أو أكثر لم يُضع لها أيام ؛عليك ضبط بعض الأيام',
+      name: 'daysEmpty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

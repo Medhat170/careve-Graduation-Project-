@@ -1,8 +1,8 @@
 import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:careve/app/components/extensions.dart';
@@ -25,6 +25,15 @@ class RoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider imageProvider = const AssetImage(
+      PathUtil.userImage,
+    );
+    if (image != null) {
+      imageProvider = NetworkImage(
+        image,
+      );
+    }
+
     return Column(
       children: [
         Stack(
@@ -56,13 +65,7 @@ class RoomCard extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: image == null || image?.length == 0
-                                ? AssetImage(
-                                    PathUtil.userImage,
-                                  )
-                                : NetworkImage(
-                                    image,
-                                  ),
+                            image: imageProvider,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -120,7 +123,7 @@ class RoomCard extends StatelessWidget {
                 top: 0.0,
                 right: AppUtil.isLtr ? 15.0 : null,
                 left: AppUtil.isLtr ? null : 15.0,
-                child: Card(
+                child: const Card(
                   color: ColorUtil.primaryColor,
                   shape: CircleBorder(),
                   margin: EdgeInsets.zero,
@@ -133,15 +136,16 @@ class RoomCard extends StatelessWidget {
               ),
           ],
         ),
-        !unRead
-            ? Divider(
-                color: ColorUtil.mediumGrey,
-                indent: 50.0,
-                height: 2.5,
-              )
-            : SizedBox(
-                height: 2.5,
-              ),
+        if (!unRead)
+          const Divider(
+            color: ColorUtil.mediumGrey,
+            indent: 50.0,
+            height: 2.5,
+          )
+        else
+          const SizedBox(
+            height: 2.5,
+          ),
       ],
     );
   }

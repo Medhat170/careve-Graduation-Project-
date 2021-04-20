@@ -2,11 +2,9 @@ import 'dart:async';
 import 'dart:io';
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
-import 'package:careve/app/services/cache/cache_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:dio/dio.dart' as d;
 
-// import 'package:easy_folder_picker/FolderPicker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
@@ -18,7 +16,7 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
   final sendingText = false.obs;
   final int roomId;
   final String roomName;
-  final toUpload = Map<String, File>().obs;
+  final toUpload = <String, File>{}.obs;
 
   ChatController({
     this.roomId,
@@ -76,10 +74,11 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
     //   AppUtil.showAlertDialog(body: error.toString());
     // }
   }
-  void onSend() async {
+
+  Future onSend() async {
     if (toUpload.isNotEmpty ||
-        (messageText.value.length > 0 || !messageText.value.isNullOrBlank)) {
-      print('message : ' + messageText.value.toString());
+        (messageText.value.isNotEmpty || !messageText.value.isBlank)) {
+      print('message : ${messageText.value}');
       // final comment = ApprovalCommentsDto(
       //   id: -1,
       //   comment: toUpload.isNotEmpty && messageText.value.length == 0
@@ -94,8 +93,8 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
       messageController.text = '';
       try {
         sendingText.value = true;
-        final files = List<d.MultipartFile>();
-        for (var f in toUpload.values) {
+        final files = <d.MultipartFile>[];
+        for (final f in toUpload.values) {
           files.add(await d.MultipartFile.fromFile(f.path,
               filename: basename(f.path)));
         }

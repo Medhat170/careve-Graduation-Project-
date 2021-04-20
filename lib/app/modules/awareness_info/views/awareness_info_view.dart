@@ -1,10 +1,10 @@
-import 'package:careve/app/components/animatedListHandler.dart';
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/video_player_component.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/awareness_info/components/addition_actions.dart';
 import 'package:careve/app/modules/awareness_info/components/poster_view.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,8 +45,8 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
               ),
               child: AnimatedListHandler(
                 children: [
-                  if (controller.awarenessType == AwarenessType.ARTICLE)
-                    PosterView(),
+                  if (controller.awarenessType == AwarenessType.article)
+                    const PosterView(),
                   AdditionActions(),
                   const SizedBox(
                     height: 10.0,
@@ -68,7 +68,7 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
             ),
           ),
         ],
-        videoUrls: controller.awarenessType != AwarenessType.VIDEO
+        videoUrls: controller.awarenessType != AwarenessType.video
             ? null
             : [
                 controller.videoUrl,

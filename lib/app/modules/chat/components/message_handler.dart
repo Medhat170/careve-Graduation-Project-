@@ -1,6 +1,6 @@
-import 'package:careve/app/components/appTextField.dart';
+import 'package:careve/app/components/app_text_field.dart';
 import 'package:careve/app/modules/chat/controllers/chat_controller.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,14 +17,13 @@ class MessageHandler extends GetView<ChatController> {
           color: Colors.transparent,
           child: Row(
             textDirection: TextDirection.ltr,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               GestureDetector(
                 onTap: () async {
                   await controller.uploadFiles();
                 },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Icon(
                     FontAwesomeIcons.plus,
                     color: ColorUtil.primaryColor,
@@ -45,12 +44,12 @@ class MessageHandler extends GetView<ChatController> {
               Obx(
                 () => GestureDetector(
                   onTap: !controller.isBusy.value
-                      ? () async {
-                          await controller.onSend();
+                      ? () {
+                          controller.onSend();
                         }
                       : null,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Icon(
                       FontAwesomeIcons.paperPlane,
                       color: ColorUtil.primaryColor,

@@ -1,5 +1,5 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -10,7 +10,7 @@ class VideoPlayerComponent extends StatefulWidget {
   final List<Widget> upperChildren;
   final List<Widget> lowerChildren;
 
-  VideoPlayerComponent({
+  const VideoPlayerComponent({
     this.upperChildren,
     this.lowerChildren,
     this.videoUrls,
@@ -27,12 +27,12 @@ class _VideoPlayerComponentState extends State<VideoPlayerComponent> {
   TextEditingController seekToController = TextEditingController();
 
   void fetchIds() {
-    for (String url in widget.videoUrls) {
+    for (final String url in widget.videoUrls) {
       String videoId;
       videoId = YoutubePlayer.convertUrlToId(
         url,
       );
-      print("Video url : " + videoId);
+      print("Video url : $videoId");
       ids.add(videoId);
     }
   }
@@ -43,15 +43,6 @@ class _VideoPlayerComponentState extends State<VideoPlayerComponent> {
       fetchIds();
       youTubePlayerController = YoutubePlayerController(
         initialVideoId: ids.first,
-        flags: const YoutubePlayerFlags(
-          mute: false,
-          autoPlay: true,
-          disableDragSeek: false,
-          loop: false,
-          isLive: false,
-          forceHD: false,
-          enableCaption: true,
-        ),
       );
     }
     super.initState();
@@ -66,7 +57,7 @@ class _VideoPlayerComponentState extends State<VideoPlayerComponent> {
   }
 
   @override
-  void dispose() async {
+  void dispose() {
     if (widget.videoUrls != null) {
       youTubePlayerController.pause();
       youTubePlayerController.dispose();

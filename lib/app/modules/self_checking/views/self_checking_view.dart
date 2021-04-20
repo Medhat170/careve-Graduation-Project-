@@ -1,15 +1,16 @@
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/video_player_component.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
-import 'package:careve/app/modules/self_checking/components/SelfCheckingDataComponent.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/modules/self_checking/components/self_checking_data_component.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../controllers/self_checking_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../controllers/self_checking_controller.dart';
 
 class SelfCheckingView extends GetView<SelfCheckingController>
     with CustomAppBar {
@@ -46,7 +47,7 @@ class SelfCheckingView extends GetView<SelfCheckingController>
                 activeShape: RoundedRectangleBorder(
                   borderRadius: AppUtil.borderRadius,
                 ),
-                activeSize: Size(30.0, 10.0),
+                activeSize: const Size(30.0, 10.0),
                 color: ColorUtil.lightGrey,
                 activeColor: ColorUtil.primaryColor,
               ),

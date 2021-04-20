@@ -15,7 +15,7 @@ class ChatRouteInputs {
 class ChatBinding extends Bindings {
   @override
   void dependencies() {
-    var args = Get.arguments as ChatRouteInputs;
+    final args = Get.arguments as ChatRouteInputs;
     Get.lazyPut(
       () => ChatController(
         roomId: args.roomId,

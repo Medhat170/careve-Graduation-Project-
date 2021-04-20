@@ -1,15 +1,16 @@
-import 'package:careve/app/components/animatedListHandler.dart';
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/modules/awareness/components/awareness_card.dart';
 import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../controllers/awareness_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../controllers/awareness_controller.dart';
 
 class AwarenessView extends GetView<AwarenessController> {
   final _tabs = <String>[
@@ -66,7 +67,7 @@ class AwarenessView extends GetView<AwarenessController> {
                                 'What is symptoms and causes of breast cancer?',
                             onTap: () => Get.toNamed(
                               Routes.AWARENESS_INFO,
-                              arguments: AwarenessType.VIDEO,
+                              arguments: AwarenessType.video,
                             ),
                           )
                         : AwarenessCard(
@@ -76,7 +77,7 @@ class AwarenessView extends GetView<AwarenessController> {
                             dateTime: DateTime.now(),
                             onTap: () => Get.toNamed(
                               Routes.AWARENESS_INFO,
-                              arguments: AwarenessType.ARTICLE,
+                              arguments: AwarenessType.article,
                             ),
                           ),
                   ),
@@ -90,7 +91,7 @@ class AwarenessView extends GetView<AwarenessController> {
           ? FloatingActionButton.extended(
               backgroundColor: ColorUtil.primaryColor,
               elevation: 10.0,
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
                 color: ColorUtil.whiteColor,
                 size: 18.0,
@@ -98,7 +99,7 @@ class AwarenessView extends GetView<AwarenessController> {
               onPressed: () => Get.toNamed(Routes.ADD_AWARENESS),
               label: Text(
                 S.of(context).addAwareness,
-                style: TextStyle(
+                style: const TextStyle(
                   color: ColorUtil.whiteColor,
                 ),
               ),

@@ -1,8 +1,9 @@
 import 'package:careve/app/components/net_image.dart';
+import 'package:careve/app/models/user.dart';
 import 'package:careve/app/modules/user_profile/controllers/user_profile_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
-import 'package:careve/app/utilities/pathUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,12 +14,12 @@ class ProfileData extends GetView<UserProfileController> {
   Widget build(BuildContext context) {
     return Obx(
       () {
-        final userData = controller.userData?.value;
+        final User userData = controller.userData?.value;
         return Stack(
           children: [
             Container(
               width: double.infinity,
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 top: 50.0,
                 left: 20.0,
                 right: 20.0,
@@ -31,11 +32,11 @@ class ProfileData extends GetView<UserProfileController> {
                     tag: 'profile',
                     child: Material(
                       elevation: 8.0,
-                      shape: CircleBorder(),
+                      shape: const CircleBorder(),
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
-                        child: userData?.image == null ||
-                                userData?.image?.length == 0
+                        radius: 35.0,
+                        child: userData?.image == null || userData.image.isEmpty
                             ? Image.asset(
                                 PathUtil.userImage,
                                 height: 45.0,
@@ -46,7 +47,6 @@ class ProfileData extends GetView<UserProfileController> {
                                 height: 45.0,
                                 fit: BoxFit.cover,
                               ),
-                        radius: 35.0,
                       ),
                     ),
                   ),
@@ -77,7 +77,7 @@ class ProfileData extends GetView<UserProfileController> {
                           ),
                         if (userData?.address != null)
                           Text(
-                            userData?.address ?? '-',
+                            userData?.address,
                             style: TextStyle(
                               fontSize: 40.sp,
                               fontWeight: FontWeight.w700,
@@ -115,16 +115,16 @@ class ProfileData extends GetView<UserProfileController> {
               child: Row(
                 children: [
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios_rounded,
                       color: Colors.white,
                       size: 20.0,
                     ),
                     onPressed: () => Get.back(),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesomeIcons.userEdit,
                       color: Colors.white,
                       size: 18.0,

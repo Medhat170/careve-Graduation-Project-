@@ -10,7 +10,7 @@ class PdfHandler extends GetView<ChatController> {
   final String url;
   final String fileName;
 
-  PdfHandler(
+  const PdfHandler(
     this.url,
     this.fileName,
   );
@@ -34,12 +34,11 @@ class PdfHandler extends GetView<ChatController> {
               },
               child: Stack(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 250.w,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Icon(
+                        const Icon(
                           FontAwesomeIcons.filePdf,
                           color: Colors.white,
                           size: 100,
@@ -48,12 +47,11 @@ class PdfHandler extends GetView<ChatController> {
                           height: 10.0,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Expanded(
                               child: Text(
                                 fileName,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                 ),
                                 maxLines: 1,

@@ -8,16 +8,16 @@ class UserClinics {
   UserClinics.fromJson(Map<String, dynamic> json) {
     if (json['clinics'] != null) {
       clinics = <Clinic>[];
-      json['clinics'].forEach((v) {
-        clinics.add(new Clinic.fromJson(v));
+      json['clinics'].forEach((Map<String, dynamic> v) {
+        clinics.add(Clinic.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.clinics != null) {
-      data['clinics'] = this.clinics.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (clinics != null) {
+      data['clinics'] = clinics.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -35,25 +35,26 @@ class Clinic {
   });
 
   Clinic.fromJson(Map<String, dynamic> json) {
-    phone = json['phone'];
-    address =
-        json['address'] != null ? new Address.fromJson(json['address']) : null;
+    phone = json['phone'].toString();
+    address = json['address'] != null
+        ? Address.fromJson(json['address'] as Map<String, dynamic>)
+        : null;
     if (json['days'] != null) {
       days = <Day>[];
-      json['days'].forEach((v) {
-        days.add(new Day.fromJson(v));
+      json['days'].forEach((Map<String, dynamic> v) {
+        days.add(Day.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['phone'] = this.phone;
-    if (this.address != null) {
-      data['address'] = this.address.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['phone'] = phone;
+    if (address != null) {
+      data['address'] = address.toJson();
     }
-    if (this.days != null) {
-      data['days'] = this.days.map((v) => v.toJson()).toList();
+    if (days != null) {
+      data['days'] = days.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -73,18 +74,18 @@ class Address {
   });
 
   Address.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    formattedAddress = json['formatted_address'];
-    lat = json['lat'];
-    long = json['long'];
+    title = json['title'].toString();
+    formattedAddress = json['formatted_address'].toString();
+    lat = double.tryParse(json['lat'].toString());
+    long = double.tryParse(json['long'].toString());
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['formatted_address'] = this.formattedAddress;
-    data['lat'] = this.lat;
-    data['long'] = this.long;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    data['formatted_address'] = formattedAddress;
+    data['lat'] = lat;
+    data['long'] = long;
     return data;
   }
 }
@@ -92,8 +93,8 @@ class Address {
 class Day {
   int status;
   String day;
-  DateTime startTime;
-  DateTime endTime;
+  String startTime;
+  String endTime;
 
   Day({
     this.status,
@@ -103,18 +104,18 @@ class Day {
   });
 
   Day.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    day = json['day'];
-    startTime = DateTime.parse(json['start_time']);
-    endTime = DateTime.parse(json['end_time']);
+    status = int.tryParse(json['status'].toString());
+    day = json['day'].toString();
+    startTime = json['start_time'].toString();
+    endTime = json['end_time'].toString();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['day'] = this.day;
-    data['start_time'] = this.startTime.toUtc().toString();
-    data['end_time'] = this.endTime.toUtc().toString();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['day'] = day;
+    data['start_time'] = startTime;
+    data['end_time'] = endTime;
     return data;
   }
 }

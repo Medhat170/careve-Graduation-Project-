@@ -1,9 +1,9 @@
-import 'package:careve/app/components/animatedListHandler.dart';
-import 'package:careve/app/components/appDirectionality.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
 import 'package:careve/app/modules/saved/components/saved_card.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -38,8 +38,8 @@ class SavedView extends GetView<SavedController> with CustomAppBar {
                     image: index == 0 ? 'image' : null,
                     dateTime: DateTime.now(),
                     type: index == 0
-                        ? AwarenessType.VIDEO
-                        : AwarenessType.ARTICLE,
+                        ? AwarenessType.video
+                        : AwarenessType.article,
                   ),
                 ),
               ],

@@ -1,4 +1,4 @@
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:get/get.dart';
 
 mixin BusyMixin {
@@ -19,7 +19,7 @@ mixin BusyMixin {
 
   void endBusyError(Object error, {bool showDialog}) {
     isBusy(false);
-    String message = error is String ? error : error?.toString();
+    final String message = error is String ? error : error?.toString();
     errorMessage(message);
     if (showDialog == true) {
       AppUtil.showAlertDialog(body: message);

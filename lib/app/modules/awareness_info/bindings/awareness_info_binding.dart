@@ -6,7 +6,7 @@ class AwarenessInfoBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<AwarenessInfoController>(
-      AwarenessInfoController(Get.arguments),
+      AwarenessInfoController(Get.arguments as AwarenessType),
     );
   }
 }

@@ -1,11 +1,10 @@
 import 'dart:io';
 
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 enum SelfOrOtherEnum {
   self,
@@ -20,18 +19,17 @@ class MessageViewer extends StatelessWidget {
   final List<File> files;
   final String date;
 
-  MessageViewer({
+  const MessageViewer({
     @required this.id,
     @required this.content,
     @required this.type,
     @required this.sender,
     @required this.date,
-    @required this.files,
+    this.files,
   });
 
   @override
   Widget build(BuildContext context) {
-    double margin = Get.width * 0.35 ?? 100.0;
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Padding(
@@ -148,7 +146,7 @@ class MessageViewer extends StatelessWidget {
                         // : SizedBox.shrink(),
                         if (content != null) ...[
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               horizontal: 20.0,
                               vertical: 5.0,
                             ),
@@ -182,7 +180,7 @@ class MessageViewer extends StatelessWidget {
                             ),
                             child: Text(
                               date ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: ColorUtil.mediumGrey,
                                 fontSize: 11.0,
                               ),
@@ -195,9 +193,9 @@ class MessageViewer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (files.length > 0)
+                  if (files != null)
                     IconButton(
-                      icon: Icon(Icons.attach_file),
+                      icon: const Icon(Icons.attach_file),
                       onPressed: () {
                         // Get.toNamed(Routes.ATTACHMENTS, arguments: files);
                       },
@@ -213,13 +211,13 @@ class MessageViewer extends StatelessWidget {
 
   BorderRadius messageBorderRadius() {
     return BorderRadius.only(
-      topLeft: Radius.circular(
+      topLeft: const Radius.circular(
         10.0,
       ),
       bottomLeft: Radius.circular(
         type == SelfOrOtherEnum.self ? 10.0 : 0.0,
       ),
-      topRight: Radius.circular(
+      topRight: const Radius.circular(
         10.0,
       ),
       bottomRight: Radius.circular(type == SelfOrOtherEnum.self ? 0.0 : 10.0),

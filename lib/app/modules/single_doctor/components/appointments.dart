@@ -1,7 +1,7 @@
-import 'package:careve/app/components/AnimatedListHandler.dart';
-import 'package:careve/app/modules/single_doctor/components/AppointmentItem.dart';
+import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/modules/single_doctor/components/appointment_item.dart';
 import 'package:careve/app/modules/single_doctor/controllers/single_doctor_controller.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

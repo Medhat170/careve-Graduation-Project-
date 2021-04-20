@@ -1,6 +1,6 @@
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:flutter/material.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppTextField extends StatelessWidget {
@@ -22,7 +22,7 @@ class AppTextField extends StatelessWidget {
   final bool autoFocus;
   final String initialValue;
 
-  AppTextField(
+  const AppTextField(
     this.controller, {
     this.autoFocus = true,
     this.hidePassword = false,
@@ -45,7 +45,6 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: false,
       controller: controller,
       onChanged: onChanged,
       validator: validator,
@@ -104,7 +103,7 @@ class AppTextField extends StatelessWidget {
         focusedBorder: AppUtil.transparentUOutLineInputBorder,
         border: AppUtil.transparentUOutLineInputBorder,
         hintText: hintText,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: ColorUtil.mediumGrey,
           fontWeight: FontWeight.w600,
         ),

@@ -1,16 +1,17 @@
 import 'package:careve/app/components/badge.dart';
-import 'package:careve/app/utilities/appUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import'package:get/get.dart';
+import 'package:get/get.dart';
+
 class SectionItem extends StatelessWidget {
   final String title;
   final String image;
   final int notification;
   final Function onTap;
 
-  SectionItem({
+  const SectionItem({
     this.notification,
     this.title,
     this.image,
@@ -25,7 +26,7 @@ class SectionItem extends StatelessWidget {
       right: 5.0,
       radius: 30.w,
       child: InkWell(
-        onTap: onTap,
+        onTap: () => onTap(),
         child: Card(
           color: ColorUtil.whiteColor,
           elevation: 3.0,

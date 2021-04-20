@@ -1,6 +1,6 @@
 import 'package:careve/app/services/auth_service.dart';
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,6 @@ class BirthDateHandler extends GetView<AuthService> {
                 borderRadius: AppUtil.borderRadius,
                 border: Border.all(
                   color: ColorUtil.lightGrey,
-                  width: 1.0,
                 ),
               ),
               height: 65.0,
@@ -66,8 +65,7 @@ class BirthDateHandler extends GetView<AuthService> {
                     onTap: controller.isBusy.value
                         ? () {}
                         : () async {
-                            FocusScope.of(context)
-                                .requestFocus(new FocusNode());
+                            FocusScope.of(context).requestFocus(FocusNode());
                             controller.dateOfBirth(await AppUtil.pickDate());
                           },
                     child: Icon(

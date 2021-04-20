@@ -1,5 +1,5 @@
-import 'package:careve/app/utilities/appUtil.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class CircularBackButton extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () => Get.back(),
-          child: Card(
+          child: const Card(
             elevation: 8.0,
             color: ColorUtil.lightGrey,
             shape: CircleBorder(),

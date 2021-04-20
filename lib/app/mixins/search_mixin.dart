@@ -1,5 +1,5 @@
-import 'package:careve/app/components/appTextField.dart';
-import 'package:careve/app/utilities/colorUtil.dart';
+import 'package:careve/app/components/app_text_field.dart';
+import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,7 +18,7 @@ mixin Search {
         onFieldSubmitted: (String value) {
           print(searchText.text);
         },
-        prefixWidget: Icon(
+        prefixWidget: const Icon(
           FontAwesomeIcons.search,
           color: ColorUtil.mediumGrey,
           size: 16.0,
