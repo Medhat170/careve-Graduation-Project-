@@ -1,6 +1,8 @@
+import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
@@ -10,14 +12,16 @@ class DoctorItem extends StatelessWidget {
   final String name;
   final String specialty;
   final String image;
-  final double rate;
-  final String id;
+  final int raters;
+  final int rate;
+  final int id;
 
   const DoctorItem({
     this.name,
     this.specialty,
     this.image,
     this.rate,
+    this.raters,
     this.id,
   });
 
@@ -30,7 +34,7 @@ class DoctorItem extends StatelessWidget {
         margin: const EdgeInsets.all(10.0),
         elevation: 5.0,
         shape: RoundedRectangleBorder(
-          borderRadius: AppUtil.borderRadius25,
+          borderRadius: AppUtil.borderRadius,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -42,8 +46,16 @@ class DoctorItem extends StatelessWidget {
               CircleAvatar(
                 radius: 32.0,
                 backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage(
-                  image,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: image != null && image.isNotEmpty
+                      ? NetImage(
+                          image,
+                        )
+                      : Image.asset(
+                          PathUtil.userImage,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
               const SizedBox(
@@ -51,6 +63,7 @@ class DoctorItem extends StatelessWidget {
               ),
               Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -72,55 +85,29 @@ class DoctorItem extends StatelessWidget {
                       ),
                     ),
                     if (rate != null)
-                      RatingBar(
-                        rating: rate,
-                        icon: const Icon(
-                          Icons.star,
-                          size: 16,
-                          color: Colors.grey,
-                        ),
-                        spacing: 5.0,
-                        size: 3,
-                        onRatingCallback:
-                            (double value, ValueNotifier<bool> isIndicator) {
-                          print('Number of stars-->  $value');
-                          isIndicator.value = true;
-                        },
-                        color: Colors.amber,
+                      Row(
+                        children: [
+                          RatingBar(
+                            rating: double.tryParse(rate.toString()),
+                            icon: const Icon(
+                              Icons.star,
+                              size: 16,
+                              color: Colors.grey,
+                            ),
+                            spacing: 5.0,
+                            size: 3,
+                            color: Colors.amber,
+                          ),
+                          Text(
+                            '(${raters ?? 0})',
+                            style: TextStyle(
+                              fontSize: 34.sp,
+                              color: ColorUtil.mediumGrey,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
-                    // SizedBox(
-                    //   height: 30.0,
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Expanded(
-                    //         child: CareveButton(
-                    //           title: 'Book',
-                    //           textColor: ColorUtil.primaryColor,
-                    //           borderColor: ColorUtil.primaryColor,
-                    //           backgroundColor: Colors.transparent,
-                    //           fontSize: 12.0,
-                    //           onTap: () {
-                    //
-                    //           },
-                    //         ),
-                    //       ),
-                    //       const SizedBox(
-                    //         width: 10.0,
-                    //       ),
-                    //       Expanded(
-                    //         child: CareveButton(
-                    //           title: 'Chat',
-                    //           textColor: ColorUtil.primaryColor,
-                    //           borderColor: ColorUtil.primaryColor,
-                    //           backgroundColor: Colors.transparent,
-                    //           fontSize: 12.0,
-                    //           onTap: () {},
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

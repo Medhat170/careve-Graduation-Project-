@@ -298,6 +298,9 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
     print('User is auth!');
     user.value = cachedUser;
+    if (user.value.nationalId != null) {
+      isDoc(true);
+    }
     return true;
   }
 
@@ -480,6 +483,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<void> editProfile() async {
+    Map<String, dynamic> response;
     final formData = editFormKey.currentState;
     if (formData.validate()) {
       formData.save();
@@ -493,12 +497,44 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       print('Confirmed password : ${confirmedPassword?.text}');
       try {
         startBusy();
-        //TODO Send api
-        endBusySuccess();
-        Get.back();
+        if (isDoc.value) {
+          response = await post(
+            url: ApiPath.editDoctorProfile,
+            body: {
+              'apitoken': user.value.accessToken,
+              'name': name.text,
+              'email': email.text,
+              'cost': cost.text,
+              'type': 'mobile'
+            },
+            files: {
+              'image': uploadedImage.value,
+            },
+          );
+        } else {
+          response = await post(
+            url: ApiPath.editPatientProfile,
+            body: {
+              'apitoken': user.value.accessToken,
+              'name': name.text,
+              'email': email.text,
+              'bloodtype': bloodType.value,
+              'type': 'mobile',
+            },
+            files: {
+              'image': uploadedImage.value,
+            },
+          );
+        }
+        if (response != null) {
+          user(await CacheService.to.userRepo.updateUserCache(response));
+          CacheService.to.settingsRepo.setCachedUserId(user.value.id);
+          Get.back();
+        }
       } catch (error) {
         await AppUtil.showAlertDialog(body: error.toString());
       }
+      endBusySuccess();
     }
   }
 
@@ -522,9 +558,12 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     address.dispose();
     dateOfBirth.nil();
     bloodType.nil();
+    nationalId.dispose();
+    cost.dispose();
     image.nil();
     nationalId.clear();
     cv.nil();
+    uploadedImage.nil();
     userClinics.nil();
     super.onClose();
   }

@@ -36,7 +36,7 @@ class ProfileData extends GetView<UserProfileController> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child:
-                            userData?.image != null || userData.image.isNotEmpty
+                            userData?.image != null && userData.image.isNotEmpty
                                 ? NetImage(
                                     userData?.image,
                                     height: 180.w,

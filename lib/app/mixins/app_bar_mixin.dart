@@ -2,6 +2,7 @@ import 'package:careve/app/components/app_text_field.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,7 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 mixin CustomAppBar {
   final TextEditingController searchText = TextEditingController();
-  final startSearching = false.obs;
+  final _startSearching = false.obs;
+  FocusNode _searchFocus;
 
   Widget customAppBar(
     String title, {
@@ -19,10 +21,10 @@ mixin CustomAppBar {
     Widget trailing,
     int trailingCount,
   }) {
-    if (startSearching.value) {
-      return searchAppBar();
+    if (_startSearching.value) {
+      return _searchAppBar();
     } else {
-      return originalAppBar(
+      return _originalAppBar(
         enableBack,
         enableSearch,
         title,
@@ -32,8 +34,7 @@ mixin CustomAppBar {
     }
   }
 
-  Widget originalAppBar(
-    // ignore: avoid_positional_boolean_parameters
+  Widget _originalAppBar(
     bool enableBack,
     bool enableSearch,
     String barTitle,
@@ -76,7 +77,7 @@ mixin CustomAppBar {
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: GestureDetector(
                 onTap: () {
-                  startSearching(true);
+                  _startSearching(true);
                 },
                 child: const CircleAvatar(
                   backgroundColor: ColorUtil.lightGrey,
@@ -112,7 +113,7 @@ mixin CustomAppBar {
     );
   }
 
-  Widget searchAppBar() {
+  Widget _searchAppBar() {
     return Padding(
       padding: EdgeInsets.only(
         right: AppUtil.isLtr ? 10.0 : 2.0,
@@ -127,7 +128,7 @@ mixin CustomAppBar {
               color: ColorUtil.primaryColor,
               size: 22.0,
             ),
-            onPressed: () => startSearching(false),
+            onPressed: () => _startSearching(false),
           ),
           Expanded(
             child: SizedBox(
@@ -138,6 +139,9 @@ mixin CustomAppBar {
                 hintText: S.current.search,
                 onFieldSubmitted: (String value) {
                   print(searchText.text);
+                },
+                onChanged: (String value) {
+                  searchText.text = value;
                 },
                 prefixWidget: const Icon(
                   FontAwesomeIcons.search,
@@ -150,5 +154,18 @@ mixin CustomAppBar {
         ],
       ),
     );
+  }
+
+  void onDebounce(Function search) {
+    searchText.addListener(() {
+      EasyDebounce.debounce(
+        'searchDebouncer',
+        const Duration(seconds: 1),
+        () {
+          print('::: Debounce :::');
+          search();
+        },
+      );
+    });
   }
 }

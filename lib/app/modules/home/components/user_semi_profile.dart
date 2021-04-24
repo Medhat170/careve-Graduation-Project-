@@ -85,7 +85,7 @@ class UserSemiProfile extends StatelessWidget {
                           shape: const CircleBorder(),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
-                            child: userData?.image != null ||
+                            child: userData?.image != null &&
                                     userData.image.isNotEmpty
                                 ? NetImage(
                                     userData?.image,

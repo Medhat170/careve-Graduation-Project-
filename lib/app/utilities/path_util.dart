@@ -29,4 +29,7 @@ class ApiPath {
   static const String docSignUpWithOutClinics = '${url}docsignup?';
   static const String login = '${url}login';
   static const String addClinic = '${url}clinics';
+  static const String getAllDoctors = '${url}doctorrsdata';
+  static const String editDoctorProfile = '${url}doctorupdateprofile';
+  static const String editPatientProfile = '${url}patientupdateprofile';
 }

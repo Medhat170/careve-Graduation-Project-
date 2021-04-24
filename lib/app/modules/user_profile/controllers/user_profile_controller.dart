@@ -14,6 +14,8 @@ class UserProfileController extends GetxController {
     AuthService.to.email.text = userData?.value?.email;
     AuthService.to.phone.text = userData?.value?.phone;
     AuthService.to.address.text = userData?.value?.address;
+    AuthService.to.nationalId.text = userData?.value?.nationalId;
+    AuthService.to.cost.text = userData?.value?.cost;
     AuthService.to.dateOfBirth(userData?.value?.dateOfBirth);
     AuthService.to.bloodType(userData?.value?.bloodType);
     AuthService.to.image(userData?.value?.image);

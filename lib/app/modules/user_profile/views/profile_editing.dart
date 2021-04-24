@@ -42,26 +42,34 @@ class ProfileEditingView extends GetView<AuthService> {
                   isEmail: true,
                 ).call,
               ),
-              AuthInputField(
-                S.of(context).address,
-                controller.address,
-                loading: controller.isBusy.value,
-                keyBoardType: TextInputType.streetAddress,
-              ),
-              AuthInputField(
-                S.of(context).phoneNumber,
-                controller.phone,
-                loading: controller.isBusy.value,
-                keyBoardType: TextInputType.number,
-              ),
-              BirthDateHandler(),
-              BloodTypeList(),
+              if (!controller.isDoc.value) ...[
+                AuthInputField(
+                  S.of(context).address,
+                  controller.address,
+                  loading: controller.isBusy.value,
+                  keyBoardType: TextInputType.streetAddress,
+                ),
+                AuthInputField(
+                  S.of(context).phoneNumber,
+                  controller.phone,
+                  loading: controller.isBusy.value,
+                  keyBoardType: TextInputType.number,
+                ),
+                BirthDateHandler(),
+                BloodTypeList(),
+              ] else
+                AuthInputField(
+                  S.of(context).cost,
+                  controller.cost,
+                  loading: controller.isBusy.value,
+                  keyBoardType: TextInputType.number,
+                ),
               if (controller.isBusy.value)
                 Loading()
               else
                 CareveButton(
                   title: S.of(context).edit,
-                  onTap: () => controller.editProfile,
+                  onTap: controller.editProfile,
                 ),
             ],
           );
