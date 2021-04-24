@@ -31,4 +31,13 @@ class User {
 
   @HiveField(8)
   DateTime dateOfBirth;
+
+  @HiveField(9)
+  String cost;
+
+  @HiveField(10)
+  String cv;
+
+  @HiveField(11)
+  String nationalId;
 }

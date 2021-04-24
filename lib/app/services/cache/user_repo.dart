@@ -15,7 +15,10 @@ class UserRepo extends ActiveRepo<String, User> {
       ..bloodType = data['bloodtype']
       ..address = data['adress']
       ..phone = data['mobile']
-      ..id = data['id'].toString();
+      ..id = data['id'].toString()
+      ..cv = data['cv']
+      ..nationalId = data['nationalid']
+      ..cost = data['cost'];
     await dataBox.put(data['id'].toString(), local);
     return local;
   }

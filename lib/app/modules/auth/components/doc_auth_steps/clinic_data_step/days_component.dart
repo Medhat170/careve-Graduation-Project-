@@ -25,6 +25,15 @@ class DaysComponents extends StatelessWidget {
       S.current.thu,
       S.current.fri,
     ];
+    final weekEnglishDays = <String>[
+      "Sat",
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+    ];
     return Obx(
       () => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +54,7 @@ class DaysComponents extends StatelessWidget {
               final Day targetDay = AuthService
                   .to.userClinics.value?.clinics[index]?.days
                   ?.firstWhere(
-                (element) => element?.day == weekDays[dayIndex],
+                (element) => element?.day == weekEnglishDays[dayIndex],
                 orElse: () => Day(),
               );
               return Padding(
@@ -80,7 +89,7 @@ class DaysComponents extends StatelessWidget {
                           if (result != null) {
                             AuthService.to.changeDay(
                               index,
-                              day: weekDays[dayIndex],
+                              day: weekEnglishDays[dayIndex],
                               startTime: result,
                             );
                           }
@@ -131,7 +140,7 @@ class DaysComponents extends StatelessWidget {
                             if (result != null) {
                               AuthService.to.changeDay(
                                 index,
-                                day: weekDays[dayIndex],
+                                day: weekEnglishDays[dayIndex],
                                 endTime: result,
                               );
                             }

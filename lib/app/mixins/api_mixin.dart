@@ -12,15 +12,15 @@ mixin ApiMixin {
     @required String url,
     @required Map<String, dynamic> body,
     Map<String, dynamic> header,
-    Map<String, List<File>> files,
+    Map<String, File> files,
     int sendTimeout,
     int receiveTimeout,
     Function(int count, int total) onSendProgress,
     Function(int count, int total) onReceiveProgress,
   }) async {
     _formData = FormData();
-    _addBody(body ?? {});
-    _addFiles(files ?? {});
+    _addBody(body ?? <String, dynamic>{});
+    _addFiles(files ?? <String, File>{});
     return request(
       _dio.post(
         url,
@@ -36,7 +36,7 @@ mixin ApiMixin {
     );
   }
 
-  Future get({
+  Future<Map<String, dynamic>> get({
     @required String url,
     @required Map<String, dynamic> header,
     int sendTimeout,
@@ -69,18 +69,16 @@ mixin ApiMixin {
     }
   }
 
-  void _addFiles(Map<String, List<File>> files) {
+  void _addFiles(Map<String, File> files) {
     if (files != null || files?.entries != null || files.entries.isNotEmpty) {
       for (final entry in files?.entries) {
-        if (entry?.value != null || entry.value.isNotEmpty) {
-          _formData.files.addAll(
-            entry.value.map(
-              (e) => MapEntry(
-                entry?.key,
-                MultipartFile.fromFileSync(
-                  e?.path,
-                  filename: e?.path?.split("/")?.last,
-                ),
+        if (entry?.value != null || entry.value.path != null) {
+          _formData.files.add(
+            MapEntry(
+              entry?.key,
+              MultipartFile.fromFileSync(
+                entry?.value?.path,
+                filename: entry?.value?.path?.split("/")?.last,
               ),
             ),
           );

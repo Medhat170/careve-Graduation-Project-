@@ -1,4 +1,5 @@
 import 'package:careve/app/components/back_button.dart';
+import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
@@ -15,20 +16,22 @@ class ProfileImageHandler extends GetView<AuthService> {
         final userData = controller.user?.value;
         Widget imageProvider = Image.asset(
           PathUtil.logoIcon,
-          height: 50.0,
+          height: 100.0,
+          width: 100.0,
           fit: BoxFit.cover,
         );
         if (controller.uploadedImage?.value != null) {
           imageProvider = Image.file(
             controller.uploadedImage.value,
-            height: 50.0,
+            height: 100.0,
+            width: 100.0,
             fit: BoxFit.cover,
           );
         } else if (userData?.image != null && userData.image.isNotEmpty) {
-          imageProvider = Image.network(
+          imageProvider = NetImage(
             userData?.image,
-            height: 50.0,
-            fit: BoxFit.cover,
+            height: 100.0,
+            width: 100.0,
           );
         }
         return Stack(
@@ -47,9 +50,8 @@ class ProfileImageHandler extends GetView<AuthService> {
                       shape: const CircleBorder(),
                       child: Stack(
                         children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 50.0,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
                             child: imageProvider,
                           ),
                           Positioned(

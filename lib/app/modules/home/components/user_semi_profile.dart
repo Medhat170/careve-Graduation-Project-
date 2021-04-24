@@ -1,7 +1,9 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:careve/app/components/badge.dart';
+import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -81,19 +83,19 @@ class UserSemiProfile extends StatelessWidget {
                         child: Material(
                           elevation: 8.0,
                           shape: const CircleBorder(),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 90.w,
-                            child: userData?.image == null ||
-                                    userData.image.isEmpty
-                                ? Image.asset(
-                                    PathUtil.userImage,
-                                    height: 80.w,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Image.network(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: userData?.image != null ||
+                                    userData.image.isNotEmpty
+                                ? NetImage(
                                     userData?.image,
-                                    height: 80.w,
+                                    height: 180.w,
+                                    width: 180.w,
+                                  )
+                                : Image.asset(
+                                    PathUtil.userImage,
+                                    height: 180.w,
+                                    width: 180.w,
                                     fit: BoxFit.cover,
                                   ),
                           ),

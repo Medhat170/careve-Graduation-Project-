@@ -1784,6 +1784,26 @@ class S {
       args: [],
     );
   }
+
+  /// `تكلفه الكشف`
+  String get cost {
+    return Intl.message(
+      'تكلفه الكشف',
+      name: 'cost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `يجب رفع صوره شخصيه`
+  String get imageValidation {
+    return Intl.message(
+      'يجب رفع صوره شخصيه',
+      name: 'imageValidation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

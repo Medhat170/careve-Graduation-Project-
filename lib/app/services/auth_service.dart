@@ -10,6 +10,7 @@ import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:careve/app/components/extensions.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -38,6 +39,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   TextEditingController email = TextEditingController();
   TextEditingController nationalId = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController cost = TextEditingController();
   TextEditingController confirmedPassword = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController address = TextEditingController();
@@ -155,12 +157,13 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             userClinics.value.clinics[clinicIndex].days[dayIndex];
         if (startTime != null) {
           targetDay.startTime = startTime.toTimeOnly();
+          print(targetDay.startTime);
         } else if (endTime != null) {
           final now = DateTime.now();
           final int startHour =
               int.tryParse(targetDay?.startTime?.split(':')[0]);
           final int startMin =
-              int.tryParse(targetDay?.startTime?.split(':')[1]);
+              int.tryParse(targetDay?.startTime?.split(':')[1]) ?? 0;
           if (endTime.isAfter(
             DateTime(
               now.year,
@@ -207,12 +210,18 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     try {
       if (currentStep.value == 0) {
         final formData = personalDataFormKey.currentState;
-        if (formData.validate()) {
-          goTo(currentStep.value + 1);
+        if (uploadedImage.value != null) {
+          if (formData.validate()) {
+            formData.save();
+            goTo(currentStep.value + 1);
+          }
+        } else {
+          throw S.current.imageValidation;
         }
       } else if (currentStep.value == 1) {
         final formData = docVerificationFormKey.currentState;
         if (formData.validate()) {
+          formData.save();
           if (cv.value != null) {
             if (currentLocation.value == null) {
               startBusy();
@@ -227,6 +236,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       } else if (currentStep.value == 2) {
         final formData = clinicFormKey.currentState;
         if (formData.validate()) {
+          formData.save();
           if (userClinics.value.clinics.any(
               (element) => element?.days == null || element.days.isEmpty)) {
             throw S.current.daysEmpty;
@@ -356,16 +366,34 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<Map<String, dynamic>> docAuth() async {
-    print("User Clinics : ${json.encode(userClinics.value)}");
-    Map<String, dynamic> response;
+    print("User Clinics : ${json.encode({
+      'clinics': userClinics.value.clinics
+    })}");
+    Map<String, dynamic> dataResponse;
     try {
-      response = await post(
-        url: ApiPath.login,
+      dataResponse = await post(
+        url: ApiPath.docSignUpWithOutClinics,
         body: {
           'name': name.text,
           'email': email.text,
           'password': password.text,
-          'type': 'mobile',
+          'adress': '',
+          'mobile': '',
+          'cost': cost.text,
+          'nationalid': nationalId.text,
+          'type': 'mobile'
+        },
+        files: {
+          'cv': cv.value,
+          'image': uploadedImage.value,
+        },
+      );
+      print('Doc id : ${dataResponse['id']}');
+      final Map<String, dynamic> clinicDataResponse = await post(
+        url: ApiPath.addClinic,
+        body: {
+          'docid': 7,
+          'clinics': json.encode({'clinics': userClinics.value.clinics})
         },
       );
       name.clear();
@@ -390,7 +418,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     } catch (error) {
       rethrow;
     }
-    return response;
+    return dataResponse;
   }
 
   Future<void> sendPhoneNumber() async {

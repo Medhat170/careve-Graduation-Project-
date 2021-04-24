@@ -33,20 +33,21 @@ class ProfileData extends GetView<UserProfileController> {
                     child: Material(
                       elevation: 8.0,
                       shape: const CircleBorder(),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 35.0,
-                        child: userData?.image == null || userData.image.isEmpty
-                            ? Image.asset(
-                                PathUtil.userImage,
-                                height: 45.0,
-                                fit: BoxFit.cover,
-                              )
-                            : NetImage(
-                                userData?.image,
-                                height: 45.0,
-                                fit: BoxFit.cover,
-                              ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child:
+                            userData?.image != null || userData.image.isNotEmpty
+                                ? NetImage(
+                                    userData?.image,
+                                    height: 180.w,
+                                    width: 180.w,
+                                  )
+                                : Image.asset(
+                                    PathUtil.userImage,
+                                    height: 180.w,
+                                    width: 180.w,
+                                    fit: BoxFit.cover,
+                                  ),
                       ),
                     ),
                   ),

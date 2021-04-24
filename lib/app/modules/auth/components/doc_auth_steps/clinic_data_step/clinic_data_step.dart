@@ -1,8 +1,10 @@
 import 'package:careve/app/components/app_button.dart';
+import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step/clinic_component.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
+import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +36,13 @@ class ClinicDataStep extends Step {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  AuthInputField(
+                    S.current.cost,
+                    AuthService.to.cost,
+                    loading: AuthService.to.isBusy.value,
+                    keyBoardType: TextInputType.number,
+                    validator: const QuickTextValidator().call,
+                  ),
                   Row(
                     children: [
                       Expanded(
