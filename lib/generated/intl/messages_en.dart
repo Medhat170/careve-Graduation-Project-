@@ -127,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "nationalId" : MessageLookupByLibrary.simpleMessage("National id"),
     "next" : MessageLookupByLibrary.simpleMessage("Next"),
     "noChangedData" : MessageLookupByLibrary.simpleMessage("You did not change any data"),
+    "noData" : MessageLookupByLibrary.simpleMessage("There is no data !"),
     "noMessagesYet" : MessageLookupByLibrary.simpleMessage("No messages yet"),
     "noNetwork" : MessageLookupByLibrary.simpleMessage("Connection failed ,connect and try again"),
     "normalUser" : MessageLookupByLibrary.simpleMessage("Normal user"),

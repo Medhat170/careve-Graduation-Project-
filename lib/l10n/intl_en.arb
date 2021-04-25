@@ -175,5 +175,6 @@
   "cv": "Cv/Medical approval",
   "daysEmpty": "Seems that there is one or more clinics have no days ,You must set some days",
   "cost": "Detection cost",
-  "imageValidation": "Personal image is required"
+  "imageValidation": "Personal image is required",
+  "noData": "There is no data !"
 }

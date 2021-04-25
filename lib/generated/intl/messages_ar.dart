@@ -127,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "nationalId" : MessageLookupByLibrary.simpleMessage("الرقم القومى"),
     "next" : MessageLookupByLibrary.simpleMessage("التالي"),
     "noChangedData" : MessageLookupByLibrary.simpleMessage("لم تقم بتغيير أى بيانات"),
+    "noData" : MessageLookupByLibrary.simpleMessage("لا يوجد بيانات!"),
     "noMessagesYet" : MessageLookupByLibrary.simpleMessage("لا يوجد رسائل الى الان"),
     "noNetwork" : MessageLookupByLibrary.simpleMessage("فشل الاتصال حاول مره اخرى"),
     "normalUser" : MessageLookupByLibrary.simpleMessage("مستخدم عادى"),

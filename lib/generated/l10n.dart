@@ -1804,6 +1804,16 @@ class S {
       args: [],
     );
   }
+
+  /// `لا يوجد بيانات!`
+  String get noData {
+    return Intl.message(
+      'لا يوجد بيانات!',
+      name: 'noData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

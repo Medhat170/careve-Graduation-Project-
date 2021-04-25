@@ -1,4 +1,5 @@
 import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/empty_widget.dart';
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/models/all_doctors.dart';
@@ -16,22 +17,26 @@ class DoctorsView extends GetView<DoctorsController> {
       body: Obx(
         () {
           final allDoctors = controller.allDoctors ?? <Doctor>[];
-          Widget body = AnimatedListHandler(
-            children: allDoctors
-                .map(
-                  (doc) => DoctorItem(
-                    name: doc.name,
-                    id: doc.id,
-                    rate: doc.rating ?? 0,
-                    specialty: doc.qualified,
-                    image: doc.image,
-                    raters: doc.raters,
-                  ),
-                )
-                .toList(),
-          );
+          Widget body;
           if (controller.isBusy.value) {
             body = Loading();
+          } else if (allDoctors == null || allDoctors.isEmpty) {
+            body = const EmptyWidget();
+          } else {
+            body = AnimatedListHandler(
+              children: allDoctors
+                  .map(
+                    (doc) => DoctorItem(
+                      name: doc.name,
+                      id: doc.id,
+                      rate: doc.rating ?? 0,
+                      specialty: doc.qualified,
+                      image: doc.image,
+                      raters: doc.raters,
+                    ),
+                  )
+                  .toList(),
+            );
           }
           return Column(
             children: [

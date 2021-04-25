@@ -1,5 +1,6 @@
 const imagesPath = 'assets/images/';
 const iconsPath = 'assets/icons/';
+const lottiePath = 'assets/lottie/';
 const url = 'https://laravelbreast.000webhostapp.com/public/api/';
 
 class PathUtil {
@@ -22,6 +23,7 @@ class PathUtil {
   static const String facebookIcon = '${iconsPath}facebookIcon.png';
   static const String googleIcon = '${iconsPath}googleIcon.png';
   static const String logoIcon = '${iconsPath}logo.png';
+  static const String emptyLottie = '${lottiePath}empty.json';
 }
 
 class ApiPath {
