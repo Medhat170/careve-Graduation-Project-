@@ -12,7 +12,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 mixin CustomAppBar {
   final TextEditingController searchText = TextEditingController();
   final _startSearching = false.obs;
-  FocusNode _searchFocus;
 
   Widget customAppBar(
     String title, {
@@ -128,7 +127,10 @@ mixin CustomAppBar {
               color: ColorUtil.primaryColor,
               size: 22.0,
             ),
-            onPressed: () => _startSearching(false),
+            onPressed: () {
+              searchText.clear();
+              _startSearching(false);
+            },
           ),
           Expanded(
             child: SizedBox(
@@ -139,9 +141,6 @@ mixin CustomAppBar {
                 hintText: S.current.search,
                 onFieldSubmitted: (String value) {
                   print(searchText.text);
-                },
-                onChanged: (String value) {
-                  searchText.text = value;
                 },
                 prefixWidget: const Icon(
                   FontAwesomeIcons.search,

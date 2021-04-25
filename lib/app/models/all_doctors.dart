@@ -11,14 +11,6 @@ class AllDoctors {
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class Doctor {
@@ -48,17 +40,5 @@ class Doctor {
     image = json['image'];
     cost = json['cost'].toString();
     raters = json['raters'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['rating'] = rating;
-    data['qualified'] = qualified;
-    data['image'] = image;
-    data['cost'] = cost;
-    data['raters'] = raters;
-    return data;
   }
 }

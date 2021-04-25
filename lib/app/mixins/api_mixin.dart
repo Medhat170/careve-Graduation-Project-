@@ -8,8 +8,8 @@ mixin ApiMixin {
   final _dio = Dio();
   var _formData = FormData();
 
-  Future<Map<String, dynamic>> post({
-    @required String url,
+  Future<Map<String, dynamic>> post(
+    String url, {
     @required Map<String, dynamic> body,
     Map<String, dynamic> header,
     Map<String, File> files,
@@ -36,9 +36,9 @@ mixin ApiMixin {
     );
   }
 
-  Future<Map<String, dynamic>> get({
-    @required String url,
-    @required Map<String, dynamic> header,
+  Future<Map<String, dynamic>> get(
+    String url, {
+    Map<String, dynamic> header,
     int sendTimeout,
     int receiveTimeout,
     Function(int count, int total) onReceiveProgress,

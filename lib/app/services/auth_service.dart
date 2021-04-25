@@ -313,7 +313,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         if (formData.validate()) {
           formData.save();
           response = await post(
-            url: ApiPath.login,
+            ApiPath.login,
             body: {
               'email': email.text,
               'password': password.text,
@@ -349,7 +349,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       print('Confirmed password : ${confirmedPassword?.text}');
       try {
         response = await post(
-          url: ApiPath.patientSignUp,
+          ApiPath.patientSignUp,
           body: {
             'name': name.text,
             'email': email.text,
@@ -375,7 +375,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     Map<String, dynamic> dataResponse;
     try {
       dataResponse = await post(
-        url: ApiPath.docSignUpWithOutClinics,
+        ApiPath.docSignUpWithOutClinics,
         body: {
           'name': name.text,
           'email': email.text,
@@ -393,7 +393,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       );
       print('Doc id : ${dataResponse['id']}');
       final Map<String, dynamic> clinicDataResponse = await post(
-        url: ApiPath.addClinic,
+        ApiPath.addClinic,
         body: {
           'docid': 7,
           'clinics': json.encode({'clinics': userClinics.value.clinics})
@@ -499,7 +499,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         startBusy();
         if (isDoc.value) {
           response = await post(
-            url: ApiPath.editDoctorProfile,
+            ApiPath.editDoctorProfile,
             body: {
               'apitoken': user.value.accessToken,
               'name': name.text,
@@ -513,7 +513,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
           );
         } else {
           response = await post(
-            url: ApiPath.editPatientProfile,
+            ApiPath.editPatientProfile,
             body: {
               'apitoken': user.value.accessToken,
               'name': name.text,

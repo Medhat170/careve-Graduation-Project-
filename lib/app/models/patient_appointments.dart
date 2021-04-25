@@ -1,0 +1,52 @@
+class PatientAppointments {
+  List<Appointment> data;
+
+  PatientAppointments({this.data});
+
+  PatientAppointments.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      data = <Appointment>[];
+      json['data'].forEach((v) {
+        data.add(Appointment.fromJson(v));
+      });
+    }
+  }
+}
+
+class Appointment {
+  int id;
+  int docId;
+  int clinicId;
+  int patientId;
+  String docName;
+  DateTime date;
+  String docImage;
+  String cost;
+
+  Appointment({
+    this.id,
+    this.clinicId,
+    this.docId,
+    this.patientId,
+    this.docName,
+    this.cost,
+    this.date,
+    this.docImage,
+  });
+
+  Appointment.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    clinicId = json['clinicid'];
+    docId = json['docid'];
+    patientId = json['patientid'];
+    docName = json['docname'];
+    cost = json['cost'].toString();
+    docImage = json['docimage'];
+    if (json['date'] != null) {
+      final DateTime dateTime = DateTime.parse(
+        json['date'].toString(),
+      );
+      date = dateTime;
+    }
+  }
+}

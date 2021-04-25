@@ -42,13 +42,19 @@ class EmptyWidget extends StatelessWidget {
                 color: ColorUtil.primaryColor,
               ),
             ),
+            const SizedBox(
+              height: 20.0,
+            ),
             Text(
               hint ?? '',
               style: TextStyle(
-                fontSize: 54.sp,
+                fontSize: 48.sp,
                 fontWeight: FontWeight.w700,
                 color: ColorUtil.mediumGrey,
               ),
+            ),
+            const SizedBox(
+              height: 30.0,
             ),
             if (refreshFunction != null)
               CareveButton.icon(

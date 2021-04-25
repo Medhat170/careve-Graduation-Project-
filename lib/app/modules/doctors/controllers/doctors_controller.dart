@@ -2,8 +2,8 @@ import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/all_doctors.dart';
-import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
+import 'package:careve/generated/l10n.dart';
 import 'package:get/get.dart';
 
 class DoctorsController extends GetxController
@@ -14,15 +14,16 @@ class DoctorsController extends GetxController
   Future<void> fetchAllDoctors() async {
     try {
       startBusy();
-      final response = await get(
-        url: ApiPath.getAllDoctors,
-      );
+      final response = await get(ApiPath.getAllDoctors);
       allDoctors(AllDoctors.fromJson(response).data);
-      allDoctorsRef(allDoctors);
+      allDoctorsRef.assignAll(allDoctors.toList());
+      endBusySuccess();
     } catch (error) {
-      await AppUtil.showAlertDialog(body: error.toString());
+      endBusyError(
+        error,
+        showDialog: errorMessage.value != S.current.socketException,
+      );
     }
-    endBusySuccess();
   }
 
   void search() {
@@ -30,7 +31,7 @@ class DoctorsController extends GetxController
     allDoctors.clear();
     for (final doc in allDoctorsRef) {
       if (doc.name.contains(searchText.text)) {
-        allDoctors.assign(doc);
+        allDoctors.add(doc);
       }
     }
   }

@@ -1,6 +1,9 @@
 import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/empty_widget.dart';
 import 'package:careve/app/components/global_scaffold.dart';
+import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
+import 'package:careve/app/models/patient_appointments.dart';
 import 'package:careve/app/modules/user_appointments/components/user_appointment.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -26,72 +29,90 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
               padding: const EdgeInsets.symmetric(
                 horizontal: 10.0,
               ),
-              child: AnimatedListHandler(
-                children: [
-                  if (controller.today != null) ...[
-                    Text(
-                      S.of(context).today,
-                      style: TextStyle(
-                        fontSize: 60.sp,
-                        fontWeight: FontWeight.bold,
-                        color: ColorUtil.blackColor,
-                      ),
-                    ),
-                    ...controller.today
-                        .map(
-                          (e) => UserAppointment(
-                            doctorName: 'Dr:Ahmed mohamed',
-                            date: e,
-                            telephoneNumber: '01020304050',
-                            address: 'Mansoura',
-                            specialty: 'breast cancer specialist',
+              child: Obx(
+                () {
+                  final allDoctors =
+                      controller.allAppointments ?? <Appointment>[];
+                  if (controller.isBusy.value) {
+                    return Loading();
+                  } else if (allDoctors == null || allDoctors.isEmpty) {
+                    return EmptyWidget(
+                      hint: controller.errorMessage.value,
+                      refreshFunction: controller.errorMessage.value ==
+                              S.current.socketException
+                          ? controller.fetchAllAppointments
+                          : null,
+                    );
+                  } else {
+                    return AnimatedListHandler(
+                      children: [
+                        if (controller.today != null &&
+                            controller.today.isNotEmpty) ...[
+                          Text(
+                            S.of(context).today,
+                            style: TextStyle(
+                              fontSize: 60.sp,
+                              fontWeight: FontWeight.bold,
+                              color: ColorUtil.blackColor,
+                            ),
                           ),
-                        )
-                        .toList(),
-                  ],
-                  if (controller.earlier != null) ...[
-                    Text(
-                      S.of(context).earlier,
-                      style: TextStyle(
-                        fontSize: 60.sp,
-                        fontWeight: FontWeight.bold,
-                        color: ColorUtil.blackColor,
-                      ),
-                    ),
-                    ...controller.earlier
-                        .map(
-                          (e) => UserAppointment(
-                            doctorName: 'Dr:Ahmed mohamed',
-                            date: e,
-                            telephoneNumber: '01020304050',
-                            address: 'Mansoura',
-                            specialty: 'breast cancer specialist',
+                          ...controller.today
+                              .map(
+                                (appointment) => UserAppointment(
+                                  doctorName: appointment.docName,
+                                  date: appointment.date,
+                                  telephoneNumber: '01020304050',
+                                  address: 'Mansoura',
+                                ),
+                              )
+                              .toList(),
+                        ],
+                        if (controller.earlier != null &&
+                            controller.earlier.isNotEmpty) ...[
+                          Text(
+                            S.of(context).earlier,
+                            style: TextStyle(
+                              fontSize: 60.sp,
+                              fontWeight: FontWeight.bold,
+                              color: ColorUtil.blackColor,
+                            ),
                           ),
-                        )
-                        .toList(),
-                  ],
-                  if (controller.today != null) ...[
-                    Text(
-                      S.of(context).later,
-                      style: TextStyle(
-                        fontSize: 60.sp,
-                        fontWeight: FontWeight.bold,
-                        color: ColorUtil.blackColor,
-                      ),
-                    ),
-                    ...controller.later
-                        .map(
-                          (e) => UserAppointment(
-                            doctorName: 'Dr:Ahmed mohamed',
-                            date: e,
-                            telephoneNumber: '01020304050',
-                            address: 'Mansoura',
-                            specialty: 'breast cancer specialist',
+                          ...controller.earlier
+                              .map(
+                                (appointment) => UserAppointment(
+                                  doctorName: appointment.docName,
+                                  date: appointment.date,
+                                  telephoneNumber: '01020304050',
+                                  address: 'Mansoura',
+                                ),
+                              )
+                              .toList(),
+                        ],
+                        if (controller.today != null &&
+                            controller.later.isNotEmpty) ...[
+                          Text(
+                            S.of(context).later,
+                            style: TextStyle(
+                              fontSize: 60.sp,
+                              fontWeight: FontWeight.bold,
+                              color: ColorUtil.blackColor,
+                            ),
                           ),
-                        )
-                        .toList(),
-                  ],
-                ],
+                          ...controller.later
+                              .map(
+                                (appointment) => UserAppointment(
+                                  doctorName: appointment.docName,
+                                  date: appointment.date,
+                                  telephoneNumber: '01020304050',
+                                  address: 'Mansoura',
+                                ),
+                              )
+                              .toList(),
+                        ],
+                      ],
+                    );
+                  }
+                },
               ),
             ),
           ),

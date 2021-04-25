@@ -51,9 +51,14 @@ class DoctorItem extends StatelessWidget {
                   child: image != null && image.isNotEmpty
                       ? NetImage(
                           image,
+                          width: 100.0,
+                          height: 100.0,
+                          fit: BoxFit.cover,
                         )
                       : Image.asset(
                           PathUtil.userImage,
+                          width: 100.0,
+                          height: 100.0,
                           fit: BoxFit.cover,
                         ),
                 ),
@@ -76,16 +81,17 @@ class DoctorItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
-                      specialty ?? '',
-                      style: TextStyle(
-                        fontSize: 34.sp,
-                        color: ColorUtil.mediumGrey,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    // Text(
+                    //   specialty ?? '',
+                    //   style: TextStyle(
+                    //     fontSize: 34.sp,
+                    //     color: ColorUtil.mediumGrey,
+                    //     fontWeight: FontWeight.w600,
+                    //   ),
+                    // ),
                     if (rate != null)
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RatingBar(
                             rating: double.tryParse(rate.toString()),
@@ -98,10 +104,13 @@ class DoctorItem extends StatelessWidget {
                             size: 3,
                             color: Colors.amber,
                           ),
+                          const SizedBox(
+                            width: 20.0,
+                          ),
                           Text(
                             '(${raters ?? 0})',
                             style: TextStyle(
-                              fontSize: 34.sp,
+                              fontSize: 30.sp,
                               color: ColorUtil.mediumGrey,
                               fontWeight: FontWeight.w600,
                             ),

@@ -4,7 +4,6 @@ import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/models/all_doctors.dart';
 import 'package:careve/app/modules/doctors/components/doctor_item.dart';
-import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +20,13 @@ class DoctorsView extends GetView<DoctorsController> {
           if (controller.isBusy.value) {
             body = Loading();
           } else if (allDoctors == null || allDoctors.isEmpty) {
-            body = const EmptyWidget();
+            body = EmptyWidget(
+              hint: controller.errorMessage.value,
+              refreshFunction:
+                  controller.errorMessage.value == S.current.socketException
+                      ? controller.fetchAllDoctors
+                      : null,
+            );
           } else {
             body = AnimatedListHandler(
               children: allDoctors
@@ -30,7 +35,6 @@ class DoctorsView extends GetView<DoctorsController> {
                       name: doc.name,
                       id: doc.id,
                       rate: doc.rating ?? 0,
-                      specialty: doc.qualified,
                       image: doc.image,
                       raters: doc.raters,
                     ),
