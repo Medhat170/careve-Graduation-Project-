@@ -395,7 +395,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       final Map<String, dynamic> clinicDataResponse = await post(
         ApiPath.addClinic,
         body: {
-          'docid': 7,
+          'docid': dataResponse['id'],
           'clinics': json.encode({'clinics': userClinics.value.clinics})
         },
       );

@@ -2,10 +2,9 @@ import 'package:careve/app/utilities/app_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:careve/app/utilities/color_util.dart';
-import '../../../components/extensions.dart';
 
 class AppointmentItem extends StatelessWidget {
-  final DateTime date;
+  final String date;
 
   const AppointmentItem({
     @required this.date,
@@ -37,7 +36,7 @@ class AppointmentItem extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                date.toTimeOnly(),
+                date ?? '',
                 style: TextStyle(
                   color: ColorUtil.blackColor,
                   fontSize: 50.sp,

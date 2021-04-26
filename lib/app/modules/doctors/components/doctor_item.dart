@@ -1,4 +1,5 @@
 import 'package:careve/app/components/net_image.dart';
+import 'package:careve/app/models/all_doctors.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
@@ -9,26 +10,16 @@ import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
 import 'package:get/get.dart';
 
 class DoctorItem extends StatelessWidget {
-  final String name;
-  final String specialty;
-  final String image;
-  final int raters;
-  final int rate;
-  final int id;
+  final Doctor doctor;
 
   const DoctorItem({
-    this.name,
-    this.specialty,
-    this.image,
-    this.rate,
-    this.raters,
-    this.id,
+    @required this.doctor,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(Routes.SINGLE_DOCTOR),
+      onTap: () => Get.toNamed(Routes.SINGLE_DOCTOR, arguments: doctor),
       child: Card(
         color: Colors.white,
         margin: const EdgeInsets.all(10.0),
@@ -48,9 +39,9 @@ class DoctorItem extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: image != null && image.isNotEmpty
+                  child: doctor?.image != null && doctor.image.isNotEmpty
                       ? NetImage(
-                          image,
+                          doctor?.image,
                           width: 100.0,
                           height: 100.0,
                           fit: BoxFit.cover,
@@ -72,7 +63,7 @@ class DoctorItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name ?? '',
+                      doctor?.name ?? '',
                       style: TextStyle(
                         fontSize: 40.sp,
                         color: ColorUtil.blackColor,
@@ -89,12 +80,12 @@ class DoctorItem extends StatelessWidget {
                     //     fontWeight: FontWeight.w600,
                     //   ),
                     // ),
-                    if (rate != null)
+                    if (doctor?.rating != null)
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RatingBar(
-                            rating: double.tryParse(rate.toString()),
+                            rating: double.tryParse(doctor?.rating?.toString()),
                             icon: const Icon(
                               Icons.star,
                               size: 16,
@@ -108,7 +99,7 @@ class DoctorItem extends StatelessWidget {
                             width: 20.0,
                           ),
                           Text(
-                            '(${raters ?? 0})',
+                            '(${doctor?.raters ?? 0})',
                             style: TextStyle(
                               fontSize: 30.sp,
                               color: ColorUtil.mediumGrey,

@@ -22,21 +22,14 @@ class DoctorsView extends GetView<DoctorsController> {
           } else if (allDoctors == null || allDoctors.isEmpty) {
             body = EmptyWidget(
               hint: controller.errorMessage.value,
-              refreshFunction:
-                  controller.errorMessage.value == S.current.socketException
-                      ? controller.fetchAllDoctors
-                      : null,
+              refreshFunction: controller.fetchAllDoctors,
             );
           } else {
             body = AnimatedListHandler(
               children: allDoctors
                   .map(
                     (doc) => DoctorItem(
-                      name: doc.name,
-                      id: doc.id,
-                      rate: doc.rating ?? 0,
-                      image: doc.image,
-                      raters: doc.raters,
+                      doctor: doc,
                     ),
                   )
                   .toList(),

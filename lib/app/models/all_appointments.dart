@@ -1,9 +1,13 @@
-class PatientAppointments {
+import 'dart:convert' as convert;
+
+import 'clinic_model.dart';
+
+class AllAppointments {
   List<Appointment> data;
 
-  PatientAppointments({this.data});
+  AllAppointments({this.data});
 
-  PatientAppointments.fromJson(Map<String, dynamic> json) {
+  AllAppointments.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
       data = <Appointment>[];
       json['data'].forEach((v) {
@@ -22,6 +26,8 @@ class Appointment {
   DateTime date;
   String docImage;
   String cost;
+  Address address;
+  String phone;
 
   Appointment({
     this.id,
@@ -32,6 +38,8 @@ class Appointment {
     this.cost,
     this.date,
     this.docImage,
+    this.address,
+    this.phone,
   });
 
   Appointment.fromJson(Map<String, dynamic> json) {
@@ -48,5 +56,12 @@ class Appointment {
       );
       date = dateTime;
     }
+    if (json['clinicadress'] != null) {
+      final Map<String, dynamic> addressData = convert.json.decode(
+        json['clinicadress'].toString(),
+      );
+      address = Address.fromJson(addressData);
+    }
+    phone = json['clinicphone'];
   }
 }

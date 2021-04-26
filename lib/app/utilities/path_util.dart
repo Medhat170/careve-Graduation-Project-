@@ -27,12 +27,14 @@ class PathUtil {
 }
 
 class ApiPath {
+  static const String login = '${url}login';
   static const String patientSignUp = '${url}patientsignup?';
   static const String docSignUpWithOutClinics = '${url}docsignup?';
-  static const String login = '${url}login';
   static const String addClinic = '${url}clinics';
   static const String getAllDoctors = '${url}doctorrsdata';
   static const String editDoctorProfile = '${url}doctorupdateprofile';
   static const String editPatientProfile = '${url}patientupdateprofile';
   static const String getPatientAppointments = '${url}getallappointments';
+  static const String cancelAppointment = '${url}removeappointment';
+  static const String getDoctorClinics = '${url}getdocclinics';
 }

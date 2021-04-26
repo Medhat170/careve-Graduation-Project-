@@ -1,5 +1,9 @@
 import 'package:careve/app/components/app_button.dart';
+import 'package:careve/app/components/net_image.dart';
+import 'package:careve/app/components/waiting.dart';
+import 'package:careve/app/models/all_doctors.dart';
 import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
+import 'package:careve/app/modules/single_doctor/controllers/single_doctor_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
@@ -10,158 +14,155 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DoctorInfo extends StatelessWidget {
-  final String name;
-  final String specialty;
-  final String image;
-  final double rate;
-  final String id;
-
-  const DoctorInfo({
-    this.name,
-    this.specialty,
-    this.image,
-    this.rate,
-    this.id,
-  });
-
+class DoctorInfo extends GetView<SingleDoctorController> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.4,
+      height: Get.height * 0.3,
       width: Get.width,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10.0,
           vertical: 20.0,
         ),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: AppUtil.borderRadius25,
-              child: Image.asset(
-                PathUtil.hospitalsImage,
-                fit: BoxFit.cover,
-                width: Get.width * 0.35,
-                height: double.infinity,
-              ),
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name ?? '',
-                    style: TextStyle(
-                      fontSize: 56.sp,
-                      color: ColorUtil.blackColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  Text(
-                    specialty ?? '',
-                    style: TextStyle(
-                      fontSize: 46.sp,
-                      color: ColorUtil.mediumGrey,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  if (rate != null)
-                    RatingBar(
-                      rating: rate,
-                      icon: const Icon(
-                        Icons.star,
-                        size: 16,
-                        color: Colors.grey,
+        child: Obx(
+          () {
+            final Doctor doctor = controller.doctorData;
+            return Row(
+              children: [
+                ClipRRect(
+                  borderRadius: AppUtil.borderRadius25,
+                  child: doctor?.image != null && doctor.image.isNotEmpty
+                      ? NetImage(
+                          doctor?.image,
+                          width: Get.width * 0.35,
+                          height: double.infinity,
+                        )
+                      : Image.asset(
+                          PathUtil.userImage,
+                          width: Get.width * 0.35,
+                          height: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        doctor?.name ?? '',
+                        style: TextStyle(
+                          fontSize: 56.sp,
+                          color: ColorUtil.blackColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      spacing: 2.0,
-                      size: 5,
-                      onRatingCallback:
-                          (double value, ValueNotifier<bool> isIndicator) {
-                        print('Number of stars-->  $value');
-                        isIndicator.value = true;
-                      },
-                      color: Colors.amber,
-                    ),
-                  const SizedBox(
-                    height: 40.0,
-                  ),
-                  SizedBox(
-                    height: 50.0,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: CareveButton.icon(
-                            backgroundColor: Colors.white,
-                            icon: const Icon(
-                              FontAwesomeIcons.comment,
-                              size: 22.0,
-                              color: ColorUtil.primaryColor,
-                            ),
-                            onTap: () => Get.toNamed(
-                              Routes.CHAT,
-                              arguments: ChatRouteInputs(
-                                roomId: 0,
-                                roomName: 'Doctor_name',
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      // Text(
+                      //   specialty ?? '',
+                      //   style: TextStyle(
+                      //     fontSize: 46.sp,
+                      //     color: ColorUtil.mediumGrey,
+                      //     fontWeight: FontWeight.w600,
+                      //   ),
+                      // ),
+                      // const SizedBox(
+                      //   height: 5.0,
+                      // ),
+                      if (doctor?.rating != null)
+                        RatingBar(
+                          rating: double.tryParse(
+                              doctor?.rating?.toString() ?? '0'),
+                          icon: const Icon(
+                            Icons.star,
+                            size: 16,
+                            color: Colors.grey,
+                          ),
+                          spacing: 2.0,
+                          size: 5,
+                          color: Colors.amber,
+                        ),
+                      const SizedBox(
+                        height: 40.0,
+                      ),
+                      Waiting(
+                        loading: controller.isBusy.value,
+                        margin: EdgeInsets.zero,
+                        child: SizedBox(
+                          height: 50.0,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: CareveButton.icon(
+                                  backgroundColor: Colors.white,
+                                  icon: const Icon(
+                                    FontAwesomeIcons.comment,
+                                    size: 22.0,
+                                    color: ColorUtil.primaryColor,
+                                  ),
+                                  onTap: () => Get.toNamed(
+                                    Routes.CHAT,
+                                    arguments: ChatRouteInputs(
+                                      roomId: 0,
+                                      roomName: doctor?.name,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+                              const SizedBox(
+                                width: 7.5,
+                              ),
+                              Expanded(
+                                child: CareveButton.icon(
+                                  backgroundColor: Colors.white,
+                                  icon: const Icon(
+                                    FontAwesomeIcons.phone,
+                                    size: 22.0,
+                                    color: ColorUtil.primaryColor,
+                                  ),
+                                  onTap: () => AppUtil.callPhone(
+                                    context,
+                                    phoneNumbers: [
+                                      '01020304050',
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 7.5,
+                              ),
+                              Expanded(
+                                child: CareveButton.icon(
+                                  backgroundColor: Colors.white,
+                                  icon: const Icon(
+                                    FontAwesomeIcons.locationArrow,
+                                    size: 22.0,
+                                    color: ColorUtil.primaryColor,
+                                  ),
+                                  onTap: () => AppUtil.openMapsSheet(
+                                    latitude: 31.22222222,
+                                    longitude: 31.322332323,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 7.5,
-                        ),
-                        Expanded(
-                          child: CareveButton.icon(
-                            backgroundColor: Colors.white,
-                            icon: const Icon(
-                              FontAwesomeIcons.phone,
-                              size: 22.0,
-                              color: ColorUtil.primaryColor,
-                            ),
-                            onTap: () => AppUtil.callPhone(
-                              context,
-                              phoneNumbers: [
-                                '01020304050',
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 7.5,
-                        ),
-                        Expanded(
-                          child: CareveButton.icon(
-                            backgroundColor: Colors.white,
-                            icon: const Icon(
-                              FontAwesomeIcons.locationArrow,
-                              size: 22.0,
-                              color: ColorUtil.primaryColor,
-                            ),
-                            onTap: () => AppUtil.openMapsSheet(
-                              latitude: 31.22222222,
-                              longitude: 31.322332323,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

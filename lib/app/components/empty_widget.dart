@@ -56,7 +56,7 @@ class EmptyWidget extends StatelessWidget {
             const SizedBox(
               height: 30.0,
             ),
-            if (refreshFunction != null)
+            if (refreshFunction != null && hint == S.current.socketException)
               CareveButton.icon(
                 width: 750.w,
                 icon: const Icon(

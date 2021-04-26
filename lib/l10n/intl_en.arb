@@ -1,6 +1,9 @@
 {
   "welcome": "Welcome...",
   "welcomeText": "to careve for breast cancer awareness and women health care.",
+  "confirm": "Confirm",
+  "areYouSure": "Are you sure?",
+  "cancelAppointment": "Cancel this appointment",
   "nationalId": "National id",
   "hasMinLength": "Please insert {length} digit as least",
   "resetPasswordDesc": "Please enter your new password to reset it",
@@ -176,5 +179,7 @@
   "daysEmpty": "Seems that there is one or more clinics have no days ,You must set some days",
   "cost": "Detection cost",
   "imageValidation": "Personal image is required",
-  "noData": "There is no data !"
+  "noData": "There is no data !",
+  "doctorData": "Doctor's data",
+  "clinics": "Clinics"
 }

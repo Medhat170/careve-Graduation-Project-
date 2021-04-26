@@ -29,4 +29,12 @@ extension DateTimeExt on DateTime {
       return intl.DateFormat.Hm(currentLocale.toString()).format(this);
     }
   }
+
+  String toTimeWithAmPmFormat() {
+    if (this == null) {
+      return '-';
+    } else {
+      return intl.DateFormat.jm(currentLocale.toString()).format(this);
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
-import 'package:careve/app/models/patient_appointments.dart';
+import 'package:careve/app/models/all_appointments.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -47,7 +47,7 @@ class UserAppointmentsController extends GetxController
           'type': 'mobile',
         },
       );
-      allAppointments(PatientAppointments.fromJson(response).data);
+      allAppointments(AllAppointments.fromJson(response).data);
       endBusySuccess();
     } catch (error) {
       endBusyError(
@@ -62,14 +62,23 @@ class UserAppointmentsController extends GetxController
       final userData = AuthService.to.user?.value;
       cancelledId(appointmentId);
       final response = await post(
-        ApiPath.getPatientAppointments,
+        ApiPath.cancelAppointment,
         body: {
           'id': appointmentId,
           'apitoken': userData?.accessToken,
           'type': 'mobile',
         },
       );
-      await fetchAllAppointments();
+      if (response['data'] != null) {
+        final int success = int.tryParse(response['data'].toString());
+        if (success == 1) {
+          allAppointments.removeWhere(
+            (element) => element.id == cancelledId.value,
+          );
+        } else {
+          throw S.current.formatException;
+        }
+      }
     } catch (error) {
       endBusyError(
         error,

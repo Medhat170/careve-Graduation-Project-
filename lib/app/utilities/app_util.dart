@@ -132,7 +132,7 @@ class AppUtil {
     RxBool loading,
   }) async {
     return Get.defaultDialog<bool>(
-      title: S.current.alert ?? title,
+      title: title ?? S.current.alert,
       content: Directionality(
         textDirection: AppUtil.isLtr ? TextDirection.ltr : TextDirection.rtl,
         child: Text(
@@ -170,12 +170,17 @@ class AppUtil {
           ),
         ],
         InkWell(
-          onTap: () => onConfirm ?? Get.back(result: true),
+          onTap: () {
+            Get.back(result: true);
+            if (onConfirm != null) {
+              onConfirm();
+            }
+          },
           child: Text(
             confirmText ?? S.current.done,
             style: const TextStyle(
-              color: ColorUtil.primaryColor,
-              fontWeight: FontWeight.w500,
+              color: Colors.blue,
+              fontWeight: FontWeight.w700,
               fontSize: 18.0,
             ),
           ),

@@ -55,6 +55,36 @@ class S {
     );
   }
 
+  /// `تاكيد`
+  String get confirm {
+    return Intl.message(
+      'تاكيد',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل انت متأكد؟`
+  String get areYouSure {
+    return Intl.message(
+      'هل انت متأكد؟',
+      name: 'areYouSure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `إلغاء هذا الحجز`
+  String get cancelAppointment {
+    return Intl.message(
+      'إلغاء هذا الحجز',
+      name: 'cancelAppointment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `الرقم القومى`
   String get nationalId {
     return Intl.message(
@@ -1810,6 +1840,26 @@ class S {
     return Intl.message(
       'لا يوجد بيانات!',
       name: 'noData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `بيانات الطبيب`
+  String get doctorData {
+    return Intl.message(
+      'بيانات الطبيب',
+      name: 'doctorData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `العيادات`
+  String get clinics {
+    return Intl.message(
+      'العيادات',
+      name: 'clinics',
       desc: '',
       args: [],
     );

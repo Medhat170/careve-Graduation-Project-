@@ -83,6 +83,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       CareveButton(
                         title: S.of(context).normalUser,
                         onTap: () {
+                          AuthService.to.signUP(false);
                           AuthService.to.isDoc(false);
                           Get.toNamed(
                             Routes.AUTH,

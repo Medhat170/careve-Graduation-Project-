@@ -3,7 +3,7 @@ import 'package:careve/app/components/empty_widget.dart';
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
-import 'package:careve/app/models/patient_appointments.dart';
+import 'package:careve/app/models/all_appointments.dart';
 import 'package:careve/app/modules/user_appointments/components/user_appointment.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -38,10 +38,7 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
                   } else if (allDoctors == null || allDoctors.isEmpty) {
                     return EmptyWidget(
                       hint: controller.errorMessage.value,
-                      refreshFunction: controller.errorMessage.value ==
-                              S.current.socketException
-                          ? controller.fetchAllAppointments
-                          : null,
+                      refreshFunction: controller.fetchAllAppointments,
                     );
                   } else {
                     return AnimatedListHandler(
@@ -59,10 +56,7 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
                           ...controller.today
                               .map(
                                 (appointment) => UserAppointment(
-                                  doctorName: appointment.docName,
-                                  date: appointment.date,
-                                  telephoneNumber: '01020304050',
-                                  address: 'Mansoura',
+                                  appointment: appointment,
                                 ),
                               )
                               .toList(),
@@ -80,10 +74,7 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
                           ...controller.earlier
                               .map(
                                 (appointment) => UserAppointment(
-                                  doctorName: appointment.docName,
-                                  date: appointment.date,
-                                  telephoneNumber: '01020304050',
-                                  address: 'Mansoura',
+                                  appointment: appointment,
                                 ),
                               )
                               .toList(),
@@ -101,10 +92,7 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
                           ...controller.later
                               .map(
                                 (appointment) => UserAppointment(
-                                  doctorName: appointment.docName,
-                                  date: appointment.date,
-                                  telephoneNumber: '01020304050',
-                                  address: 'Mansoura',
+                                  appointment: appointment,
                                 ),
                               )
                               .toList(),
