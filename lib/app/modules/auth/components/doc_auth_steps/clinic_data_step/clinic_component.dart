@@ -62,6 +62,7 @@ class ClinicComponent extends StatelessWidget {
                         Get.context,
                         MaterialPageRoute(
                           builder: (context) => PlacePicker(
+                            autocompleteLanguage: 'ar',
                             apiKey: 'AIzaSyByhDTGyST-Uxd8CxyuOs2TbiakqLJz1y8',
                             onPlacePicked: (result) {
                               Navigator.of(context).pop(result);
