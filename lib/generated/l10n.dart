@@ -1884,6 +1884,16 @@ class S {
       args: [],
     );
   }
+
+  /// `لقد قمت بحجز هذا الموعد بنجاح {DateTime} !`
+  String bookedSuccess(Object DateTime) {
+    return Intl.message(
+      'لقد قمت بحجز هذا الموعد بنجاح $DateTime !',
+      name: 'bookedSuccess',
+      desc: '',
+      args: [DateTime],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -19,9 +19,11 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static m0(count) => "${count} Files uploaded";
+  static m0(DateTime) => "You Successfully booked ${DateTime}!";
 
-  static m1(length) => "Please insert ${length} digit as least";
+  static m1(count) => "${count} Files uploaded";
+
+  static m2(length) => "Please insert ${length} digit as least";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "back" : MessageLookupByLibrary.simpleMessage("Back"),
     "birthDate" : MessageLookupByLibrary.simpleMessage("Birth date"),
     "bloodType" : MessageLookupByLibrary.simpleMessage("Blood type"),
+    "bookedSuccess" : m0,
     "call" : MessageLookupByLibrary.simpleMessage("Call"),
     "canNotBookThis" : MessageLookupByLibrary.simpleMessage("You can\'t book this Time or date try different one"),
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),
@@ -92,7 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "explore" : MessageLookupByLibrary.simpleMessage("Explore"),
     "favorite" : MessageLookupByLibrary.simpleMessage("Favorite"),
     "favourite" : MessageLookupByLibrary.simpleMessage("Favourite"),
-    "filesUploaded" : m0,
+    "filesUploaded" : m1,
     "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
     "findDoctor" : MessageLookupByLibrary.simpleMessage("Find Doctor"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("The first step (in front of the mirror)"),
@@ -108,7 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general" : MessageLookupByLibrary.simpleMessage("- Feeling of general"),
     "go" : MessageLookupByLibrary.simpleMessage("Go"),
     "guest" : MessageLookupByLibrary.simpleMessage("Continue as a guest"),
-    "hasMinLength" : m1,
+    "hasMinLength" : m2,
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
     "hospitals" : MessageLookupByLibrary.simpleMessage("Hospitals"),
     "httpException" : MessageLookupByLibrary.simpleMessage("Unable to contact the server"),

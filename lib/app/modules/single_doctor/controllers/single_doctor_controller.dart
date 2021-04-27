@@ -22,6 +22,7 @@ class SingleDoctorController extends GetxController
   final loadingId = RxString();
   final doctorClinics = Rx<DoctorClinicsAppointments>();
   final currentClinic = Rx<Clinic>();
+  final dateBooked = Rx<DateTime>();
 
   List<DateTime> get appointmentsOfCurrentDay {
     final currentDay = currentClinic.value.days[selectedIndex.value];
@@ -45,8 +46,9 @@ class SingleDoctorController extends GetxController
       int.tryParse(endMin ?? '30'),
     );
     final allDateTimes = RxList<DateTime>([]);
+    print(endTime.difference(startTime).inMinutes);
     for (int i = 0; i <= endTime.difference(startTime).inMinutes; i += 30) {
-      allDateTimes.add(startTime.add(Duration(minutes: i + 30)));
+      allDateTimes.add(startTime.add(Duration(minutes: i)));
     }
     allDateTimes.removeLast();
     return allDateTimes.map((dt) => dt).toList();
@@ -165,6 +167,17 @@ class SingleDoctorController extends GetxController
           'clinicid': currentClinic?.value?.id
         },
       );
+      if (response['data']['date'] != null) {
+        final String dateAsString = response['data']['date'];
+        final DateTime dateAsModel = DateTime.parse(dateAsString);
+        dateBooked(dateAsModel);
+        Get.back();
+        AppUtil.showAlertDialog(
+          body: S.current.bookedSuccess(
+            dateBooked?.value?.toLongUserString(),
+          ),
+        );
+      }
       endBusySuccess();
     } catch (error) {
       endBusyError(

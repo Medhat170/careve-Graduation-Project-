@@ -53,7 +53,6 @@ class AppointmentItem extends StatelessWidget {
                         textColor: ColorUtil.primaryColor,
                         onTap: () {
                           print('DateTime booked : $sendDateTime');
-                          Get.back();
                           SingleDoctorController.to.addNewAppointment(
                             sendDateTime,
                           );

@@ -19,9 +19,11 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
-  static m0(count) => "${count} ملفات تم رفعها ";
+  static m0(DateTime) => "لقد قمت بحجز هذا الموعد بنجاح ${DateTime} !";
 
-  static m1(length) => "برجاء إدخال ${length} حروف على الأقل";
+  static m1(count) => "${count} ملفات تم رفعها ";
+
+  static m2(length) => "برجاء إدخال ${length} حروف على الأقل";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "back" : MessageLookupByLibrary.simpleMessage("رجوع"),
     "birthDate" : MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
     "bloodType" : MessageLookupByLibrary.simpleMessage("فصيلة الدم"),
+    "bookedSuccess" : m0,
     "call" : MessageLookupByLibrary.simpleMessage("إتصل"),
     "canNotBookThis" : MessageLookupByLibrary.simpleMessage("لا يمكنك الحجز فى هذا الوقت أو التاريخ أختر واحداّ اخر"),
     "cancel" : MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -92,7 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "explore" : MessageLookupByLibrary.simpleMessage("إكتشف"),
     "favorite" : MessageLookupByLibrary.simpleMessage("المفضله"),
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
-    "filesUploaded" : m0,
+    "filesUploaded" : m1,
     "filter" : MessageLookupByLibrary.simpleMessage("تحديد البيانات المعروضه"),
     "findDoctor" : MessageLookupByLibrary.simpleMessage("أبحثي عن طبيب"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("الخطوة الأولى (أمام المرآة)"),
@@ -108,7 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general" : MessageLookupByLibrary.simpleMessage("- الشعور العام"),
     "go" : MessageLookupByLibrary.simpleMessage("انطلق"),
     "guest" : MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
-    "hasMinLength" : m1,
+    "hasMinLength" : m2,
     "home" : MessageLookupByLibrary.simpleMessage("الرئيسيه"),
     "hospitals" : MessageLookupByLibrary.simpleMessage("مستشفيات"),
     "httpException" : MessageLookupByLibrary.simpleMessage("تعذر الاتصال بالخادم"),

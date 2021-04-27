@@ -183,5 +183,6 @@
   "doctorData": "Doctor's data",
   "clinics": "Clinics",
   "chooseWeek": "Choose week",
-  "canNotBookThis": "You can't book this Time or date try different one"
+  "canNotBookThis": "You can't book this Time or date try different one",
+  "bookedSuccess": "You Successfully booked {dateTime}!"
 }
