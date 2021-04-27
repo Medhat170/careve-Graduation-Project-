@@ -38,4 +38,8 @@ class ApiPath {
   static const String cancelAppointment = '${url}removeappointment';
   static const String getDoctorClinics = '${url}getdocclinics';
   static const String addNewAppointment = '${url}addappointment';
+  static const String getAllRecord = '${url}getallrecords';
+  static const String addNewRecord = '${url}addrecord';
+  static const String removeRecord = '${url}removerecord';
+  static const String editRecord = '${url}editrecord';
 }

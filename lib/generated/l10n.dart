@@ -1894,6 +1894,76 @@ class S {
       args: [DateTime],
     );
   }
+
+  /// `النتيجه`
+  String get result {
+    return Intl.message(
+      'النتيجه',
+      name: 'result',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `من ماذا تعانى؟`
+  String get suffer {
+    return Intl.message(
+      'من ماذا تعانى؟',
+      name: 'suffer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `قم برفع صوره للتشخيص أو أى تحاليل طبيه`
+  String get diagnosis {
+    return Intl.message(
+      'قم برفع صوره للتشخيص أو أى تحاليل طبيه',
+      name: 'diagnosis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `أضف سجل طبى`
+  String get addRecord {
+    return Intl.message(
+      'أضف سجل طبى',
+      name: 'addRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تعديل السجل`
+  String get editRecord {
+    return Intl.message(
+      'تعديل السجل',
+      name: 'editRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حذف`
+  String get delete {
+    return Intl.message(
+      'حذف',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل تريد حذف هذا السجل؟`
+  String get removeRecord {
+    return Intl.message(
+      'هل تريد حذف هذا السجل؟',
+      name: 'removeRecord',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -50,7 +50,6 @@ class HomeView extends GetView<HomeController> {
                     name: S.of(context).medicalRecords,
                     image: PathUtil.hospitalsImage,
                     onPressed: () => Get.toNamed(Routes.MEDICAL_RECORDS),
-                    notification: 1,
                   ),
                 if (isDoc)
                   Section(

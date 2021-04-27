@@ -184,5 +184,12 @@
   "clinics": "Clinics",
   "chooseWeek": "Choose week",
   "canNotBookThis": "You can't book this Time or date try different one",
-  "bookedSuccess": "You Successfully booked {dateTime}!"
+  "bookedSuccess": "You Successfully booked {dateTime}!",
+  "result": "result",
+  "suffer": "What are you suffering from?",
+  "diagnosis": "Upload image of any diagnosis or any medical analysis",
+  "addRecord": "Add medical record",
+  "editRecord": "Edit record",
+  "delete": "Delete",
+  "removeRecord": "Do you really want to delete this record?"
 }

@@ -1,7 +1,6 @@
 import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/components/waiting.dart';
 import 'package:careve/app/models/all_appointments.dart';
-import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/modules/user_appointments/controllers/user_appointments_controller.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
@@ -53,7 +52,7 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                     Expanded(
                       child: Text(
                         duration == 0
-                            ? appointment?.date?.toTimeOnly()
+                            ? appointment?.date?.toTimeWithAmPmFormat()
                             : appointment?.date?.toLongUserString() ?? '',
                         style: duration == 0
                             ? TextStyle(

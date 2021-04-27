@@ -28,6 +28,7 @@ abstract class Routes {
   static const PATIENTS = _Paths.PATIENTS;
   static const APPOINTMENTS_CLINICS_EDITING =
       _Paths.APPOINTMENTS_CLINICS_EDITING;
+  static const ADD_EDIT_RECORD = _Paths.ADD_EDIT_RECORD;
 }
 
 abstract class _Paths {
@@ -56,4 +57,5 @@ abstract class _Paths {
   static const ADD_AWARENESS = '/add-awareness';
   static const PATIENTS = '/patients';
   static const APPOINTMENTS_CLINICS_EDITING = '/appointments-clinics-editing';
+  static const ADD_EDIT_RECORD = '/add-edit-record';
 }

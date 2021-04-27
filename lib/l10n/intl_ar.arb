@@ -184,5 +184,12 @@
   "clinics": "العيادات",
   "chooseWeek": "أختر أسبوع",
   "canNotBookThis": "لا يمكنك الحجز فى هذا الوقت أو التاريخ أختر واحداّ اخر",
-  "bookedSuccess": "لقد قمت بحجز هذا الموعد بنجاح {DateTime} !"
+  "bookedSuccess": "لقد قمت بحجز هذا الموعد بنجاح {DateTime} !",
+  "result": "النتيجه",
+  "suffer": "من ماذا تعانى؟",
+  "diagnosis": "قم برفع صوره للتشخيص أو أى تحاليل طبيه",
+  "addRecord": "أضف سجل طبى",
+  "editRecord": "تعديل السجل",
+  "delete": "حذف",
+  "removeRecord": "هل تريد حذف هذا السجل؟"
 }

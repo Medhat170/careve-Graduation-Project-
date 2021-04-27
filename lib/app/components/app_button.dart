@@ -126,7 +126,9 @@ class ButtonAppButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
-        onTap();
+        if (onTap != null) {
+          onTap();
+        }
       },
       child: Card(
         color: backgroundColor,

@@ -1,3 +1,4 @@
+import 'package:careve/app/modules/single_doctor/views/add_edit_record_view.dart';
 import 'package:get/get.dart';
 import 'package:careve/app/modules/appointments_clinics_editing/views/appointments_clinics_editing_view.dart';
 import 'package:careve/app/modules/auth/views/auth_view.dart';
@@ -160,6 +161,10 @@ class AppPages {
     GetPage(
       name: _Paths.APPOINTMENTS_CLINICS_EDITING,
       page: () => AppointmentsClinicsEditingView(),
+    ),
+    GetPage(
+      name: _Paths.ADD_EDIT_RECORD,
+      page: () => AddEditRecordView(),
     ),
   ];
 }
