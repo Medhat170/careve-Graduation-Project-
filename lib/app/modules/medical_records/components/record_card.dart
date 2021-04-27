@@ -3,6 +3,7 @@ import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/components/waiting.dart';
 import 'package:careve/app/modules/medical_records/controllers/medical_records_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -33,17 +34,20 @@ class RecordCard extends StatelessWidget {
       horizontal: 15.0,
       vertical: 10.0,
     );
+    final isDoc = AuthService.to.isDoc.value;
     return Obx(
       () => Waiting(
         margin: margin,
         loading: MedicalRecordsController.to.canceledId.value == id,
         child: GestureDetector(
           onTap: () {
-            MedicalRecordsController.to.editingRecord(true);
-            MedicalRecordsController.to.title.text = title;
-            MedicalRecordsController.to.result.text = results;
-            MedicalRecordsController.to.recordId(id);
-            Get.toNamed(Routes.ADD_EDIT_RECORD);
+            if (!isDoc) {
+              MedicalRecordsController.to.editingRecord(true);
+              MedicalRecordsController.to.title.text = title;
+              MedicalRecordsController.to.result.text = results;
+              MedicalRecordsController.to.recordId(id);
+              Get.toNamed(Routes.ADD_EDIT_RECORD);
+            }
           },
           child: Card(
             color: ColorUtil.whiteColor,
@@ -73,24 +77,25 @@ class RecordCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                      CareveButton(
-                        title: S.of(context).delete,
-                        height: 70.w,
-                        width: 200.w,
-                        backgroundColor: Colors.transparent,
-                        borderColor: ColorUtil.primaryColor,
-                        textColor: ColorUtil.primaryColor,
-                        onTap: () => AppUtil.showAlertDialog(
-                          title: S.of(context).areYouSure,
-                          body: S.of(context).removeRecord,
-                          enableCancel: true,
-                          confirmText: S.of(context).confirm,
-                          onConfirm: () =>
-                              MedicalRecordsController.to.deleteRecord(
-                            id,
+                      if (!isDoc)
+                        CareveButton(
+                          title: S.of(context).delete,
+                          height: 70.w,
+                          width: 200.w,
+                          backgroundColor: Colors.transparent,
+                          borderColor: ColorUtil.primaryColor,
+                          textColor: ColorUtil.primaryColor,
+                          onTap: () => AppUtil.showAlertDialog(
+                            title: S.of(context).areYouSure,
+                            body: S.of(context).removeRecord,
+                            enableCancel: true,
+                            confirmText: S.of(context).confirm,
+                            onConfirm: () =>
+                                MedicalRecordsController.to.deleteRecord(
+                              id,
+                            ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                   const SizedBox(
