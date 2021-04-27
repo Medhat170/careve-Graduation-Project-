@@ -1864,6 +1864,26 @@ class S {
       args: [],
     );
   }
+
+  /// `أختر أسبوع`
+  String get chooseWeek {
+    return Intl.message(
+      'أختر أسبوع',
+      name: 'chooseWeek',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `لا يمكنك الحجز فى هذا الوقت أو التاريخ أختر واحداّ اخر`
+  String get canNotBookThis {
+    return Intl.message(
+      'لا يمكنك الحجز فى هذا الوقت أو التاريخ أختر واحداّ اخر',
+      name: 'canNotBookThis',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

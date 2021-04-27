@@ -46,7 +46,8 @@ class AppUtil {
   );
 
   static bool get isLtr => intl.Intl.getCurrentLocale() == 'en';
-
+  static Locale get currentLocale =>
+      AppUtil.isLtr ? const Locale('en', 'US') : const Locale('en', 'US');
   static BorderRadius customBorderRadius = isLtr
       ? const BorderRadius.only(
           topRight: Radius.circular(10.0),
@@ -130,22 +131,24 @@ class AppUtil {
     bool enableCancel = false,
     String cancelText,
     RxBool loading,
+    Widget child,
   }) async {
     return Get.defaultDialog<bool>(
       title: title ?? S.current.alert,
       content: Directionality(
         textDirection: AppUtil.isLtr ? TextDirection.ltr : TextDirection.rtl,
-        child: Text(
-          body ?? '',
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w500,
-            fontSize: 16.0,
-          ),
-          maxLines: 10,
-          softWrap: true,
-          overflow: TextOverflow.ellipsis,
-        ),
+        child: child ??
+            Text(
+              body ?? '',
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize: 16.0,
+              ),
+              maxLines: 10,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+            ),
       ),
       titleStyle: TextStyle(
         color: ColorUtil.errorColor,

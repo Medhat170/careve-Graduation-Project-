@@ -181,5 +181,7 @@
   "imageValidation": "Personal image is required",
   "noData": "There is no data !",
   "doctorData": "Doctor's data",
-  "clinics": "Clinics"
+  "clinics": "Clinics",
+  "chooseWeek": "Choose week",
+  "canNotBookThis": "You can't book this Time or date try different one"
 }

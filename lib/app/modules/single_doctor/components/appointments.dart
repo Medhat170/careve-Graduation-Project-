@@ -62,10 +62,12 @@ class Appointments extends GetView<SingleDoctorController> {
           ...List.generate(
             controller.appointmentsOfCurrentDay?.length,
             (index) {
-              final String currentTime =
+              final DateTime currentTime =
                   controller.appointmentsOfCurrentDay[index];
               return AppointmentItem(
                 date: currentTime,
+                day: controller.currentClinic.value
+                    .days[controller.selectedIndex.value].day,
               );
             },
           ),
