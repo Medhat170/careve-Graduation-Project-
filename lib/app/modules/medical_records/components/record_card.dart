@@ -103,17 +103,22 @@ class RecordCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      if (image != null && image.isNotEmpty)
-                        NetImage(
-                          image,
-                          height: 400.w,
-                        )
-                      else
-                        Image.asset(
-                          PathUtil.articlesImage,
-                          height: 400.w,
-                          fit: BoxFit.cover,
-                        ),
+                      ClipRRect(
+                        borderRadius: AppUtil.borderRadius,
+                        child: image != null && image.isNotEmpty
+                            ? NetImage(
+                                image,
+                                width: 500.w,
+                              )
+                            : Image.asset(
+                                PathUtil.articlesImage,
+                                width: 500.w,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

@@ -4,9 +4,9 @@ import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/medical_records/components/doctor_hint_card.dart';
+import 'package:careve/app/modules/medical_records/components/patient_data.dart';
 import 'package:careve/app/modules/medical_records/components/record_card.dart';
 import 'package:careve/app/routes/app_pages.dart';
-import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
       body: Column(
         children: [
           customAppBar(
-            controller.patientData?.value?.name ?? S.of(context).medicalRecords,
+            S.of(context).medicalRecords,
             enableBack: true,
           ),
           Expanded(
@@ -38,7 +38,12 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
                 } else {
                   return AnimatedListHandler(
                     children: [
-                      if (!AuthService.to.isDoc.value) DoctorHintCard(),
+                      if (!controller.isDoc) DoctorHintCard(),
+                      if (controller.isDoc &&
+                          controller.patientData.value != null)
+                        PatientDataCard(
+                          patientData: controller.patientData?.value,
+                        ),
                       ...controller.allRecords.value.data
                           .map(
                             (record) => RecordCard(
@@ -50,6 +55,9 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
                             ),
                           )
                           .toList(),
+                      const SizedBox(
+                        height: 75.0,
+                      ),
                     ],
                   );
                 }

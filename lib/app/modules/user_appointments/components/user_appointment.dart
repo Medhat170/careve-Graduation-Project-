@@ -73,23 +73,24 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                                 ),
                         ),
                       ),
-                      CareveButton(
-                        title: S.of(context).cancel,
-                        height: 70.w,
-                        width: 200.w,
-                        backgroundColor: Colors.transparent,
-                        borderColor: ColorUtil.primaryColor,
-                        textColor: ColorUtil.primaryColor,
-                        onTap: () => AppUtil.showAlertDialog(
-                          title: S.of(context).areYouSure,
-                          body: S.of(context).cancelAppointment,
-                          enableCancel: true,
-                          confirmText: S.of(context).confirm,
-                          onConfirm: () => controller.cancelAppointment(
-                            appointment?.id,
+                      if (!controller.isDoc)
+                        CareveButton(
+                          title: S.of(context).cancel,
+                          height: 70.w,
+                          width: 200.w,
+                          backgroundColor: Colors.transparent,
+                          borderColor: ColorUtil.primaryColor,
+                          textColor: ColorUtil.primaryColor,
+                          onTap: () => AppUtil.showAlertDialog(
+                            title: S.of(context).areYouSure,
+                            body: S.of(context).cancelAppointment,
+                            enableCancel: true,
+                            confirmText: S.of(context).confirm,
+                            onConfirm: () => controller.cancelAppointment(
+                              appointment?.id,
+                            ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                   if (!isDoc) ...[

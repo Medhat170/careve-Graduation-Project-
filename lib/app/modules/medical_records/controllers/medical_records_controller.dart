@@ -44,7 +44,6 @@ class MedicalRecordsController extends GetxController with BusyMixin, ApiMixin {
         },
       );
       if (response['data'] != null) {
-        //TODO add User Data to UI anf fetch docRecords
         patientData(User()
           ..name = response['data']['name']
           ..email = response['data']['email']
@@ -98,8 +97,10 @@ class MedicalRecordsController extends GetxController with BusyMixin, ApiMixin {
             'patientid': userData?.id,
             'apitoken': userData?.accessToken,
             'result': result.text,
-            'resultasimage': uploadedImage?.value ?? '',
             'type': 'mobile',
+          },
+          files: {
+            'resultasimage': uploadedImage?.value,
           },
         );
         if (response['data'] != null) {
@@ -158,8 +159,10 @@ class MedicalRecordsController extends GetxController with BusyMixin, ApiMixin {
             'id': recordId,
             'apitoken': userData?.accessToken,
             'result': result.text,
-            'resultasimage': uploadedImage?.value ?? '',
             'type': 'mobile',
+          },
+          files: {
+            'resultasimage': uploadedImage?.value,
           },
         );
         if (response['data'] != null) {
