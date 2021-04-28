@@ -57,7 +57,7 @@ class UserProfileView extends GetView<UserProfileController> {
               iconData: FontAwesomeIcons.hospital,
               title: S.of(context).hospitals,
               iconColor: Colors.brown,
-              onTap: () => AppUtil.openMapsSheet(),
+              onTap: () => AppUtil.openMap(),
             ),
           UserFeature(
             iconData: FontAwesomeIcons.cogs,

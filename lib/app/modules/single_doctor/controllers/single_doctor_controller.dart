@@ -1,6 +1,7 @@
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/all_doctors.dart';
+import 'package:careve/app/models/clinic_model.dart' as address;
 import 'package:careve/app/models/doctor_clinics_appointments.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
@@ -23,6 +24,12 @@ class SingleDoctorController extends GetxController
   final doctorClinics = Rx<DoctorClinicsAppointments>();
   final currentClinic = Rx<Clinic>();
   final dateBooked = Rx<DateTime>();
+
+  List<String> get doctorPhones =>
+      doctorClinics?.value?.data?.map((e) => e?.mobile)?.toList();
+
+  List<address.Address> get doctorAddresses =>
+      doctorClinics?.value?.data?.map((e) => e?.address)?.toList();
 
   List<DateTime> get appointmentsOfCurrentDay {
     final currentDay = currentClinic.value.days[selectedIndex.value];

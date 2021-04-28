@@ -128,7 +128,7 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                           title: S.of(context).go,
                           height: 70.w,
                           width: 200.w,
-                          onTap: () => AppUtil.openMapsSheet(
+                          onTap: () => AppUtil.openMap(
                             latitude: appointment?.address?.lat,
                             longitude: appointment?.address?.long,
                           ),

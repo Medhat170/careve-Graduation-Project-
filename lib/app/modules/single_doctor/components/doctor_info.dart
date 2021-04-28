@@ -117,42 +117,46 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                width: 7.5,
-                              ),
-                              Expanded(
-                                child: CareveButton.icon(
-                                  backgroundColor: Colors.white,
-                                  icon: const Icon(
-                                    FontAwesomeIcons.phone,
-                                    size: 22.0,
-                                    color: ColorUtil.primaryColor,
-                                  ),
-                                  onTap: () => AppUtil.callPhone(
-                                    context,
-                                    phoneNumbers: [
-                                      '01020304050',
-                                    ],
+                              if (controller?.doctorPhones != null &&
+                                  controller.doctorPhones.isNotEmpty) ...[
+                                const SizedBox(
+                                  width: 7.5,
+                                ),
+                                Expanded(
+                                  child: CareveButton.icon(
+                                    backgroundColor: Colors.white,
+                                    icon: const Icon(
+                                      FontAwesomeIcons.phone,
+                                      size: 22.0,
+                                      color: ColorUtil.primaryColor,
+                                    ),
+                                    onTap: () => AppUtil.callPhone(
+                                      context,
+                                      phoneNumbers: controller.doctorPhones,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 7.5,
-                              ),
-                              Expanded(
-                                child: CareveButton.icon(
-                                  backgroundColor: Colors.white,
-                                  icon: const Icon(
-                                    FontAwesomeIcons.locationArrow,
-                                    size: 22.0,
-                                    color: ColorUtil.primaryColor,
-                                  ),
-                                  onTap: () => AppUtil.openMapsSheet(
-                                    latitude: 31.22222222,
-                                    longitude: 31.322332323,
+                              ],
+                              if (controller?.doctorAddresses != null &&
+                                  controller.doctorAddresses.isNotEmpty) ...[
+                                const SizedBox(
+                                  width: 7.5,
+                                ),
+                                Expanded(
+                                  child: CareveButton.icon(
+                                    backgroundColor: Colors.white,
+                                    icon: const Icon(
+                                      FontAwesomeIcons.locationArrow,
+                                      size: 22.0,
+                                      color: ColorUtil.primaryColor,
+                                    ),
+                                    onTap: () => AppUtil.openMapsSheet(
+                                      context,
+                                      addresses: controller?.doctorAddresses,
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ],
                           ),
                         ),

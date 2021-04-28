@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
@@ -46,6 +48,7 @@ class AppUtil {
   );
 
   static bool get isLtr => intl.Intl.getCurrentLocale() == 'en';
+
   static Locale get currentLocale =>
       AppUtil.isLtr ? const Locale('en', 'US') : const Locale('en', 'US');
   static BorderRadius customBorderRadius = isLtr
@@ -217,7 +220,7 @@ class AppUtil {
     return files;
   }
 
-  static Future<void> openMapsSheet({
+  static Future<void> openMap({
     double latitude,
     double longitude,
   }) async {
@@ -315,6 +318,102 @@ class AppUtil {
                     print(e.toString());
                   }
                 },
+              );
+            },
+          ),
+        ),
+      );
+    }
+  }
+
+  static Future<void> openMapsSheet(
+    BuildContext context, {
+    @required List<Address> addresses,
+  }) async {
+    if (Platform.isIOS) {
+      showCupertinoModalPopup<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoActionSheet(
+            actions: <Widget>[
+              ...addresses.map((e) {
+                final url =
+                    'https://www.google.com/maps/search/?api=1&query=${e.lat},${e.long}';
+                return CupertinoActionSheetAction(
+                  onPressed: () async {
+                    try {
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      }
+                    } catch (e) {
+                      print(e.toString());
+                    }
+                  },
+                  child: Text(
+                    e?.formattedAddress ?? '',
+                    style: const TextStyle(
+                      color: ColorUtil.primaryColor,
+                    ),
+                  ),
+                );
+              }).toList(),
+            ],
+            cancelButton: CupertinoActionSheetAction(
+              isDefaultAction: true,
+              onPressed: () {
+                Get.back(result: true);
+              },
+              child: Text(
+                S.current.cancel,
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      await Get.bottomSheet(
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.0),
+              topRight: Radius.circular(10.0),
+            ),
+          ),
+          child: ListView.builder(
+            itemCount: addresses.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final url =
+                  'https://www.google.com/maps/search/?api=1&query=${addresses[index].lat},${addresses[index].long}';
+              return Column(
+                children: [
+                  ListTile(
+                    title: Text(
+                      addresses[index].formattedAddress,
+                      style: const TextStyle(
+                        color: ColorUtil.primaryColor,
+                      ),
+                    ),
+                    leading: const Icon(
+                      FontAwesomeIcons.mapMarkerAlt,
+                      color: ColorUtil.primaryColor,
+                      size: 24.0,
+                    ),
+                    onTap: () async {
+                      try {
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        }
+                      } catch (e) {
+                        print(e.toString());
+                      }
+                    },
+                  ),
+                  const Divider(
+                    color: ColorUtil.mediumGrey,
+                  ),
+                ],
               );
             },
           ),
