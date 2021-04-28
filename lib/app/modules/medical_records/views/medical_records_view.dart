@@ -21,7 +21,7 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
       body: Column(
         children: [
           customAppBar(
-            controller.patientName.value ?? S.of(context).medicalRecords,
+            controller.patientData?.value?.name ?? S.of(context).medicalRecords,
             enableBack: true,
           ),
           Expanded(
@@ -29,10 +29,11 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
               () {
                 if (controller.isBusy.value) {
                   return Loading();
-                } else if (controller.allRecords?.value == null) {
+                } else if (controller.allRecords?.value == null ||
+                    controller.allRecords.value.data.isEmpty) {
                   return EmptyWidget(
                     hint: controller.errorMessage.value,
-                    refreshFunction: controller.fetchAllRecords,
+                    extraFunction: controller.fetchAllRecords,
                   );
                 } else {
                   return AnimatedListHandler(
@@ -57,22 +58,24 @@ class MedicalRecordsView extends GetView<MedicalRecordsController>
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: ColorUtil.primaryColor,
-        elevation: 10.0,
-        icon: const Icon(
-          Icons.add,
-          color: ColorUtil.whiteColor,
-          size: 18.0,
-        ),
-        onPressed: () => Get.toNamed(Routes.ADD_EDIT_RECORD),
-        label: Text(
-          S.of(context).addRecord,
-          style: const TextStyle(
-            color: ColorUtil.whiteColor,
-          ),
-        ),
-      ),
+      floatingActionButton: !controller.isDoc
+          ? FloatingActionButton.extended(
+              backgroundColor: ColorUtil.primaryColor,
+              elevation: 10.0,
+              icon: const Icon(
+                Icons.add,
+                color: ColorUtil.whiteColor,
+                size: 18.0,
+              ),
+              onPressed: () => Get.toNamed(Routes.ADD_EDIT_RECORD),
+              label: Text(
+                S.of(context).addRecord,
+                style: const TextStyle(
+                  color: ColorUtil.whiteColor,
+                ),
+              ),
+            )
+          : null,
     );
   }
 }

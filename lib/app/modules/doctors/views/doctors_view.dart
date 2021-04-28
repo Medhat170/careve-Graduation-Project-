@@ -22,7 +22,7 @@ class DoctorsView extends GetView<DoctorsController> {
           } else if (allDoctors == null || allDoctors.isEmpty) {
             body = EmptyWidget(
               hint: controller.errorMessage.value,
-              refreshFunction: controller.fetchAllDoctors,
+              extraFunction: controller.fetchAllDoctors,
             );
           } else {
             body = AnimatedListHandler(

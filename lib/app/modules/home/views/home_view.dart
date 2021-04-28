@@ -49,7 +49,10 @@ class HomeView extends GetView<HomeController> {
                   Section(
                     name: S.of(context).medicalRecords,
                     image: PathUtil.hospitalsImage,
-                    onPressed: () => Get.toNamed(Routes.MEDICAL_RECORDS),
+                    onPressed: () => Get.toNamed(
+                      Routes.MEDICAL_RECORDS,
+                      arguments: AuthService.to.userId,
+                    ),
                   ),
                 if (isDoc)
                   Section(

@@ -38,7 +38,9 @@ class UserAppointmentsView extends GetView<UserAppointmentsController>
                   } else if (allDoctors == null || allDoctors.isEmpty) {
                     return EmptyWidget(
                       hint: controller.errorMessage.value,
-                      refreshFunction: controller.fetchAllAppointments,
+                      extraFunction: controller.isDoc
+                          ? controller.fetchAllDoctorAppointments
+                          : controller.fetchAllAppointments,
                     );
                   } else {
                     return AnimatedListHandler(

@@ -9,11 +9,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptyWidget extends StatelessWidget {
   final String hint;
-  final Function refreshFunction;
+  final Function extraFunction;
 
   const EmptyWidget({
     this.hint,
-    this.refreshFunction,
+    this.extraFunction,
   });
 
   @override
@@ -56,7 +56,7 @@ class EmptyWidget extends StatelessWidget {
             const SizedBox(
               height: 30.0,
             ),
-            if (refreshFunction != null && hint == S.current.socketException)
+            if (extraFunction != null && hint == S.current.socketException)
               CareveButton.icon(
                 width: 750.w,
                 icon: const Icon(
@@ -65,7 +65,7 @@ class EmptyWidget extends StatelessWidget {
                   size: 22.0,
                 ),
                 title: S.of(context).retry,
-                onTap: refreshFunction,
+                onTap: extraFunction,
               ),
           ],
         ),

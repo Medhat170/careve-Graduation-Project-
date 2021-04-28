@@ -6,7 +6,7 @@ class MedicalRecordsBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<MedicalRecordsController>(
-      MedicalRecordsController(Get.arguments as Map<String, dynamic>),
+      MedicalRecordsController(int.tryParse(Get.arguments.toString())),
     );
   }
 }

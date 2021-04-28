@@ -33,7 +33,7 @@ class SingleDoctorView extends GetView<SingleDoctorController>
                         controller.doctorClinics.value.data.isEmpty) {
                       return EmptyWidget(
                         hint: controller.errorMessage.value,
-                        refreshFunction: controller.fetchDoctorClinics,
+                        extraFunction: controller.fetchDoctorClinics,
                       );
                     } else {
                       return Appointments();

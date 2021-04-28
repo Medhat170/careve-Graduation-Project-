@@ -24,6 +24,8 @@ class UserAppointmentsController extends GetxController
       )
       .toList();
 
+  bool get isDoc => AuthService.to.isDoc?.value ?? false;
+
   List<Appointment> get later => allAppointments
       .where(
         (element) => element.date.difference(DateTime.now()).inDays > 2,
@@ -43,6 +45,27 @@ class UserAppointmentsController extends GetxController
         ApiPath.getPatientAppointments,
         body: {
           'patientid': userData?.id,
+          'apitoken': userData?.accessToken,
+          'type': 'mobile',
+        },
+      );
+      allAppointments(AllAppointments.fromJson(response).data);
+      endBusySuccess();
+    } catch (error) {
+      endBusyError(
+        error,
+        showDialog: errorMessage.value != S.current.socketException,
+      );
+    }
+  }
+
+  Future<void> fetchAllDoctorAppointments() async {
+    try {
+      final userData = AuthService.to.user?.value;
+      startBusy();
+      final response = await post(
+        ApiPath.getDoctorAppointments,
+        body: {
           'apitoken': userData?.accessToken,
           'type': 'mobile',
         },
@@ -90,7 +113,11 @@ class UserAppointmentsController extends GetxController
 
   @override
   void onReady() {
-    fetchAllAppointments();
+    if (isDoc) {
+      fetchAllDoctorAppointments();
+    } else {
+      fetchAllAppointments();
+    }
     super.onReady();
   }
 }

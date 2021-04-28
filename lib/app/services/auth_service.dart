@@ -300,6 +300,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     user.value = cachedUser;
     if (user.value.nationalId != null) {
       isDoc(true);
+      print('User is a doctor');
     }
     return true;
   }
@@ -329,6 +330,9 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       if (response != null) {
         user(await CacheService.to.userRepo.updateUserCache(response));
         CacheService.to.settingsRepo.setCachedUserId(user.value.id);
+        name.clear();
+        password.clear();
+        confirmedPassword.clear();
         Get.offAllNamed(Routes.HOME);
       }
     } catch (error) {

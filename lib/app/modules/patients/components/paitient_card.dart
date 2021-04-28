@@ -21,10 +21,7 @@ class PatientCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => Get.toNamed(
         Routes.MEDICAL_RECORDS,
-        arguments: {
-          'id': id,
-          'name': name,
-        },
+        arguments: id,
       ),
       child: Card(
         color: Colors.white,

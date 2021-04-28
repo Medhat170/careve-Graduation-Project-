@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/all_records.dart';
+import 'package:careve/app/models/user.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
@@ -17,16 +18,49 @@ class MedicalRecordsController extends GetxController with BusyMixin, ApiMixin {
   final uploadedImage = Rx<File>();
   final isLoading = false.obs;
   final canceledId = RxInt();
-  final patientName = RxString();
-  final patientId = RxInt();
+  final patientData = Rx<User>();
   final recordId = RxInt();
   final editingRecord = false.obs;
   final allRecords = Rx<AllRecords>();
-  final Map<String, dynamic> data;
 
-  MedicalRecordsController(this.data);
+  final int patientId;
+
+  MedicalRecordsController(this.patientId);
 
   static MedicalRecordsController get to => Get.find();
+
+  bool get isDoc => AuthService.to.isDoc?.value ?? false;
+
+  Future<void> fetchPatientData() async {
+    try {
+      final userData = AuthService.to.user?.value;
+      startBusy();
+      final response = await post(
+        ApiPath.getPatientData,
+        body: {
+          'patientid': patientId,
+          'apitoken': userData?.accessToken,
+          'type': 'mobile',
+        },
+      );
+      if (response['data'] != null) {
+        //TODO add User Data to UI anf fetch docRecords
+        patientData(User()
+          ..name = response['data']['name']
+          ..email = response['data']['email']
+          ..image = response['data']['image']
+          ..bloodType = response['data']['bloodtype']
+          ..id = response['data']['id'].toString());
+        await fetchAllRecords();
+      }
+      endBusySuccess();
+    } catch (error) {
+      endBusyError(
+        error,
+        showDialog: errorMessage.value != S.current.socketException,
+      );
+    }
+  }
 
   Future<void> fetchAllRecords() async {
     try {
@@ -35,7 +69,7 @@ class MedicalRecordsController extends GetxController with BusyMixin, ApiMixin {
       final response = await post(
         ApiPath.getAllRecord,
         body: {
-          'patientid': patientId?.value ?? userData?.id,
+          'patientid': patientId ?? userData?.id,
           'apitoken': userData?.accessToken,
           'type': 'mobile',
         },
@@ -153,11 +187,11 @@ class MedicalRecordsController extends GetxController with BusyMixin, ApiMixin {
 
   @override
   void onReady() {
-    if (data != null) {
-      patientId(data['id']);
-      patientName(data['name']);
+    if (patientId != null && isDoc) {
+      fetchPatientData();
+    } else {
+      fetchAllRecords();
     }
-    fetchAllRecords();
     super.onReady();
   }
 
