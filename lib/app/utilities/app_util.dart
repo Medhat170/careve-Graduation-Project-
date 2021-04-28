@@ -10,6 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppUtil {
@@ -178,9 +179,7 @@ class AppUtil {
         InkWell(
           onTap: () {
             Get.back(result: true);
-            if (onConfirm != null) {
-              onConfirm();
-            }
+            onConfirm?.call();
           },
           child: Text(
             confirmText ?? S.current.done,
@@ -438,5 +437,46 @@ class AppUtil {
       print('Geolocator error : (${e.toString()})');
     }
     return position;
+  }
+
+  static Future<int> showRateDialog(String docName) async {
+    final rate = RxDouble();
+    await showAlertDialog(
+      title: S.current.rating,
+      child: Column(
+        children: [
+          Text(
+            S.current.docNameRating(docName ?? '-'),
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 16.0,
+            ),
+            maxLines: 10,
+            softWrap: true,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Obx(
+            () => Directionality(
+              textDirection: TextDirection.ltr,
+              child: SmoothStarRating(
+                allowHalfRating: false,
+                onRated: (v) {
+                  rate(v);
+                },
+                rating: rate?.value ?? 0.0,
+                size: 40.0,
+                color: Colors.amber,
+                borderColor: ColorUtil.mediumGrey,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    return rate?.value?.round();
   }
 }

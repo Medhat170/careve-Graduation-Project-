@@ -1964,6 +1964,26 @@ class S {
       args: [],
     );
   }
+
+  /// `تقييم`
+  String get rating {
+    return Intl.message(
+      'تقييم',
+      name: 'rating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `قيم د/ {docName}`
+  String docNameRating(Object docName) {
+    return Intl.message(
+      'قيم د/ $docName',
+      name: 'docNameRating',
+      desc: '',
+      args: [docName],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

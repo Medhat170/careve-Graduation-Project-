@@ -9,10 +9,10 @@ import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DoctorInfo extends GetView<SingleDoctorController> {
   @override
@@ -78,17 +78,29 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                       //   height: 5.0,
                       // ),
                       if (doctor?.rating != null)
-                        RatingBar(
-                          rating: double.tryParse(
-                              doctor?.rating?.toString() ?? '0'),
-                          icon: const Icon(
-                            Icons.star,
-                            size: 16,
-                            color: Colors.grey,
-                          ),
-                          spacing: 2.0,
-                          size: 5,
-                          color: Colors.amber,
+                        Row(
+                          children: [
+                            SmoothStarRating(
+                              allowHalfRating: false,
+                              rating: double.tryParse(
+                                  doctor?.rating?.toString() ?? '0'),
+                              size: 16.0,
+                              isReadOnly: true,
+                              color: Colors.amber,
+                              borderColor: ColorUtil.mediumGrey,
+                            ),
+                            const SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              '( ${doctor?.raters ?? 0} )',
+                              style: TextStyle(
+                                fontSize: 36.sp,
+                                color: ColorUtil.mediumGrey,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
                         ),
                       const SizedBox(
                         height: 40.0,

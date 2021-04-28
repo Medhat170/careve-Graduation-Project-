@@ -30,7 +30,7 @@ class UserAppointment extends GetView<UserAppointmentsController> {
     );
     return Obx(
       () => Waiting(
-        loading: (appointment?.id ?? -1) == controller.cancelledId?.value,
+        loading: (appointment?.id ?? -1) == controller.loadingId?.value,
         margin: margin,
         borderRadius: AppUtil.borderRadius,
         child: GestureDetector(
@@ -88,6 +88,10 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                             confirmText: S.of(context).confirm,
                             onConfirm: () => controller.cancelAppointment(
                               appointment?.id,
+                              isFinished:
+                                  appointment?.date?.isBefore(DateTime.now()),
+                              docId: appointment?.docId,
+                              docName: appointment?.docName,
                             ),
                           ),
                         ),

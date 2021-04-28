@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(DateTime) => "لقد قمت بحجز هذا الموعد بنجاح ${DateTime} !";
 
-  static m1(count) => "${count} ملفات تم رفعها ";
+  static m1(docName) => "قيم د/ ${docName}";
 
-  static m2(length) => "برجاء إدخال ${length} حروف على الأقل";
+  static m2(count) => "${count} ملفات تم رفعها ";
+
+  static m3(length) => "برجاء إدخال ${length} حروف على الأقل";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -81,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "diagnosis" : MessageLookupByLibrary.simpleMessage("قم برفع صوره للتشخيص أو أى تحاليل طبيه"),
     "didNotFind" : MessageLookupByLibrary.simpleMessage("لم نعثر على اى بيانات"),
     "discountCard" : MessageLookupByLibrary.simpleMessage("بطاقة الخصم"),
+    "docNameRating" : m1,
     "doctor" : MessageLookupByLibrary.simpleMessage("دكتور/ه"),
     "doctorData" : MessageLookupByLibrary.simpleMessage("بيانات الطبيب"),
     "doctorHint" : MessageLookupByLibrary.simpleMessage("لا تقلق ! الاّن يمكنك العثور على أطباء حولك والمتابعه معهم والتواصل أيضا فى أى وقت"),
@@ -99,7 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "explore" : MessageLookupByLibrary.simpleMessage("إكتشف"),
     "favorite" : MessageLookupByLibrary.simpleMessage("المفضله"),
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
-    "filesUploaded" : m1,
+    "filesUploaded" : m2,
     "filter" : MessageLookupByLibrary.simpleMessage("تحديد البيانات المعروضه"),
     "findDoctor" : MessageLookupByLibrary.simpleMessage("أبحثي عن طبيب"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("الخطوة الأولى (أمام المرآة)"),
@@ -115,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general" : MessageLookupByLibrary.simpleMessage("- الشعور العام"),
     "go" : MessageLookupByLibrary.simpleMessage("انطلق"),
     "guest" : MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
-    "hasMinLength" : m2,
+    "hasMinLength" : m3,
     "home" : MessageLookupByLibrary.simpleMessage("الرئيسيه"),
     "hospitals" : MessageLookupByLibrary.simpleMessage("مستشفيات"),
     "httpException" : MessageLookupByLibrary.simpleMessage("تعذر الاتصال بالخادم"),
@@ -162,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile" : MessageLookupByLibrary.simpleMessage("الملف الشخصى"),
     "qa" : MessageLookupByLibrary.simpleMessage("سؤال و جواب"),
     "question" : MessageLookupByLibrary.simpleMessage("السؤال"),
+    "rating" : MessageLookupByLibrary.simpleMessage("تقييم"),
     "record" : MessageLookupByLibrary.simpleMessage("السجل"),
     "removeRecord" : MessageLookupByLibrary.simpleMessage("هل تريد حذف هذا السجل؟"),
     "resetPasswordDesc" : MessageLookupByLibrary.simpleMessage("من فضلك أدخل كلمة المرور الجديده لإعادة ضبتها"),

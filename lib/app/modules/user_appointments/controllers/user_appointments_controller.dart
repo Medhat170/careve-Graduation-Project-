@@ -2,6 +2,7 @@ import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/all_appointments.dart';
 import 'package:careve/app/services/auth_service.dart';
+import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:get/get.dart';
@@ -33,7 +34,7 @@ class UserAppointmentsController extends GetxController
       .toList();
 
   final allAppointments = RxList<Appointment>([]);
-  final cancelledId = RxInt();
+  final loadingId = RxInt();
 
   static UserAppointmentsController get to => Get.find();
 
@@ -80,10 +81,16 @@ class UserAppointmentsController extends GetxController
     }
   }
 
-  Future<void> cancelAppointment(int appointmentId) async {
+  Future<void> cancelAppointment(
+    int appointmentId, {
+    bool isFinished = false,
+    int docId,
+    String docName,
+  }) async {
+    print('Appointment finished : $isFinished');
     try {
       final userData = AuthService.to.user?.value;
-      cancelledId(appointmentId);
+      loadingId(appointmentId);
       final response = await post(
         ApiPath.cancelAppointment,
         body: {
@@ -95,8 +102,14 @@ class UserAppointmentsController extends GetxController
       if (response['data'] != null) {
         final int success = int.tryParse(response['data'].toString());
         if (success == 1) {
+          if (isFinished) {
+            final int rate = await AppUtil.showRateDialog(docName);
+            if (rate != null) {
+              await rateDoctor(docId, rate);
+            }
+          }
           allAppointments.removeWhere(
-            (element) => element.id == cancelledId.value,
+            (element) => element.id == loadingId.value,
           );
         } else {
           throw S.current.formatException;
@@ -108,7 +121,28 @@ class UserAppointmentsController extends GetxController
         showDialog: errorMessage.value != S.current.socketException,
       );
     }
-    cancelledId.nil();
+    loadingId.nil();
+  }
+
+  Future<void> rateDoctor(int docId, int rating) async {
+    try {
+      final userData = AuthService.to.user?.value;
+      final response = await post(
+        ApiPath.rateDoc,
+        body: {
+          'rating': rating,
+          'docid': docId,
+          'apitoken': userData?.accessToken,
+          'type': 'mobile',
+        },
+      );
+      if (response['data'] != null) {}
+    } catch (error) {
+      endBusyError(
+        error,
+        showDialog: errorMessage.value != S.current.socketException,
+      );
+    }
   }
 
   @override

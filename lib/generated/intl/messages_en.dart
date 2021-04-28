@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(DateTime) => "You Successfully booked ${DateTime}!";
 
-  static m1(count) => "${count} Files uploaded";
+  static m1(docName) => "Rate Dr : ${docName}";
 
-  static m2(length) => "Please insert ${length} digit as least";
+  static m2(count) => "${count} Files uploaded";
+
+  static m3(length) => "Please insert ${length} digit as least";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -81,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "diagnosis" : MessageLookupByLibrary.simpleMessage("Upload image of any diagnosis or any medical analysis"),
     "didNotFind" : MessageLookupByLibrary.simpleMessage("We did\'t find any data"),
     "discountCard" : MessageLookupByLibrary.simpleMessage("Discount Card"),
+    "docNameRating" : m1,
     "doctor" : MessageLookupByLibrary.simpleMessage("Doctor"),
     "doctorData" : MessageLookupByLibrary.simpleMessage("Doctor\'s data"),
     "doctorHint" : MessageLookupByLibrary.simpleMessage("Do not be! now you can find best doctors around you and follow up with them any time and chat too"),
@@ -99,7 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "explore" : MessageLookupByLibrary.simpleMessage("Explore"),
     "favorite" : MessageLookupByLibrary.simpleMessage("Favorite"),
     "favourite" : MessageLookupByLibrary.simpleMessage("Favourite"),
-    "filesUploaded" : m1,
+    "filesUploaded" : m2,
     "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
     "findDoctor" : MessageLookupByLibrary.simpleMessage("Find Doctor"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("The first step (in front of the mirror)"),
@@ -115,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general" : MessageLookupByLibrary.simpleMessage("- Feeling of general"),
     "go" : MessageLookupByLibrary.simpleMessage("Go"),
     "guest" : MessageLookupByLibrary.simpleMessage("Continue as a guest"),
-    "hasMinLength" : m2,
+    "hasMinLength" : m3,
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
     "hospitals" : MessageLookupByLibrary.simpleMessage("Hospitals"),
     "httpException" : MessageLookupByLibrary.simpleMessage("Unable to contact the server"),
@@ -162,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "qa" : MessageLookupByLibrary.simpleMessage("Question&Answer"),
     "question" : MessageLookupByLibrary.simpleMessage("Question"),
+    "rating" : MessageLookupByLibrary.simpleMessage("Rating"),
     "record" : MessageLookupByLibrary.simpleMessage("Record"),
     "removeRecord" : MessageLookupByLibrary.simpleMessage("Do you really want to delete this record?"),
     "resetPasswordDesc" : MessageLookupByLibrary.simpleMessage("Please enter your new password to reset it"),

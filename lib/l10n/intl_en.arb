@@ -191,5 +191,7 @@
   "addRecord": "Add medical record",
   "editRecord": "Edit record",
   "delete": "Delete",
-  "removeRecord": "Do you really want to delete this record?"
+  "removeRecord": "Do you really want to delete this record?",
+  "rating":"Rating",
+  "docNameRating":"Rate Dr : {DocName}"
 }

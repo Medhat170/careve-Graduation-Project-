@@ -191,5 +191,7 @@
   "addRecord": "أضف سجل طبى",
   "editRecord": "تعديل السجل",
   "delete": "حذف",
-  "removeRecord": "هل تريد حذف هذا السجل؟"
+  "removeRecord": "هل تريد حذف هذا السجل؟",
+  "rating":"تقييم",
+  "docNameRating":"قيم د/ {docName}"
 }

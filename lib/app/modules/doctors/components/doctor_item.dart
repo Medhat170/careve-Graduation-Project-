@@ -6,8 +6,8 @@ import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DoctorItem extends StatelessWidget {
   final Doctor doctor;
@@ -82,26 +82,23 @@ class DoctorItem extends StatelessWidget {
                     // ),
                     if (doctor?.rating != null)
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          RatingBar(
-                            rating: double.tryParse(doctor?.rating?.toString()),
-                            icon: const Icon(
-                              Icons.star,
-                              size: 16,
-                              color: Colors.grey,
-                            ),
-                            spacing: 5.0,
-                            size: 3,
+                          SmoothStarRating(
+                            allowHalfRating: false,
+                            rating: double.tryParse(
+                                doctor?.rating?.toString() ?? '0'),
+                            size: 12.0,
+                            isReadOnly: true,
                             color: Colors.amber,
+                            borderColor: ColorUtil.mediumGrey,
                           ),
                           const SizedBox(
-                            width: 20.0,
+                            width: 10.0,
                           ),
                           Text(
-                            '(${doctor?.raters ?? 0})',
+                            '( ${doctor?.raters ?? 0} )',
                             style: TextStyle(
-                              fontSize: 30.sp,
+                              fontSize: 32.sp,
                               color: ColorUtil.mediumGrey,
                               fontWeight: FontWeight.w600,
                             ),
