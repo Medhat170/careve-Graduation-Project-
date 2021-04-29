@@ -573,6 +573,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<void> addClinics() async {
+    print(json.encode({'clinics': userClinics?.value?.clinics}));
     try {
       clinicLoading(true);
       final Map<String, dynamic> response = await post(
