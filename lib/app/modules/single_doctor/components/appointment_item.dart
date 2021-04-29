@@ -1,6 +1,7 @@
 import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/components/waiting.dart';
 import 'package:careve/app/modules/single_doctor/controllers/single_doctor_controller.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class AppointmentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final allLike = SingleDoctorController.to.allLike(day);
-    final String actualDay = SingleDoctorController.to.actualDay(day);
+    final String actualDay = AuthService.to.actualDay(day);
     return GestureDetector(
       onTap: () {
         AppUtil.showAlertDialog(

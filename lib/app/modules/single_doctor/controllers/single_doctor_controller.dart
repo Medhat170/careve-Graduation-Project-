@@ -61,34 +61,6 @@ class SingleDoctorController extends GetxController
     return allDateTimes.map((dt) => dt).toList();
   }
 
-  String actualDay(String day) {
-    final List<String> ref = [
-      'SAT',
-      'SUN',
-      'MON',
-      'TUE',
-      'WED',
-      'THU',
-      'FRI',
-    ];
-
-    final List<String> intlDays = [
-      S.current.sat,
-      S.current.sun,
-      S.current.mon,
-      S.current.tue,
-      S.current.wed,
-      S.current.thu,
-      S.current.fri,
-    ];
-    final int index = ref.indexWhere((element) => element == day.toUpperCase());
-    if (index != null && index != -1) {
-      return intlDays[index];
-    } else {
-      return day;
-    }
-  }
-
   static SingleDoctorController get to => Get.find();
 
   @override
