@@ -610,17 +610,30 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       if (response != null) {
         final clinicsData =
             clinicWeb.DoctorClinicsAppointments.fromJson(response);
-        userClinics.update((val) {
-          val.clinics.assignAll(
-            clinicsData.data.map(
-              (e) => Clinic(
-                days: e.days,
-                address: e.address,
-                phone: e.mobile,
+        if (clinicsData?.data == null || clinicsData.data.isEmpty) {
+          userClinics.update((val) {
+            val.clinics = [
+              Clinic(
+                address: Address(
+                  title: 'Default clinic',
+                ),
+                days: [],
               ),
-            ),
-          );
-        });
+            ];
+          });
+        } else {
+          userClinics.update((val) {
+            val.clinics.assignAll(
+              clinicsData.data.map(
+                (e) => Clinic(
+                  days: e.days,
+                  address: e.address,
+                  phone: e.mobile,
+                ),
+              ),
+            );
+          });
+        }
       }
     } catch (error) {
       endBusyError(
