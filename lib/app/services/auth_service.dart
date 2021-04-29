@@ -161,7 +161,6 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             userClinics.value.clinics[clinicIndex].days[dayIndex];
         if (startTime != null) {
           targetDay.startTime = startTime.toTimeOnly();
-          print(targetDay.startTime);
         } else if (endTime != null) {
           final now = DateTime.now();
           final int startHour =
@@ -309,10 +308,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
     print('User is auth!');
     user.value = cachedUser;
-    if (user.value.nationalId != null) {
-      isDoc(true);
-      print('User is a doctor');
-    }
+    isDoc(user.value.nationalId != null);
     return true;
   }
 
