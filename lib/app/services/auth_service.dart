@@ -266,7 +266,14 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
 
   void onStepCancel() {
     if (currentStep.value > 0) {
-      goTo(currentStep.value - 1);
+      if (!dataResponse.isBlank || dataResponse.isNotEmpty) {
+        signUP(false);
+        isDoc(true);
+        password.clear();
+        Get.back();
+      } else {
+        goTo(currentStep.value - 1);
+      }
     }
     stepStates[currentStep.value] = StepState.editing;
     stepStates[currentStep.value + 1] = StepState.disabled;
@@ -337,9 +344,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         name.clear();
         password.clear();
         confirmedPassword.clear();
-        if (user.value.nationalId != null) {
-          isDoc(true);
-        }
+        isDoc(user.value.nationalId != null);
         Get.offAllNamed(Routes.HOME);
       }
     } catch (error) {

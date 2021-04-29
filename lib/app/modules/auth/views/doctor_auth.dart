@@ -59,7 +59,10 @@ class DoctorAuthView extends GetView<AuthService> {
                                   InkWell(
                                     onTap: onStepCancel,
                                     child: Text(
-                                      S.of(context).back,
+                                      !controller.dataResponse.isBlank ||
+                                              controller.dataResponse.isNotEmpty
+                                          ? S.of(context).skip
+                                          : S.of(context).back,
                                       style: TextStyle(
                                         color: ColorUtil.errorColor,
                                         fontSize: 36.sp,

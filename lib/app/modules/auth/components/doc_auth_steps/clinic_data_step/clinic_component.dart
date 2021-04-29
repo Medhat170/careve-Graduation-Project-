@@ -40,7 +40,9 @@ class ClinicComponent extends StatelessWidget {
                     text: AuthService.to.userClinics.value?.clinics[index]
                         ?.address?.formattedAddress,
                   ),
-                  loading: true,
+                  loading: AuthService.to.userClinics.value?.clinics[index]
+                          ?.address?.formattedAddress !=
+                      null,
                   onChanged: (String value) {
                     AuthService.to.changeAddress(
                       index,
