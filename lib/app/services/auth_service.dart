@@ -309,10 +309,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
     print('User is auth!');
     user.value = cachedUser;
-    if (user.value.nationalId != null) {
-      isDoc(true);
-      print('User is a doctor');
-    }
+    isDoc(user.value.nationalId != null);
     return true;
   }
 
