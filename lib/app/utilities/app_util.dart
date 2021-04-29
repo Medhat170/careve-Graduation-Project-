@@ -151,6 +151,7 @@ class AppUtil {
               ),
               maxLines: 10,
               softWrap: true,
+              textAlign: TextAlign.justify,
               overflow: TextOverflow.ellipsis,
             ),
       ),

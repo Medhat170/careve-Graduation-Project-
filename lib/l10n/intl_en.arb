@@ -193,5 +193,6 @@
   "delete": "Delete",
   "removeRecord": "Do you really want to delete this record?",
   "rating":"Rating",
-  "docNameRating":"Rate Dr : {DocName}"
+  "docNameRating":"Rate Dr : {DocName}",
+  "clinicsProblem": "Your data has been submitted but your clinics has a problem ,Login with your e-mail attached and try adding your clinics from inside the app"
 }

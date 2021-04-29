@@ -9,6 +9,7 @@ class PathUtil {
   static const String appointmentImage = '${imagesPath}appointment.png';
   static const String patientImage = '${imagesPath}patient.png';
   static const String chatImage = '${imagesPath}chat.png';
+  static const String moreImage = '${imagesPath}more.png';
   static const String worriedWomanImage = '${imagesPath}worried_woman.png';
   static const String userImage = '${imagesPath}female_avatar.png';
   static const String welcomeImage = '${imagesPath}hands_background.jpg';

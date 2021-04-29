@@ -125,7 +125,9 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                           ),
                           Expanded(
                             child: Text(
-                              appointment?.address?.formattedAddress ?? '',
+                              (appointment?.address?.title ??
+                                      appointment?.address?.formattedAddress) ??
+                                  '',
                               style: TextStyle(
                                 color: ColorUtil.mediumGrey,
                                 fontSize: 40.sp,

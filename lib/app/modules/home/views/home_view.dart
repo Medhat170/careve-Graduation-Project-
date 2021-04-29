@@ -68,9 +68,9 @@ class HomeView extends GetView<HomeController> {
                   ),
                 if (isDoc)
                   Section(
-                    name: S.of(context).patients,
-                    image: PathUtil.patientImage,
-                    onPressed: () => Get.toNamed(Routes.PATIENTS),
+                    name: S.of(context).more,
+                    image: PathUtil.moreImage,
+                    onPressed: () => Get.toNamed(Routes.USER_PROFILE),
                   ),
                 Section(
                   name: S.of(context).awareness,

@@ -40,10 +40,12 @@ class ClinicComponent extends StatelessWidget {
                     text: AuthService.to.userClinics.value?.clinics[index]
                         ?.address?.formattedAddress,
                   ),
-                  loading: AuthService.to.isBusy.value,
+                  loading: true,
                   onChanged: (String value) {
-                    AuthService.to
-                        .changeAddress(index, formattedAddress: value);
+                    AuthService.to.changeAddress(
+                      index,
+                      formattedAddress: value,
+                    );
                   },
                   keyBoardType: TextInputType.text,
                   validator: const QuickTextValidator().call,

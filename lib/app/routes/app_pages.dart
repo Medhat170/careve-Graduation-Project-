@@ -1,6 +1,6 @@
 import 'package:careve/app/modules/single_doctor/views/add_edit_record_view.dart';
 import 'package:get/get.dart';
-import 'package:careve/app/modules/appointments_clinics_editing/views/appointments_clinics_editing_view.dart';
+import 'package:careve/app/modules/appointments_clinics_editing/appointments_clinics_editing_view.dart';
 import 'package:careve/app/modules/auth/views/auth_view.dart';
 import 'package:careve/app/modules/auth/views/doctor_auth.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';

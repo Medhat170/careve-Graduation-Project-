@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
 import 'package:careve/app/models/clinic_model.dart';
+import 'package:careve/app/models/doctor_clinics_appointments.dart'
+    as clinicWeb;
 import 'package:careve/app/models/user.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
@@ -10,7 +12,6 @@ import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:careve/app/components/extensions.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   final signUP = false.obs;
   final isDoc = false.obs;
   final currentStep = 0.obs;
+  final clinicLoading = false.obs;
   final complete = false.obs;
   final hidePassword = true.obs;
   final pinCodeError = RxString();
@@ -43,6 +45,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   TextEditingController confirmedPassword = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController address = TextEditingController();
+  final dataResponse = RxMap<String, dynamic>();
+
   final cv = Rx<File>();
   final image = RxString();
   final uploadedImage = Rx<File>();
@@ -333,11 +337,27 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         name.clear();
         password.clear();
         confirmedPassword.clear();
+        if (user.value.nationalId != null) {
+          isDoc(true);
+        }
         Get.offAllNamed(Routes.HOME);
       }
     } catch (error) {
       printError(info: error.toString());
-      await AppUtil.showAlertDialog(body: error.toString());
+      if (error.toString() == S.current.clinicsProblem) {
+        await AppUtil.showAlertDialog(
+          body: error.toString(),
+          enableCancel: true,
+          onConfirm: () {
+            signUP(false);
+            isDoc(true);
+            password.clear();
+            Get.back();
+          },
+        );
+      } else {
+        await AppUtil.showAlertDialog(body: error.toString());
+      }
     }
     endBusySuccess();
   }
@@ -376,31 +396,35 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     print("User Clinics : ${json.encode({
       'clinics': userClinics.value.clinics
     })}");
-    Map<String, dynamic> dataResponse;
     try {
-      dataResponse = await post(
-        ApiPath.docSignUpWithOutClinics,
-        body: {
-          'name': name.text,
-          'email': email.text,
-          'password': password.text,
-          'adress': '',
-          'mobile': '',
-          'cost': cost.text,
-          'nationalid': nationalId.text,
-          'type': 'mobile'
-        },
-        files: {
-          'cv': cv.value,
-          'image': uploadedImage.value,
-        },
-      );
+      if (dataResponse.isBlank && dataResponse.isEmpty) {
+        dataResponse(
+          await post(
+            ApiPath.docSignUpWithOutClinics,
+            body: {
+              'name': name.text,
+              'email': email.text,
+              'password': password.text,
+              'adress': '',
+              'mobile': '',
+              'cost': cost.text,
+              'nationalid': nationalId.text,
+              'type': 'mobile'
+            },
+            files: {
+              'cv': cv.value,
+              'image': uploadedImage.value,
+            },
+          ),
+        );
+      }
       print('Doc id : ${dataResponse['id']}');
+      print(json.encode({'clinics': userClinics?.value?.clinics}));
       final Map<String, dynamic> clinicDataResponse = await post(
         ApiPath.addClinic,
         body: {
           'docid': dataResponse['id'],
-          'clinics': json.encode({'clinics': userClinics.value.clinics})
+          'clinics': json.encode({'clinics': userClinics?.value?.clinics})
         },
       );
       name.clear();
@@ -423,7 +447,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         ),
       );
     } catch (error) {
-      rethrow;
+      printError(info: error.toString());
+      throw S.current.clinicsProblem;
     }
     return dataResponse;
   }
@@ -540,6 +565,70 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       }
       endBusySuccess();
     }
+  }
+
+  Future<void> addClinics() async {
+    try {
+      clinicLoading(true);
+      final Map<String, dynamic> response = await post(
+        ApiPath.addClinic,
+        body: {
+          'docid': userId,
+          'clinics': json.encode({'clinics': userClinics?.value?.clinics})
+        },
+      );
+      if (response != null) {
+        final clinicsData =
+            clinicWeb.DoctorClinicsAppointments.fromJson(response);
+        userClinics.update((val) {
+          val.clinics.assignAll(
+            clinicsData.data.map(
+              (e) => Clinic(
+                days: e.days,
+                address: e.address,
+                phone: e.mobile,
+              ),
+            ),
+          );
+        });
+      }
+    } catch (error) {
+      endBusyError(
+        error,
+        showDialog: errorMessage.value != S.current.socketException,
+      );
+    }
+    clinicLoading(false);
+  }
+
+  Future<void> fetchDoctorClinics() async {
+    try {
+      clinicLoading(true);
+      final response = await get(
+        '${ApiPath.getDoctorClinics}?docid=${user?.value?.id}&type=mobile',
+      );
+      if (response != null) {
+        final clinicsData =
+            clinicWeb.DoctorClinicsAppointments.fromJson(response);
+        userClinics.update((val) {
+          val.clinics.assignAll(
+            clinicsData.data.map(
+              (e) => Clinic(
+                days: e.days,
+                address: e.address,
+                phone: e.mobile,
+              ),
+            ),
+          );
+        });
+      }
+    } catch (error) {
+      endBusyError(
+        error,
+        showDialog: errorMessage.value != S.current.socketException,
+      );
+    }
+    clinicLoading(false);
   }
 
   Future<void> signOut() async {

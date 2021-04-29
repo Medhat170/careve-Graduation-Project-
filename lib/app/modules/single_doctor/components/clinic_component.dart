@@ -49,12 +49,12 @@ class ClinicComponent extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    clinic?.address?.formattedAddress,
+                    clinic?.address?.title ?? clinic?.address?.formattedAddress,
                     style: TextStyle(
                       color: selected
                           ? ColorUtil.whiteColor
                           : ColorUtil.blackColor,
-                      fontSize: 50.sp,
+                      fontSize: 56.sp,
                       fontWeight: FontWeight.bold,
                     ),
                     maxLines: 2,

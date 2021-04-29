@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache" : MessageLookupByLibrary.simpleMessage("Clear cache"),
     "clinicData" : MessageLookupByLibrary.simpleMessage("Clinic data"),
     "clinics" : MessageLookupByLibrary.simpleMessage("Clinics"),
+    "clinicsProblem" : MessageLookupByLibrary.simpleMessage("Your data has been submitted but your clinics has a problem ,Login with your e-mail attached and try adding your clinics from inside the app"),
     "commonQuestions" : MessageLookupByLibrary.simpleMessage("Common questions"),
     "company" : MessageLookupByLibrary.simpleMessage("Company"),
     "confirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
