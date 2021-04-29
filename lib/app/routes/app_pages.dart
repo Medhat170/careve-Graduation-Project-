@@ -1,6 +1,5 @@
-import 'package:careve/app/modules/single_doctor/views/add_edit_record_view.dart';
 import 'package:get/get.dart';
-import 'package:careve/app/modules/appointments_clinics_editing/appointments_clinics_editing_view.dart';
+
 import 'package:careve/app/modules/auth/views/auth_view.dart';
 import 'package:careve/app/modules/auth/views/doctor_auth.dart';
 import 'package:careve/app/modules/auth/views/phone_entry_view.dart';
@@ -13,6 +12,8 @@ import 'package:careve/app/modules/awareness_info/bindings/awareness_info_bindin
 import 'package:careve/app/modules/awareness_info/views/awareness_info_view.dart';
 import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/modules/chat/views/chat_view.dart';
+import 'package:careve/app/modules/clinic_editing/bindings/clinic_editing_binding.dart';
+import 'package:careve/app/modules/clinic_editing/views/clinic_editing_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
@@ -30,6 +31,7 @@ import 'package:careve/app/modules/self_checking/views/self_checking_view.dart';
 import 'package:careve/app/modules/settings/bindings/settings_binding.dart';
 import 'package:careve/app/modules/settings/views/settings_view.dart';
 import 'package:careve/app/modules/single_doctor/bindings/single_doctor_binding.dart';
+import 'package:careve/app/modules/single_doctor/views/add_edit_record_view.dart';
 import 'package:careve/app/modules/single_doctor/views/single_doctor_view.dart';
 import 'package:careve/app/modules/splash/bindings/splash_binding.dart';
 import 'package:careve/app/modules/splash/views/splash_view.dart';
@@ -159,12 +161,13 @@ class AppPages {
       binding: PatientsBinding(),
     ),
     GetPage(
-      name: _Paths.APPOINTMENTS_CLINICS_EDITING,
-      page: () => AppointmentsClinicsEditingView(),
-    ),
-    GetPage(
       name: _Paths.ADD_EDIT_RECORD,
       page: () => AddEditRecordView(),
+    ),
+    GetPage(
+      name: _Paths.CLINIC_EDITING,
+      page: () => ClinicEditingView(),
+      binding: ClinicEditingBinding(),
     ),
   ];
 }

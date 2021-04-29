@@ -34,9 +34,9 @@ class Clinics extends GetView<SingleDoctorController> {
           child: Obx(
             () => ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: controller.doctorClinics?.value?.data?.length,
+              itemCount: controller.doctorClinics?.value?.clinics?.length,
               itemBuilder: (context, index) {
-                final clinic = controller.doctorClinics?.value?.data[index];
+                final clinic = controller.doctorClinics?.value?.clinics[index];
                 return ClinicComponent(
                   clinic: clinic,
                 );

@@ -26,10 +26,10 @@ class SingleDoctorController extends GetxController
   final dateBooked = Rx<DateTime>();
 
   List<String> get doctorPhones =>
-      doctorClinics?.value?.data?.map((e) => e?.mobile)?.toList();
+      doctorClinics?.value?.clinics?.map((e) => e?.mobile)?.toList();
 
   List<address.Address> get doctorAddresses =>
-      doctorClinics?.value?.data?.map((e) => e?.address)?.toList();
+      doctorClinics?.value?.clinics?.map((e) => e?.address)?.toList();
 
   List<DateTime> get appointmentsOfCurrentDay {
     final currentDay = currentClinic.value.days[selectedIndex.value];
@@ -140,9 +140,9 @@ class SingleDoctorController extends GetxController
       );
       if (response != null) {
         doctorClinics(DoctorClinicsAppointments.fromJson(response));
-        if (doctorClinics.value?.data != null &&
-            doctorClinics.value.data.isNotEmpty) {
-          currentClinic(doctorClinics.value?.data?.first);
+        if (doctorClinics.value?.clinics != null &&
+            doctorClinics.value.clinics.isNotEmpty) {
+          currentClinic(doctorClinics.value?.clinics?.first);
           tabController = TabController(
             length: currentClinic?.value?.days?.length,
             vsync: this,

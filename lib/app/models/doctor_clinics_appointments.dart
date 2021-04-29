@@ -3,17 +3,25 @@ import 'dart:convert' as convert;
 import 'package:careve/app/models/clinic_model.dart';
 
 class DoctorClinicsAppointments {
-  List<Clinic> data;
+  List<Clinic> clinics;
 
-  DoctorClinicsAppointments({this.data});
+  DoctorClinicsAppointments({this.clinics});
 
   DoctorClinicsAppointments.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = <Clinic>[];
+      clinics = <Clinic>[];
       json['data'].forEach((v) {
-        data.add(Clinic.fromJson(v));
+        clinics.add(Clinic.fromJson(v));
       });
     }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (data != null) {
+      data['clinics'] = clinics.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
 
@@ -51,5 +59,19 @@ class Clinic {
       );
       address = Address.fromJson(addressData);
     }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['docid'] = id;
+    data['mobile'] = id;
+    if (address != null) {
+      data['address'] = address.toJson();
+    }
+    if (days != null) {
+      data['days'] = days.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }

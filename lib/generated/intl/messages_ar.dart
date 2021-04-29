@@ -23,9 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(docName) => "قيم د/ ${docName}";
 
-  static m2(count) => "${count} ملفات تم رفعها ";
+  static m2(Day) => "لم يتم إضافة وقت الإنتهاء لهذا اليةم ( ${Day} )!";
 
-  static m3(length) => "برجاء إدخال ${length} حروف على الأقل";
+  static m3(count) => "${count} ملفات تم رفعها ";
+
+  static m4(length) => "برجاء إدخال ${length} حروف على الأقل";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -99,11 +101,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "email" : MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكترونى"),
     "emailNull" : MessageLookupByLibrary.simpleMessage("من فضلك ادخل بريدك الإلكترونى"),
     "endDate" : MessageLookupByLibrary.simpleMessage("تاريخ الإنتهاء"),
+    "endTimeNull" : m2,
     "endTimeSet" : MessageLookupByLibrary.simpleMessage("ضبط وقت النهايه"),
     "explore" : MessageLookupByLibrary.simpleMessage("إكتشف"),
     "favorite" : MessageLookupByLibrary.simpleMessage("المفضله"),
     "favourite" : MessageLookupByLibrary.simpleMessage("المفضلات"),
-    "filesUploaded" : m2,
+    "filesUploaded" : m3,
     "filter" : MessageLookupByLibrary.simpleMessage("تحديد البيانات المعروضه"),
     "findDoctor" : MessageLookupByLibrary.simpleMessage("أبحثي عن طبيب"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("الخطوة الأولى (أمام المرآة)"),
@@ -119,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general" : MessageLookupByLibrary.simpleMessage("- الشعور العام"),
     "go" : MessageLookupByLibrary.simpleMessage("انطلق"),
     "guest" : MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
-    "hasMinLength" : m3,
+    "hasMinLength" : m4,
     "home" : MessageLookupByLibrary.simpleMessage("الرئيسيه"),
     "hospitals" : MessageLookupByLibrary.simpleMessage("مستشفيات"),
     "httpException" : MessageLookupByLibrary.simpleMessage("تعذر الاتصال بالخادم"),

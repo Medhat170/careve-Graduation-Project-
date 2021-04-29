@@ -23,9 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(docName) => "Rate Dr : ${docName}";
 
-  static m2(count) => "${count} Files uploaded";
+  static m2(Day) => "End time didn\'t set to this day ( ${Day} ) !";
 
-  static m3(length) => "Please insert ${length} digit as least";
+  static m3(count) => "${count} Files uploaded";
+
+  static m4(length) => "Please insert ${length} digit as least";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -99,11 +101,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "email" : MessageLookupByLibrary.simpleMessage("E-mail"),
     "emailNull" : MessageLookupByLibrary.simpleMessage("Please Enter your Email"),
     "endDate" : MessageLookupByLibrary.simpleMessage("End date"),
+    "endTimeNull" : m2,
     "endTimeSet" : MessageLookupByLibrary.simpleMessage("Set End time"),
     "explore" : MessageLookupByLibrary.simpleMessage("Explore"),
     "favorite" : MessageLookupByLibrary.simpleMessage("Favorite"),
     "favourite" : MessageLookupByLibrary.simpleMessage("Favourite"),
-    "filesUploaded" : m2,
+    "filesUploaded" : m3,
     "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
     "findDoctor" : MessageLookupByLibrary.simpleMessage("Find Doctor"),
     "firstStep" : MessageLookupByLibrary.simpleMessage("The first step (in front of the mirror)"),
@@ -119,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general" : MessageLookupByLibrary.simpleMessage("- Feeling of general"),
     "go" : MessageLookupByLibrary.simpleMessage("Go"),
     "guest" : MessageLookupByLibrary.simpleMessage("Continue as a guest"),
-    "hasMinLength" : m3,
+    "hasMinLength" : m4,
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
     "hospitals" : MessageLookupByLibrary.simpleMessage("Hospitals"),
     "httpException" : MessageLookupByLibrary.simpleMessage("Unable to contact the server"),

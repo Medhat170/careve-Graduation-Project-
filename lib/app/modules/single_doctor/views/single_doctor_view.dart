@@ -30,7 +30,7 @@ class SingleDoctorView extends GetView<SingleDoctorController>
                     if (controller.isBusy.value) {
                       return Loading();
                     } else if (controller.doctorClinics.value == null ||
-                        controller.doctorClinics.value.data.isEmpty) {
+                        controller.doctorClinics.value.clinics.isEmpty) {
                       return EmptyWidget(
                         hint: controller.errorMessage.value,
                         extraFunction: controller.fetchDoctorClinics,

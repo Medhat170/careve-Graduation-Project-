@@ -421,6 +421,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         );
       }
       print('Doc id : ${dataResponse['id']}');
+      await validateClinics();
       print(json.encode({'clinics': userClinics?.value?.clinics}));
       final Map<String, dynamic> clinicDataResponse = await post(
         ApiPath.addClinic,
@@ -569,81 +570,18 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
   }
 
-  Future<void> addClinics() async {
+  Future<void> validateClinics() async {
     try {
-      clinicLoading(true);
-      final Map<String, dynamic> response = await post(
-        ApiPath.addClinic,
-        body: {
-          'docid': userId,
-          'clinics': json.encode({'clinics': userClinics?.value?.clinics})
-        },
-      );
-      if (response != null) {
-        final clinicsData =
-            clinicWeb.DoctorClinicsAppointments.fromJson(response);
-        userClinics.update((val) {
-          val.clinics.assignAll(
-            clinicsData.data.map(
-              (e) => Clinic(
-                days: e.days,
-                address: e.address,
-                phone: e.mobile,
-              ),
-            ),
-          );
-        });
-      }
-    } catch (error) {
-      endBusyError(
-        error,
-        showDialog: errorMessage.value != S.current.socketException,
-      );
-    }
-    clinicLoading(false);
-  }
-
-  Future<void> fetchDoctorClinics() async {
-    try {
-      clinicLoading(true);
-      final response = await get(
-        '${ApiPath.getDoctorClinics}?docid=${user?.value?.id}&type=mobile',
-      );
-      if (response != null) {
-        final clinicsData =
-            clinicWeb.DoctorClinicsAppointments.fromJson(response);
-        if (clinicsData?.data == null || clinicsData.data.isEmpty) {
-          userClinics.update((val) {
-            val.clinics = [
-              Clinic(
-                address: Address(
-                  title: 'Default clinic',
-                ),
-                days: [],
-              ),
-            ];
-          });
-        } else {
-          userClinics.update((val) {
-            val.clinics.assignAll(
-              clinicsData.data.map(
-                (e) => Clinic(
-                  days: e.days,
-                  address: e.address,
-                  phone: e.mobile,
-                ),
-              ),
-            );
-          });
+      for (final Clinic clinic in userClinics.value.clinics) {
+        for (final Day day in clinic.days) {
+          if (day.endTime == null) {
+            throw S.current.endTimeNull(day.day);
+          }
         }
       }
     } catch (error) {
-      endBusyError(
-        error,
-        showDialog: errorMessage.value != S.current.socketException,
-      );
+      rethrow;
     }
-    clinicLoading(false);
   }
 
   Future<void> signOut() async {

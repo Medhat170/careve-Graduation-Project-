@@ -1994,6 +1994,16 @@ class S {
       args: [],
     );
   }
+
+  /// `لم يتم إضافة وقت الإنتهاء لهذا اليةم ( {Day} )!`
+  String endTimeNull(Object Day) {
+    return Intl.message(
+      'لم يتم إضافة وقت الإنتهاء لهذا اليةم ( $Day )!',
+      name: 'endTimeNull',
+      desc: '',
+      args: [Day],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

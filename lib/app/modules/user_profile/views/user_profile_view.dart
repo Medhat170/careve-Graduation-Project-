@@ -44,7 +44,7 @@ class UserProfileView extends GetView<UserProfileController> {
               iconData: FontAwesomeIcons.calendarCheck,
               title: S.of(context).editAppointmentsClinics,
               iconColor: Colors.amber,
-              onTap: () => Get.toNamed(Routes.APPOINTMENTS_CLINICS_EDITING),
+              onTap: () => Get.toNamed(Routes.CLINIC_EDITING),
             ),
           UserFeature(
             iconData: FontAwesomeIcons.solidBookmark,
