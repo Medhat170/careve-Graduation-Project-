@@ -27,56 +27,59 @@ class ClinicEditingView extends GetView<ClinicEditingController>
           Expanded(
             child: Obx(
               () {
-                if (controller.hasError != null) {
+                if (controller.isBusy.value) {
+                  return Loading();
+                } else if (controller.errorMessage.value != null) {
                   return EmptyWidget(
                     hint: controller.errorMessage.value,
                     extraFunction: controller.fetchDoctorClinics,
                   );
-                } else if (controller.isBusy.value) {
-                  return Loading();
                 } else {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: AnimatedListHandler(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                S.current.addClinic,
-                                style: TextStyle(
-                                  color: ColorUtil.mediumGrey,
-                                  fontSize: 56.sp,
+                  return Form(
+                    key: controller.clinicFormKey,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: AnimatedListHandler(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  S.current.addClinic,
+                                  style: TextStyle(
+                                    color: ColorUtil.mediumGrey,
+                                    fontSize: 56.sp,
+                                  ),
                                 ),
                               ),
-                            ),
-                            CareveButton.icon(
-                              width: 150.w,
-                              height: 100.w,
-                              icon: const Icon(
-                                Icons.add,
-                                color: ColorUtil.primaryColor,
-                                size: 22.0,
+                              CareveButton.icon(
+                                width: 150.w,
+                                height: 100.w,
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: ColorUtil.primaryColor,
+                                  size: 22.0,
+                                ),
+                                backgroundColor: Colors.transparent,
+                                borderColor: ColorUtil.primaryColor,
+                                onTap: () => AuthService.to.addNewClinic(),
                               ),
-                              backgroundColor: Colors.transparent,
-                              borderColor: ColorUtil.primaryColor,
-                              onTap: () => AuthService.to.addNewClinic(),
-                            ),
-                          ],
-                        ),
-                        ...List.generate(
-                          AuthService.to.userClinics.value.clinics.length,
-                          (index) {
-                            return ClinicComponent(
-                              index: index,
-                            );
-                          },
-                        ),
-                        CareveButton(
-                          title: S.of(context).done,
-                          onTap: controller.editClinics,
-                        ),
-                      ],
+                            ],
+                          ),
+                          ...List.generate(
+                            AuthService.to.userClinics.value.clinics.length,
+                            (index) {
+                              return ClinicComponent(
+                                index: index,
+                              );
+                            },
+                          ),
+                          CareveButton(
+                            title: S.of(context).done,
+                            onTap: controller.editClinics,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }

@@ -35,14 +35,27 @@ class ClinicComponent extends StatelessWidget {
             child: Column(
               children: [
                 AuthInputField(
+                  S.current.mark,
+                  TextEditingController(
+                    text: AuthService
+                        .to.userClinics.value?.clinics[index]?.address?.title,
+                  ),
+                  loading: AuthService.to.isBusy.value,
+                  onChanged: (String value) {
+                    AuthService.to.changeAddress(
+                      index,
+                      title: value,
+                    );
+                  },
+                  validator: const QuickTextValidator().call,
+                ),
+                AuthInputField(
                   S.current.address,
                   TextEditingController(
                     text: AuthService.to.userClinics.value?.clinics[index]
                         ?.address?.formattedAddress,
                   ),
-                  loading: AuthService.to.userClinics.value?.clinics[index]
-                          ?.address?.formattedAddress !=
-                      null,
+                  loading: AuthService.to.isBusy.value,
                   onChanged: (String value) {
                     AuthService.to.changeAddress(
                       index,

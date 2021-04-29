@@ -2,16 +2,18 @@ import 'dart:convert';
 
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
-import 'package:careve/app/models/clinic_model.dart' as address_day;
+import 'package:careve/app/models/clinic_model.dart' as clinicDto;
 import 'package:careve/app/models/doctor_clinics_appointments.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
-  final userClinics = Rx<DoctorClinicsAppointments>();
+  final postClinics = Rx<DoctorClinicsAppointments>();
+  GlobalKey<FormState> clinicFormKey = GlobalKey<FormState>();
 
   Future<void> fetchDoctorClinics() async {
     try {
@@ -21,17 +23,31 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
         '${ApiPath.getDoctorClinics}?docid=$userId&type=mobile',
       );
       if (response != null) {
-        userClinics(DoctorClinicsAppointments.fromJson(response));
-        if (userClinics?.value == null || userClinics.value.clinics.isEmpty) {
-          userClinics.update((val) {
+        postClinics(DoctorClinicsAppointments.fromJson(response));
+        if (postClinics?.value == null || postClinics.value.clinics.isEmpty) {
+          AuthService.to.userClinics.update((val) {
             val.clinics = [
-              Clinic(
-                address: address_day.Address(
+              clinicDto.Clinic(
+                address: clinicDto.Address(
                   title: 'Default clinic',
                 ),
                 days: [],
               ),
             ];
+          });
+        } else {
+          AuthService.to.userClinics.update((val) {
+            val.clinics.assignAll(
+              postClinics.value.clinics
+                  .map(
+                    (e) => clinicDto.Clinic(
+                      phone: e.mobile,
+                      address: e.address,
+                      days: e.days,
+                    ),
+                  )
+                  .toList(),
+            );
           });
         }
       }
@@ -45,38 +61,27 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
   }
 
   Future<void> editClinics() async {
-    try {
-      final userId = AuthService.to.userId;
-      startBusy();
-      await validateClinics();
-      final Map<String, dynamic> response = await post(
-        ApiPath.addClinic,
-        body: {
-          'docid': userId,
-          'clinics': json.encode({'clinics': userClinics?.value?.clinics})
-        },
-      );
-      if (response != null) {
-        userClinics(DoctorClinicsAppointments.fromJson(response));
-      }
-      endBusySuccess();
-    } catch (error) {
-      AppUtil.showAlertDialog(body: error.toString());
-    }
-  }
-
-  Future<void> validateClinics() async {
-    try {
-      for (final Clinic clinic in userClinics.value.clinics) {
-        for (final address_day.Day day in clinic.days) {
-          if (day.endTime == null) {
-            final dayRef = AuthService.to.actualDay(day.day);
-            throw S.current.endTimeNull(dayRef);
-          }
+    final formData = clinicFormKey.currentState;
+    if (formData.validate()) {
+      formData.save();
+      try {
+        await AuthService.to.validateClinics();
+        final userId = AuthService.to.userId;
+        startBusy();
+        final Map<String, dynamic> response = await post(
+          ApiPath.addClinic,
+          body: {
+            'docid': userId,
+            'clinics': json.encode({'clinics': postClinics?.value?.clinics})
+          },
+        );
+        if (response != null) {
+          postClinics(DoctorClinicsAppointments.fromJson(response));
         }
+        endBusySuccess();
+      } catch (error) {
+        AppUtil.showAlertDialog(body: error.toString());
       }
-    } catch (error) {
-      rethrow;
     }
   }
 

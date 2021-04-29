@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(docName) => "قيم د/ ${docName}";
 
-  static m2(Day) => "لم يتم إضافة وقت الإنتهاء لهذا اليةم ( ${Day} )!";
+  static m2(Day) => "لم يتم إضافة وقت الإنتهاء ليوم ( ${Day} )!";
 
   static m3(count) => "${count} ملفات تم رفعها ";
 
@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dataIsNotCompleted" : MessageLookupByLibrary.simpleMessage("البيانات ليست مكتمله!"),
     "days" : MessageLookupByLibrary.simpleMessage("الأيام"),
     "daysEmpty" : MessageLookupByLibrary.simpleMessage("يبدو ان هناك عياده أو أكثر لم يُضع لها أيام ؛عليك ضبط بعض الأيام"),
+    "daysNull" : MessageLookupByLibrary.simpleMessage("أضف بعض إيام العمل!"),
     "delete" : MessageLookupByLibrary.simpleMessage("حذف"),
     "diagnosis" : MessageLookupByLibrary.simpleMessage("قم برفع صوره للتشخيص أو أى تحاليل طبيه"),
     "didNotFind" : MessageLookupByLibrary.simpleMessage("لم نعثر على اى بيانات"),
@@ -138,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "language" : MessageLookupByLibrary.simpleMessage("اللغه"),
     "later" : MessageLookupByLibrary.simpleMessage("فى وقت لاحق"),
     "location" : MessageLookupByLibrary.simpleMessage("الموقع"),
+    "mark" : MessageLookupByLibrary.simpleMessage("علامه مميزه"),
     "medicalRecords" : MessageLookupByLibrary.simpleMessage("السجلات الطبيه"),
     "messages" : MessageLookupByLibrary.simpleMessage("الرسائل"),
     "mon" : MessageLookupByLibrary.simpleMessage("أثنين"),

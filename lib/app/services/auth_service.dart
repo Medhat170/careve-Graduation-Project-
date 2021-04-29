@@ -6,6 +6,7 @@ import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/models/doctor_clinics_appointments.dart'
     as clinicWeb;
 import 'package:careve/app/models/user.dart';
+import 'package:careve/app/modules/single_doctor/components/clinics.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
@@ -106,22 +107,22 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     double lat,
     double long,
   }) {
+    final UserClinics allUserClinics = userClinics.value;
+    final clinic = userClinics.value.clinics[index];
     if (title != null) {
-      userClinics.value.clinics[index].address.title = title;
+      clinic.address.title = title;
     }
     if (lat != null) {
-      userClinics.value.clinics[index].address.lat = lat;
+      clinic.address.lat = lat;
     }
     if (long != null) {
-      userClinics.value.clinics[index].address.long = long;
+      clinic.address.long = long;
     }
     if (formattedAddress != null) {
-      userClinics.value.clinics[index].address.formattedAddress =
-          formattedAddress;
+      clinic.address.formattedAddress = formattedAddress;
     }
-    userClinics.update((val) {
-      val.clinics[index].address = userClinics.value.clinics[index].address;
-    });
+    allUserClinics.clinics[index].address = clinic.address;
+    userClinics(allUserClinics);
     return formattedAddress;
   }
 
@@ -161,7 +162,6 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             userClinics.value.clinics[clinicIndex].days[dayIndex];
         if (startTime != null) {
           targetDay.startTime = startTime.toTimeOnly();
-          print(targetDay.startTime);
         } else if (endTime != null) {
           final now = DateTime.now();
           final int startHour =
@@ -423,9 +423,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<Map<String, dynamic>> docAuth() async {
-    print("User Clinics : ${json.encode({
-      'clinics': userClinics.value.clinics
-    })}");
+    await validateClinics();
+
     try {
       if (dataResponse.isBlank && dataResponse.isEmpty) {
         dataResponse(
@@ -449,7 +448,6 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         );
       }
       print('Doc id : ${dataResponse['id']}');
-      await validateClinics();
       print(json.encode({'clinics': userClinics?.value?.clinics}));
       final Map<String, dynamic> clinicDataResponse = await post(
         ApiPath.addClinic,
@@ -599,16 +597,22 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<void> validateClinics() async {
+    print('Starting clinics validation ...');
     try {
       for (final Clinic clinic in userClinics.value.clinics) {
+        if (clinic?.days == null || clinic.days.isEmpty) {
+          throw S.current.daysNull;
+        }
         for (final Day day in clinic.days) {
-          if (day.endTime == null) {
+          if (day?.endTime == null || day?.endTime == '-') {
             final dayRef = actualDay(day.day);
             throw S.current.endTimeNull(dayRef);
           }
         }
       }
+      print('Clinics validated successfully');
     } catch (error) {
+      print('Clinics validation error ( ${error.toString()} )');
       rethrow;
     }
   }

@@ -1995,13 +1995,33 @@ class S {
     );
   }
 
-  /// `لم يتم إضافة وقت الإنتهاء لهذا اليةم ( {Day} )!`
+  /// `لم يتم إضافة وقت الإنتهاء ليوم ( {Day} )!`
   String endTimeNull(Object Day) {
     return Intl.message(
-      'لم يتم إضافة وقت الإنتهاء لهذا اليةم ( $Day )!',
+      'لم يتم إضافة وقت الإنتهاء ليوم ( $Day )!',
       name: 'endTimeNull',
       desc: '',
       args: [Day],
+    );
+  }
+
+  /// `أضف بعض إيام العمل!`
+  String get daysNull {
+    return Intl.message(
+      'أضف بعض إيام العمل!',
+      name: 'daysNull',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `علامه مميزه`
+  String get mark {
+    return Intl.message(
+      'علامه مميزه',
+      name: 'mark',
+      desc: '',
+      args: [],
     );
   }
 }
