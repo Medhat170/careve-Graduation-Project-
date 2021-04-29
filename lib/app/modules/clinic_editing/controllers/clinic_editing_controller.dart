@@ -70,7 +70,8 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
       for (final Clinic clinic in userClinics.value.clinics) {
         for (final address_day.Day day in clinic.days) {
           if (day.endTime == null) {
-            throw S.current.endTimeNull(day.day);
+            final dayRef = AuthService.to.actualDay(day.day);
+            throw S.current.endTimeNull(dayRef);
           }
         }
       }

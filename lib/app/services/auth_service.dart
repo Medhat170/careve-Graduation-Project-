@@ -296,6 +296,34 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     currentStep(step);
   }
 
+  String actualDay(String day) {
+    final List<String> ref = [
+      'SAT',
+      'SUN',
+      'MON',
+      'TUE',
+      'WED',
+      'THU',
+      'FRI',
+    ];
+
+    final List<String> intlDays = [
+      S.current.sat,
+      S.current.sun,
+      S.current.mon,
+      S.current.tue,
+      S.current.wed,
+      S.current.thu,
+      S.current.fri,
+    ];
+    final int index = ref.indexWhere((element) => element == day.toUpperCase());
+    if (index != null && index != -1) {
+      return intlDays[index];
+    } else {
+      return day;
+    }
+  }
+
   Future<bool> tryAutoLogin() async {
     final cachedUserId = cacheService?.settingsRepo?.cachedUserId;
     if (cachedUserId == null) {
@@ -575,7 +603,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       for (final Clinic clinic in userClinics.value.clinics) {
         for (final Day day in clinic.days) {
           if (day.endTime == null) {
-            throw S.current.endTimeNull(day.day);
+            final dayRef = actualDay(day.day);
+            throw S.current.endTimeNull(dayRef);
           }
         }
       }
