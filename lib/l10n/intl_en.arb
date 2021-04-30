@@ -147,7 +147,7 @@
   "professionalData": "Professional data",
   "attachCV": "Attach your cv or any medical approval",
   "cvValidation": "Cv or any medical approval is required!",
-  "addClinic": "Add more clinics",
+  "addClinic": "Add clinic",
   "days": "Days",
   "sat": "Sat",
   "sun": "Sun",
@@ -197,5 +197,7 @@
   "clinicsProblem": "Your data has been submitted but your clinics has a problem ,Login with your e-mail attached and try adding your clinics from inside the app",
   "endTimeNull": "End time didn't set to this day ( {Day} ) !",
   "daysNull": "Add some work days!",
-  "mark": "special mark"
+  "mark": "special mark",
+  "removeClinic": "Do you want to remove this clinic ( {ClinicTitle} )",
+  "pressToAddClinic": "Press to add clinic"
 }

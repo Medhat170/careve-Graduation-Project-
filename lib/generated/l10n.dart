@@ -1515,10 +1515,10 @@ class S {
     );
   }
 
-  /// `أضف عيادات اكثر`
+  /// `أضف عياده`
   String get addClinic {
     return Intl.message(
-      'أضف عيادات اكثر',
+      'أضف عياده',
       name: 'addClinic',
       desc: '',
       args: [],
@@ -2020,6 +2020,26 @@ class S {
     return Intl.message(
       'علامه مميزه',
       name: 'mark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `هل تريد حذف هذه العياده ( {ClinicTitle} )`
+  String removeClinic(Object ClinicTitle) {
+    return Intl.message(
+      'هل تريد حذف هذه العياده ( $ClinicTitle )',
+      name: 'removeClinic',
+      desc: '',
+      args: [ClinicTitle],
+    );
+  }
+
+  /// `أضغط لإضافة عياده`
+  String get pressToAddClinic {
+    return Intl.message(
+      'أضغط لإضافة عياده',
+      name: 'pressToAddClinic',
       desc: '',
       args: [],
     );

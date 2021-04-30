@@ -49,7 +49,7 @@ class AppTextField extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       readOnly: readOnly,
-      onFieldSubmitted: onFieldSubmitted,
+      onFieldSubmitted: onFieldSubmitted?.call,
       style: TextStyle(
         color: ColorUtil.primaryColor,
         fontSize: fontSize,

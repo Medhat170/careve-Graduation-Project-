@@ -6,9 +6,9 @@ class UserClinics {
   });
 
   UserClinics.fromJson(Map<String, dynamic> json) {
-    if (json['clinics'] != null) {
+    if (json['data'] != null) {
       clinics = <Clinic>[];
-      json['clinics'].forEach((Map<String, dynamic> v) {
+      json['data'].forEach((Map<String, dynamic> v) {
         clinics.add(Clinic.fromJson(v));
       });
     }
@@ -17,7 +17,7 @@ class UserClinics {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (clinics != null) {
-      data['clinics'] = clinics.map((v) => v.toJson()).toList();
+      data['data'] = clinics.map((v) => v.toJson()).toList();
     }
     return data;
   }

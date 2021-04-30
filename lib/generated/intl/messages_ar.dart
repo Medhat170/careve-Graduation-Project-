@@ -29,11 +29,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m4(length) => "برجاء إدخال ${length} حروف على الأقل";
 
+  static m5(ClinicTitle) => "هل تريد حذف هذه العياده ( ${ClinicTitle} )";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "aboutUs" : MessageLookupByLibrary.simpleMessage("معلومات عنا"),
     "addAwareness" : MessageLookupByLibrary.simpleMessage("أضف مقال"),
-    "addClinic" : MessageLookupByLibrary.simpleMessage("أضف عيادات اكثر"),
+    "addClinic" : MessageLookupByLibrary.simpleMessage("أضف عياده"),
     "addImageForAwareness" : MessageLookupByLibrary.simpleMessage("أضف صوره لهذه التوعيتك"),
     "addRecord" : MessageLookupByLibrary.simpleMessage("أضف سجل طبى"),
     "address" : MessageLookupByLibrary.simpleMessage("العنوان"),
@@ -167,12 +169,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNeededDesc" : MessageLookupByLibrary.simpleMessage("من فضلك أدخل رقم هاتفك لإرسال كود التفعيل"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "phoneNumberNull" : MessageLookupByLibrary.simpleMessage("من فضلك ادخل رقم الهاتف"),
+    "pressToAddClinic" : MessageLookupByLibrary.simpleMessage("أضغط لإضافة عياده"),
     "professionalData" : MessageLookupByLibrary.simpleMessage("المعلومات المهنيه"),
     "profile" : MessageLookupByLibrary.simpleMessage("الملف الشخصى"),
     "qa" : MessageLookupByLibrary.simpleMessage("سؤال و جواب"),
     "question" : MessageLookupByLibrary.simpleMessage("السؤال"),
     "rating" : MessageLookupByLibrary.simpleMessage("تقييم"),
     "record" : MessageLookupByLibrary.simpleMessage("السجل"),
+    "removeClinic" : m5,
     "removeRecord" : MessageLookupByLibrary.simpleMessage("هل تريد حذف هذا السجل؟"),
     "resetPasswordDesc" : MessageLookupByLibrary.simpleMessage("من فضلك أدخل كلمة المرور الجديده لإعادة ضبتها"),
     "result" : MessageLookupByLibrary.simpleMessage("النتيجه"),

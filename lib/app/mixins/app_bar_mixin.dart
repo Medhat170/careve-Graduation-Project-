@@ -55,7 +55,7 @@ mixin CustomAppBar {
                 color: ColorUtil.primaryColor,
                 size: 22.0,
               ),
-              onPressed: () => Get.back(result: true),
+              onPressed: () => Get.back(),
             ),
           const SizedBox(
             width: 5.0,

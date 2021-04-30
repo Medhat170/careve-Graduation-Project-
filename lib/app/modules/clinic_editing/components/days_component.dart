@@ -1,5 +1,5 @@
 import 'package:careve/app/models/clinic_model.dart';
-import 'package:careve/app/services/auth_service.dart';
+import 'package:careve/app/modules/clinic_editing/controllers/clinic_editing_controller.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -7,13 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class DaysComponents extends StatelessWidget {
-  final int index;
-
-  const DaysComponents({
-    @required this.index,
-  });
-
+class DaysComponents extends GetView<ClinicEditingController> {
   @override
   Widget build(BuildContext context) {
     final weekDays = <String>[
@@ -51,9 +45,7 @@ class DaysComponents extends StatelessWidget {
           ...List.generate(
             weekDays.length,
             (dayIndex) {
-              final Day targetDay = AuthService
-                  .to.userClinics.value?.clinics[index]?.days
-                  ?.firstWhere(
+              final Day targetDay = controller.clinic?.value?.days?.firstWhere(
                 (element) => element?.day == weekEnglishDays[dayIndex],
                 orElse: () => Day(),
               );
@@ -87,8 +79,7 @@ class DaysComponents extends StatelessWidget {
                             helpText: S.of(context).startTimeSet,
                           );
                           if (result != null) {
-                            AuthService.to.changeDay(
-                              index,
+                            controller.changeDay(
                               day: weekEnglishDays[dayIndex],
                               startTime: result,
                             );
@@ -138,8 +129,7 @@ class DaysComponents extends StatelessWidget {
                               helpText: S.of(context).endTimeSet,
                             );
                             if (result != null) {
-                              AuthService.to.changeDay(
-                                index,
+                              controller.changeDay(
                                 day: weekEnglishDays[dayIndex],
                                 endTime: result,
                               );
@@ -172,7 +162,7 @@ class DaysComponents extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => AuthService.to.removeDay(index, dayIndex),
+                      onTap: () => controller.removeDay(dayIndex),
                       child: Icon(
                         Icons.clear_rounded,
                         color: ColorUtil.errorColor,
