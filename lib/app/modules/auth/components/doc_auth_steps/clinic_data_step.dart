@@ -1,7 +1,6 @@
 import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/components/clinic_card.dart';
-import 'package:careve/app/models/clinic_model.dart';
-import 'package:careve/app/models/doctor_clinics_appointments.dart' as web;
+import 'package:careve/app/models/doctor_clinics_appointments.dart';
 import 'package:careve/app/modules/auth/components/auth_input_field.dart';
 import 'package:careve/app/modules/clinic_editing/controllers/clinic_editing_controller.dart';
 import 'package:careve/app/modules/clinic_editing/views/clinic_editing_view.dart';
@@ -76,16 +75,11 @@ class ClinicDataStep extends Step {
                             onTap: () async {
                               Get.delete<ClinicEditingController>();
                               Get.put(ClinicEditingController(null));
-                              final result = await Get.to<web.Clinic>(
+                              final result = await Get.to<Clinic>(
                                 () => ClinicEditingView(),
                               );
                               if (result != null) {
-                                final Clinic clinic = Clinic(
-                                  address: result?.address,
-                                  phone: result?.mobile,
-                                  days: result?.days,
-                                );
-                                AuthService.to.userClinics.add(clinic);
+                                AuthService.to.userClinics.add(result);
                               }
                             },
                           ),
@@ -98,26 +92,19 @@ class ClinicDataStep extends Step {
                         itemCount: AuthService.to.userClinics?.length ?? 0,
                         itemBuilder: (context, index) {
                           final e = AuthService.to.userClinics[index];
-                          final adaptiveClinic = web.Clinic(
-                            mobile: e?.phone,
-                            days: e?.days,
-                            address: e?.address,
-                          );
                           return ClinicCard(
-                            clinicData: adaptiveClinic,
+                            clinicData: e,
+                            removeFunction: () =>
+                                AuthService.to.removeClinic(e.id),
+                            loadingId: AuthService.to.busyId,
                             onTap: () async {
                               Get.delete<ClinicEditingController>();
-                              Get.put(ClinicEditingController(adaptiveClinic));
-                              final result = await Get.to<web.Clinic>(
+                              Get.put(ClinicEditingController(e));
+                              final result = await Get.to<Clinic>(
                                 () => ClinicEditingView(),
                               );
                               if (result != null) {
-                                final Clinic clinic = Clinic(
-                                  address: result?.address,
-                                  phone: result?.mobile,
-                                  days: result?.days,
-                                );
-                                AuthService.to.userClinics[index] = clinic;
+                                AuthService.to.userClinics[index] = result;
                               }
                             },
                           );

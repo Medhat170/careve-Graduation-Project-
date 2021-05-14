@@ -49,8 +49,8 @@ class ClinicEditingView extends GetView<ClinicEditingController>
                           ),
                           loading: controller.isBusy.value,
                           onChanged: (String value) {
-                            controller.changeAddress(
-                              title: value,
+                            controller.changeClinicTitle(
+                              value,
                             );
                           },
                           validator: const QuickTextValidator().call,
@@ -60,7 +60,7 @@ class ClinicEditingView extends GetView<ClinicEditingController>
                           TextEditingController(
                             text: clinicData?.address?.formattedAddress,
                           ),
-                          loading: controller.isBusy.value,
+                          loading: true,
                           onChanged: (String value) {
                             controller.changeAddress(
                               formattedAddress: value,

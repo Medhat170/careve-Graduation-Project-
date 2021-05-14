@@ -46,4 +46,6 @@ class ApiPath {
   static const String editRecord = '${url}editrecord';
   static const String getPatientData = '${url}getpatientbyid';
   static const String rateDoc = '${url}rateadoctor';
+  static const String updateClinic = '${url}updateclinic';
+  static const String deleteClinic = '${url}deleteclinic';
 }

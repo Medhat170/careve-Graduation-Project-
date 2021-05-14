@@ -31,27 +31,25 @@ class DoctorClinicsController extends GetxController with ApiMixin, BusyMixin {
 
   Future<void> removeClinic(int clinicId) async {
     try {
-      final userId = AuthService.to.userId;
+      final accessToken = AuthService.to.user?.value?.accessToken;
       busyId(clinicId);
-      // print('Clinic id :$clinicId');
-      print(userId);
-      // final Map<String, dynamic> response = await post(
-      //   ApiPath.addClinic,
-      //   body: {
-      //     'docid': userId,
-      //     'clinics': json.encode({
-      //       'clinics': [
-      //         adaptiveClinic,
-      //       ],
-      //     }),
-      //   },
-      // );
-      // if (response != null) {
-      //   clinic(DoctorClinicsAppointments.fromJson(response).clinics.first);
-      //   Get.back<Clinic>(
-      //     result: clinic.value,
-      //   );
-      // }
+      print('Clinic id :$clinicId');
+      print(accessToken);
+      final Map<String, dynamic> response = await post(
+        ApiPath.deleteClinic,
+        body: {
+          'clinicid': clinicId,
+          'apitoken': accessToken,
+          'type': 'mobile',
+        },
+      );
+      if (response != null && response['data'] == 1) {
+        doctorClinics.update((val) {
+          val.clinics.removeWhere(
+            (element) => element.id == clinicId,
+          );
+        });
+      }
     } catch (error) {
       AppUtil.showAlertDialog(body: error.toString());
     }

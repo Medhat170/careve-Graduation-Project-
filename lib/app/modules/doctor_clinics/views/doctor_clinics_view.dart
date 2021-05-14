@@ -43,8 +43,8 @@ class DoctorClinicsView extends GetView<DoctorClinicsController>
                       extraFunction: controller.fetchDoctorClinics,
                     );
                   } else {
-                    return AnimatedListHandler(
-                      children: controller.doctorClinics.value.clinics
+                    return AnimatedListHandler(children: [
+                      ...controller.doctorClinics.value.clinics
                           .map(
                             (e) => ClinicCard(
                               clinicData: e,
@@ -58,25 +58,21 @@ class DoctorClinicsView extends GetView<DoctorClinicsController>
                                   () => ClinicEditingView(),
                                 );
                                 if (result != null) {
-                                  final Clinic clinic = Clinic(
-                                    id: result?.id,
-                                    docId: result?.docId,
-                                    address: result?.address,
-                                    mobile: result?.mobile,
-                                    days: result?.days,
-                                  );
                                   controller.doctorClinics.update((val) {
                                     val.clinics.removeWhere(
                                       (element) => element.id == e?.id,
                                     );
-                                    val.clinics.add(clinic);
+                                    val.clinics.add(result);
                                   });
                                 }
                               },
                             ),
                           )
                           .toList(),
-                    );
+                      const SizedBox(
+                        height: 75.0,
+                      ),
+                    ]);
                   }
                 },
               ),

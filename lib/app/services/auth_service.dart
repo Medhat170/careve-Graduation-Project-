@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
-import 'package:careve/app/models/clinic_model.dart';
+import 'package:careve/app/models/doctor_clinics_appointments.dart';
 import 'package:careve/app/models/user.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
@@ -328,6 +328,30 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
         showDialog: true,
       );
     }
+  }
+
+  Future<void> removeClinic(int clinicId) async {
+    try {
+      busyId(clinicId);
+      print('Clinic id :$clinicId');
+      print(user?.value?.accessToken);
+      final Map<String, dynamic> response = await post(
+        ApiPath.deleteClinic,
+        body: {
+          'clinicid': clinicId,
+          'apitoken': user?.value?.accessToken,
+          'type': 'mobile',
+        },
+      );
+      if (response != null && response['data'] == 1) {
+        userClinics.removeWhere(
+          (element) => element.id == clinicId,
+        );
+      }
+    } catch (error) {
+      AppUtil.showAlertDialog(body: error.toString());
+    }
+    busyId.nil();
   }
 
   Future<void> sendPhoneNumber() async {

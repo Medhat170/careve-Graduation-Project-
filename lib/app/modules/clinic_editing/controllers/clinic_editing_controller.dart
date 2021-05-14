@@ -31,9 +31,6 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
   }) {
     final clinicTemp = clinic?.value;
     clinicTemp.address ??= clinicDto.Address();
-    if (title != null) {
-      clinicTemp.address.title = title;
-    }
     if (lat != null) {
       clinicTemp.address.lat = lat;
     }
@@ -46,13 +43,17 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
     clinic.update((val) {
       val = clinicTemp;
     });
-    // clinic(clinicTemp);
     return formattedAddress;
   }
 
   String changePhone(String newPhone) {
     clinic.value.mobile = newPhone;
     return newPhone;
+  }
+
+  String changeClinicTitle(String title) {
+    clinic.value?.address?.title = title;
+    return title;
   }
 
   void removeDay(int dayIndex) {
@@ -138,30 +139,33 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
   }
 
   Future<void> editClinic() async {
+    print('clinic : ${json.encode(clinic?.value)}');
     final formData = clinicFormKey.currentState;
     if (formData.validate()) {
       formData.save();
       try {
         await validateClinics();
-        final userId = AuthService.to.userId;
+        final userData = AuthService.to.user?.value;
         startBusy();
-        // final Map<String, dynamic> response = await post(
-        //   ApiPath.addClinic,
-        //   body: {
-        //     'docid': userId,
-        //     'clinics': json.encode({
-        //       'clinics': [
-        //         clinic.value,
-        //       ],
-        //     })
-        //   },
-        // );
-        // if (response != null) {
-        //   clinic(DoctorClinicsAppointments.fromJson(response));
-        // Get.back<Clinic>(
-        //   result: clinic.value,
-        // );
-        // }
+        final Map<String, dynamic> response = await post(
+          ApiPath.updateClinic,
+          body: {
+            'apitoken': userData?.accessToken,
+            'clinicid': clinic?.value?.id,
+            'type': 'mobile',
+            'mobile': clinic?.value?.mobile,
+            'address': json.encode(clinic?.value?.address),
+            'days': json.encode(clinic?.value?.days),
+          },
+        );
+        if (response != null) {
+          clinic(
+            DoctorClinicsAppointments.fromJson(response)?.clinics?.first,
+          );
+          Get.back<Clinic>(
+            result: clinic.value,
+          );
+        }
         endBusySuccess();
       } catch (error) {
         AppUtil.showAlertDialog(body: error.toString());
