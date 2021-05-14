@@ -194,5 +194,8 @@
   "removeRecord": "Do you really want to delete this record?",
   "rating":"Rating",
   "docNameRating":"Rate Dr : {DocName}",
-  "clinicsProblem": "Your data has been submitted but your clinics has a problem ,Login with your e-mail attached and try adding your clinics from inside the app"
+  "clinicsProblem": "Your data has been submitted but your clinics has a problem ,Login with your e-mail attached and try adding your clinics from inside the app",
+  "endTimeNull": "End time didn't set to this day ( {Day} ) !",
+  "daysNull": "Add some work days!",
+  "mark": "special mark"
 }

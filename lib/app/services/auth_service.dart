@@ -6,6 +6,7 @@ import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/models/doctor_clinics_appointments.dart'
     as clinicWeb;
 import 'package:careve/app/models/user.dart';
+import 'package:careve/app/modules/single_doctor/components/clinics.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
@@ -106,22 +107,22 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     double lat,
     double long,
   }) {
+    final UserClinics allUserClinics = userClinics.value;
+    final clinic = userClinics.value.clinics[index];
     if (title != null) {
-      userClinics.value.clinics[index].address.title = title;
+      clinic.address.title = title;
     }
     if (lat != null) {
-      userClinics.value.clinics[index].address.lat = lat;
+      clinic.address.lat = lat;
     }
     if (long != null) {
-      userClinics.value.clinics[index].address.long = long;
+      clinic.address.long = long;
     }
     if (formattedAddress != null) {
-      userClinics.value.clinics[index].address.formattedAddress =
-          formattedAddress;
+      clinic.address.formattedAddress = formattedAddress;
     }
-    userClinics.update((val) {
-      val.clinics[index].address = userClinics.value.clinics[index].address;
-    });
+    allUserClinics.clinics[index].address = clinic.address;
+    userClinics(allUserClinics);
     return formattedAddress;
   }
 
@@ -295,6 +296,34 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     currentStep(step);
   }
 
+  String actualDay(String day) {
+    final List<String> ref = [
+      'SAT',
+      'SUN',
+      'MON',
+      'TUE',
+      'WED',
+      'THU',
+      'FRI',
+    ];
+
+    final List<String> intlDays = [
+      S.current.sat,
+      S.current.sun,
+      S.current.mon,
+      S.current.tue,
+      S.current.wed,
+      S.current.thu,
+      S.current.fri,
+    ];
+    final int index = ref.indexWhere((element) => element == day.toUpperCase());
+    if (index != null && index != -1) {
+      return intlDays[index];
+    } else {
+      return day;
+    }
+  }
+
   Future<bool> tryAutoLogin() async {
     final cachedUserId = cacheService?.settingsRepo?.cachedUserId;
     if (cachedUserId == null) {
@@ -394,9 +423,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   }
 
   Future<Map<String, dynamic>> docAuth() async {
-    print("User Clinics : ${json.encode({
-      'clinics': userClinics.value.clinics
-    })}");
+    await validateClinics();
+
     try {
       if (dataResponse.isBlank && dataResponse.isEmpty) {
         dataResponse(
@@ -568,82 +596,25 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
   }
 
-  Future<void> addClinics() async {
-    print(json.encode({'clinics': userClinics?.value?.clinics}));
+  Future<void> validateClinics() async {
+    print('Starting clinics validation ...');
     try {
-      clinicLoading(true);
-      final Map<String, dynamic> response = await post(
-        ApiPath.addClinic,
-        body: {
-          'docid': userId,
-          'clinics': json.encode({'clinics': userClinics?.value?.clinics})
-        },
-      );
-      if (response != null) {
-        final clinicsData =
-            clinicWeb.DoctorClinicsAppointments.fromJson(response);
-        userClinics.update((val) {
-          val.clinics.assignAll(
-            clinicsData.data.map(
-              (e) => Clinic(
-                days: e.days,
-                address: e.address,
-                phone: e.mobile,
-              ),
-            ),
-          );
-        });
-      }
-    } catch (error) {
-      endBusyError(
-        error,
-        showDialog: errorMessage.value != S.current.socketException,
-      );
-    }
-    clinicLoading(false);
-  }
-
-  Future<void> fetchDoctorClinics() async {
-    try {
-      clinicLoading(true);
-      final response = await get(
-        '${ApiPath.getDoctorClinics}?docid=${user?.value?.id}&type=mobile',
-      );
-      if (response != null) {
-        final clinicsData =
-            clinicWeb.DoctorClinicsAppointments.fromJson(response);
-        if (clinicsData?.data == null || clinicsData.data.isEmpty) {
-          userClinics.update((val) {
-            val.clinics = [
-              Clinic(
-                address: Address(
-                  title: 'Default clinic',
-                ),
-                days: [],
-              ),
-            ];
-          });
-        } else {
-          userClinics.update((val) {
-            val.clinics.assignAll(
-              clinicsData.data.map(
-                (e) => Clinic(
-                  days: e.days,
-                  address: e.address,
-                  phone: e.mobile,
-                ),
-              ),
-            );
-          });
+      for (final Clinic clinic in userClinics.value.clinics) {
+        if (clinic?.days == null || clinic.days.isEmpty) {
+          throw S.current.daysNull;
+        }
+        for (final Day day in clinic.days) {
+          if (day?.endTime == null || day?.endTime == '-') {
+            final dayRef = actualDay(day.day);
+            throw S.current.endTimeNull(dayRef);
+          }
         }
       }
+      print('Clinics validated successfully');
     } catch (error) {
-      endBusyError(
-        error,
-        showDialog: errorMessage.value != S.current.socketException,
-      );
+      print('Clinics validation error ( ${error.toString()} )');
+      rethrow;
     }
-    clinicLoading(false);
   }
 
   Future<void> signOut() async {

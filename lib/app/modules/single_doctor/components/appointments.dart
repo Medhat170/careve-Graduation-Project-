@@ -3,6 +3,7 @@ import 'package:careve/app/models/clinic_model.dart';
 import 'package:careve/app/modules/single_doctor/components/appointment_item.dart';
 import 'package:careve/app/modules/single_doctor/components/clinics.dart';
 import 'package:careve/app/modules/single_doctor/controllers/single_doctor_controller.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class Appointments extends GetView<SingleDoctorController> {
                   final Day day = controller.currentClinic.value.days[index];
                   return Tab(
                     child: Text(
-                      controller.actualDay(day?.day),
+                      AuthService.to.actualDay(day?.day),
                       style: TextStyle(
                         color: ColorUtil.primaryColor,
                         fontSize: 44.sp,
