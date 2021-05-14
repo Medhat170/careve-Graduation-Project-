@@ -62,9 +62,7 @@ class AuthInputField extends StatelessWidget {
                 keyBoardType: keyBoardType,
                 readOnly: loading,
                 onChanged: onChanged,
-                onFieldSubmitted: (String value) {
-                  onFieldSubmitted(value);
-                },
+                onFieldSubmitted: onFieldSubmitted,
                 prefixWidget: !isPhone
                     ? null
                     : const Text(

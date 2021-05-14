@@ -29,11 +29,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m4(length) => "Please insert ${length} digit as least";
 
+  static m5(ClinicTitle) => "Do you want to remove this clinic ( ${ClinicTitle} )";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "aboutUs" : MessageLookupByLibrary.simpleMessage("About us"),
     "addAwareness" : MessageLookupByLibrary.simpleMessage("Add awareness"),
-    "addClinic" : MessageLookupByLibrary.simpleMessage("Add more clinics"),
+    "addClinic" : MessageLookupByLibrary.simpleMessage("Add clinic"),
     "addImageForAwareness" : MessageLookupByLibrary.simpleMessage("Add image for this awareness"),
     "addRecord" : MessageLookupByLibrary.simpleMessage("Add medical record"),
     "address" : MessageLookupByLibrary.simpleMessage("Address"),
@@ -167,12 +169,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNeededDesc" : MessageLookupByLibrary.simpleMessage("Please enter your phone number to send a verification code"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Phone number"),
     "phoneNumberNull" : MessageLookupByLibrary.simpleMessage("Please Enter your phone number"),
+    "pressToAddClinic" : MessageLookupByLibrary.simpleMessage("Press to add clinic"),
     "professionalData" : MessageLookupByLibrary.simpleMessage("Professional data"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "qa" : MessageLookupByLibrary.simpleMessage("Question&Answer"),
     "question" : MessageLookupByLibrary.simpleMessage("Question"),
     "rating" : MessageLookupByLibrary.simpleMessage("Rating"),
     "record" : MessageLookupByLibrary.simpleMessage("Record"),
+    "removeClinic" : m5,
     "removeRecord" : MessageLookupByLibrary.simpleMessage("Do you really want to delete this record?"),
     "resetPasswordDesc" : MessageLookupByLibrary.simpleMessage("Please enter your new password to reset it"),
     "result" : MessageLookupByLibrary.simpleMessage("result"),

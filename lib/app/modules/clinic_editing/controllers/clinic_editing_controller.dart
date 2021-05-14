@@ -1,83 +1,167 @@
 import 'dart:convert';
 
+import 'package:careve/app/models/clinic_model.dart' as clinicDto;
 import 'package:careve/app/mixins/api_mixin.dart';
 import 'package:careve/app/mixins/busy_mixin.dart';
-import 'package:careve/app/models/clinic_model.dart' as clinicDto;
 import 'package:careve/app/models/doctor_clinics_appointments.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
+import 'package:careve/app/components/extensions.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
-  final postClinics = Rx<DoctorClinicsAppointments>();
+  final Clinic clinicForEdit;
+
+  ClinicEditingController(this.clinicForEdit);
+
+  final clinic = Rx<Clinic>();
+  final currentLocation = Rx<Position>();
+
   GlobalKey<FormState> clinicFormKey = GlobalKey<FormState>();
 
-  Future<void> fetchDoctorClinics() async {
+  String changeAddress({
+    String formattedAddress,
+    String title,
+    double lat,
+    double long,
+  }) {
+    final clinicTemp = clinic?.value;
+    clinicTemp.address ??= clinicDto.Address();
+    if (title != null) {
+      clinicTemp.address.title = title;
+    }
+    if (lat != null) {
+      clinicTemp.address.lat = lat;
+    }
+    if (long != null) {
+      clinicTemp.address.long = long;
+    }
+    if (formattedAddress != null) {
+      clinicTemp.address.formattedAddress = formattedAddress;
+    }
+    clinic.update((val) {
+      val = clinicTemp;
+    });
+    // clinic(clinicTemp);
+    return formattedAddress;
+  }
+
+  String changePhone(String newPhone) {
+    clinic.value.mobile = newPhone;
+    return newPhone;
+  }
+
+  void removeDay(int dayIndex) {
+    clinic.update((val) {
+      val.days.removeAt(dayIndex);
+    });
+  }
+
+  void changeDay({
+    DateTime startTime,
+    DateTime endTime,
+    String day,
+  }) {
+    final clinicTemp = clinic?.value;
+    clinicTemp.days ??= <clinicDto.Day>[];
+    final int dayIndex = clinic?.value?.days?.indexWhere(
+      (element) => element.day == day,
+    );
     try {
-      final userId = AuthService.to.userId;
-      startBusy();
-      final response = await get(
-        '${ApiPath.getDoctorClinics}?docid=$userId&type=mobile',
-      );
-      if (response != null) {
-        postClinics(DoctorClinicsAppointments.fromJson(response));
-        if (postClinics?.value == null || postClinics.value.clinics.isEmpty) {
-          AuthService.to.userClinics.update((val) {
-            val.clinics = [
-              clinicDto.Clinic(
-                address: clinicDto.Address(
-                  title: 'Default clinic',
-                ),
-                days: [],
-              ),
-            ];
-          });
-        } else {
-          AuthService.to.userClinics.update((val) {
-            val.clinics.assignAll(
-              postClinics.value.clinics
-                  .map(
-                    (e) => clinicDto.Clinic(
-                      phone: e.mobile,
-                      address: e.address,
-                      days: e.days,
-                    ),
-                  )
-                  .toList(),
-            );
-          });
+      if (dayIndex != null && dayIndex != -1) {
+        final clinicDto.Day targetDay = clinic.value.days[dayIndex];
+        if (startTime != null) {
+          targetDay.startTime = startTime.toTimeOnly();
+        } else if (endTime != null) {
+          final now = DateTime.now();
+          final int startHour =
+              int.tryParse(targetDay?.startTime?.split(':')[0]);
+          final int startMin =
+              int.tryParse(targetDay?.startTime?.split(':')[1]) ?? 0;
+          if (endTime.isAfter(
+            DateTime(
+              now.year,
+              now.month,
+              now.day,
+              startHour,
+              startMin,
+            ),
+          )) {
+            targetDay.endTime = endTime.toTimeOnly();
+          } else {
+            throw S.current.timeIsBefore;
+          }
         }
+        targetDay.status = 1;
+        clinic.update((val) {
+          val.days[dayIndex] = targetDay;
+        });
+      } else {
+        clinic.update((val) {
+          val.days.add(
+            clinicDto.Day(
+              day: day,
+              startTime: startTime.toTimeOnly(),
+              endTime: endTime.toTimeOnly(),
+              status: 1,
+            ),
+          );
+        });
       }
-      endBusySuccess();
-    } catch (error) {
-      endBusyError(
-        error,
-        showDialog: errorMessage.value != S.current.socketException,
-      );
+    } catch (e) {
+      AppUtil.showAlertDialog(body: e.toString());
     }
   }
 
-  Future<void> editClinics() async {
+  Future<void> validateClinics() async {
+    print('Starting clinics validation ...');
+    try {
+      if (clinic?.value?.days == null || clinic.value.days.isEmpty) {
+        throw S.current.daysNull;
+      } else {
+        for (final clinicDto.Day day in clinic.value.days) {
+          if (day?.endTime == null || day?.endTime == '-') {
+            final dayRef = AuthService.to.actualDay(day.day);
+            throw S.current.endTimeNull(dayRef);
+          }
+        }
+      }
+      print('Clinics validated successfully');
+    } catch (error) {
+      print('Clinics validation error ( ${error.toString()} )');
+      rethrow;
+    }
+  }
+
+  Future<void> editClinic() async {
     final formData = clinicFormKey.currentState;
     if (formData.validate()) {
       formData.save();
       try {
-        await AuthService.to.validateClinics();
+        await validateClinics();
         final userId = AuthService.to.userId;
         startBusy();
-        final Map<String, dynamic> response = await post(
-          ApiPath.addClinic,
-          body: {
-            'docid': userId,
-            'clinics': json.encode({'clinics': postClinics?.value?.clinics})
-          },
-        );
-        if (response != null) {
-          postClinics(DoctorClinicsAppointments.fromJson(response));
-        }
+        // final Map<String, dynamic> response = await post(
+        //   ApiPath.addClinic,
+        //   body: {
+        //     'docid': userId,
+        //     'clinics': json.encode({
+        //       'clinics': [
+        //         clinic.value,
+        //       ],
+        //     })
+        //   },
+        // );
+        // if (response != null) {
+        //   clinic(DoctorClinicsAppointments.fromJson(response));
+        // Get.back<Clinic>(
+        //   result: clinic.value,
+        // );
+        // }
         endBusySuccess();
       } catch (error) {
         AppUtil.showAlertDialog(body: error.toString());
@@ -85,9 +169,65 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
     }
   }
 
+  Future<void> addClinic() async {
+    final formData = clinicFormKey.currentState;
+    if (formData.validate()) {
+      formData.save();
+      try {
+        await validateClinics();
+        final userId = AuthService.to.userId;
+        startBusy();
+        clinicDto.Clinic adaptiveClinic = clinicDto.Clinic(
+          phone: clinic?.value?.mobile,
+          days: clinic?.value?.days,
+          address: clinic?.value?.address,
+        );
+        print(json.encode({
+          'clinics': [adaptiveClinic]
+        }));
+        print(userId);
+        final Map<String, dynamic> response = await post(
+          ApiPath.addClinic,
+          body: {
+            'docid': userId,
+            'clinics': json.encode({
+              'clinics': [
+                adaptiveClinic,
+              ],
+            }),
+          },
+        );
+        if (response != null) {
+          clinic(DoctorClinicsAppointments.fromJson(response).clinics.first);
+          Get.back<Clinic>(
+            result: clinic.value,
+          );
+        }
+      } catch (error) {
+        AppUtil.showAlertDialog(body: error.toString());
+      }
+      endBusySuccess();
+    }
+  }
+
   @override
   void onReady() {
-    fetchDoctorClinics();
+    if (clinicForEdit != null) {
+      print('Editing');
+      clinic(clinicForEdit);
+    } else {
+      print('Adding');
+      clinic(
+        Clinic(),
+      );
+    }
+    endBusySuccess();
     super.onReady();
+  }
+
+  @override
+  void onClose() {
+    clinic.nil();
+    super.onClose();
   }
 }

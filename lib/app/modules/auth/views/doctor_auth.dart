@@ -1,6 +1,6 @@
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
-import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step/clinic_data_step.dart';
+import 'package:careve/app/modules/auth/components/doc_auth_steps/clinic_data_step.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/personal_data_step.dart';
 import 'package:careve/app/modules/auth/components/doc_auth_steps/professional_data_step/professional_data_step.dart';
 import 'package:careve/app/services/auth_service.dart';
@@ -55,14 +55,12 @@ class DoctorAuthView extends GetView<AuthService> {
                           ? Loading()
                           : Row(
                               children: [
-                                if (controller.currentStep.value != 0)
+                                if (controller.currentStep.value > 0 &&
+                                    controller.user?.value?.id == null)
                                   InkWell(
                                     onTap: onStepCancel,
                                     child: Text(
-                                      !controller.dataResponse.isBlank ||
-                                              controller.dataResponse.isNotEmpty
-                                          ? S.of(context).skip
-                                          : S.of(context).back,
+                                      S.of(context).back,
                                       style: TextStyle(
                                         color: ColorUtil.errorColor,
                                         fontSize: 36.sp,
@@ -90,11 +88,7 @@ class DoctorAuthView extends GetView<AuthService> {
                                           size: 34.0,
                                         ),
                                   label: Text(
-                                    controller.currentStep.value == 1
-                                        ? S.of(context).clinicData
-                                        : controller.currentStep.value == 2
-                                            ? S.of(context).signUp
-                                            : S.of(context).professionalData,
+                                    controller.buttonTitle,
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),

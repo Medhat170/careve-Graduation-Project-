@@ -14,6 +14,8 @@ import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/modules/chat/views/chat_view.dart';
 import 'package:careve/app/modules/clinic_editing/bindings/clinic_editing_binding.dart';
 import 'package:careve/app/modules/clinic_editing/views/clinic_editing_view.dart';
+import 'package:careve/app/modules/doctor_clinics/bindings/doctor_clinics_binding.dart';
+import 'package:careve/app/modules/doctor_clinics/views/doctor_clinics_view.dart';
 import 'package:careve/app/modules/doctors/bindings/doctors_binding.dart';
 import 'package:careve/app/modules/doctors/views/doctors_view.dart';
 import 'package:careve/app/modules/first_time/bindings/first_time_binding.dart';
@@ -21,8 +23,6 @@ import 'package:careve/app/modules/first_time/views/first_time_view.dart';
 import 'package:careve/app/modules/home/views/home_view.dart';
 import 'package:careve/app/modules/medical_records/bindings/medical_records_binding.dart';
 import 'package:careve/app/modules/medical_records/views/medical_records_view.dart';
-import 'package:careve/app/modules/patients/bindings/patients_binding.dart';
-import 'package:careve/app/modules/patients/views/patients_view.dart';
 import 'package:careve/app/modules/rooms/bindings/rooms_binding.dart';
 import 'package:careve/app/modules/rooms/views/rooms_view.dart';
 import 'package:careve/app/modules/saved/views/saved_view.dart';
@@ -156,11 +156,6 @@ class AppPages {
       binding: ChatBinding(),
     ),
     GetPage(
-      name: _Paths.PATIENTS,
-      page: () => PatientsView(),
-      binding: PatientsBinding(),
-    ),
-    GetPage(
       name: _Paths.ADD_EDIT_RECORD,
       page: () => AddEditRecordView(),
     ),
@@ -168,6 +163,11 @@ class AppPages {
       name: _Paths.CLINIC_EDITING,
       page: () => ClinicEditingView(),
       binding: ClinicEditingBinding(),
+    ),
+    GetPage(
+      name: _Paths.DOCTOR_CLINICS,
+      page: () => DoctorClinicsView(),
+      binding: DoctorClinicsBinding(),
     ),
   ];
 }
