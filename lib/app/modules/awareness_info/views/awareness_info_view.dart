@@ -69,9 +69,11 @@ class AwarenessInfoView extends GetView<AwarenessInfoController>
             ),
           ),
         ],
-        videoUrls: <String>[
-          controller.article.links,
-        ],
+        videoUrls: controller.article?.links != null
+            ? <String>[
+                controller.article?.links,
+              ]
+            : null,
       ),
     );
   }

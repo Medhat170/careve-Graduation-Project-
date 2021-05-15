@@ -39,7 +39,7 @@ class _VideoPlayerComponentState extends State<VideoPlayerComponent> {
 
   @override
   void initState() {
-    if (widget.videoUrls != null) {
+    if (widget.videoUrls != null && widget.videoUrls.isNotEmpty) {
       fetchIds();
       youTubePlayerController = YoutubePlayerController(
         initialVideoId: ids.first,

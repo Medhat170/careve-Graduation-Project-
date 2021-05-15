@@ -3,6 +3,7 @@ import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/app_drop_down_menu.dart';
 import 'package:careve/app/components/app_text_field.dart';
+import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/modules/awareness/components/awareness_image_handler.dart';
 import 'package:careve/app/utilities/validators.dart';
 import 'package:careve/generated/l10n.dart';
@@ -77,12 +78,16 @@ class AddAwarenessView extends GetView<AwarenessController> {
                       const SizedBox(
                         height: 10.0,
                       ),
-                      AwarenessImageHandler(),
-                      CareveButton(
-                        title: S.of(context).done,
-                        margin: const EdgeInsets.symmetric(vertical: 20.0),
-                        onTap: controller.addAwareness,
-                      ),
+                      if (controller.articleType.value != S.of(context).qa)
+                        AwarenessImageHandler(),
+                      if (controller.isBusy.value)
+                        Loading()
+                      else
+                        CareveButton(
+                          title: S.of(context).done,
+                          margin: const EdgeInsets.symmetric(vertical: 20.0),
+                          onTap: controller.addAwareness,
+                        ),
                     ],
                   ),
                 ),

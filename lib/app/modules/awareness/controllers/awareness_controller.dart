@@ -67,21 +67,28 @@ class AwarenessController extends GetxController
       final Map<String, dynamic> response = await post(
         ApiPath.addAwareness,
         body: {
-          'title': title.text,
-          'body': article.text,
+          'title': title?.text,
+          'body': article?.text,
           'type': 'mobile',
-          'videolink': link.text,
+          'videolink': link?.text,
           'apitoken': userData?.accessToken,
           'id': userData?.id,
         },
-        files: {
-          'image': image?.value,
-        },
+        files: image?.value == null
+            ? {}
+            : {
+                'image': image?.value,
+              },
       );
       if (response != null) {
         blog.update((val) {
           val.data.add(Article.fromJson(response));
         });
+        title.clear();
+        article.clear();
+        link.clear();
+        image.nil();
+        Get.back();
       }
     } catch (error) {
       AppUtil.showAlertDialog(body: error.toString());
