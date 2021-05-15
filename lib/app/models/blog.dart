@@ -20,6 +20,7 @@ class Article {
   int authorId;
   String image;
   String links;
+  DateTime updatedAt;
 
   Article({
     this.id,
@@ -28,6 +29,7 @@ class Article {
     this.authorId,
     this.image,
     this.links,
+    this.updatedAt,
   });
 
   Article.fromJson(Map<String, dynamic> json) {
@@ -37,5 +39,6 @@ class Article {
     authorId = json['author_id'];
     image = json['image'];
     links = json['links'];
+    updatedAt = DateTime.tryParse(json['updated_at'].toString());
   }
 }

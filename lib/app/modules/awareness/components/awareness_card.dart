@@ -1,3 +1,4 @@
+import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
@@ -89,19 +90,19 @@ class _AwarenessCardWithImage extends AwarenessCard {
                 shape: RoundedRectangleBorder(
                   borderRadius: AppUtil.borderRadius,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: image != null
-                      ? Image.network(
+                child: ClipRRect(
+                  borderRadius: AppUtil.borderRadius,
+                  child: image != null && image.isNotEmpty
+                      ? NetImage(
                           image,
-                          height: 90.0,
                           width: 90.0,
+                          height: 90.0,
                           fit: BoxFit.cover,
                         )
                       : Image.asset(
                           PathUtil.logoIcon,
-                          height: 80.0,
-                          width: 80.0,
+                          width: 90.0,
+                          height: 90.0,
                           fit: BoxFit.cover,
                         ),
                 ),

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const imagesUrl = 'https://laravelbreast.000webhostapp.com/public/images/';
+const videosUrl = 'https://laravelbreast.000webhostapp.com/public/videos/';
 
 class NetImage extends CachedNetworkImage {
   NetImage(

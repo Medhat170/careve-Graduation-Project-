@@ -1,3 +1,4 @@
+import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
@@ -18,23 +19,22 @@ class AdditionActions extends GetView<AwarenessInfoController> {
             size: 20.0,
           ),
           onPressed: () async {
-            //Todo share files
             await Share.share(
-              'Check out this ${controller.videoUrl} \n Careve, because we care :)',
+              'Check out this ${videosUrl + controller.article?.links ?? imagesUrl + controller.article?.image} \n Careve, because we care :)',
               subject: 'Careve, because we care :)',
             );
           },
         ),
-        IconButton(
-          icon: const Icon(
-            FontAwesomeIcons.solidBookmark,
-            color: ColorUtil.mediumGrey,
-            size: 20.0,
-          ),
-          onPressed: () {
-            //Todo save
-          },
-        ),
+        // IconButton(
+        //   icon: const Icon(
+        //     FontAwesomeIcons.solidBookmark,
+        //     color: ColorUtil.mediumGrey,
+        //     size: 20.0,
+        //   ),
+        //   onPressed: () {
+        //     //Todo save
+        //   },
+        // ),
       ],
     );
   }

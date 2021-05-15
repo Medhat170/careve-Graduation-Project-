@@ -13,13 +13,11 @@ class SavedCard extends StatelessWidget {
   final String title;
   final String image;
   final DateTime dateTime;
-  final AwarenessType type;
 
   const SavedCard({
     this.image,
     @required this.title,
     @required this.dateTime,
-    @required this.type,
   });
 
   @override
@@ -27,7 +25,6 @@ class SavedCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => Get.toNamed(
         Routes.AWARENESS_INFO,
-        arguments: type,
       ),
       child: Card(
         color: Colors.white,

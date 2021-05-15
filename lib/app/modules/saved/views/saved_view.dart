@@ -37,9 +37,6 @@ class SavedView extends GetView<SavedController> with CustomAppBar {
                     title: 'What is symptoms and causes of breast cancer?',
                     image: index == 0 ? 'image' : null,
                     dateTime: DateTime.now(),
-                    type: index == 0
-                        ? AwarenessType.video
-                        : AwarenessType.article,
                   ),
                 ),
               ],

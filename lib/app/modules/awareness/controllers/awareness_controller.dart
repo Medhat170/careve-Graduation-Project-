@@ -24,16 +24,21 @@ class AwarenessController extends GetxController
 
   TabController tabController;
 
-  List<Article> get articles => blog.value.data
-      .where((element) => element.links == null && element.image != null)
-      .toList();
+  List<Article> get articles =>
+      blog.value.data
+          .where((element) => element.links == null && element.image != null)
+          .toList() ??
+      <Article>[];
 
   List<Article> get videos =>
-      blog.value.data.where((element) => element.links != null).toList();
+      blog.value.data.where((element) => element.links != null).toList() ??
+      <Article>[];
 
-  List<Article> get qA => blog.value.data
-      .where((element) => element.links == null && element.links != null)
-      .toList();
+  List<Article> get qA =>
+      blog.value.data
+          .where((element) => element.links == null && element.image == null)
+          .toList() ??
+      <Article>[];
 
   Future<void> fetchAllAwareness() async {
     try {

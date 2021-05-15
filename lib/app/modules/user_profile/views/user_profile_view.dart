@@ -46,12 +46,12 @@ class UserProfileView extends GetView<UserProfileController> {
               iconColor: Colors.amber,
               onTap: () => Get.toNamed(Routes.DOCTOR_CLINICS),
             ),
-          UserFeature(
-            iconData: FontAwesomeIcons.solidBookmark,
-            title: S.of(context).saved,
-            iconColor: Colors.purple,
-            onTap: () => Get.toNamed(Routes.SAVED),
-          ),
+          // UserFeature(
+          //   iconData: FontAwesomeIcons.solidBookmark,
+          //   title: S.of(context).saved,
+          //   iconColor: Colors.purple,
+          //   onTap: () => Get.toNamed(Routes.SAVED),
+          // ),
           if (!AuthService.to.isDoc.value)
             UserFeature(
               iconData: FontAwesomeIcons.hospital,

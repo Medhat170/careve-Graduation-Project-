@@ -3,7 +3,6 @@ import 'package:careve/app/components/empty_widget.dart';
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/modules/awareness/components/awareness_card.dart';
-import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/color_util.dart';
@@ -26,78 +25,114 @@ class AwarenessView extends GetView<AwarenessController> {
     return GlobalScaffold(
       body: Column(
         children: [
-          Obx(
-            () => controller.customAppBar(
-              S.of(context).awareness,
-              enableBack: true,
-              enableSearch: true,
-            ),
-          ),
-          TabBar(
-            controller: controller.tabController,
-            isScrollable: true,
-            indicatorColor: ColorUtil.primaryColor,
-            onTap: controller.onChangeTab,
-            tabs: _tabs
-                .map(
-                  (e) => Tab(
-                    child: Text(
-                      e,
-                      style: TextStyle(
-                        color: ColorUtil.primaryColor,
-                        fontSize: 44.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                )
-                .toList(),
-          ),
-          const SizedBox(
-            height: 10.0,
+          controller.customAppBar(
+            S.of(context).awareness,
+            enableBack: true,
           ),
           Expanded(
-            child: Obx(
-              () {
-                if (controller.isBusy.value) {
-                  return Loading();
-                } else if (controller.blog.value == null ||
-                    controller.blog.value.data.isEmpty) {
-                  return EmptyWidget(
-                    hint: controller.errorMessage.value,
-                    extraFunction: controller.fetchAllAwareness,
-                  );
-                } else {
-                  return AnimatedListHandler(
-                    children: [
-                      ...List.generate(
-                        8,
-                        (index) => controller.currentIndex.value != 1
-                            ? AwarenessCard.image(
-                                image: null,
-                                title:
-                                    'What is symptoms and causes of breast cancer?',
-                                onTap: () => Get.toNamed(
-                                  Routes.AWARENESS_INFO,
-                                  arguments: AwarenessType.video,
-                                ),
-                              )
-                            : AwarenessCard(
-                                title:
-                                    'What is symptoms and causes of breast cancer?',
-                                auther: 'By Dr. Ahmed Anwar',
-                                dateTime: DateTime.now(),
-                                onTap: () => Get.toNamed(
-                                  Routes.AWARENESS_INFO,
-                                  arguments: AwarenessType.article,
+            child: Obx(() {
+              if (controller.isBusy.value) {
+                return Loading();
+              } else if (controller.blog.value == null ||
+                  controller.blog.value.data.isEmpty) {
+                return EmptyWidget(
+                  hint: controller.errorMessage.value,
+                  extraFunction: controller.fetchAllAwareness,
+                );
+              } else {
+                return Column(
+                  children: [
+                    TabBar(
+                      controller: controller.tabController,
+                      isScrollable: true,
+                      indicatorColor: ColorUtil.primaryColor,
+                      onTap: controller.onChangeTab,
+                      tabs: _tabs
+                          .map(
+                            (e) => Tab(
+                              child: Text(
+                                e,
+                                style: TextStyle(
+                                  color: ColorUtil.primaryColor,
+                                  fontSize: 44.sp,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        controller: controller.tabController,
+                        children: [
+                          AnimatedListHandler(
+                            children: [
+                              if (controller.articles.isNotEmpty)
+                                ...controller.articles
+                                    .map(
+                                      (e) => AwarenessCard.image(
+                                        image: e?.image,
+                                        title: e?.title,
+                                        onTap: () => Get.toNamed(
+                                          Routes.AWARENESS_INFO,
+                                          arguments: e,
+                                        ),
+                                      ),
+                                    )
+                                    .toList()
+                              else
+                                const EmptyWidget()
+                            ],
+                          ),
+                          AnimatedListHandler(
+                            children: [
+                              if (controller.qA.isNotEmpty)
+                                ...controller.qA
+                                    .map(
+                                      (e) => AwarenessCard(
+                                        title: e?.title,
+                                        dateTime: e?.updatedAt,
+                                        onTap: () => Get.toNamed(
+                                          Routes.AWARENESS_INFO,
+                                          arguments: e,
+                                        ),
+                                      ),
+                                    )
+                                    .toList()
+                              else
+                                const EmptyWidget()
+                            ],
+                          ),
+                          AnimatedListHandler(
+                            children: [
+                              if (controller.videos.isNotEmpty)
+                                ...controller.videos
+                                    .map(
+                                      (e) => AwarenessCard.image(
+                                        image: e?.image,
+                                        title: e?.title,
+                                        onTap: () => Get.toNamed(
+                                          Routes.AWARENESS_INFO,
+                                          arguments: e,
+                                        ),
+                                      ),
+                                    )
+                                    .toList()
+                              else
+                                const EmptyWidget()
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                }
-              },
-            ),
+                    ),
+                  ],
+                );
+              }
+            }),
           ),
         ],
       ),
