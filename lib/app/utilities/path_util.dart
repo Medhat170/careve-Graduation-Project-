@@ -2,6 +2,7 @@ const imagesPath = 'assets/images/';
 const iconsPath = 'assets/icons/';
 const lottiePath = 'assets/lottie/';
 const url = 'https://laravelbreast.000webhostapp.com/public/api/';
+const blogUrl = 'http://careve.ga/public/api/';
 
 class PathUtil {
   static const String arImage = '${imagesPath}eg.png';
@@ -48,4 +49,7 @@ class ApiPath {
   static const String rateDoc = '${url}rateadoctor';
   static const String updateClinic = '${url}updateclinic';
   static const String deleteClinic = '${url}deleteclinic';
+  static const String getAllAwareness = '${url}articles';
+  static const String getSingleAwarenessById = '${url}getarticle?id=';
+  static const String addAwareness = '${url}article/write';
 }

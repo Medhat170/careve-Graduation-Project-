@@ -1,5 +1,7 @@
 import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/empty_widget.dart';
 import 'package:careve/app/components/global_scaffold.dart';
+import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/modules/awareness/components/awareness_card.dart';
 import 'package:careve/app/modules/awareness_info/controllers/awareness_info_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
@@ -56,33 +58,45 @@ class AwarenessView extends GetView<AwarenessController> {
           ),
           Expanded(
             child: Obx(
-              () => AnimatedListHandler(
-                children: [
-                  ...List.generate(
-                    8,
-                    (index) => controller.currentIndex.value != 1
-                        ? AwarenessCard.image(
-                            image: null,
-                            title:
-                                'What is symptoms and causes of breast cancer?',
-                            onTap: () => Get.toNamed(
-                              Routes.AWARENESS_INFO,
-                              arguments: AwarenessType.video,
-                            ),
-                          )
-                        : AwarenessCard(
-                            title:
-                                'What is symptoms and causes of breast cancer?',
-                            auther: 'By Dr. Ahmed Anwar',
-                            dateTime: DateTime.now(),
-                            onTap: () => Get.toNamed(
-                              Routes.AWARENESS_INFO,
-                              arguments: AwarenessType.article,
-                            ),
-                          ),
-                  ),
-                ],
-              ),
+              () {
+                if (controller.isBusy.value) {
+                  return Loading();
+                } else if (controller.blog.value == null ||
+                    controller.blog.value.data.isEmpty) {
+                  return EmptyWidget(
+                    hint: controller.errorMessage.value,
+                    extraFunction: controller.fetchAllAwareness,
+                  );
+                } else {
+                  return AnimatedListHandler(
+                    children: [
+                      ...List.generate(
+                        8,
+                        (index) => controller.currentIndex.value != 1
+                            ? AwarenessCard.image(
+                                image: null,
+                                title:
+                                    'What is symptoms and causes of breast cancer?',
+                                onTap: () => Get.toNamed(
+                                  Routes.AWARENESS_INFO,
+                                  arguments: AwarenessType.video,
+                                ),
+                              )
+                            : AwarenessCard(
+                                title:
+                                    'What is symptoms and causes of breast cancer?',
+                                auther: 'By Dr. Ahmed Anwar',
+                                dateTime: DateTime.now(),
+                                onTap: () => Get.toNamed(
+                                  Routes.AWARENESS_INFO,
+                                  arguments: AwarenessType.article,
+                                ),
+                              ),
+                      ),
+                    ],
+                  );
+                }
+              },
             ),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:careve/app/components/animated_list_handler.dart';
+import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/app_drop_down_menu.dart';
 import 'package:careve/app/components/app_text_field.dart';
@@ -77,6 +78,11 @@ class AddAwarenessView extends GetView<AwarenessController> {
                         height: 10.0,
                       ),
                       AwarenessImageHandler(),
+                      CareveButton(
+                        title: S.of(context).done,
+                        margin: const EdgeInsets.symmetric(vertical: 20.0),
+                        onTap: controller.addAwareness,
+                      ),
                     ],
                   ),
                 ),

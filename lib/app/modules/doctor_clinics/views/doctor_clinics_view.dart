@@ -95,15 +95,8 @@ class DoctorClinicsView extends GetView<DoctorClinicsController>
             () => ClinicEditingView(),
           );
           if (result != null) {
-            final Clinic clinic = Clinic(
-              id: result?.id,
-              docId: result?.docId,
-              address: result?.address,
-              mobile: result?.mobile,
-              days: result?.days,
-            );
             controller.doctorClinics.update((val) {
-              val.clinics.add(clinic);
+              val.clinics.add(result);
             });
           }
         },

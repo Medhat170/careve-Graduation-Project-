@@ -166,10 +166,10 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
             result: clinic.value,
           );
         }
-        endBusySuccess();
       } catch (error) {
         AppUtil.showAlertDialog(body: error.toString());
       }
+      endBusySuccess();
     }
   }
 
@@ -181,7 +181,7 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
         await validateClinics();
         final userId = AuthService.to.userId;
         startBusy();
-        clinicDto.Clinic adaptiveClinic = clinicDto.Clinic(
+        final adaptiveClinic = clinicDto.Clinic(
           phone: clinic?.value?.mobile,
           days: clinic?.value?.days,
           address: clinic?.value?.address,
