@@ -6,12 +6,14 @@ import 'package:careve/generated/l10n.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:get/get.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AppUtil {
   static final RegExp emailValidatorRegExp =
@@ -204,20 +206,34 @@ class AppUtil {
       final FilePickerResult result = await FilePicker.platform.pickFiles(
         allowMultiple: allowMultiple,
         type: fileType,
+        allowCompression: true,
       );
       if (result != null) {
-        files = result.files.map(
-          (file) {
-            print(file.name);
-            print(file.path);
-            return File(file.path);
-          },
-        ).toList();
+        for (final file in result?.files) {
+          print(file.name);
+          print(file.path);
+          final compressedFile = await compressFile(File(file.path), file.name);
+          files.add(compressedFile);
+        }
       }
     } catch (e) {
       print('FilePicker error : ${e.toString()}');
     }
     return files;
+  }
+
+  static Future<File> compressFile(File file, String filename) async {
+    final dir = await getTemporaryDirectory();
+    file.writeAsBytesSync(file.readAsBytesSync().buffer.asUint8List());
+    final targetPath = "${dir.absolute.path}${"/$filename"}";
+    final result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 50,
+    );
+    print(file.lengthSync());
+    print(result.lengthSync());
+    return result;
   }
 
   static Future<void> openMap({

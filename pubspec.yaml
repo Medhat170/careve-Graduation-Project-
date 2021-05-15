@@ -35,6 +35,7 @@ dependencies:
   intl: ^0.17.0
   dots_indicator: ^2.0.0
   font_awesome_flutter: ^9.0.0
+  flutter_image_compress: ^1.0.0
   dio: ^4.0.0-prev3
   pin_code_text_field: ^1.8.0
   smooth_star_rating: ^1.1.1
