@@ -3,7 +3,10 @@ import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/services/cache/cache_service.dart';
 import 'package:careve/app/services/cache/setting_repo.dart';
 import 'package:careve/app/services/cache/user_repo.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'FCM.dart';
 
 class InitialBinding extends Bindings {
   @override

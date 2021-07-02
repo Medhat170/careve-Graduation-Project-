@@ -52,4 +52,8 @@ class ApiPath {
   static const String getAllAwareness = '${url}articles';
   static const String getSingleAwarenessById = '${url}getarticle?id=';
   static const String addAwareness = '${url}article/write';
+  static const String getAllRooms = '${url}getchats';
+  static const String sendMessage = '${url}sendMessage';
+  static const String getAllChatsWithID =
+      '${url}allConversationsForCurrentUser?receiver_id=';
 }

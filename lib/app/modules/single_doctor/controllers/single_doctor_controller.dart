@@ -39,9 +39,9 @@ class SingleDoctorController extends GetxController
     final String endMin = currentDay.endTime.split(':')[1];
     final DateTime dateTimeNow = DateTime.now();
     final DateTime startTime = DateTime(
-      dateTimeNow.year,
-      dateTimeNow.month,
-      dateTimeNow.day,
+      dateTimeNow?.year,
+      dateTimeNow?.month,
+      dateTimeNow?.day,
       int.tryParse(startHour ?? '00'),
       int.tryParse(startMin ?? '00'),
     );
@@ -83,7 +83,7 @@ class SingleDoctorController extends GetxController
     for (int i = 0; i < 23; i++) {
       final now = DateTime.now();
       final DateTime weekDay = now.add(Duration(days: i));
-      if (DateFormat.E(AppUtil.currentLocale.toString())
+      if (DateFormat.E(const Locale('en', 'US').toString())
               .format(weekDay)
               .toUpperCase() ==
           eee.toUpperCase()) {

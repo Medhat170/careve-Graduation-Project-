@@ -19,20 +19,22 @@ extension DateTimeExt on DateTime {
     }
   }
 
-  String toNumbersFormat() {
+  String toNumbersFormat({String locale}) {
     if (this == null) {
       return '-';
     } else {
-      return intl.DateFormat('yyyy-MM-dd', AppUtil.currentLocale.toString())
+      return intl.DateFormat(
+              'yyyy-MM-dd', locale ?? AppUtil.currentLocale.toString())
           .format(this);
     }
   }
 
-  String toTimeOnly() {
+  String toTimeOnly({String locale}) {
     if (this == null) {
       return '-';
     } else {
-      return intl.DateFormat.Hm(AppUtil.currentLocale.toString()).format(this);
+      return intl.DateFormat.Hm(locale ?? AppUtil.currentLocale.toString())
+          .format(this);
     }
   }
 

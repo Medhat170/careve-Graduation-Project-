@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "521856539395",
+    "project_id": "careve",
+    "storage_bucket": "careve.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521856539395:android:a7728e6810da8d02936736",
+        "android_client_info": {
+          "package_name": "com.careve_team.careve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521856539395-veeb5qvg27pj9j2ahh0jnv35umsnlj6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMJnmfpCEyJ96HiarIYg6P0mPlv1kkIL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521856539395-veeb5qvg27pj9j2ahh0jnv35umsnlj6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

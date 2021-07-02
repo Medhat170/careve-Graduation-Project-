@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,11 @@ mixin ApiMixin {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
         options: Options(
-          headers: header,
+          headers: {
+            'Authorization':
+                'Bearer ${AuthService.to.user?.value?.accessToken}',
+            'Accept': 'application/json',
+          },
           receiveTimeout: receiveTimeout,
           sendTimeout: sendTimeout,
         ),
@@ -48,7 +53,11 @@ mixin ApiMixin {
         url,
         onReceiveProgress: onReceiveProgress,
         options: Options(
-          headers: header,
+          headers: {
+            'Authorization':
+                'Bearer ${AuthService.to.user?.value?.accessToken}',
+            'Accept': 'application/json',
+          },
           receiveTimeout: receiveTimeout,
           sendTimeout: sendTimeout,
         ),
@@ -72,7 +81,7 @@ mixin ApiMixin {
   void _addFiles(Map<String, File> files) {
     if (files != null || files?.entries != null || files.entries.isNotEmpty) {
       for (final entry in files?.entries) {
-        if (entry?.value != null || entry.value.path != null) {
+        if (entry?.value != null || entry?.value?.path != null) {
           _formData.files.add(
             MapEntry(
               entry?.key,

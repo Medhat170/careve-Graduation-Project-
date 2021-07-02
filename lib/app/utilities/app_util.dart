@@ -53,7 +53,7 @@ class AppUtil {
   static bool get isLtr => intl.Intl.getCurrentLocale() == 'en';
 
   static Locale get currentLocale =>
-      AppUtil.isLtr ? const Locale('en', 'US') : const Locale('en', 'US');
+      AppUtil.isLtr ? const Locale('en', 'US') : const Locale('ar', 'EG');
   static BorderRadius customBorderRadius = isLtr
       ? const BorderRadius.only(
           topRight: Radius.circular(10.0),
@@ -71,7 +71,8 @@ class AppUtil {
       lastDate: DateTime(2100),
       initialDate: DateTime.now(),
     );
-    print('Selected date : ${intl.DateFormat.yMMMMd().format(date)}');
+    print(
+        'Selected date : ${intl.DateFormat.yMMMMd(AppUtil.currentLocale.toString()).format(date)}');
     return DateTime.utc(date.year, date.month, date.day, 12);
   }
 
@@ -97,35 +98,61 @@ class AppUtil {
     String title,
     String body,
     bool isGood = false,
-    void Function() onTap,
+    void Function() onTapSnack,
     Duration duration,
+    String buttonText,
+    void Function() onTapButton,
+    SnackPosition snackPosition,
   }) {
     Get.snackbar(
-      title,
-      body,
-      onTap: (_) => onTap?.call(),
+      title ?? S.current.alert,
+      body ?? '',
+      snackPosition: snackPosition ?? SnackPosition.BOTTOM,
+      padding: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 15.0),
+      onTap: (_) => onTapSnack?.call(),
       duration: duration,
-      backgroundColor: Colors.white,
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+      backgroundColor: ColorUtil.whiteColor,
       titleText: Text(
-        title,
+        title ?? S.current.alert,
         style: TextStyle(
-          color: isGood ? Colors.green : Colors.red,
-          fontWeight: FontWeight.w500,
+          color: isGood ? Colors.green : ColorUtil.errorColor,
+          fontWeight: FontWeight.w700,
           fontSize: 14.0,
         ),
       ),
       messageText: Text(
         body,
         style: const TextStyle(
-          color: Colors.black,
+          color: ColorUtil.blackColor,
           fontWeight: FontWeight.w500,
           fontSize: 14.0,
         ),
       ),
       icon: Icon(
-        isGood ? Icons.check_circle_outline : Icons.error_outline,
-        color: isGood ? Colors.green : Colors.red,
+        isGood
+            ? CupertinoIcons.checkmark_seal
+            : CupertinoIcons.exclamationmark_octagon,
+        color: isGood ? Colors.green : ColorUtil.errorColor,
       ),
+      borderRadius: 5.0,
+      mainButton: buttonText == null
+          ? null
+          : TextButton(
+              onPressed: () => onTapSnack?.call(),
+              style: TextButton.styleFrom(
+                elevation: 3.0,
+                backgroundColor: ColorUtil.primaryColor,
+              ),
+              child: Text(
+                buttonText,
+                style: TextStyle(
+                  color: ColorUtil.errorColor,
+                ),
+              ),
+            ),
+      isDismissible: true,
+      snackStyle: SnackStyle.FLOATING,
     );
   }
 

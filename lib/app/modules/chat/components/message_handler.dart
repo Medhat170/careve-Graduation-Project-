@@ -18,24 +18,27 @@ class MessageHandler extends GetView<ChatController> {
           child: Row(
             textDirection: TextDirection.ltr,
             children: <Widget>[
-              GestureDetector(
-                onTap: () async {
-                  await controller.uploadFiles();
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Icon(
-                    FontAwesomeIcons.plus,
-                    color: ColorUtil.primaryColor,
-                    size: 20.0,
-                  ),
-                ),
+              // GestureDetector(
+              //   onTap: () async {
+              //     await controller.uploadFiles();
+              //   },
+              //   child: const Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 10.0),
+              //     child: Icon(
+              //       FontAwesomeIcons.plus,
+              //       color: ColorUtil.primaryColor,
+              //       size: 20.0,
+              //     ),
+              //   ),
+              // ),
+              const SizedBox(
+                width: 20.0,
               ),
               Expanded(
                 child: Obx(
                   () => AppTextField(
                     controller.messageController,
-                    readOnly: controller.isBusy.value,
+                    readOnly: controller.sendingText.value,
                     hintText: S.of(context).typeMessage,
                     autoFocus: false,
                   ),
@@ -43,15 +46,17 @@ class MessageHandler extends GetView<ChatController> {
               ),
               Obx(
                 () => GestureDetector(
-                  onTap: !controller.isBusy.value
-                      ? () {
-                          controller.onSend();
-                        }
-                      : null,
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  onTap: () {
+                    if (!controller.sendingText.value) {
+                      controller.onSend();
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Icon(
-                      FontAwesomeIcons.paperPlane,
+                      !controller.sendingText.value
+                          ? FontAwesomeIcons.solidPaperPlane
+                          : FontAwesomeIcons.spinner,
                       color: ColorUtil.primaryColor,
                       size: 20.0,
                     ),

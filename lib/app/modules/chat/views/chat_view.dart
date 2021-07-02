@@ -1,9 +1,11 @@
+import 'package:careve/app/components/empty_widget.dart';
 import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/chat/components/message_handler.dart';
 import 'package:careve/app/modules/chat/components/message_viewer.dart';
 import 'package:careve/app/modules/chat/controllers/chat_controller.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,6 +28,11 @@ class ChatView extends GetView<ChatController> with CustomAppBar {
                   child: Obx(() {
                     if (controller.isBusy.value) {
                       return Loading();
+                    } else if (controller.allMessages == null) {
+                      return EmptyWidget(
+                        hint: controller.errorMessage.value,
+                        extraFunction: controller.fetchAllChats,
+                      );
                     } else {
                       return NotificationListener<
                           OverscrollIndicatorNotification>(
@@ -40,36 +47,22 @@ class ChatView extends GetView<ChatController> with CustomAppBar {
                             right: 8.0,
                             left: 8.0,
                           ),
-                          children: [
-                            ...[
-                              MessageViewer(
-                                id: 0,
-                                content: 'Hi there! I am using careve app',
-                                type: SelfOrOtherEnum.other,
-                                date: DateTime.now().toTimeOnly(),
-                                sender: 'Dr: Ahmed Mohamed',
-                              ),
-                              MessageViewer(
-                                id: 0,
-                                content: 'Hello there',
-                                type: SelfOrOtherEnum.self,
-                                date: DateTime.now().toTimeOnly(),
-                                sender: '',
-                              ),
-                            ]
-                            // ...controller
-                            //     .approvalCached.value.approval_comments
-                            //     .map(
-                            //       (e) => MessageViewer(
-                            //         id: e.id,
-                            //         files: e.files,
-                            //         content: e.comment,
-                            //         type: e.replay_with,
-                            //       ),
-                            //     )
-                            //     .toList()
-                            //     .reversed,
-                          ],
+                          children: controller.allMessages
+                              .map(
+                                (e) => MessageViewer(
+                                  id: e.id,
+                                  content: e.messagesText,
+                                  type: e.userId.toString() ==
+                                          AuthService.to.user?.value?.id
+                                      ? SelfOrOtherEnum.self
+                                      : SelfOrOtherEnum.other,
+                                  date: e.updatedAt.toTimeWithAmPmFormat(),
+                                  sender: '',
+                                ),
+                              )
+                              .toList()
+                              .reversed
+                              .toList(),
                         ),
                       );
                     }

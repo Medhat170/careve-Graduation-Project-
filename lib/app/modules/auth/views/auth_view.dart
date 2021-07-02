@@ -110,22 +110,22 @@ class AuthView extends GetView<AuthService> {
                           const SizedBox(
                             height: 15.0,
                           ),
-                          if (!controller.signUP.value)
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: () => Get.toNamed(Routes.PHONE_ENTRY),
-                                  child: Text(
-                                    S.of(context).forgetPassword,
-                                    style: TextStyle(
-                                      fontSize: 46.sp,
-                                      color: ColorUtil.mediumGrey,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                          // if (!controller.signUP.value)
+                          //   Row(
+                          //     mainAxisAlignment: MainAxisAlignment.end,
+                          //     children: [
+                          //       InkWell(
+                          //         onTap: () => Get.toNamed(Routes.PHONE_ENTRY),
+                          //         child: Text(
+                          //           S.of(context).forgetPassword,
+                          //           style: TextStyle(
+                          //             fontSize: 46.sp,
+                          //             color: ColorUtil.mediumGrey,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
                           const SizedBox(
                             height: 20.0,
                           ),

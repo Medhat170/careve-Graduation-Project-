@@ -29,7 +29,6 @@ class UserProfileView extends GetView<UserProfileController> {
               iconData: FontAwesomeIcons.solidComments,
               title: S.of(context).messages,
               iconColor: Colors.amber,
-              trailingCount: 2,
               onTap: () => Get.toNamed(Routes.ROOMS),
             ),
           if (!AuthService.to.isDoc.value)
@@ -46,12 +45,6 @@ class UserProfileView extends GetView<UserProfileController> {
               iconColor: Colors.amber,
               onTap: () => Get.toNamed(Routes.DOCTOR_CLINICS),
             ),
-          // UserFeature(
-          //   iconData: FontAwesomeIcons.solidBookmark,
-          //   title: S.of(context).saved,
-          //   iconColor: Colors.purple,
-          //   onTap: () => Get.toNamed(Routes.SAVED),
-          // ),
           if (!AuthService.to.isDoc.value)
             UserFeature(
               iconData: FontAwesomeIcons.hospital,

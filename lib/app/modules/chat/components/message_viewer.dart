@@ -63,87 +63,6 @@ class MessageViewer extends StatelessWidget {
                             ),
                             textAlign: TextAlign.start,
                           ),
-                        // files.length > 0 && files != null
-                        //     ? Neumorphic(
-                        //         padding: EdgeInsets.all(
-                        //           3.5,
-                        //         ),
-                        //         margin: EdgeInsets.only(
-                        //           left: type == SelfOrOtherEnum.self ? margin : 5.0,
-                        //           right: type == SelfOrOtherEnum.self ? 5.0 : margin,
-                        //         ),
-                        //         style: NeumorphicStyle(
-                        //           color: type == SelfOrOtherEnum.self
-                        //               ? ColorUtil.primaryColor
-                        //               : ColorUtil.backgroundColor,
-                        //           boxShape: NeumorphicBoxShape.roundRect(
-                        //             messageBorderRadius(),
-                        //           ),
-                        //           shadowDarkColor: type == SelfOrOtherEnum.self
-                        //               ? ColorUtil.primaryColor
-                        //               : null,
-                        //           shadowLightColor: type == SelfOrOtherEnum.self
-                        //               ? ColorUtil.primaryColor.withOpacity(0.2)
-                        //               : null,
-                        //         ),
-                        //         child: Column(
-                        //           crossAxisAlignment: type == SelfOrOtherEnum.self
-                        //               ? CrossAxisAlignment.end
-                        //               : CrossAxisAlignment.start,
-                        //           children: [
-                        //             ListView.builder(
-                        //               itemCount: files.length,
-                        //               shrinkWrap: true,
-                        //               physics: NeverScrollableScrollPhysics(),
-                        //               itemBuilder: (context, index) {
-                        //                 final file = files[index];
-                        //                 return file.fullUrl.contains('pdf')
-                        //                     ? PdfHandler(
-                        //                         file.fullUrl,
-                        //                         file.fileName,
-                        //                       )
-                        //                     : file.fullUrl == PathUtil.waitingPath
-                        //                         ? SizedBox(
-                        //                             width: Get.width / 2,
-                        //                             height: Get.width / 2,
-                        //                             child: Padding(
-                        //                               padding:
-                        //                                   const EdgeInsets.symmetric(
-                        //                                 vertical: 60.0,
-                        //                               ),
-                        //                               child: Center(
-                        //                                 child: Image.asset(
-                        //                                   file.fullUrl,
-                        //                                   color: Colors.white,
-                        //                                   fit: BoxFit.contain,
-                        //                                 ),
-                        //                               ),
-                        //                             ),
-                        //                           )
-                        //                         : InkWell(
-                        //                             child: SizedBox(
-                        //                               width: Get.width - margin,
-                        //                               height: Get.width - margin,
-                        //                               child: Image(
-                        //                                 image:
-                        //                                     CachedNetworkImageProvider(
-                        //                                         file.fullUrl),
-                        //                                 fit: BoxFit.cover,
-                        //                               ),
-                        //                             ),
-                        //                             onTap: () {
-                        //                               Get.to(() => PhotoView(
-                        //                                   imageProvider:
-                        //                                       CachedNetworkImageProvider(
-                        //                                           file.fullUrl)));
-                        //                             },
-                        //                           );
-                        //               },
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       )
-                        // : SizedBox.shrink(),
                         if (content != null) ...[
                           Container(
                             padding: const EdgeInsets.symmetric(
@@ -188,18 +107,11 @@ class MessageViewer extends StatelessWidget {
                           ),
                         ],
                         const SizedBox(
-                          height: 10.0,
+                          height: 5.0,
                         ),
                       ],
                     ),
                   ),
-                  if (files != null)
-                    IconButton(
-                      icon: const Icon(Icons.attach_file),
-                      onPressed: () {
-                        // Get.toNamed(Routes.ATTACHMENTS, arguments: files);
-                      },
-                    )
                 ],
               ),
             ),

@@ -39,8 +39,12 @@ class AppointmentItem extends StatelessWidget {
               ),
               ...allLike.map(
                 (e) {
-                  final shownDate = e.toNumbersFormat();
-                  final sendDateTime = '$shownDate ${date?.toTimeOnly()}';
+                  final shownDate = e.toNumbersFormat(
+                    locale: const Locale('en', 'US').toString(),
+                  );
+                  final sendDateTime = '$shownDate ${date?.toTimeOnly(
+                    locale: const Locale('en', 'US').toString(),
+                  )}';
                   return Obx(
                     () => Waiting(
                       loading: SingleDoctorController.to.loadingId.value ==

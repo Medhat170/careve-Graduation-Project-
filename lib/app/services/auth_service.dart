@@ -33,7 +33,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   TextEditingController confirmedPassword = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController address = TextEditingController();
-
+  final fireBaseToken = ''.obs;
   final signUP = false.obs;
   final isDoc = false.obs;
   final currentStep = 0.obs;
@@ -44,7 +44,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   final user = Rx<User>();
   final cv = Rx<File>();
   final image = RxString();
-  final uploadedImage = Rx<File>();
+  final uploadedImage = Rx<File>(File(''));
   final dateOfBirth = Rx<DateTime>();
   final bloodType = RxString();
   final bloodTypesRef = RxList<String>([
@@ -223,6 +223,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
     }
     print('User is auth!');
     user.value = cachedUser;
+    print(user.value.accessToken);
     isDoc(user.value.nationalId != null);
     return true;
   }
@@ -247,9 +248,6 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
       } else if (signUP.value && isDoc.value == false) {
         response = await patientAuth();
       }
-      // else if (signUP.value && isDoc.value == true) {
-      //   response = await docAuth();
-      // }
       if (response != null) {
         user(await CacheService.to.userRepo.updateUserCache(response));
         CacheService.to.settingsRepo.setCachedUserId(user.value.id);
@@ -438,7 +436,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'type': 'mobile'
             },
             files: {
-              'image': uploadedImage.value,
+              'image': uploadedImage?.value,
             },
           );
         } else {
@@ -452,7 +450,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'type': 'mobile',
             },
             files: {
-              'image': uploadedImage.value,
+              'image': uploadedImage?.value,
             },
           );
         }

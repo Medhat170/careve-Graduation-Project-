@@ -14,12 +14,16 @@ class RoomCard extends StatelessWidget {
   final String lastMessage;
   final DateTime dateTime;
   final bool unRead;
+  final int id;
+  final int receiverId;
 
   const RoomCard({
     this.image,
     this.username = 'Careve user',
     this.lastMessage = '',
     this.dateTime,
+    this.id,
+    this.receiverId,
     this.unRead = false,
   });
 
@@ -42,8 +46,9 @@ class RoomCard extends StatelessWidget {
               onTap: () => Get.toNamed(
                 Routes.CHAT,
                 arguments: ChatRouteInputs(
-                  roomId: 0,
-                  roomName: 'Dr: Ahmed Mohamed',
+                  roomId: id,
+                  receiverID: receiverId,
+                  roomName: username,
                 ),
               ),
               child: Card(
@@ -106,9 +111,9 @@ class RoomCard extends StatelessWidget {
                                   ? dateTime?.toShortUserString()
                                   : dateTime?.toTimeOnly(),
                               style: TextStyle(
-                                fontSize: 30.sp,
+                                fontSize: 38.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorUtil.mediumGrey.withOpacity(0.3),
+                                color: ColorUtil.mediumGrey,
                               ),
                             ),
                           ],

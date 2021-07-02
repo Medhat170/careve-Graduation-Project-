@@ -120,10 +120,11 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                                     size: 22.0,
                                     color: ColorUtil.primaryColor,
                                   ),
-                                  onTap: () => Get.toNamed(
+                                  onTap: () => Get.offNamed(
                                     Routes.CHAT,
                                     arguments: ChatRouteInputs(
-                                      roomId: 0,
+                                      roomId: -1,
+                                      receiverID: controller.doctorData?.id,
                                       roomName: doctor?.name,
                                     ),
                                   ),
