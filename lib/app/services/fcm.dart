@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:careve/app/models/message.dart';
+import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/modules/chat/controllers/chat_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
 import 'package:careve/app/services/auth_service.dart';
@@ -7,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
+  print(message);
   if (message.containsKey('data')) {
     // Handle data message
     final dynamic data = message['data'];
@@ -29,18 +34,23 @@ class FirebaseNotifications extends GetxService {
   Future Function(Map<String, dynamic>) onMessage;
   Function getTokenCallback;
 
-  void setHandlers(
-      Function(Map<String, dynamic>) onMessage,
-      Function(Map<String, dynamic>) onLaunch,
-      Function(Map<String, dynamic>) onResume) {
-    this.onLaunch = onLaunch;
-    this.onMessage = onMessage;
-    this.onResume = onResume;
-    firebaseCloudMessagingListeners();
-  }
+  // void setHandlers(
+  //     Function(Remot) onMessage,
+  //     Function(Map<String, dynamic>) onLaunch,
+  //     Function(Map<String, dynamic>) onResume) {
+  //   this.onLaunch = onLaunch;
+  //   this.onMessage = onMessage;
+  //   this.onResume = onResume;
+  //   firebaseCloudMessagingListeners();
+  // }
 
   Future setGetTokenCallback(
       void Function(String token) getTokenCallback) async {
+    await _firebaseMessaging.setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
     final settings = await _firebaseMessaging.requestPermission(
       alert: true,
       announcement: false,
@@ -63,6 +73,17 @@ class FirebaseNotifications extends GetxService {
 
   void firebaseCloudMessagingListeners() {
     _firebaseMessaging.getInitialMessage();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification;
+      AndroidNotification android = message.notification?.android;
+      print(message.notification.body);
+      handleFCMMessage(message.notification);
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print('A new onMessageOpenedApp event was published!');
+      print(message.notification.body);
+    });
   }
 
   static Future<void> navigateToItemDetail(LiveNotificationItem item) async {
@@ -71,7 +92,11 @@ class FirebaseNotifications extends GetxService {
         print('Navigating to Details:');
         Get.offNamed(
           Routes.CHAT,
-          arguments: int.tryParse(item.id),
+          arguments: ChatRouteInputs(
+            roomId: 0,
+            roomName: item.sender,
+            receiverID: item.id,
+          ),
         );
         break;
       default:
@@ -81,7 +106,7 @@ class FirebaseNotifications extends GetxService {
 
   @override
   void onInit() {
-    setHandlers(handleFCMMessage, handleFCMMessage, handleFCMMessage);
+    firebaseCloudMessagingListeners();
     setGetTokenCallback(
       (token) {
         print("FireBase Token :::: $token");
@@ -94,9 +119,9 @@ class FirebaseNotifications extends GetxService {
 const String CHAT = 'chat';
 
 class LiveNotificationItem {
-  final String notificationTitle;
-  final String notificationBody;
-  final String id;
+  final String sender;
+  final String message;
+  final int id;
   final String type;
   final String sound;
   final DateTime date;
@@ -104,22 +129,22 @@ class LiveNotificationItem {
 /*
 {
   notification: {
-    title: You Have new comment,
-    body: Hi mobile
+    title: notificationTitle,
+    body: notificationBody
   },
   data: {
-    id: 157,
-    body: Hi mobile,
-    type: approval_comment,
+    id: 0,
+    body: Hi there,
+    type: chat,
     sound: default,
-    title: You Have new comment
+    title: You Have new message
   }
 }
  */
 
   LiveNotificationItem({
-    @required this.notificationTitle,
-    @required this.notificationBody,
+    @required this.sender,
+    @required this.message,
     @required this.id,
     @required this.type,
     @required this.sound,
@@ -130,14 +155,11 @@ class LiveNotificationItem {
     if (map == null) return null;
     print('Parsing Live Notification: $map');
     try {
-      final Map<dynamic, dynamic> notification = map['notification'];
-      final Map<dynamic, dynamic> data = map['data'] ?? map;
       return LiveNotificationItem(
-        notificationTitle: notification['title'],
-        notificationBody: notification['body'],
-        id: data['id'],
-        type: data['type'],
-        sound: data['sound'],
+        sender: map['sender'],
+        message: map['message'],
+        id: map['id'],
+        type: map['type'],
         date: DateTime.now(),
       );
     } catch (e) {
@@ -147,9 +169,11 @@ class LiveNotificationItem {
   }
 }
 
-Future handleFCMMessage(Map<String, dynamic> message) async {
+Future handleFCMMessage(RemoteNotification message) async {
   print('Notification  >>>> $message<<<<');
-  final item = LiveNotificationItem.fromMap(message);
+  final item = LiveNotificationItem.fromMap(
+    json.decode(message.body) as Map<String, dynamic>,
+  );
 
   print('Showing dialog to user!');
   if (Get.currentRoute != '/chat') {
@@ -162,14 +186,23 @@ Future handleFCMMessage(Map<String, dynamic> message) async {
     //   },
     // );
     AppUtil.showAlertSnack(
-      title: item.notificationTitle,
-      body: item.notificationBody,
+      title: item?.sender ?? '',
+      body: item?.message ?? '',
       snackPosition: SnackPosition.TOP,
+      duration: const Duration(seconds: 3),
       onTapSnack: () async {
         await FirebaseNotifications.navigateToItemDetail(item);
       },
     );
   } else {
-    ChatController.to.fetchAllChats();
+    ChatController.to.allMessages.add(
+      Message(
+        id: 0,
+        updatedAt: DateTime.now(),
+        messagesText: item?.message ?? '',
+        receiverId: '-1',
+        userId: item?.id,
+      ),
+    );
   }
 }
