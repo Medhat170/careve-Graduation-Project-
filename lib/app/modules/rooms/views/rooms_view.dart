@@ -4,6 +4,7 @@ import 'package:careve/app/components/global_scaffold.dart';
 import 'package:careve/app/components/loading.dart';
 import 'package:careve/app/mixins/app_bar_mixin.dart';
 import 'package:careve/app/modules/rooms/components/room_card.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,11 +37,14 @@ class RoomsView extends GetView<RoomsController> with CustomAppBar {
                     children: controller.allRomes
                         .map(
                           (room) => RoomCard(
-                            username: 'Dr : ${room?.receiverName ?? ''}',
+                            username: !AuthService.to.isDoc.value
+                                ? 'Dr : ${room?.receiverName ?? ''}'
+                                : '${S.of(context).patient} ${room?.id ?? 0}',
                             dateTime: room?.updatedAt,
                             lastMessage: room?.lastm ?? '',
                             id: room?.id,
                             receiverId: room?.receiverId,
+                            conId: room?.name,
                             // unRead: index == 0 || index == 3,
                           ),
                         )

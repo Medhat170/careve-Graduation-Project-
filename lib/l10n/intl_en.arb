@@ -199,5 +199,6 @@
   "daysNull": "Add some work days!",
   "mark": "special mark",
   "removeClinic": "Do you want to remove this clinic ( {ClinicTitle} )",
-  "pressToAddClinic": "Press to add clinic"
+  "pressToAddClinic": "Press to add clinic",
+  "patient": "Patient"
 }

@@ -6,11 +6,13 @@ class ChatRouteInputs {
   final int roomId;
   final int receiverID;
   final String roomName;
+  final String conId;
 
   ChatRouteInputs({
     this.roomId,
     this.roomName,
     this.receiverID,
+    this.conId,
   });
 }
 
@@ -22,6 +24,7 @@ class ChatBinding extends Bindings {
       ChatController(
         roomId: args?.roomId,
         receiverID: args?.receiverID,
+        conId: args?.conId,
         roomName: args?.roomName ?? S.current.chat,
       ),
     );

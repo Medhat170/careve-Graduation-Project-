@@ -1,7 +1,9 @@
 import 'package:careve/app/components/app_button.dart';
 import 'package:careve/app/components/net_image.dart';
 import 'package:careve/app/models/user.dart';
+import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
 import 'package:careve/generated/l10n.dart';
@@ -91,8 +93,16 @@ class PatientDataCard extends StatelessWidget {
                         title: S.of(context).chat,
                         height: 80.w,
                         width: 300.w,
-                        onTap: () =>
-                            Get.toNamed(Routes.CHAT), //TODO room Id and Chat Id
+                        onTap: () => Get.toNamed(
+                          Routes.CHAT,
+                          arguments: ChatRouteInputs(
+                            roomId: 0,
+                            receiverID: int.tryParse(patientData?.id),
+                            roomName: patientData?.name,
+                            conId:
+                                'u${patientData?.id}d${AuthService.to.user?.value?.id}',
+                          ),
+                        ),
                       ),
                     ],
                   ),

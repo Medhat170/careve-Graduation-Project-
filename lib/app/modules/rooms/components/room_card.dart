@@ -1,5 +1,6 @@
 import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
@@ -16,6 +17,7 @@ class RoomCard extends StatelessWidget {
   final bool unRead;
   final int id;
   final int receiverId;
+  final String conId;
 
   const RoomCard({
     this.image,
@@ -25,6 +27,7 @@ class RoomCard extends StatelessWidget {
     this.id,
     this.receiverId,
     this.unRead = false,
+    this.conId,
   });
 
   @override
@@ -49,6 +52,7 @@ class RoomCard extends StatelessWidget {
                   roomId: id,
                   receiverID: receiverId,
                   roomName: username,
+                  conId: conId,
                 ),
               ),
               child: Card(

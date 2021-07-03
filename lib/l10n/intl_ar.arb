@@ -199,5 +199,6 @@
   "daysNull": "أضف بعض إيام العمل!",
   "mark": "علامه مميزه",
   "removeClinic": "هل تريد حذف هذه العياده ( {ClinicTitle} )",
-  "pressToAddClinic": "أضغط لإضافة عياده"
+  "pressToAddClinic": "أضغط لإضافة عياده",
+  "patient": "مريض"
 }

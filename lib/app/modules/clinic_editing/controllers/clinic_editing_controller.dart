@@ -70,14 +70,17 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
     final clinicTemp = clinic?.value;
     clinicTemp.days ??= <clinicDto.Day>[];
     final int dayIndex = clinic?.value?.days?.indexWhere(
-      (element) => element.day == day,
+      (element) => element?.day == day,
     );
     try {
       if (dayIndex != null && dayIndex != -1) {
         final clinicDto.Day targetDay = clinic.value.days[dayIndex];
         if (startTime != null) {
-          targetDay.startTime = startTime.toTimeOnly();
+          targetDay?.startTime = startTime?.toTimeOnly(
+            locale: const Locale('en', 'US').toString(),
+          );
         } else if (endTime != null) {
+          print(targetDay.startTime);
           final now = DateTime.now();
           final int startHour =
               int.tryParse(targetDay?.startTime?.split(':')[0]);
@@ -85,14 +88,16 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
               int.tryParse(targetDay?.startTime?.split(':')[1]) ?? 0;
           if (endTime.isAfter(
             DateTime(
-              now.year,
-              now.month,
-              now.day,
+              now?.year,
+              now?.month,
+              now?.day,
               startHour,
               startMin,
             ),
           )) {
-            targetDay.endTime = endTime.toTimeOnly();
+            targetDay?.endTime = endTime?.toTimeOnly(
+              locale: const Locale('en', 'US').toString(),
+            );
           } else {
             throw S.current.timeIsBefore;
           }
@@ -106,8 +111,12 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
           val.days.add(
             clinicDto.Day(
               day: day,
-              startTime: startTime.toTimeOnly(),
-              endTime: endTime.toTimeOnly(),
+              startTime: startTime.toTimeOnly(
+                locale: const Locale('en', 'US').toString(),
+              ),
+              endTime: endTime.toTimeOnly(
+                locale: const Locale('en', 'US').toString(),
+              ),
               status: 1,
             ),
           );
@@ -190,6 +199,8 @@ class ClinicEditingController extends GetxController with BusyMixin, ApiMixin {
           'clinics': [adaptiveClinic]
         }));
         print(userId);
+        print(AuthService.to.user.value.accessToken);
+
         final Map<String, dynamic> response = await post(
           ApiPath.addClinic,
           body: {

@@ -81,7 +81,9 @@ mixin ApiMixin {
   void _addFiles(Map<String, File> files) {
     if (files != null || files?.entries != null || files.entries.isNotEmpty) {
       for (final entry in files?.entries) {
-        if (entry?.value != null || entry?.value?.path != null) {
+        if (entry?.value != null &&
+            entry.value.path != null &&
+            entry.value.path.length > 2) {
           _formData.files.add(
             MapEntry(
               entry?.key,

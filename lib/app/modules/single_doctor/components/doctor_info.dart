@@ -5,6 +5,7 @@ import 'package:careve/app/models/all_doctors.dart';
 import 'package:careve/app/modules/chat/bindings/chat_binding.dart';
 import 'package:careve/app/modules/single_doctor/controllers/single_doctor_controller.dart';
 import 'package:careve/app/routes/app_pages.dart';
+import 'package:careve/app/services/auth_service.dart';
 import 'package:careve/app/utilities/app_util.dart';
 import 'package:careve/app/utilities/color_util.dart';
 import 'package:careve/app/utilities/path_util.dart';
@@ -123,10 +124,11 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                                   onTap: () => Get.offNamed(
                                     Routes.CHAT,
                                     arguments: ChatRouteInputs(
-                                      roomId: -1,
-                                      receiverID: controller.doctorData?.id,
-                                      roomName: doctor?.name,
-                                    ),
+                                        roomId: -1,
+                                        receiverID: controller.doctorData?.id,
+                                        roomName: doctor?.name,
+                                        conId:
+                                            'u${AuthService.to.user.value.id}d${controller.doctorData?.id}'),
                                   ),
                                 ),
                               ),

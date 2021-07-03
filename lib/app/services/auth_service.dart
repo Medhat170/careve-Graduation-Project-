@@ -44,7 +44,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
   final user = Rx<User>();
   final cv = Rx<File>();
   final image = RxString();
-  final uploadedImage = Rx<File>(File(''));
+  final uploadedImage = Rx<File>();
   final dateOfBirth = Rx<DateTime>();
   final bloodType = RxString();
   final bloodTypesRef = RxList<String>([
@@ -242,6 +242,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'email': email.text,
               'password': password.text,
               'type': 'mobile',
+              'mobiletoken': fireBaseToken?.value ?? '',
             },
           );
         }
@@ -274,6 +275,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
             'email': email.text,
             'password': password.text,
             'type': 'mobile',
+            'mobiletoken': fireBaseToken?.value ?? '',
           },
         );
         name.clear();
@@ -301,11 +303,12 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
           'mobile': '',
           'cost': cost.text,
           'nationalid': nationalId.text,
-          'type': 'mobile'
+          'type': 'mobile',
+          'mobiletoken': fireBaseToken?.value ?? '',
         },
         files: {
-          'cv': cv.value,
-          'image': uploadedImage.value,
+          'cv': cv?.value,
+          'image': uploadedImage?.value,
         },
       );
       if (response != null) {
@@ -433,7 +436,8 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'name': name.text,
               'email': email.text,
               'cost': cost.text,
-              'type': 'mobile'
+              'type': 'mobile',
+              'mobiletoken': fireBaseToken?.value ?? '',
             },
             files: {
               'image': uploadedImage?.value,
@@ -448,6 +452,7 @@ class AuthService extends GetxService with ApiMixin, BusyMixin {
               'email': email.text,
               'bloodtype': bloodType.value,
               'type': 'mobile',
+              'mobiletoken': fireBaseToken?.value ?? '',
             },
             files: {
               'image': uploadedImage?.value,

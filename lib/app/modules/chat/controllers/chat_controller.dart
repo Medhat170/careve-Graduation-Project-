@@ -20,12 +20,14 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
   final sendingText = false.obs;
   final int roomId;
   final int receiverID;
+  final String conId;
   final String roomName;
   final toUpload = <String, File>{}.obs;
 
   ChatController({
     this.roomId,
     this.receiverID,
+    this.conId,
     this.roomName,
   });
 
@@ -35,7 +37,7 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
     try {
       startBusy();
       final response = await get(
-        ApiPath.getAllChatsWithID + receiverID.toString(),
+        ApiPath.getAllChatsWithConId + conId,
       );
       if (response['data'] != null) {
         allMessages.assignAll(
@@ -63,16 +65,15 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
       allMessages.add(message);
       messageController.text = '';
       try {
+        final String actualReceiverID = !AuthService.to.isDoc.value
+            ? conId.split('d')[1]
+            : conId.substring(1).split('d')[0];
+        print('CodId :: $actualReceiverID');
         sendingText.value = true;
-        final files = <d.MultipartFile>[];
-        for (final f in toUpload.values) {
-          files.add(await d.MultipartFile.fromFile(f.path,
-              filename: basename(f.path)));
-        }
         final response = await post(
           ApiPath.sendMessage,
           body: {
-            'receiver_id': receiverID,
+            'receiver_id': actualReceiverID ?? receiverID,
             'messages': message.messagesText,
           },
         );
@@ -96,6 +97,8 @@ class ChatController extends GetxController with ApiMixin, BusyMixin {
     sendingText.value = false;
     print(roomId);
     print(receiverID);
+    print(conId);
+    print(AuthService.to.user.value.accessToken);
     fetchAllChats();
   }
 

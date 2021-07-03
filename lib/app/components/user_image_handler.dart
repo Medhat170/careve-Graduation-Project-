@@ -20,18 +20,28 @@ class ProfileImageHandler extends GetView<AuthService> {
           width: 100.0,
           fit: BoxFit.cover,
         );
-        if (controller.uploadedImage?.value != null) {
+        if (controller.uploadedImage?.value != null &&
+            controller.uploadedImage.value.path.isNotEmpty) {
+          print('file');
           imageProvider = Image.file(
-            controller.uploadedImage.value,
+            controller.uploadedImage?.value,
             height: 100.0,
             width: 100.0,
             fit: BoxFit.cover,
           );
         } else if (userData?.image != null && userData.image.isNotEmpty) {
+          print('NetImage');
           imageProvider = NetImage(
             userData?.image,
             height: 100.0,
             width: 100.0,
+          );
+        } else {
+          imageProvider = Image.asset(
+            PathUtil.logoIcon,
+            height: 100.0,
+            width: 100.0,
+            fit: BoxFit.cover,
           );
         }
         return Stack(

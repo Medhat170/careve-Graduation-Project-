@@ -90,12 +90,17 @@ class FirebaseNotifications extends GetxService {
     switch (item.type) {
       case CHAT:
         print('Navigating to Details:');
+        Get.delete<ChatController>();
+        // Get.put(ChatController());
         Get.offNamed(
           Routes.CHAT,
           arguments: ChatRouteInputs(
             roomId: 0,
             roomName: item.sender,
             receiverID: item.id,
+            conId: AuthService.to.isDoc.value
+                ? 'u${item.id}d${AuthService.to.user.value.id}'
+                : 'u${AuthService.to.user.value.id}d${item.id}',
           ),
         );
         break;

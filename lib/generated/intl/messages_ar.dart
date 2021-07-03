@@ -163,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password" : MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordNull" : MessageLookupByLibrary.simpleMessage("من فضلك ادخل كلمة المرور"),
     "passwordsDoNotMatch" : MessageLookupByLibrary.simpleMessage("كلمتي المرور غير متطابقتان !"),
+    "patient" : MessageLookupByLibrary.simpleMessage("مريض"),
     "patients" : MessageLookupByLibrary.simpleMessage("المرضى"),
     "perceptualTumor" : MessageLookupByLibrary.simpleMessage("- ورم إدراكي"),
     "personalData" : MessageLookupByLibrary.simpleMessage("المعلومات الشخصيه"),
