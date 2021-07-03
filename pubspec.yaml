@@ -55,6 +55,7 @@ dependencies:
   bdaya_repository_pattern:
     git:
       url: git@github.com:Bdaya-Dev/Flutter-Repository-Pattern.git
+      ref: master
   bdaya_custom_splash:
     git:
       url: https://github.com/Bdaya-Dev/custom-splash.git
