@@ -58,7 +58,7 @@ packages:
       path: "."
       ref: master
       resolved-ref: "63fcfcb227d9991b7aaabb46c89f6e0abf7027d8"
-      url: "git@github.com:Bdaya-Dev/Flutter-Repository-Pattern.git"
+      url: "https://github.com/Bdaya-Dev/Flutter-Repository-Pattern.git"
     source: git
     version: "3.0.0"
   boolean_selector:
