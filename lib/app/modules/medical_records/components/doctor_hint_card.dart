@@ -59,7 +59,7 @@ class DoctorHintCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CareveButton(
+                      AppButton(
                         title: S.of(context).findDoctor,
                         backgroundColor: ColorUtil.whiteColor,
                         height: 80.w,

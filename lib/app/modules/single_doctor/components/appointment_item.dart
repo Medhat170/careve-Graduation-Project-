@@ -50,7 +50,7 @@ class AppointmentItem extends StatelessWidget {
                       loading: SingleDoctorController.to.loadingId.value ==
                           sendDateTime,
                       margin: const EdgeInsets.all(10.0),
-                      child: CareveButton(
+                      child: AppButton(
                         title: '$actualDay    $shownDate' ?? '',
                         backgroundColor: Colors.transparent,
                         borderColor: ColorUtil.primaryColor,

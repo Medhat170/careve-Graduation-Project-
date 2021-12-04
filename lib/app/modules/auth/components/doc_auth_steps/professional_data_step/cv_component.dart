@@ -36,7 +36,7 @@ class CVComponent extends GetView<AuthService> {
                     ),
                   ),
                 ),
-                CareveButton.icon(
+                AppButton.icon(
                   height: 130.w,
                   width: 130.w,
                   margin: EdgeInsets.zero,

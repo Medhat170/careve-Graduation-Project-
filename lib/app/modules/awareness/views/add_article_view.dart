@@ -83,7 +83,7 @@ class AddAwarenessView extends GetView<AwarenessController> {
                       if (controller.isBusy.value)
                         Loading()
                       else
-                        CareveButton(
+                        AppButton(
                           title: S.of(context).done,
                           margin: const EdgeInsets.symmetric(vertical: 20.0),
                           onTap: controller.addAwareness,

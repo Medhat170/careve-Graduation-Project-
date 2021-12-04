@@ -63,7 +63,7 @@ class AwarenessImageHandler extends GetView<AwarenessController> {
                 ),
                 const Spacer(),
                 if (controller.image.value != null)
-                  CareveButton.icon(
+                  AppButton.icon(
                     width: 400.w,
                     height: 100.w,
                     icon: Icon(

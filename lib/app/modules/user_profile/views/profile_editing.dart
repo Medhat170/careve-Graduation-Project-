@@ -67,7 +67,7 @@ class ProfileEditingView extends GetView<AuthService> {
               if (controller.isBusy.value)
                 Loading()
               else
-                CareveButton(
+                AppButton(
                   title: S.of(context).edit,
                   onTap: controller.editProfile,
                 ),

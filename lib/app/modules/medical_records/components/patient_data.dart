@@ -89,7 +89,7 @@ class PatientDataCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CareveButton(
+                      AppButton(
                         title: S.of(context).chat,
                         height: 80.w,
                         width: 300.w,

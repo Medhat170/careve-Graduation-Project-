@@ -60,7 +60,7 @@ class AddEditRecordView extends GetView<MedicalRecordsController>
                           if (controller.isLoading.value) {
                             return Loading();
                           } else {
-                            return CareveButton(
+                            return AppButton(
                               title: controller.editingRecord.value
                                   ? S.of(context).edit
                                   : S.of(context).confirm,

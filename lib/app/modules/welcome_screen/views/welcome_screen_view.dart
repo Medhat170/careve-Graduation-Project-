@@ -44,12 +44,12 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        PathUtil.favIcon,
-                        width: 100.w,
-                        height: 100.w,
+                        PathUtil.logoIcon,
+                        width: 200.w,
+                        height: 200.w,
                       ),
                       Text(
-                        'Careve',
+                        'HCare',
                         style: TextStyle(
                           color: ColorUtil.whiteColor,
                           fontSize: 74.sp,
@@ -65,22 +65,22 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
-                        width: Get.width * 0.6,
-                        child: Text(
-                          S.of(context).welcomeText,
-                          style: TextStyle(
-                            color: ColorUtil.whiteColor,
-                            fontSize: 46.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          softWrap: true,
-                        ),
-                      ),
+                      // SizedBox(
+                      //   width: Get.width * 0.6,
+                      //   child: Text(
+                      //     S.of(context).welcomeText,
+                      //     style: TextStyle(
+                      //       color: ColorUtil.whiteColor,
+                      //       fontSize: 46.sp,
+                      //       fontWeight: FontWeight.w600,
+                      //     ),
+                      //     softWrap: true,
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 300.h,
                       ),
-                      CareveButton(
+                      AppButton(
                         title: S.of(context).normalUser,
                         onTap: () {
                           AuthService.to.signUP(false);
@@ -93,7 +93,7 @@ class WelcomeScreenView extends GetView<WelcomeScreenController> {
                       SizedBox(
                         height: 50.h,
                       ),
-                      CareveButton(
+                      AppButton(
                         title: S.of(context).doctor,
                         backgroundColor: Colors.transparent,
                         borderColor: ColorUtil.primaryColor,

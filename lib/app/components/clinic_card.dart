@@ -70,7 +70,7 @@ class ClinicCard extends StatelessWidget {
                             ),
                           ),
                           if (removeFunction != null)
-                            CareveButton(
+                            AppButton(
                               title: S.of(context).delete,
                               height: 70.w,
                               width: 200.w,

@@ -62,7 +62,7 @@ class ClinicDataStep extends Step {
                               ),
                             ),
                           ),
-                          CareveButton.icon(
+                          AppButton.icon(
                             width: 150.w,
                             height: 100.w,
                             icon: const Icon(

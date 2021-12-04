@@ -138,7 +138,7 @@ class ClinicEditingView extends GetView<ClinicEditingController>
                         if (controller.isBusy.value)
                           Loading()
                         else
-                          CareveButton(
+                          AppButton(
                             title: controller.clinicForEdit?.id != null
                                 ? S.of(context).edit
                                 : S.of(context).done,

@@ -114,7 +114,7 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: CareveButton.icon(
+                                child: AppButton.icon(
                                   backgroundColor: Colors.white,
                                   icon: const Icon(
                                     FontAwesomeIcons.comment,
@@ -138,7 +138,7 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                                   width: 7.5,
                                 ),
                                 Expanded(
-                                  child: CareveButton.icon(
+                                  child: AppButton.icon(
                                     backgroundColor: Colors.white,
                                     icon: const Icon(
                                       FontAwesomeIcons.phone,
@@ -158,7 +158,7 @@ class DoctorInfo extends GetView<SingleDoctorController> {
                                   width: 7.5,
                                 ),
                                 Expanded(
-                                  child: CareveButton.icon(
+                                  child: AppButton.icon(
                                     backgroundColor: Colors.white,
                                     icon: const Icon(
                                       FontAwesomeIcons.locationArrow,

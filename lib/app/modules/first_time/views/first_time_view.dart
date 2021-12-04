@@ -49,14 +49,14 @@ class FirstTimeView extends GetView<FirstTimeController> {
                 ),
               ),
             ),
-            CareveButton(
+            AppButton(
               title: S.of(context).next,
               onTap: () => controller.onTapNext(),
             ),
             const SizedBox(
               height: 15,
             ),
-            CareveButton(
+            AppButton(
               title: S.of(context).skip,
               onTap: () => Get.offNamed(
                 Routes.WELCOME_SCREEN,

@@ -74,7 +74,7 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                         ),
                       ),
                       if (!controller.isDoc)
-                        CareveButton(
+                        AppButton(
                           title: S.of(context).cancel,
                           height: 70.w,
                           width: 200.w,
@@ -138,7 +138,7 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                           if (!isDoc &&
                               appointment?.address?.lat != null &&
                               appointment?.address?.long != null)
-                            CareveButton(
+                            AppButton(
                               title: S.of(context).go,
                               height: 70.w,
                               width: 200.w,
@@ -170,7 +170,7 @@ class UserAppointment extends GetView<UserAppointmentsController> {
                               ),
                             ),
                           ),
-                          CareveButton(
+                          AppButton(
                             title: S.of(context).call,
                             height: 70.w,
                             width: 200.w,

@@ -64,7 +64,7 @@ class RecordImageHandler extends GetView<MedicalRecordsController> {
                 ),
                 const Spacer(),
                 if (controller.uploadedImage.value != null)
-                  CareveButton.icon(
+                  AppButton.icon(
                     width: 400.w,
                     height: 100.w,
                     icon: Icon(

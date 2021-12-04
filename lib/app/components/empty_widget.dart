@@ -57,7 +57,7 @@ class EmptyWidget extends StatelessWidget {
               height: 30.0,
             ),
             if (extraFunction != null && hint == S.current.socketException)
-              CareveButton.icon(
+              AppButton.icon(
                 width: 750.w,
                 icon: const Icon(
                   FontAwesomeIcons.redoAlt,

@@ -63,7 +63,7 @@ class PhoneEntryView extends GetView<AuthService> {
                       const SizedBox(
                         height: 10,
                       ),
-                      CareveButton(
+                      AppButton(
                         title: S.of(context).done,
                         onTap: () => controller.sendPhoneNumber(),
                       ),
