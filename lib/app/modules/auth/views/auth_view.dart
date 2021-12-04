@@ -101,7 +101,7 @@ class AuthView extends GetView<AuthService> {
                           if (controller.isBusy.value)
                             Loading()
                           else
-                            CareveButton(
+                            AppButton(
                               title: controller.signUP.value
                                   ? S.of(context).signUp
                                   : S.of(context).signIn,

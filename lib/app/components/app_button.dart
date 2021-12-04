@@ -3,8 +3,8 @@ import 'package:careve/app/utilities/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CareveButton extends ButtonAppButton {
-  CareveButton({
+class AppButton extends ButtonAppButton {
+  AppButton({
     Widget child,
     String title,
     double fontSize = 18.0,
@@ -38,7 +38,7 @@ class CareveButton extends ButtonAppButton {
           margin: margin,
         );
 
-  factory CareveButton.icon({
+  factory AppButton.icon({
     @required Widget icon,
     String title,
     Color textColor,
@@ -52,7 +52,7 @@ class CareveButton extends ButtonAppButton {
   }) = _CareveButtonWithIcon;
 }
 
-class _CareveButtonWithIcon extends CareveButton {
+class _CareveButtonWithIcon extends AppButton {
   _CareveButtonWithIcon({
     @required Widget icon,
     @required String title,

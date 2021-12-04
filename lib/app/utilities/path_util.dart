@@ -13,7 +13,7 @@ class PathUtil {
   static const String moreImage = '${imagesPath}more.png';
   static const String worriedWomanImage = '${imagesPath}worried_woman.png';
   static const String userImage = '${imagesPath}female_avatar.png';
-  static const String welcomeImage = '${imagesPath}hands_background.jpg';
+  static const String welcomeImage = '${imagesPath}welcome.jpg';
   static const String splashscreen1Image = '${imagesPath}undraw_splash1.png';
   static const String splashscreen3Image = '${imagesPath}undraw_splash3.png';
   static const String doctorsImage = '${imagesPath}doctors.png';
